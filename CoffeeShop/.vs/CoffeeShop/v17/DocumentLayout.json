@@ -1,0 +1,56 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Administrator\\Documents\\Desktop\\T\u00E0i li\u1EC7u\\Year3\\LTTQ\\Project\\CoffeeShop\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0F637E44-CD67-4623-B600-D1E1FE4D4E38}|CoffeeShop\\CoffeeShop.csproj|c:\\users\\administrator\\documents\\desktop\\t\u00E0i li\u1EC7u\\year3\\lttq\\project\\coffeeshop\\coffeeshop\\view\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0F637E44-CD67-4623-B600-D1E1FE4D4E38}|CoffeeShop\\CoffeeShop.csproj|solutionrelative:coffeeshop\\view\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Login.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\Desktop\\T\u00E0i li\u1EC7u\\Year3\\LTTQ\\Project\\CoffeeShop\\CoffeeShop\\View\\Login.cs",
+              "RelativeDocumentMoniker": "CoffeeShop\\View\\Login.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\Desktop\\T\u00E0i li\u1EC7u\\Year3\\LTTQ\\Project\\CoffeeShop\\CoffeeShop\\View\\Login.cs [Design]",
+              "RelativeToolTip": "CoffeeShop\\View\\Login.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-07T00:03:11.336Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
