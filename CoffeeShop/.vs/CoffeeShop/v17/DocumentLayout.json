@@ -1,10 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Administrator\\Documents\\Desktop\\T\u00E0i li\u1EC7u\\Year3\\LTTQ\\Project\\CoffeeShop\\",
+  "WorkspaceRootPath": "E:\\BTL_LTTQ\\WF-Coffee-Management-main\\WF-Coffee-Management\\CoffeeShop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0F637E44-CD67-4623-B600-D1E1FE4D4E38}|CoffeeShop\\CoffeeShop.csproj|c:\\users\\administrator\\documents\\desktop\\t\u00E0i li\u1EC7u\\year3\\lttq\\project\\coffeeshop\\coffeeshop\\view\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0F637E44-CD67-4623-B600-D1E1FE4D4E38}|CoffeeShop\\CoffeeShop.csproj|solutionrelative:coffeeshop\\view\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{0F637E44-CD67-4623-B600-D1E1FE4D4E38}|CoffeeShop\\CoffeeShop.csproj|e:\\btl_lttq\\wf-coffee-management-main\\wf-coffee-management\\coffeeshop\\coffeeshop\\view\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0F637E44-CD67-4623-B600-D1E1FE4D4E38}|CoffeeShop\\CoffeeShop.csproj|solutionrelative:coffeeshop\\view\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F637E44-CD67-4623-B600-D1E1FE4D4E38}|CoffeeShop\\CoffeeShop.csproj|E:\\BTL_LTTQ\\WF-Coffee-Management-main\\WF-Coffee-Management\\CoffeeShop\\coffeeshop\\view\\dashboard.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0F637E44-CD67-4623-B600-D1E1FE4D4E38}|CoffeeShop\\CoffeeShop.csproj|solutionrelative:coffeeshop\\view\\dashboard.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F637E44-CD67-4623-B600-D1E1FE4D4E38}|CoffeeShop\\CoffeeShop.csproj|E:\\BTL_LTTQ\\WF-Coffee-Management-main\\WF-Coffee-Management\\CoffeeShop\\coffeeshop\\view\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0F637E44-CD67-4623-B600-D1E1FE4D4E38}|CoffeeShop\\CoffeeShop.csproj|solutionrelative:coffeeshop\\view\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F637E44-CD67-4623-B600-D1E1FE4D4E38}|CoffeeShop\\CoffeeShop.csproj|E:\\BTL_LTTQ\\WF-Coffee-Management-main\\WF-Coffee-Management\\CoffeeShop\\coffeeshop\\view\\signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0F637E44-CD67-4623-B600-D1E1FE4D4E38}|CoffeeShop\\CoffeeShop.csproj|solutionrelative:coffeeshop\\view\\signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F637E44-CD67-4623-B600-D1E1FE4D4E38}|CoffeeShop\\CoffeeShop.csproj|E:\\BTL_LTTQ\\WF-Coffee-Management-main\\WF-Coffee-Management\\CoffeeShop\\coffeeshop\\view\\signin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0F637E44-CD67-4623-B600-D1E1FE4D4E38}|CoffeeShop\\CoffeeShop.csproj|solutionrelative:coffeeshop\\view\\signin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,39 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Dashboard.Designer.cs",
+              "DocumentMoniker": "E:\\BTL_LTTQ\\WF-Coffee-Management-main\\WF-Coffee-Management\\CoffeeShop\\CoffeeShop\\View\\Dashboard.Designer.cs",
+              "RelativeDocumentMoniker": "CoffeeShop\\View\\Dashboard.Designer.cs",
+              "ToolTip": "E:\\BTL_LTTQ\\WF-Coffee-Management-main\\WF-Coffee-Management\\CoffeeShop\\CoffeeShop\\View\\Dashboard.Designer.cs",
+              "RelativeToolTip": "CoffeeShop\\View\\Dashboard.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T09:04:11.737Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dashboard.cs",
+              "DocumentMoniker": "E:\\BTL_LTTQ\\WF-Coffee-Management-main\\WF-Coffee-Management\\CoffeeShop\\CoffeeShop\\View\\Dashboard.cs",
+              "RelativeDocumentMoniker": "CoffeeShop\\View\\Dashboard.cs",
+              "ToolTip": "E:\\BTL_LTTQ\\WF-Coffee-Management-main\\WF-Coffee-Management\\CoffeeShop\\CoffeeShop\\View\\Dashboard.cs",
+              "RelativeToolTip": "CoffeeShop\\View\\Dashboard.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAIwBEAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T09:00:11.137Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Login.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\Desktop\\T\u00E0i li\u1EC7u\\Year3\\LTTQ\\Project\\CoffeeShop\\CoffeeShop\\View\\Login.cs",
-              "RelativeDocumentMoniker": "CoffeeShop\\View\\Login.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Documents\\Desktop\\T\u00E0i li\u1EC7u\\Year3\\LTTQ\\Project\\CoffeeShop\\CoffeeShop\\View\\Login.cs [Design]",
-              "RelativeToolTip": "CoffeeShop\\View\\Login.cs [Design]",
+              "Title": "Dashboard.cs [Design]",
+              "DocumentMoniker": "E:\\BTL_LTTQ\\WF-Coffee-Management-main\\WF-Coffee-Management\\CoffeeShop\\CoffeeShop\\View\\Dashboard.cs",
+              "RelativeDocumentMoniker": "CoffeeShop\\View\\Dashboard.cs",
+              "ToolTip": "E:\\BTL_LTTQ\\WF-Coffee-Management-main\\WF-Coffee-Management\\CoffeeShop\\CoffeeShop\\View\\Dashboard.cs [Design]",
+              "RelativeToolTip": "CoffeeShop\\View\\Dashboard.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-07T00:03:11.336Z",
+              "WhenOpened": "2024-09-20T08:45:07.46Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SignUp.cs [Design]",
+              "DocumentMoniker": "E:\\BTL_LTTQ\\WF-Coffee-Management-main\\WF-Coffee-Management\\CoffeeShop\\CoffeeShop\\View\\SignUp.cs",
+              "RelativeDocumentMoniker": "CoffeeShop\\View\\SignUp.cs",
+              "ToolTip": "E:\\BTL_LTTQ\\WF-Coffee-Management-main\\WF-Coffee-Management\\CoffeeShop\\CoffeeShop\\View\\SignUp.cs [Design]",
+              "RelativeToolTip": "CoffeeShop\\View\\SignUp.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T08:34:33.246Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SignIn.cs [Design]",
+              "DocumentMoniker": "E:\\BTL_LTTQ\\WF-Coffee-Management-main\\WF-Coffee-Management\\CoffeeShop\\CoffeeShop\\View\\SignIn.cs",
+              "RelativeDocumentMoniker": "CoffeeShop\\View\\SignIn.cs",
+              "ToolTip": "E:\\BTL_LTTQ\\WF-Coffee-Management-main\\WF-Coffee-Management\\CoffeeShop\\CoffeeShop\\View\\SignIn.cs [Design]",
+              "RelativeToolTip": "CoffeeShop\\View\\SignIn.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T07:58:26.583Z"
             }
           ]
         }
