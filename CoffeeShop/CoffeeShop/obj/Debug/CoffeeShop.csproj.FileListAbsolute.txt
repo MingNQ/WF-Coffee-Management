@@ -22,3 +22,7 @@ E:\BTL_LTTQ\WF-Coffee-Management-main\WF-Coffee-Management\CoffeeShop\CoffeeShop
 E:\BTL_LTTQ\WF-Coffee-Management-main\WF-Coffee-Management\CoffeeShop\CoffeeShop\obj\Debug\CoffeeShop.csproj.Up2Date
 E:\BTL_LTTQ\WF-Coffee-Management-main\WF-Coffee-Management\CoffeeShop\CoffeeShop\obj\Debug\CoffeeShop.View.SignUp.resources
 E:\BTL_LTTQ\WF-Coffee-Management-main\WF-Coffee-Management\CoffeeShop\CoffeeShop\obj\Debug\CoffeeShop.View.Dashboard.resources
+E:\BTL_LTTQ\WF-Coffee-Management-main\WF-Coffee-Management\CoffeeShop\CoffeeShop\obj\Debug\CoffeeShop.View.PlaceOrder.resources
+E:\BTL_LTTQ\WF-Coffee-Management-main\WF-Coffee-Management\CoffeeShop\CoffeeShop\obj\Debug\CoffeeShop.View.Category.resources
+E:\BTL_LTTQ\WF-Coffee-Management-main\WF-Coffee-Management\CoffeeShop\CoffeeShop\obj\Debug\CoffeeShop.View.Customer.resources
+E:\BTL_LTTQ\WF-Coffee-Management-main\WF-Coffee-Management\CoffeeShop\CoffeeShop\obj\Debug\CoffeeShop.View.Staff.resources
