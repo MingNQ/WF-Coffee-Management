@@ -10,14 +10,32 @@ using System.Windows.Forms;
 
 namespace CoffeeShop.View
 {
-    public partial class Dashboard : Form
+	public partial class MainView : Form, IMainView
     {
-        public Dashboard()
+        /// <summary>
+        /// Constructor for Main View
+        /// </summary>
+        public MainView()
         {
             InitializeComponent();
+            
+            // Add event to button
+            btnDashboard.Click += delegate { ShowDashboardView?.Invoke(this, EventArgs.Empty); };
+            btnPlaceOrder.Click += delegate { ShowPlaceOrderView?.Invoke(this, EventArgs.Empty); };
+            btnCategory.Click += delegate { ShowCategoryView?.Invoke(this, EventArgs.Empty); };
+            btnCustomer.Click += delegate { ShowCustomerView?.Invoke(this, EventArgs.Empty); };
+            btnStaff.Click += delegate { ShowStaffView?.Invoke(this, EventArgs.Empty); };
         }
 
-        private void btnPlaceOrder_Click(object sender, EventArgs e)
+		#region Event
+		public event EventHandler ShowDashboardView;
+		public event EventHandler ShowPlaceOrderView;
+		public event EventHandler ShowCategoryView;
+		public event EventHandler ShowStaffView;
+		public event EventHandler ShowCustomerView;
+		#endregion
+
+		private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
             // Kiểm tra xem form con có đang mở không, nếu có thì đóng lại trước
             foreach (var form in MdiChildren)
@@ -66,14 +84,6 @@ namespace CoffeeShop.View
             customer.MdiParent = this;
             customer.Dock = DockStyle.Fill;
             customer.Show();
-        }
-
-        private void btnDashboard_Click(object sender, EventArgs e)
-        {
-            foreach (var form in MdiChildren)
-            {
-                form.Close();
-            }
         }
     }
 }

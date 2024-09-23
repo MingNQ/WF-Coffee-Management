@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // Staff
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.IndianRed;
-            this.ClientSize = new System.Drawing.Size(1225, 773);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Staff";
-            this.Text = "Staff";
-            this.ResumeLayout(false);
+			this.SuspendLayout();
+			// 
+			// Staff
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.IndianRed;
+			this.ClientSize = new System.Drawing.Size(1240, 790);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.Name = "Staff";
+			this.Text = "Staff";
+			this.ResumeLayout(false);
 
         }
 
-        #endregion
-    }
+		#endregion
+	}
 }

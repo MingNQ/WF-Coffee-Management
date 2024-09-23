@@ -1,4 +1,5 @@
-﻿using CoffeeShop.View;
+﻿using CoffeeShop.Presenter;
+using CoffeeShop.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,9 @@ namespace CoffeeShop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dashboard());
+            IMainView mainView = new MainView();
+            new MainPresenter(mainView);
+            Application.Run((Form)mainView);
         }
     }
 }

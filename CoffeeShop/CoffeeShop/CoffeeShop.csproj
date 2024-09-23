@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="Presenter\DashboardPresenter.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,11 +66,19 @@
     <Compile Include="View\Customer.Designer.cs">
       <DependentUpon>Customer.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Dashboard.cs">
+    <Compile Include="View\DashboardView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Dashboard.Designer.cs">
-      <DependentUpon>Dashboard.cs</DependentUpon>
+    <Compile Include="View\DashboardView.Designer.cs">
+      <DependentUpon>DashboardView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\IDashboardView.cs" />
+    <Compile Include="View\IMainView.cs" />
+    <Compile Include="View\MainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\PlaceOrder.cs">
       <SubType>Form</SubType>
@@ -111,8 +120,11 @@
     <EmbeddedResource Include="View\Customer.resx">
       <DependentUpon>Customer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Dashboard.resx">
-      <DependentUpon>Dashboard.cs</DependentUpon>
+    <EmbeddedResource Include="View\DashboardView.resx">
+      <DependentUpon>DashboardView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\PlaceOrder.resx">
       <DependentUpon>PlaceOrder.cs</DependentUpon>
