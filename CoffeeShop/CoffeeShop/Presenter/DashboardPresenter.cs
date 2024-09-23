@@ -9,7 +9,7 @@ namespace CoffeeShop.Presenter
 {
 	public class DashboardPresenter
 	{
-		#region fields
+		#region Fields
 		/// <summary>
 		/// Interface Dashboard View
 		/// </summary>

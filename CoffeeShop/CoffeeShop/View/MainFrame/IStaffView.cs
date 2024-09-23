@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoffeeShop.Model
+namespace CoffeeShop.View.MainFrame
 {
-    public class LoginModel
-    {
-    }
+	public interface IStaffView
+	{
+		// Updating...
+		void Show();
+	}
 }

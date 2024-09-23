@@ -50,59 +50,65 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="Model\StaffModel.cs" />
     <Compile Include="Presenter\DashboardPresenter.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
+    <Compile Include="Presenter\StaffPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\Category.cs">
+    <Compile Include="View\MainFrame\CategoryView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Category.Designer.cs">
-      <DependentUpon>Category.cs</DependentUpon>
+    <Compile Include="View\MainFrame\CategoryView.Designer.cs">
+      <DependentUpon>CategoryView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Customer.cs">
+    <Compile Include="View\MainFrame\CustomerView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Customer.Designer.cs">
-      <DependentUpon>Customer.cs</DependentUpon>
+    <Compile Include="View\MainFrame\CustomerView.Designer.cs">
+      <DependentUpon>CustomerView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\DashboardView.cs">
+    <Compile Include="View\MainFrame\DashboardView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\DashboardView.Designer.cs">
+    <Compile Include="View\MainFrame\DashboardView.Designer.cs">
       <DependentUpon>DashboardView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\IDashboardView.cs" />
-    <Compile Include="View\IMainView.cs" />
-    <Compile Include="View\MainView.cs">
+    <Compile Include="View\MainFrame\ICategoryView.cs" />
+    <Compile Include="View\MainFrame\ICustomerView.cs" />
+    <Compile Include="View\MainFrame\IDashboardView.cs" />
+    <Compile Include="View\MainFrame\IMainView.cs" />
+    <Compile Include="View\MainFrame\IPlaceOrderView.cs" />
+    <Compile Include="View\MainFrame\IStaffView.cs" />
+    <Compile Include="View\MainFrame\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MainView.Designer.cs">
+    <Compile Include="View\MainFrame\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\PlaceOrder.cs">
+    <Compile Include="View\MainFrame\PlaceOrderView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\PlaceOrder.Designer.cs">
-      <DependentUpon>PlaceOrder.cs</DependentUpon>
+    <Compile Include="View\MainFrame\PlaceOrderView.Designer.cs">
+      <DependentUpon>PlaceOrderView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\SignIn.cs">
+    <Compile Include="View\LoginFrame\SignIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\SignIn.Designer.cs">
+    <Compile Include="View\LoginFrame\SignIn.Designer.cs">
       <DependentUpon>SignIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\SignUp.cs">
+    <Compile Include="View\LoginFrame\SignUp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\SignUp.Designer.cs">
+    <Compile Include="View\LoginFrame\SignUp.Designer.cs">
       <DependentUpon>SignUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Staff.cs">
+    <Compile Include="View\MainFrame\StaffView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Staff.Designer.cs">
-      <DependentUpon>Staff.cs</DependentUpon>
+    <Compile Include="View\MainFrame\StaffView.Designer.cs">
+      <DependentUpon>StaffView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -114,29 +120,29 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="View\Category.resx">
-      <DependentUpon>Category.cs</DependentUpon>
+    <EmbeddedResource Include="View\MainFrame\CategoryView.resx">
+      <DependentUpon>CategoryView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Customer.resx">
-      <DependentUpon>Customer.cs</DependentUpon>
+    <EmbeddedResource Include="View\MainFrame\CustomerView.resx">
+      <DependentUpon>CustomerView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\DashboardView.resx">
+    <EmbeddedResource Include="View\MainFrame\DashboardView.resx">
       <DependentUpon>DashboardView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MainView.resx">
+    <EmbeddedResource Include="View\MainFrame\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\PlaceOrder.resx">
-      <DependentUpon>PlaceOrder.cs</DependentUpon>
+    <EmbeddedResource Include="View\MainFrame\PlaceOrderView.resx">
+      <DependentUpon>PlaceOrderView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\SignIn.resx">
+    <EmbeddedResource Include="View\LoginFrame\SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\SignUp.resx">
+    <EmbeddedResource Include="View\LoginFrame\SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Staff.resx">
-      <DependentUpon>Staff.cs</DependentUpon>
+    <EmbeddedResource Include="View\MainFrame\StaffView.resx">
+      <DependentUpon>StaffView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

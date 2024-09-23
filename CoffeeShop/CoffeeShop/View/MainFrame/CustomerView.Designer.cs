@@ -1,6 +1,6 @@
 ﻿namespace CoffeeShop.View
 {
-    partial class PlaceOrder
+    partial class CustomerView
     {
         /// <summary>
         /// Required designer variable.
@@ -30,15 +30,15 @@
         {
 			this.SuspendLayout();
 			// 
-			// PlaceOrder
+			// Customer
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(251)))), ((int)(((byte)(234)))));
+			this.BackColor = System.Drawing.Color.Chocolate;
 			this.ClientSize = new System.Drawing.Size(1240, 790);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Name = "PlaceOrder";
-			this.Text = "PlaceOrder";
+			this.Name = "Customer";
+			this.Text = "Customer";
 			this.ResumeLayout(false);
 
         }

@@ -1,6 +1,6 @@
 ﻿namespace CoffeeShop.View
 {
-    partial class Staff
+    partial class StaffView
     {
         /// <summary>
         /// Required designer variable.

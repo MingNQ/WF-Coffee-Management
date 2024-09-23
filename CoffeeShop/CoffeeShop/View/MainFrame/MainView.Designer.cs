@@ -124,7 +124,6 @@
 			this.btnCategory.TabIndex = 9;
 			this.btnCategory.Text = "Category  ";
 			this.btnCategory.UseTransparentBackground = true;
-			this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
 			// 
 			// btnPlaceOrder
 			// 
@@ -147,7 +146,6 @@
 			this.btnPlaceOrder.TabIndex = 8;
 			this.btnPlaceOrder.Text = "  Place Order";
 			this.btnPlaceOrder.UseTransparentBackground = true;
-			this.btnPlaceOrder.Click += new System.EventHandler(this.btnPlaceOrder_Click);
 			// 
 			// btnCustomer
 			// 
@@ -170,7 +168,6 @@
 			this.btnCustomer.TabIndex = 7;
 			this.btnCustomer.Text = "Customer";
 			this.btnCustomer.UseTransparentBackground = true;
-			this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
 			// 
 			// btnStaff
 			// 
@@ -193,7 +190,6 @@
 			this.btnStaff.TabIndex = 6;
 			this.btnStaff.Text = "Staff      ";
 			this.btnStaff.UseTransparentBackground = true;
-			this.btnStaff.Click += new System.EventHandler(this.btnStaff_Click);
 			// 
 			// btnDashboard
 			// 

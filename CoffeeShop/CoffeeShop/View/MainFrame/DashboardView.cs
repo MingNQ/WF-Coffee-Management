@@ -29,6 +29,11 @@ namespace CoffeeShop.View
 		#endregion
 
 		#region public fields
+		/// <summary>
+		/// Get Instance for Dashboard
+		/// </summary>
+		/// <param name="parentContainer">Parent Container</param>
+		/// <returns>Instance</returns>
 		public static DashboardView GetInstance(Form parentContainer)
 		{
 			if (instance == null || instance.IsDisposed)

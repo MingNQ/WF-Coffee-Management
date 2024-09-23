@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CoffeeShop.View
 {
-    public partial class Staff : Form
+    public partial class CategoryView : Form
     {
-        public Staff()
+        public CategoryView()
         {
             InitializeComponent();
         }

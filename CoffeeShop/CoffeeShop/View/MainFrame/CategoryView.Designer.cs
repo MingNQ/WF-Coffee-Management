@@ -1,6 +1,6 @@
 ﻿namespace CoffeeShop.View
 {
-    partial class Customer
+    partial class CategoryView
     {
         /// <summary>
         /// Required designer variable.
@@ -30,15 +30,14 @@
         {
 			this.SuspendLayout();
 			// 
-			// Customer
+			// Category
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.Chocolate;
 			this.ClientSize = new System.Drawing.Size(1240, 790);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Name = "Customer";
-			this.Text = "Customer";
+			this.Name = "Category";
+			this.Text = "Category";
 			this.ResumeLayout(false);
 
         }

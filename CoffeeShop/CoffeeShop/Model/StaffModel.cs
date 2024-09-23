@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop.Model
 {
-    public class LoginModel
-    {
-    }
+	public class StaffModel
+	{
+		#region Fields
+		#endregion
+
+		#region Properties
+		#endregion
+	}
 }

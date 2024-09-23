@@ -1,4 +1,5 @@
 ﻿using CoffeeShop.View;
+using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,21 +26,32 @@ namespace CoffeeShop.Presenter
         {
             this.mainView = view;
             this.mainView.ShowDashboardView += ShowDashboardView;
+            this.mainView.ShowStaffView += ShowStaffView;
         }
 
 
 		#region private fields
-        /// <summary>
-        /// Event Show Dashboard view
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+		/// <summary>
+		/// Event Show Dashboard view
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void ShowDashboardView(object sender, EventArgs e)
 		{
             IDashboardView view = DashboardView.GetInstance((MainView)mainView);
             new DashboardPresenter(view);
 		}
 
+		/// <summary>
+		/// Event Show Staff view
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void ShowStaffView(object sender, EventArgs e)
+		{
+			IStaffView view = StaffView.GetInstance((MainView)mainView);
+			new StaffPresenter(view);
+		}
 		#endregion
 	}
 }

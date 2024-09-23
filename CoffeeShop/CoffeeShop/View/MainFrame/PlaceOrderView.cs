@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CoffeeShop.View
 {
-    public partial class PlaceOrder : Form
+    public partial class PlaceOrderView : Form
     {
-        public PlaceOrder()
+        public PlaceOrderView()
         {
             InitializeComponent();
         }
