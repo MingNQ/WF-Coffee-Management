@@ -27,8 +27,8 @@ namespace CoffeeShop.Presenter
             this.mainView = view;
             this.mainView.ShowDashboardView += ShowDashboardView;
             this.mainView.ShowStaffView += ShowStaffView;
+			this.mainView.ShowCustomerView += ShowCustomerView;
         }
-
 
 		#region private fields
 		/// <summary>
@@ -51,6 +51,17 @@ namespace CoffeeShop.Presenter
 		{
 			IStaffView view = StaffView.GetInstance((MainView)mainView);
 			new StaffPresenter(view);
+		}
+
+		/// <summary>
+		/// Event Show Customer View
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void ShowCustomerView(object sender, EventArgs e)
+		{
+			ICustomerView view = CustomerView.GetInstance((MainView)mainView);
+			new CustomerPresenter(view);
 		}
 		#endregion
 	}
