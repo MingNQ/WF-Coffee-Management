@@ -1,5 +1,6 @@
 ﻿using CoffeeShop.Presenter;
 using CoffeeShop.View;
+using CoffeeShop.View.LoginFrame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,10 @@ namespace CoffeeShop
             Application.SetCompatibleTextRenderingDefault(false);
             IMainView mainView = new MainView();
             new MainPresenter(mainView);
-            Application.Run((Form)mainView);
+
+            ISignInView signInView = new SignIn();
+            new SignInPresenter(signInView);
+            Application.Run((Form)signInView);
         }
     }
 }
