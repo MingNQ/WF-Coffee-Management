@@ -18,6 +18,8 @@ namespace CoffeeShop.View
         public MainView()
         {
             InitializeComponent();
+            // Initial Scale
+            this.AutoScaleMode = AutoScaleMode.Dpi;
             
             // Add event to button
             btnDashboard.Click += delegate { ShowDashboardView?.Invoke(this, EventArgs.Empty); };

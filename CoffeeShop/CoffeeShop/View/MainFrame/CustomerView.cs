@@ -19,6 +19,9 @@ namespace CoffeeShop.View
         public CustomerView()
         {
             InitializeComponent();
+
+            // Initial Scale Mode
+            AutoScaleMode = AutoScaleMode.Dpi;
         }
 
         #region private fields
