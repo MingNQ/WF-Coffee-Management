@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop.Model
 {
-    internal class LoginModel
+    public class LoginModel
     {
     }
 }
