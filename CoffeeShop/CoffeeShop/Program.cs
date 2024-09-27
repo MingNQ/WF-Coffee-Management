@@ -24,7 +24,10 @@ namespace CoffeeShop
 
             ISignInView signInView = new SignIn();
             new SignInPresenter(signInView);
-            Application.Run((Form)signInView);
+
+            ISignUpView signUpView = new SignUp();
+            new SignUpPresenter(signUpView);
+            Application.Run((Form)signUpView);
         }
     }
 }

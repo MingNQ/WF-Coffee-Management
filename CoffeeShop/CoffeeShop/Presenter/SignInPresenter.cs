@@ -28,7 +28,7 @@ namespace CoffeeShop.Presenter
 
             // Add event
             this.signInView.LoginEvent += LoginAccount;
-            this.signInView.SignUpEvent += SignUpAccount;
+            this.signInView.BackSignUpEvent += SignUpAccount;
             this.signInView.ShowPasswordEvent += ShowPassword;
 
             // Show Form

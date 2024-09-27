@@ -15,7 +15,6 @@ namespace CoffeeShop.View
     {
         #region Fields
         private string message;
-        private char passwordChar;
 
         #endregion
 
@@ -76,7 +75,7 @@ namespace CoffeeShop.View
         #region Event
 
         public event EventHandler LoginEvent;
-        public event EventHandler SignUpEvent;
+        public event EventHandler BackSignUpEvent;
         public event EventHandler ShowPasswordEvent;
 
         #endregion
@@ -98,7 +97,7 @@ namespace CoffeeShop.View
             };
 
             // SignUp Event
-            btnSignUp.Click += delegate { SignUpEvent?.Invoke(this, EventArgs.Empty); };
+            btnSignUp.Click += delegate { BackSignUpEvent?.Invoke(this, EventArgs.Empty); };
 
             // Show password Event
             chkShowPassword.CheckedChanged += delegate { ShowPasswordEvent?.Invoke(this, EventArgs.Empty); };
