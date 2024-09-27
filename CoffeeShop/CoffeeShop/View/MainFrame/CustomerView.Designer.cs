@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.SuspendLayout();
-			// 
-			// Customer
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.Chocolate;
-			this.ClientSize = new System.Drawing.Size(1240, 790);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Name = "Customer";
-			this.Text = "Customer";
-			this.ResumeLayout(false);
+            this.SuspendLayout();
+            // 
+            // CustomerView
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Chocolate;
+            this.ClientSize = new System.Drawing.Size(780, 642);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "CustomerView";
+            this.Text = "Customer";
+            this.ResumeLayout(false);
 
         }
 

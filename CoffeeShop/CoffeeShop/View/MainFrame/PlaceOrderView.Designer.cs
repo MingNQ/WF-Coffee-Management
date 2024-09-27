@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.SuspendLayout();
-			// 
-			// PlaceOrder
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(251)))), ((int)(((byte)(234)))));
-			this.ClientSize = new System.Drawing.Size(1240, 790);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Name = "PlaceOrder";
-			this.Text = "PlaceOrder";
-			this.ResumeLayout(false);
+            this.SuspendLayout();
+            // 
+            // PlaceOrderView
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(251)))), ((int)(((byte)(234)))));
+            this.ClientSize = new System.Drawing.Size(780, 642);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "PlaceOrderView";
+            this.Text = "PlaceOrder";
+            this.ResumeLayout(false);
 
         }
 
