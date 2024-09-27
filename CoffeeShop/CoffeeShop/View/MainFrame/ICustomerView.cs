@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop.View.MainFrame
 {
-	public interface ICustomerView
+	internal interface ICustomerView
 	{
-		// Updating...
-		void Show();
 	}
 }
