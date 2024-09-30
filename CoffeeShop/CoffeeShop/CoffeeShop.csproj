@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\Bases\Account.cs" />
     <Compile Include="Model\Bases\Gender.cs" />
     <Compile Include="Model\SignInModel.cs" />
     <Compile Include="Model\StaffModel.cs" />

@@ -1,4 +1,5 @@
 ﻿using CoffeeShop.View.LoginFrame;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,6 @@ namespace CoffeeShop.View
     public partial class SignIn : Form, ISignInView
     {
         #region Fields
-        private string message;
 
         #endregion
 
@@ -31,26 +31,21 @@ namespace CoffeeShop.View
 
         /// <summary>
         /// Username
-        /// </summary>
-        public string Username
-        {
-            get { return txtUsername.Text; }
-            set { txtUsername.Text = value; }
-        }
+        /// </summary>        
+        public Guna2TextBox TxtUsername { get { return txtUsername; } set { txtUsername = value; } }
 
         /// <summary>
         /// Password
         /// </summary>
-        public string Password
-        {
-            get { return txtPassword.Text; }
-            set { txtPassword.Text = value; }
-        }
+        public Guna2TextBox TxtPassword { get { return txtPassword; } set { txtPassword = value; } }
 
         /// <summary>
         /// Message
         /// </summary>
-        public string Message { get { return message; } set { message = value; } }
+        public string Message { 
+            get { return lblMessage.Text; } 
+            set { lblMessage.Text = value; } 
+        }
         
         /// <summary>
         /// Is Checkbox ShowPassword or not
@@ -70,6 +65,7 @@ namespace CoffeeShop.View
             set { txtPassword.PasswordChar = value; }
         }
 
+
         #endregion
 
         #region Event
@@ -77,6 +73,7 @@ namespace CoffeeShop.View
         public event EventHandler LoginEvent;
         public event EventHandler BackSignUpEvent;
         public event EventHandler ShowPasswordEvent;
+        public event EventHandler HideMessage;
 
         #endregion
 
@@ -95,6 +92,10 @@ namespace CoffeeShop.View
                 if (e.KeyCode == Keys.Enter)
                     LoginEvent?.Invoke(this, EventArgs.Empty);
             };
+
+            // If User type username or password is hide warning message
+            txtPassword.KeyDown += delegate { HideMessage?.Invoke(this, EventArgs.Empty); };
+            txtUsername.KeyDown += delegate { HideMessage?.Invoke(this, EventArgs.Empty); };
 
             // SignUp Event
             btnSignUp.Click += delegate { BackSignUpEvent?.Invoke(this, EventArgs.Empty); };
