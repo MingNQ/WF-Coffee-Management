@@ -49,10 +49,11 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.textBox6 = new System.Windows.Forms.TextBox();
-			this.radioButton3 = new System.Windows.Forms.RadioButton();
-			this.radioButton2 = new System.Windows.Forms.RadioButton();
+			this.panel4 = new System.Windows.Forms.Panel();
 			this.radioButton1 = new System.Windows.Forms.RadioButton();
+			this.radioButton2 = new System.Windows.Forms.RadioButton();
+			this.radioButton3 = new System.Windows.Forms.RadioButton();
+			this.textBox6 = new System.Windows.Forms.TextBox();
 			this.label8 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.textBox5 = new System.Windows.Forms.TextBox();
@@ -66,7 +67,6 @@
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.button5 = new System.Windows.Forms.Button();
 			this.button6 = new System.Windows.Forms.Button();
-			this.panel4 = new System.Windows.Forms.Panel();
 			this.panel1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -74,8 +74,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.tabPage2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
-			this.panel3.SuspendLayout();
 			this.panel4.SuspendLayout();
+			this.panel3.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -136,8 +136,7 @@
 			// 
 			// panel2
 			// 
-			this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+			this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.panel2.BackColor = System.Drawing.Color.White;
 			this.panel2.Controls.Add(this.button3);
@@ -151,8 +150,7 @@
 			// 
 			// button3
 			// 
-			this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+			this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
 			this.button3.Location = new System.Drawing.Point(148, 13);
 			this.button3.Margin = new System.Windows.Forms.Padding(2);
@@ -164,8 +162,7 @@
 			// 
 			// button2
 			// 
-			this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			this.button2.Location = new System.Drawing.Point(557, 13);
 			this.button2.Margin = new System.Windows.Forms.Padding(2);
@@ -177,7 +174,7 @@
 			// 
 			// button1
 			// 
-			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+			this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
 			this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
 			this.button1.Location = new System.Drawing.Point(349, 13);
 			this.button1.Margin = new System.Windows.Forms.Padding(2);
@@ -262,8 +259,7 @@
 			// 
 			// btnSearch
 			// 
-			this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
 			this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnSearch.Location = new System.Drawing.Point(645, 27);
@@ -311,7 +307,8 @@
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox1.Controls.Add(this.panel4);
 			this.groupBox1.Controls.Add(this.textBox6);
@@ -333,36 +330,33 @@
 			this.groupBox1.TabIndex = 6;
 			this.groupBox1.TabStop = false;
 			// 
-			// textBox6
+			// panel4
 			// 
-			this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox6.Location = new System.Drawing.Point(313, 313);
-			this.textBox6.Margin = new System.Windows.Forms.Padding(2);
-			this.textBox6.Multiline = true;
-			this.textBox6.Name = "textBox6";
-			this.textBox6.Size = new System.Drawing.Size(217, 24);
-			this.textBox6.TabIndex = 13;
+			this.panel4.Controls.Add(this.radioButton1);
+			this.panel4.Controls.Add(this.radioButton2);
+			this.panel4.Controls.Add(this.radioButton3);
+			this.panel4.Location = new System.Drawing.Point(313, 203);
+			this.panel4.Name = "panel4";
+			this.panel4.Size = new System.Drawing.Size(455, 27);
+			this.panel4.TabIndex = 15;
 			// 
-			// radioButton3
+			// radioButton1
 			// 
-			this.radioButton3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.radioButton3.AutoSize = true;
-			this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.radioButton3.Location = new System.Drawing.Point(263, 4);
-			this.radioButton3.Margin = new System.Windows.Forms.Padding(2);
-			this.radioButton3.Name = "radioButton3";
-			this.radioButton3.Size = new System.Drawing.Size(107, 21);
-			this.radioButton3.TabIndex = 12;
-			this.radioButton3.TabStop = true;
-			this.radioButton3.Text = "radioButton3";
-			this.radioButton3.UseVisualStyleBackColor = true;
+			this.radioButton1.AutoSize = true;
+			this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.radioButton1.Location = new System.Drawing.Point(2, 4);
+			this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
+			this.radioButton1.Name = "radioButton1";
+			this.radioButton1.Size = new System.Drawing.Size(107, 21);
+			this.radioButton1.TabIndex = 10;
+			this.radioButton1.TabStop = true;
+			this.radioButton1.Text = "radioButton1";
+			this.radioButton1.UseVisualStyleBackColor = true;
 			// 
 			// radioButton2
 			// 
-			this.radioButton2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.radioButton2.AutoSize = true;
 			this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.radioButton2.Location = new System.Drawing.Point(130, 4);
@@ -374,20 +368,29 @@
 			this.radioButton2.Text = "radioButton2";
 			this.radioButton2.UseVisualStyleBackColor = true;
 			// 
-			// radioButton1
+			// radioButton3
 			// 
-			this.radioButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.radioButton3.AutoSize = true;
+			this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.radioButton3.Location = new System.Drawing.Point(263, 4);
+			this.radioButton3.Margin = new System.Windows.Forms.Padding(2);
+			this.radioButton3.Name = "radioButton3";
+			this.radioButton3.Size = new System.Drawing.Size(107, 21);
+			this.radioButton3.TabIndex = 12;
+			this.radioButton3.TabStop = true;
+			this.radioButton3.Text = "radioButton3";
+			this.radioButton3.UseVisualStyleBackColor = true;
+			// 
+			// textBox6
+			// 
+			this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.radioButton1.AutoSize = true;
-			this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.radioButton1.Location = new System.Drawing.Point(2, 4);
-			this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
-			this.radioButton1.Name = "radioButton1";
-			this.radioButton1.Size = new System.Drawing.Size(107, 21);
-			this.radioButton1.TabIndex = 10;
-			this.radioButton1.TabStop = true;
-			this.radioButton1.Text = "radioButton1";
-			this.radioButton1.UseVisualStyleBackColor = true;
+			this.textBox6.Location = new System.Drawing.Point(313, 313);
+			this.textBox6.Margin = new System.Windows.Forms.Padding(2);
+			this.textBox6.Multiline = true;
+			this.textBox6.Name = "textBox6";
+			this.textBox6.Size = new System.Drawing.Size(217, 24);
+			this.textBox6.TabIndex = 13;
 			// 
 			// label8
 			// 
@@ -547,18 +550,6 @@
 			this.button6.Text = "Save";
 			this.button6.UseVisualStyleBackColor = false;
 			// 
-			// panel4
-			// 
-			this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.panel4.Controls.Add(this.radioButton1);
-			this.panel4.Controls.Add(this.radioButton2);
-			this.panel4.Controls.Add(this.radioButton3);
-			this.panel4.Location = new System.Drawing.Point(313, 203);
-			this.panel4.Name = "panel4";
-			this.panel4.Size = new System.Drawing.Size(455, 27);
-			this.panel4.TabIndex = 15;
-			// 
 			// StaffView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -581,9 +572,9 @@
 			this.tabPage2.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
-			this.panel3.ResumeLayout(false);
 			this.panel4.ResumeLayout(false);
 			this.panel4.PerformLayout();
+			this.panel3.ResumeLayout(false);
 			this.ResumeLayout(false);
 
         }
