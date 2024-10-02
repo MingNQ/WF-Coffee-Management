@@ -51,6 +51,16 @@ namespace CoffeeShop.View
 
             return instance;
         }
-		#endregion
-	}
+        #endregion
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
