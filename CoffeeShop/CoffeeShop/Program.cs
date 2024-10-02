@@ -22,12 +22,12 @@ namespace CoffeeShop
             IMainView mainView = new MainView();
             new MainPresenter(mainView);
 
-            ISignInView signInView = new SignIn();
-            new SignInPresenter(signInView);
+            //ISignInView signInView = new SignIn();
+            //new SignInPresenter(signInView);
 
-            //ISignUpView signUpView = new SignUp();
-            //new SignUpPresenter(signUpView);
-            Application.Run((Form)signInView);
+            ISignUpView signUpView = new SignUp();
+            new SignUpPresenter(signUpView);
+            Application.Run((Form)signUpView);
         }
     }
 }

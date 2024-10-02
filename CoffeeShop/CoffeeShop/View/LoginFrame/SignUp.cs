@@ -1,4 +1,5 @@
 ﻿using CoffeeShop.View.LoginFrame;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,10 +15,6 @@ namespace CoffeeShop.View
     public partial class SignUp : Form, ISignUpView
     {
         #region Fields
-        /// <summary>
-        /// Using message for notify user
-        /// </summary>
-        private string message;
 
         /// <summary>
         /// Initial PasswordChar
@@ -37,31 +34,30 @@ namespace CoffeeShop.View
         }
 
         #region Properties
+        /// <summary>
+        /// 
+        /// </summary>
+        public Guna2TextBox TxtUsername { get => txtUsername; set => txtUsername = value; }
 
         /// <summary>
-        /// Username
+        /// 
         /// </summary>
-        public string Username { get => txtUsername.Text; set => txtUsername.Text = value; }
+        public Guna2TextBox TxtPassword { get => txtPassword; set => txtPassword = value; }
 
         /// <summary>
-        /// Email
+        /// 
         /// </summary>
-        public string Email { get => txtEmail.Text; set => txtEmail.Text = value; }
+        public Guna2TextBox TxtConfirmPassword { get => txtConfirmPassword; set => txtConfirmPassword = value; }
 
         /// <summary>
-        /// Password
+        /// 
         /// </summary>
-        public string Password { get => txtPassword.Text; set => txtPassword.Text = value; }
-
-        /// <summary>
-        /// Confirm password
-        /// </summary>
-        public string ConfirmPassword { get => txtConfirmPassword.Text; set => txtConfirmPassword.Text = value; }
+        public Guna2TextBox TxtEmail { get => txtEmail; set => txtEmail = value; }
 
         /// <summary>
         /// Message
         /// </summary>
-        public string Message { get => message; set => message = value; }
+        public string Message { get => lblMessage.Text; set => lblMessage.Text = value; }
 
         /// <summary>
         /// Is Show Password or not
@@ -90,6 +86,11 @@ namespace CoffeeShop.View
         /// Event Back to Sign In Form
         /// </summary>
         public event EventHandler BackSignInEvent;
+
+        /// <summary>
+        /// Event Hide message warning
+        /// </summary>
+        public event EventHandler HideMessageEvent;
         #endregion
 
         #region private fields
@@ -107,6 +108,12 @@ namespace CoffeeShop.View
                 if (e.KeyCode == Keys.Enter)
                     SignUpEvent?.Invoke(this, EventArgs.Empty);
             };
+
+            // When user typing hide warning message
+            txtUsername.KeyDown += delegate { HideMessageEvent?.Invoke(this, EventArgs.Empty); };
+            txtEmail.KeyDown += delegate { HideMessageEvent?.Invoke(this, EventArgs.Empty); };
+            txtPassword.KeyDown += delegate { HideMessageEvent?.Invoke(this, EventArgs.Empty); };
+            txtConfirmPassword.KeyDown += delegate { HideMessageEvent?.Invoke(this, EventArgs.Empty); };
 
             // SignUp Event
             btnSignIn.Click += delegate { BackSignInEvent?.Invoke(this, EventArgs.Empty); };

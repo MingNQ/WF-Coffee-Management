@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CoffeeShop.View.LoginFrame
 {
@@ -10,24 +12,24 @@ namespace CoffeeShop.View.LoginFrame
     {
         #region Fields - Property
         /// <summary>
-        /// Username 
+        /// 
         /// </summary>
-        string Username { get; set; }
+        Guna2TextBox TxtUsername { get; set; }
 
         /// <summary>
-        /// Email
+        /// 
         /// </summary>
-        string Email { get; set; }
+        Guna2TextBox TxtPassword { get; set; }
 
         /// <summary>
-        /// Password
+        /// 
         /// </summary>
-        string Password { get; set; }
+        Guna2TextBox TxtConfirmPassword { get; set; }
 
         /// <summary>
-        /// Confirm Password to Check
+        /// 
         /// </summary>
-        string ConfirmPassword { get; set; }
+        Guna2TextBox TxtEmail { get; set; }
 
         /// <summary>
         /// Message for something...
@@ -51,9 +53,11 @@ namespace CoffeeShop.View.LoginFrame
         event EventHandler SignUpEvent;
         event EventHandler ShowPasswordEvent;
         event EventHandler BackSignInEvent;
+        event EventHandler HideMessageEvent;
 
         #endregion
 
+        #region Methods
         /// <summary>
         /// Set Password char
         /// </summary>
@@ -64,5 +68,6 @@ namespace CoffeeShop.View.LoginFrame
         /// Show Form
         /// </summary>
         void Show();
+        #endregion
     }
 }

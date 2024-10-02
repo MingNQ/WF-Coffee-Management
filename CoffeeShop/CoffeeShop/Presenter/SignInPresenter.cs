@@ -47,6 +47,7 @@ namespace CoffeeShop.Presenter
         private void LoginAccount(object sender, EventArgs e)
         {
             // TO-DO: Connect database to check Account
+            // TO-DO: Check value is not null
 
             // Temporary: Check Account login
             if (this.signInView.TxtUsername.Text != "admin" || this.signInView.TxtPassword.Text != "123")
@@ -82,7 +83,7 @@ namespace CoffeeShop.Presenter
         }
 
         /// <summary>
-        /// If 
+        /// When user type hide warning message
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

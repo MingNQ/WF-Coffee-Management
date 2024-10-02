@@ -50,6 +50,7 @@
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.guna2GradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -336,12 +337,23 @@
             this.guna2HtmlLabel6.TabIndex = 25;
             this.guna2HtmlLabel6.Text = "Have an account?";
             // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.ForeColor = System.Drawing.Color.Red;
+            this.lblMessage.Location = new System.Drawing.Point(396, 75);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(0, 19);
+            this.lblMessage.TabIndex = 28;
+            // 
             // SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(251)))), ((int)(((byte)(234)))));
             this.ClientSize = new System.Drawing.Size(901, 690);
+            this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.guna2Separator2);
             this.Controls.Add(this.guna2Separator1);
             this.Controls.Add(this.guna2HtmlLabel6);
@@ -394,5 +406,6 @@
         private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
+        private System.Windows.Forms.Label lblMessage;
     }
 }

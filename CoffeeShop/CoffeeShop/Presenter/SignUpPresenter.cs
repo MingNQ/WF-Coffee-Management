@@ -1,6 +1,7 @@
 ﻿using CoffeeShop.View.LoginFrame;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,13 +32,14 @@ namespace CoffeeShop.Presenter
             this.signUpView.SignUpEvent += SignUpAccount;
             this.signUpView.BackSignInEvent += SignInAccount;
             this.signUpView.ShowPasswordEvent += ShowPassword;
+            this.signUpView.HideMessageEvent += HideMessage;
 
             // Show Form
             this.signUpView.Show();
         }
 
         #region private fields
-        
+
         /// <summary>
         /// Sign Up Click
         /// </summary>
@@ -45,18 +47,34 @@ namespace CoffeeShop.Presenter
         /// <param name="e"></param>
         private void SignUpAccount(object sender, EventArgs e)
         {
+            // TO-DO: Check not null
             // TO-DO: Connect Database to check User Account
+            // TO-DO: Check if user is exist
+            bool existUser = false;
+
             // Test
-            if (signUpView.Password == signUpView.ConfirmPassword)
+            if (!existUser)
             {
-                MessageBox.Show("Sign Up Successful!");
+                // TO-DO: If user valid check password
+                // TO-DO: Check valid email
+                if (signUpView.TxtPassword.Text == signUpView.TxtConfirmPassword.Text 
+                    && signUpView.TxtPassword.Text != "")
+                {
+                    MessageBox.Show("Sign Up Successful!");
+                }
+                else
+                {
+                    signUpView.TxtConfirmPassword.Text = "";
+                    signUpView.TxtConfirmPassword.BorderColor = Color.Red;
+                    signUpView.Message = "*Password may be incorrect.";
+                }
             } 
             else
             {
-                MessageBox.Show("Sign Up Fail! Please Try Again!");
-                signUpView.Password = "";
-                signUpView.ConfirmPassword = "";
+                // TO-DO: If user is exist
+                signUpView.TxtUsername.BorderColor = Color.Red;
             }
+            
         }
 
         /// <summary>
@@ -79,6 +97,23 @@ namespace CoffeeShop.Presenter
             this.signUpView.PasswordChar = this.signUpView.ShowPassword ? '\0' : '●';
             this.signUpView.SetPasswordChar(this.signUpView.PasswordChar);
         }
+
+        /// <summary>
+        /// Hide Message Warning
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HideMessage(object sender, EventArgs e)
+        {
+            this.signUpView.TxtUsername.BorderColor = Color.FromArgb(213, 218, 223);
+            this.signUpView.TxtEmail.BorderColor = Color.FromArgb(213, 218, 223);
+            this.signUpView.TxtPassword.BorderColor = Color.FromArgb(213, 218, 223);
+            this.signUpView.TxtConfirmPassword.BorderColor = Color.FromArgb(213, 218, 223);
+        }
+        #endregion
+
+        #region public fields
+        
         #endregion
     }
 }
