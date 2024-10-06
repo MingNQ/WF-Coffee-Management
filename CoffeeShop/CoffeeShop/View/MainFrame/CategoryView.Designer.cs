@@ -30,13 +30,15 @@
         {
 			this.SuspendLayout();
 			// 
-			// Category
+			// CategoryView
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1240, 790);
+			this.BackColor = System.Drawing.SystemColors.Info;
+			this.ClientSize = new System.Drawing.Size(930, 642);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Name = "Category";
+			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.Name = "CategoryView";
 			this.Text = "Category";
 			this.ResumeLayout(false);
 

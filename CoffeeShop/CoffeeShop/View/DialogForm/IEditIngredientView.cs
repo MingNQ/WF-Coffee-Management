@@ -4,13 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoffeeShop.View.MainFrame
+namespace CoffeeShop.View.DialogForm
 {
-	public interface ICategoryView
+	public interface IEditIngredientView
 	{
 		/// <summary>
-		/// Show form
+		/// Show Diaglog
 		/// </summary>
 		void Show();
+
+		/// <summary>
+		/// Hide Dialog
+		/// </summary>
+		void Hide();
+
 	}
 }
