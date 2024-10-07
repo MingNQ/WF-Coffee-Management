@@ -63,11 +63,17 @@
     <Compile Include="View\MainFrame\CategoryView.Designer.cs">
       <DependentUpon>CategoryView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\MainFrame\CustomerView.cs">
+    <Compile Include="View\MainFrame\CustomerViewDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MainFrame\CustomerView.Designer.cs">
-      <DependentUpon>CustomerView.cs</DependentUpon>
+    <Compile Include="View\MainFrame\CustomerViewDetail.Designer.cs">
+      <DependentUpon>CustomerViewDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainFrame\CustomerViewList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainFrame\CustomerViewList.Designer.cs">
+      <DependentUpon>CustomerViewList.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MainFrame\DashboardView.cs">
       <SubType>Form</SubType>
@@ -124,8 +130,11 @@
     <EmbeddedResource Include="View\MainFrame\CategoryView.resx">
       <DependentUpon>CategoryView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MainFrame\CustomerView.resx">
-      <DependentUpon>CustomerView.cs</DependentUpon>
+    <EmbeddedResource Include="View\MainFrame\CustomerViewDetail.resx">
+      <DependentUpon>CustomerViewDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainFrame\CustomerViewList.resx">
+      <DependentUpon>CustomerViewList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainFrame\DashboardView.resx">
       <DependentUpon>DashboardView.cs</DependentUpon>
@@ -194,6 +203,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Icons\Wallet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

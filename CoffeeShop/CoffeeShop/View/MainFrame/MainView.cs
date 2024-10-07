@@ -33,6 +33,11 @@ namespace CoffeeShop.View
 		public event EventHandler ShowCategoryView;
 		public event EventHandler ShowStaffView;
 		public event EventHandler ShowCustomerView;
-		#endregion
+        #endregion
+
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
