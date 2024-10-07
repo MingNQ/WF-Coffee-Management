@@ -82,6 +82,7 @@ namespace CoffeeShop.View
             tabControl1.Dock = DockStyle.Fill;
             this.Controls.Add(tabControl1);
 
+            
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
