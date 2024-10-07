@@ -60,7 +60,7 @@ namespace CoffeeShop.Presenter
 		/// <param name="e"></param>
 		private void ShowCustomerView(object sender, EventArgs e)
 		{
-			ICustomerView view = CustomerView.GetInstance((MainView)mainView);
+			ICustomerView view = CustomerViewList.GetInstance((MainView)mainView);
 			new CustomerPresenter(view);
 		}
 		#endregion
