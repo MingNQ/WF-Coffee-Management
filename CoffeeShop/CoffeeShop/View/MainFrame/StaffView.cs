@@ -52,5 +52,40 @@ namespace CoffeeShop.View
             return instance;
         }
         #endregion
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdoMale_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
