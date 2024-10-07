@@ -48,7 +48,7 @@
 			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.panel5 = new System.Windows.Forms.Panel();
+			this.cbCoupon = new System.Windows.Forms.ComboBox();
 			this.btnSave = new Guna.UI2.WinForms.Guna2Button();
 			this.btnClear = new Guna.UI2.WinForms.Guna2Button();
 			this.rbOther = new System.Windows.Forms.RadioButton();
@@ -63,7 +63,6 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
-			this.cbCoupon = new System.Windows.Forms.ComboBox();
 			this.btnBack = new Guna.UI2.WinForms.Guna2Button();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -74,7 +73,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.tabPage2.SuspendLayout();
-			this.panel5.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -117,6 +115,7 @@
 			this.tabControl1.Controls.Add(this.tabPage1);
 			this.tabControl1.Controls.Add(this.tabPage2);
 			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tabControl1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tabControl1.Location = new System.Drawing.Point(0, 86);
 			this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
 			this.tabControl1.Name = "tabControl1";
@@ -130,11 +129,11 @@
 			this.tabPage1.Controls.Add(this.panel4);
 			this.tabPage1.Controls.Add(this.panel3);
 			this.tabPage1.Controls.Add(this.dataGridView1);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
+			this.tabPage1.Location = new System.Drawing.Point(4, 24);
 			this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-			this.tabPage1.Size = new System.Drawing.Size(922, 530);
+			this.tabPage1.Size = new System.Drawing.Size(922, 528);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Customer List";
 			// 
@@ -145,10 +144,10 @@
 			this.panel4.Controls.Add(this.btnAddNew);
 			this.panel4.Controls.Add(this.btnEdit);
 			this.panel4.Controls.Add(this.btnDelete);
-			this.panel4.Location = new System.Drawing.Point(7, 468);
+			this.panel4.Location = new System.Drawing.Point(7, 450);
 			this.panel4.Margin = new System.Windows.Forms.Padding(2);
 			this.panel4.Name = "panel4";
-			this.panel4.Size = new System.Drawing.Size(894, 60);
+			this.panel4.Size = new System.Drawing.Size(908, 60);
 			this.panel4.TabIndex = 6;
 			// 
 			// btnAddNew
@@ -170,7 +169,6 @@
 			this.btnAddNew.Size = new System.Drawing.Size(92, 29);
 			this.btnAddNew.TabIndex = 8;
 			this.btnAddNew.Text = "Add";
-			this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
 			// 
 			// btnEdit
 			// 
@@ -183,7 +181,7 @@
 			this.btnEdit.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(125)))), ((int)(((byte)(232)))));
 			this.btnEdit.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnEdit.ForeColor = System.Drawing.Color.White;
-			this.btnEdit.Location = new System.Drawing.Point(418, 19);
+			this.btnEdit.Location = new System.Drawing.Point(425, 19);
 			this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
 			this.btnEdit.Name = "btnEdit";
 			this.btnEdit.ShadowDecoration.BorderRadius = 10;
@@ -203,7 +201,7 @@
 			this.btnDelete.FillColor = System.Drawing.Color.OrangeRed;
 			this.btnDelete.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnDelete.ForeColor = System.Drawing.Color.White;
-			this.btnDelete.Location = new System.Drawing.Point(694, 19);
+			this.btnDelete.Location = new System.Drawing.Point(708, 19);
 			this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
 			this.btnDelete.Name = "btnDelete";
 			this.btnDelete.ShadowDecoration.BorderRadius = 10;
@@ -219,7 +217,7 @@
 			this.panel3.Controls.Add(this.btnSearch);
 			this.panel3.Controls.Add(this.txtSearch);
 			this.panel3.Controls.Add(this.pictureBox2);
-			this.panel3.Location = new System.Drawing.Point(7, 77);
+			this.panel3.Location = new System.Drawing.Point(3, 13);
 			this.panel3.Margin = new System.Windows.Forms.Padding(2);
 			this.panel3.Name = "panel3";
 			this.panel3.Size = new System.Drawing.Size(919, 63);
@@ -280,7 +278,7 @@
             this.Column3,
             this.Column4,
             this.Column5});
-			this.dataGridView1.Location = new System.Drawing.Point(4, 144);
+			this.dataGridView1.Location = new System.Drawing.Point(4, 93);
 			this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.RowHeadersWidth = 82;
@@ -326,8 +324,9 @@
 			// tabPage2
 			// 
 			this.tabPage2.BackColor = System.Drawing.Color.White;
+			this.tabPage2.Controls.Add(this.btnClear);
+			this.tabPage2.Controls.Add(this.btnSave);
 			this.tabPage2.Controls.Add(this.cbCoupon);
-			this.tabPage2.Controls.Add(this.panel5);
 			this.tabPage2.Controls.Add(this.rbOther);
 			this.tabPage2.Controls.Add(this.vbFemale);
 			this.tabPage2.Controls.Add(this.rbMale);
@@ -340,30 +339,25 @@
 			this.tabPage2.Controls.Add(this.label4);
 			this.tabPage2.Controls.Add(this.label3);
 			this.tabPage2.Controls.Add(this.panel2);
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
+			this.tabPage2.Location = new System.Drawing.Point(4, 24);
 			this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-			this.tabPage2.Size = new System.Drawing.Size(922, 530);
+			this.tabPage2.Size = new System.Drawing.Size(922, 528);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "Customer Detail";
 			// 
-			// panel5
+			// cbCoupon
 			// 
-			this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.panel5.Controls.Add(this.btnSave);
-			this.panel5.Controls.Add(this.btnClear);
-			this.panel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.panel5.Location = new System.Drawing.Point(2, 477);
-			this.panel5.Margin = new System.Windows.Forms.Padding(2);
-			this.panel5.Name = "panel5";
-			this.panel5.Size = new System.Drawing.Size(919, 52);
-			this.panel5.TabIndex = 14;
+			this.cbCoupon.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbCoupon.FormattingEnabled = true;
+			this.cbCoupon.Location = new System.Drawing.Point(404, 355);
+			this.cbCoupon.Name = "cbCoupon";
+			this.cbCoupon.Size = new System.Drawing.Size(80, 24);
+			this.cbCoupon.TabIndex = 15;
 			// 
 			// btnSave
 			// 
-			this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnSave.BorderRadius = 10;
 			this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
 			this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -372,7 +366,7 @@
 			this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(125)))), ((int)(((byte)(232)))));
 			this.btnSave.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnSave.ForeColor = System.Drawing.Color.White;
-			this.btnSave.Location = new System.Drawing.Point(487, 14);
+			this.btnSave.Location = new System.Drawing.Point(46, 425);
 			this.btnSave.Margin = new System.Windows.Forms.Padding(2);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.ShadowDecoration.BorderRadius = 10;
@@ -383,7 +377,6 @@
 			// 
 			// btnClear
 			// 
-			this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnClear.BorderRadius = 10;
 			this.btnClear.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
 			this.btnClear.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -392,7 +385,7 @@
 			this.btnClear.FillColor = System.Drawing.Color.OrangeRed;
 			this.btnClear.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnClear.ForeColor = System.Drawing.Color.White;
-			this.btnClear.Location = new System.Drawing.Point(692, 14);
+			this.btnClear.Location = new System.Drawing.Point(257, 425);
 			this.btnClear.Margin = new System.Windows.Forms.Padding(2);
 			this.btnClear.Name = "btnClear";
 			this.btnClear.ShadowDecoration.BorderRadius = 10;
@@ -405,7 +398,7 @@
 			// 
 			this.rbOther.AutoSize = true;
 			this.rbOther.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.rbOther.Location = new System.Drawing.Point(639, 354);
+			this.rbOther.Location = new System.Drawing.Point(282, 357);
 			this.rbOther.Margin = new System.Windows.Forms.Padding(2);
 			this.rbOther.Name = "rbOther";
 			this.rbOther.Size = new System.Drawing.Size(67, 22);
@@ -418,7 +411,7 @@
 			// 
 			this.vbFemale.AutoSize = true;
 			this.vbFemale.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.vbFemale.Location = new System.Drawing.Point(469, 354);
+			this.vbFemale.Location = new System.Drawing.Point(157, 357);
 			this.vbFemale.Margin = new System.Windows.Forms.Padding(2);
 			this.vbFemale.Name = "vbFemale";
 			this.vbFemale.Size = new System.Drawing.Size(77, 22);
@@ -431,7 +424,7 @@
 			// 
 			this.rbMale.AutoSize = true;
 			this.rbMale.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.rbMale.Location = new System.Drawing.Point(301, 354);
+			this.rbMale.Location = new System.Drawing.Point(46, 357);
 			this.rbMale.Margin = new System.Windows.Forms.Padding(2);
 			this.rbMale.Name = "rbMale";
 			this.rbMale.Size = new System.Drawing.Size(60, 22);
@@ -442,39 +435,45 @@
 			// 
 			// txtEmail
 			// 
+			this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtEmail.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtEmail.Location = new System.Drawing.Point(302, 278);
+			this.txtEmail.Location = new System.Drawing.Point(44, 260);
 			this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
 			this.txtEmail.Multiline = true;
 			this.txtEmail.Name = "txtEmail";
-			this.txtEmail.Size = new System.Drawing.Size(444, 26);
+			this.txtEmail.Size = new System.Drawing.Size(601, 26);
 			this.txtEmail.TabIndex = 9;
 			// 
 			// txtPhone
 			// 
+			this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtPhone.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtPhone.Location = new System.Drawing.Point(302, 209);
+			this.txtPhone.Location = new System.Drawing.Point(46, 181);
 			this.txtPhone.Margin = new System.Windows.Forms.Padding(2);
 			this.txtPhone.Multiline = true;
 			this.txtPhone.Name = "txtPhone";
-			this.txtPhone.Size = new System.Drawing.Size(444, 26);
+			this.txtPhone.Size = new System.Drawing.Size(599, 26);
 			this.txtPhone.TabIndex = 8;
 			// 
 			// txtCustomerName
 			// 
+			this.txtCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtCustomerName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtCustomerName.Location = new System.Drawing.Point(302, 138);
+			this.txtCustomerName.Location = new System.Drawing.Point(44, 101);
 			this.txtCustomerName.Margin = new System.Windows.Forms.Padding(2);
 			this.txtCustomerName.Multiline = true;
 			this.txtCustomerName.Name = "txtCustomerName";
-			this.txtCustomerName.Size = new System.Drawing.Size(444, 26);
+			this.txtCustomerName.Size = new System.Drawing.Size(601, 26);
 			this.txtCustomerName.TabIndex = 7;
 			// 
 			// label7
 			// 
 			this.label7.AutoSize = true;
 			this.label7.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.Location = new System.Drawing.Point(76, 428);
+			this.label7.Location = new System.Drawing.Point(400, 320);
 			this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(84, 22);
@@ -485,7 +484,7 @@
 			// 
 			this.label6.AutoSize = true;
 			this.label6.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label6.Location = new System.Drawing.Point(76, 352);
+			this.label6.Location = new System.Drawing.Point(40, 320);
 			this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(79, 22);
@@ -496,34 +495,34 @@
 			// 
 			this.label5.AutoSize = true;
 			this.label5.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label5.Location = new System.Drawing.Point(76, 278);
+			this.label5.Location = new System.Drawing.Point(40, 236);
 			this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(61, 22);
+			this.label5.Size = new System.Drawing.Size(68, 22);
 			this.label5.TabIndex = 4;
-			this.label5.Text = "Email";
+			this.label5.Text = "Email:";
 			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
 			this.label4.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label4.Location = new System.Drawing.Point(76, 210);
+			this.label4.Location = new System.Drawing.Point(42, 157);
 			this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(70, 22);
+			this.label4.Size = new System.Drawing.Size(77, 22);
 			this.label4.TabIndex = 3;
-			this.label4.Text = "Phone";
+			this.label4.Text = "Phone:";
 			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.Location = new System.Drawing.Point(76, 139);
+			this.label3.Location = new System.Drawing.Point(40, 77);
 			this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(158, 22);
+			this.label3.Size = new System.Drawing.Size(165, 22);
 			this.label3.TabIndex = 2;
-			this.label3.Text = "Customer Name";
+			this.label3.Text = "Customer Name:";
 			// 
 			// panel2
 			// 
@@ -531,20 +530,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(171)))), ((int)(((byte)(147)))));
 			this.panel2.Controls.Add(this.btnBack);
-			this.panel2.Location = new System.Drawing.Point(0, 51);
+			this.panel2.Location = new System.Drawing.Point(2, 4);
 			this.panel2.Margin = new System.Windows.Forms.Padding(2);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(922, 72);
+			this.panel2.Size = new System.Drawing.Size(922, 44);
 			this.panel2.TabIndex = 0;
-			// 
-			// cbCoupon
-			// 
-			this.cbCoupon.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cbCoupon.FormattingEnabled = true;
-			this.cbCoupon.Location = new System.Drawing.Point(301, 428);
-			this.cbCoupon.Name = "cbCoupon";
-			this.cbCoupon.Size = new System.Drawing.Size(60, 24);
-			this.cbCoupon.TabIndex = 15;
 			// 
 			// btnBack
 			// 
@@ -558,10 +548,10 @@
 			this.btnBack.Image = global::CoffeeShop.Properties.Resources.back;
 			this.btnBack.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
 			this.btnBack.ImageSize = new System.Drawing.Size(25, 25);
-			this.btnBack.Location = new System.Drawing.Point(80, 29);
+			this.btnBack.Location = new System.Drawing.Point(28, 0);
 			this.btnBack.Name = "btnBack";
 			this.btnBack.PressedColor = System.Drawing.Color.Transparent;
-			this.btnBack.Size = new System.Drawing.Size(95, 31);
+			this.btnBack.Size = new System.Drawing.Size(89, 44);
 			this.btnBack.TabIndex = 0;
 			this.btnBack.Text = "Back";
 			this.btnBack.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -590,7 +580,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.tabPage2.ResumeLayout(false);
 			this.tabPage2.PerformLayout();
-			this.panel5.ResumeLayout(false);
 			this.panel2.ResumeLayout(false);
 			this.ResumeLayout(false);
 
@@ -615,7 +604,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.RadioButton rbOther;
         private System.Windows.Forms.RadioButton vbFemale;
         private System.Windows.Forms.RadioButton rbMale;

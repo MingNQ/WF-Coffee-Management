@@ -20,7 +20,6 @@ namespace CoffeeShop.View
         {
             InitializeComponent();
             AssociateAndRaiseViewEvents();
-            tabControl1.TabPages.Remove(tabPage2);
         }
 
         #region private fields
@@ -65,31 +64,17 @@ namespace CoffeeShop.View
             btnAddNew.Click += delegate
             {
                 AddNewEvent?.Invoke(this, EventArgs.Empty);
-                tabControl1.TabPages.Remove(tabPage1);
-                tabControl1.TabPages.Add(tabPage2);
 
             };
             //Edit
             btnEdit.Click += delegate
             {
                 EditEvent?.Invoke(this, EventArgs.Empty);
-                tabControl1.TabPages.Remove(tabPage1);
-                tabControl1.TabPages.Add(tabPage2);
 
             };
 
-
-            tabControl1.Dock = DockStyle.Fill;
-            this.Controls.Add(tabControl1);
-
-            
         }
-
-        private void btnAddNew_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedTab = tabPage2;
-        }
-    }
+	}
    
 
 }
