@@ -20,15 +20,37 @@ namespace CoffeeShop.View.MainFrame
 		/// </summary>
 		private static IngredientView instance;
 
+
+		/// <summary>
+		/// Check if is edit or add
+		/// </summary>
+		private bool isEdit;
+
+		#endregion
+
+		#region Properties
+		/// <summary>
+		/// Check if is edit or add
+		/// </summary>
+		public bool IsEdit { get { return isEdit; } set { isEdit = value; } }
 		#endregion
 
 		public IngredientView()
 		{
 			InitializeComponent();
-			btnAdd.Click +=  delegate { ShowEditDialog?.Invoke(this, EventArgs.Empty); };
-			btnEdit.Click +=  delegate { ShowEditDialog?.Invoke(this, EventArgs.Empty); };
-		}
+			btnAdd.Click +=  delegate 
+			{
+				isEdit = false;
+				ShowEditDialog?.Invoke(this, EventArgs.Empty);  
+			};
 
+			btnEdit.Click +=  delegate 
+			{ 
+				isEdit = true;
+				ShowEditDialog?.Invoke(this, EventArgs.Empty); 
+			};
+		}
+		
 		#region public fields
 
 		/// <summary>

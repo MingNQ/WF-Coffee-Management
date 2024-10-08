@@ -9,6 +9,8 @@ namespace CoffeeShop.View.MainFrame
 	public interface IIngredientView
 	{
 
+		bool IsEdit { get; set; }
+
 		/// <summary>
 		/// Show Form
 		/// </summary>

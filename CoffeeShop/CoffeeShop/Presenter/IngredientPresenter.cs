@@ -14,7 +14,7 @@ namespace CoffeeShop.Presenter
 		/// <summary>
 		/// View
 		/// </summary>
-		private IIngredientView IngredientView;
+		private IIngredientView ingredientView;
 		#endregion
 
 		/// <summary>
@@ -23,12 +23,12 @@ namespace CoffeeShop.Presenter
 		/// <param name="view">View</param>
 		public IngredientPresenter(IIngredientView view)
 		{
-			this.IngredientView = view;
+			this.ingredientView = view;
 
 			// Show form
-			this.IngredientView.Show();
+			this.ingredientView.Show();
 
-			this.IngredientView.ShowEditDialog += ShowEditDialog;
+			this.ingredientView.ShowEditDialog += ShowEditDialog;
 		}
 
 		/// <summary>
@@ -39,6 +39,8 @@ namespace CoffeeShop.Presenter
 		private void ShowEditDialog(object sender, EventArgs e)
 		{
 			IEditIngredientView view = EditIngredientView.GetInstance();
+			
+			view.TittleHeader = this.ingredientView.IsEdit ? "Edit Ingredient" : "Add Ingredient";
 
 			new EditIngredientPresenter(view);
 		}

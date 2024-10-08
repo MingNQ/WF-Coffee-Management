@@ -12,6 +12,18 @@ namespace CoffeeShop.View.DialogForm
 {
 	public partial class EditIngredientView : Form, IEditIngredientView
 	{
+
+		#region Properties
+		/// <summary>
+		/// Setting Tittle 
+		/// </summary>
+		public string TittleHeader
+		{
+			get { return this.lblHeader.Text; }
+			set { this.lblHeader.Text = value; }
+		}
+
+		#endregion
 		public EditIngredientView()
 		{
 			InitializeComponent();
