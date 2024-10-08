@@ -25,7 +25,8 @@ namespace CoffeeShop.View.MainFrame
 		public IngredientView()
 		{
 			InitializeComponent();
-			btnShowDialog.Click +=  delegate { ShowEditDialog?.Invoke(this, EventArgs.Empty); };
+			btnAdd.Click +=  delegate { ShowEditDialog?.Invoke(this, EventArgs.Empty); };
+			btnEdit.Click +=  delegate { ShowEditDialog?.Invoke(this, EventArgs.Empty); };
 		}
 
 		#region public fields
