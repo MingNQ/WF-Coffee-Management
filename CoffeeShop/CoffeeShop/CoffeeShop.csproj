@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -51,12 +51,22 @@
   <ItemGroup>
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\StaffModel.cs" />
+    <Compile Include="Presenter\CategoryPresenter.cs" />
     <Compile Include="Presenter\CustomerPresenter.cs" />
     <Compile Include="Presenter\DashboardPresenter.cs" />
+    <Compile Include="Presenter\EditIngredientPresenter.cs" />
+    <Compile Include="Presenter\IngredientPresenter.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
     <Compile Include="Presenter\StaffPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\DialogForm\EditIngredientView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogForm\EditIngredientView.Designer.cs">
+      <DependentUpon>EditIngredientView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogForm\IEditIngredientView.cs" />
     <Compile Include="View\MainFrame\CategoryView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,7 +88,14 @@
     <Compile Include="View\MainFrame\ICategoryView.cs" />
     <Compile Include="View\MainFrame\ICustomerView.cs" />
     <Compile Include="View\MainFrame\IDashboardView.cs" />
+    <Compile Include="View\MainFrame\IIngredientView.cs" />
     <Compile Include="View\MainFrame\IMainView.cs" />
+    <Compile Include="View\MainFrame\IngredientView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainFrame\IngredientView.Designer.cs">
+      <DependentUpon>IngredientView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainFrame\IPlaceOrderView.cs" />
     <Compile Include="View\MainFrame\IStaffView.cs" />
     <Compile Include="View\MainFrame\MainView.cs">
@@ -121,6 +138,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\DialogForm\EditIngredientView.resx">
+      <DependentUpon>EditIngredientView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainFrame\CategoryView.resx">
       <DependentUpon>CategoryView.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainFrame\DashboardView.resx">
       <DependentUpon>DashboardView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainFrame\IngredientView.resx">
+      <DependentUpon>IngredientView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainFrame\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
@@ -194,6 +217,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Icons\Wallet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Icons\food.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Icons\back.png" />
