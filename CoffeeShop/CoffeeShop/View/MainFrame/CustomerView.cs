@@ -19,6 +19,7 @@ namespace CoffeeShop.View
         public CustomerView()
         {
             InitializeComponent();
+            AssociateAndRaiseViewEvents();
         }
 
         #region private fields
@@ -51,6 +52,30 @@ namespace CoffeeShop.View
 
             return instance;
         }
-		#endregion
+        #endregion
+
+        public event EventHandler AddNewEvent;
+        public event EventHandler EditEvent;
+
+        private void AssociateAndRaiseViewEvents()
+        {
+
+            //Add new
+            btnAddNew.Click += delegate
+            {
+                AddNewEvent?.Invoke(this, EventArgs.Empty);
+
+            };
+            //Edit
+            btnEdit.Click += delegate
+            {
+                EditEvent?.Invoke(this, EventArgs.Empty);
+
+            };
+
+        }
 	}
+   
+
 }
+
