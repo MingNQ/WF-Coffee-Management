@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeShop.View.MainFrame;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,41 @@ using System.Windows.Forms;
 
 namespace CoffeeShop.View
 {
-    public partial class CategoryView : Form
+    public partial class CategoryView : Form, ICategoryView
     {
         public CategoryView()
         {
             InitializeComponent();
         }
+
+		/// <summary>
+		/// Instance
+		/// </summary>
+        private static CategoryView instance;
+
+
+		/// <summary>
+		/// Get Instance
+		/// </summary>
+		/// <param name="parentContainer"></param>
+		/// <returns>Instance</returns>
+
+        public static CategoryView GetInstance(Form parentContainer)
+        {
+			if (instance == null || instance.IsDisposed)
+			{
+				instance = new CategoryView();
+				instance.MdiParent = parentContainer;
+				instance.Dock = DockStyle.Fill;
+			}
+			else
+			{
+				if (instance.WindowState == FormWindowState.Minimized)
+					instance.WindowState = FormWindowState.Normal;
+				instance.BringToFront();
+			}
+
+			return instance;
+		}
     }
 }

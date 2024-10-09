@@ -14,6 +14,7 @@ namespace CoffeeShop.View
 		event EventHandler ShowCategoryView;
 		event EventHandler ShowStaffView;
 		event EventHandler ShowCustomerView;
+		event EventHandler ShowIngredientView;
 		#endregion
 	}
 }

@@ -30,6 +30,7 @@
         {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
 			this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+			this.btnIngredient = new Guna.UI2.WinForms.Guna2Button();
 			this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
 			this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
 			this.btnCategory = new Guna.UI2.WinForms.Guna2Button();
@@ -51,6 +52,7 @@
 			// guna2CustomGradientPanel2
 			// 
 			this.guna2CustomGradientPanel2.BackColor = System.Drawing.Color.White;
+			this.guna2CustomGradientPanel2.Controls.Add(this.btnIngredient);
 			this.guna2CustomGradientPanel2.Controls.Add(this.guna2Separator2);
 			this.guna2CustomGradientPanel2.Controls.Add(this.guna2Button1);
 			this.guna2CustomGradientPanel2.Controls.Add(this.btnCategory);
@@ -68,10 +70,35 @@
 			this.guna2CustomGradientPanel2.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(140)))), ((int)(((byte)(118)))));
 			this.guna2CustomGradientPanel2.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(140)))), ((int)(((byte)(118)))));
 			this.guna2CustomGradientPanel2.Location = new System.Drawing.Point(0, 0);
-			this.guna2CustomGradientPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.guna2CustomGradientPanel2.Margin = new System.Windows.Forms.Padding(2);
 			this.guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
 			this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(195, 666);
 			this.guna2CustomGradientPanel2.TabIndex = 9;
+			// 
+			// btnIngredient
+			// 
+			this.btnIngredient.BackColor = System.Drawing.Color.Transparent;
+			this.btnIngredient.BorderRadius = 10;
+			this.btnIngredient.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+			this.btnIngredient.CustomImages.ImageSize = new System.Drawing.Size(30, 31);
+			this.btnIngredient.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+			this.btnIngredient.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+			this.btnIngredient.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.btnIngredient.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+			this.btnIngredient.FillColor = System.Drawing.Color.Transparent;
+			this.btnIngredient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+			this.btnIngredient.ForeColor = System.Drawing.Color.Black;
+			this.btnIngredient.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
+			this.btnIngredient.Image = global::CoffeeShop.Properties.Resources.food1;
+			this.btnIngredient.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+			this.btnIngredient.ImageSize = new System.Drawing.Size(32, 32);
+			this.btnIngredient.Location = new System.Drawing.Point(3, 330);
+			this.btnIngredient.Margin = new System.Windows.Forms.Padding(2);
+			this.btnIngredient.Name = "btnIngredient";
+			this.btnIngredient.Size = new System.Drawing.Size(192, 37);
+			this.btnIngredient.TabIndex = 12;
+			this.btnIngredient.Text = "Ingredient";
+			this.btnIngredient.UseTransparentBackground = true;
 			// 
 			// guna2Separator2
 			// 
@@ -79,7 +106,7 @@
 			this.guna2Separator2.FillColor = System.Drawing.Color.Black;
 			this.guna2Separator2.FillThickness = 3;
 			this.guna2Separator2.Location = new System.Drawing.Point(5, 634);
-			this.guna2Separator2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.guna2Separator2.Margin = new System.Windows.Forms.Padding(2);
 			this.guna2Separator2.Name = "guna2Separator2";
 			this.guna2Separator2.Size = new System.Drawing.Size(186, 6);
 			this.guna2Separator2.TabIndex = 11;
@@ -93,14 +120,11 @@
 			this.guna2Button1.CustomImages.ImageSize = new System.Drawing.Size(35, 35);
 			this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
 			this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-			this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
 			this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-			this.guna2Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.guna2Button1.ForeColor = System.Drawing.Color.Black;
 			this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
 			this.guna2Button1.Location = new System.Drawing.Point(2, 591);
-			this.guna2Button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.guna2Button1.Margin = new System.Windows.Forms.Padding(2);
 			this.guna2Button1.Name = "guna2Button1";
 			this.guna2Button1.Size = new System.Drawing.Size(191, 38);
 			this.guna2Button1.TabIndex = 10;
@@ -121,8 +145,8 @@
 			this.btnCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
 			this.btnCategory.ForeColor = System.Drawing.Color.Black;
 			this.btnCategory.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
-			this.btnCategory.Location = new System.Drawing.Point(2, 313);
-			this.btnCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btnCategory.Location = new System.Drawing.Point(3, 265);
+			this.btnCategory.Margin = new System.Windows.Forms.Padding(2);
 			this.btnCategory.Name = "btnCategory";
 			this.btnCategory.Size = new System.Drawing.Size(192, 37);
 			this.btnCategory.TabIndex = 9;
@@ -144,8 +168,8 @@
 			this.btnPlaceOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
 			this.btnPlaceOrder.ForeColor = System.Drawing.Color.Black;
 			this.btnPlaceOrder.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
-			this.btnPlaceOrder.Location = new System.Drawing.Point(0, 237);
-			this.btnPlaceOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btnPlaceOrder.Location = new System.Drawing.Point(3, 200);
+			this.btnPlaceOrder.Margin = new System.Windows.Forms.Padding(2);
 			this.btnPlaceOrder.Name = "btnPlaceOrder";
 			this.btnPlaceOrder.Size = new System.Drawing.Size(192, 37);
 			this.btnPlaceOrder.TabIndex = 8;
@@ -167,8 +191,8 @@
 			this.btnCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
 			this.btnCustomer.ForeColor = System.Drawing.Color.Black;
 			this.btnCustomer.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
-			this.btnCustomer.Location = new System.Drawing.Point(2, 470);
-			this.btnCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btnCustomer.Location = new System.Drawing.Point(3, 460);
+			this.btnCustomer.Margin = new System.Windows.Forms.Padding(2);
 			this.btnCustomer.Name = "btnCustomer";
 			this.btnCustomer.Size = new System.Drawing.Size(192, 37);
 			this.btnCustomer.TabIndex = 7;
@@ -190,8 +214,8 @@
 			this.btnStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
 			this.btnStaff.ForeColor = System.Drawing.Color.Black;
 			this.btnStaff.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
-			this.btnStaff.Location = new System.Drawing.Point(3, 390);
-			this.btnStaff.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btnStaff.Location = new System.Drawing.Point(3, 395);
+			this.btnStaff.Margin = new System.Windows.Forms.Padding(2);
 			this.btnStaff.Name = "btnStaff";
 			this.btnStaff.Size = new System.Drawing.Size(192, 37);
 			this.btnStaff.TabIndex = 6;
@@ -213,8 +237,8 @@
 			this.btnDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnDashboard.ForeColor = System.Drawing.Color.Black;
 			this.btnDashboard.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
-			this.btnDashboard.Location = new System.Drawing.Point(2, 162);
-			this.btnDashboard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btnDashboard.Location = new System.Drawing.Point(3, 135);
+			this.btnDashboard.Margin = new System.Windows.Forms.Padding(2);
 			this.btnDashboard.Name = "btnDashboard";
 			this.btnDashboard.Size = new System.Drawing.Size(192, 37);
 			this.btnDashboard.TabIndex = 4;
@@ -252,7 +276,7 @@
 			this.guna2CirclePictureBox1.Image = global::CoffeeShop.Properties.Resources.Account;
 			this.guna2CirclePictureBox1.ImageRotate = 0F;
 			this.guna2CirclePictureBox1.Location = new System.Drawing.Point(17, 32);
-			this.guna2CirclePictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.guna2CirclePictureBox1.Margin = new System.Windows.Forms.Padding(2);
 			this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
 			this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
 			this.guna2CirclePictureBox1.Size = new System.Drawing.Size(48, 52);
@@ -265,10 +289,10 @@
 			this.guna2Separator1.BackColor = System.Drawing.Color.Transparent;
 			this.guna2Separator1.FillColor = System.Drawing.Color.Black;
 			this.guna2Separator1.FillThickness = 4;
-			this.guna2Separator1.Location = new System.Drawing.Point(2, 114);
-			this.guna2Separator1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.guna2Separator1.Location = new System.Drawing.Point(5, 114);
+			this.guna2Separator1.Margin = new System.Windows.Forms.Padding(2);
 			this.guna2Separator1.Name = "guna2Separator1";
-			this.guna2Separator1.Size = new System.Drawing.Size(190, 6);
+			this.guna2Separator1.Size = new System.Drawing.Size(186, 6);
 			this.guna2Separator1.TabIndex = 0;
 			// 
 			// guna2Panel1
@@ -276,7 +300,7 @@
 			this.guna2Panel1.Controls.Add(this.guna2ControlBox1);
 			this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.guna2Panel1.Location = new System.Drawing.Point(195, 0);
-			this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2);
 			this.guna2Panel1.Name = "guna2Panel1";
 			this.guna2Panel1.Size = new System.Drawing.Size(780, 24);
 			this.guna2Panel1.TabIndex = 11;
@@ -290,7 +314,7 @@
 			this.guna2ControlBox1.HoverState.IconColor = System.Drawing.Color.White;
 			this.guna2ControlBox1.IconColor = System.Drawing.Color.Black;
 			this.guna2ControlBox1.Location = new System.Drawing.Point(741, 1);
-			this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(2);
 			this.guna2ControlBox1.Name = "guna2ControlBox1";
 			this.guna2ControlBox1.Size = new System.Drawing.Size(38, 25);
 			this.guna2ControlBox1.TabIndex = 0;
@@ -305,7 +329,7 @@
 			this.Controls.Add(this.guna2CustomGradientPanel2);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.IsMdiContainer = true;
-			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.Margin = new System.Windows.Forms.Padding(2);
 			this.Name = "MainView";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Dashboard";
@@ -332,5 +356,6 @@
         private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
-    }
+		private Guna.UI2.WinForms.Guna2Button btnIngredient;
+	}
 }
