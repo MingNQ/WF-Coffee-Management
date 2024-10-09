@@ -51,6 +51,6 @@ namespace CoffeeShop.View
 
             return instance;
         }
-		#endregion
+        #endregion
 	}
 }

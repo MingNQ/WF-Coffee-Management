@@ -120,10 +120,7 @@
 			this.guna2Button1.CustomImages.ImageSize = new System.Drawing.Size(35, 35);
 			this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
 			this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-			this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
 			this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-			this.guna2Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.guna2Button1.ForeColor = System.Drawing.Color.Black;
 			this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
 			this.guna2Button1.Location = new System.Drawing.Point(2, 591);
