@@ -13,10 +13,23 @@ namespace CoffeeShop.View
 {
     public partial class CategoryView : Form, ICategoryView
     {
+		public event EventHandler ViewDrinkClicked;
+
         public CategoryView()
         {
             InitializeComponent();
+
+			//dki su kien cho nut View-Drink
+			btnDrinkView.Click += (s, e) => ViewDrinkClicked?.Invoke(this, EventArgs.Empty);
         }
+
+		public void ShowDrinkDetails()
+		{
+			pnlCategory.Visible = false;
+			pnlCategoryDrink.Visible = true;
+			pnlCategoryDrink.BringToFront();
+			lblCategory.Text = "Category / Drink";
+		}
 
 		/// <summary>
 		/// Instance
@@ -47,5 +60,15 @@ namespace CoffeeShop.View
 
 			return instance;
 		}
+
+        private void guna2CustomGradientPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

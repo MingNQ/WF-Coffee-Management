@@ -12,5 +12,11 @@ namespace CoffeeShop.View.MainFrame
 		/// Show form
 		/// </summary>
 		void Show();
+
+		//them skien cho nut View-Drink
+		event EventHandler ViewDrinkClicked;
+
+		//phuong thuc de hien thi chi tiet do uong
+		void ShowDrinkDetails();
 	}
 }

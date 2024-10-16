@@ -9,23 +9,33 @@ namespace CoffeeShop.Presenter
 {
 	public class CategoryPresenter
 	{
-		#region Fields
-		/// <summary>
-		/// View
-		/// </summary>
-		private ICategoryView categoryView;
-		#endregion
+        #region Fields
+        /// <summary>
+        /// View
+        /// </summary>		
+        #endregion
 
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		/// <param name="view"></param>
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="view"></param>
+
+        private ICategoryView categoryView;
+		
 		public CategoryPresenter(ICategoryView view)
 		{
 			this.categoryView = view;
 
 			// Show Form
 			this.categoryView.Show();
+
+			//dki skien khi nhan nut View-Drink
+			this.categoryView.ViewDrinkClicked += OnViewDrinkClicked;
+		}
+
+		private void OnViewDrinkClicked(object sender, EventArgs e)
+		{
+			this.categoryView.ShowDrinkDetails();
 		}
 	}
 }
