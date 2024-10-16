@@ -40,7 +40,7 @@ namespace CoffeeShop.Presenter
         {
             IEditCategoryView view = EditCategoryView.GetInstance();
 
-            view.TittleHeader = this.categoryView.IsEdit ? "CheckListBox" : "Add Ingredient";
+            view.TittleHeader = this.categoryView.IsEdit ? "Edit Ingredient" : "Add Ingredient";
 
             new EditCategoryPresenter(view);
         }

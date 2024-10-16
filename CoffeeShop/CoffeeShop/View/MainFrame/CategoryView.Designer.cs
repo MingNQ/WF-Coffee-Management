@@ -180,7 +180,6 @@
             this.btnViewFood.Size = new System.Drawing.Size(284, 53);
             this.btnViewFood.TabIndex = 3;
             this.btnViewFood.Text = "View";
-            this.btnViewFood.Click += new System.EventHandler(this.btnViewFood_Click);
             // 
             // label3
             // 

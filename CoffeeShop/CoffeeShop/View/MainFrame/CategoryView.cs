@@ -44,7 +44,6 @@ namespace CoffeeShop.View.MainFrame
 
             btnAdd_Ingredient.Click += delegate
             {
-                isEdit = true;
                 ShowEditDialogCheckList?.Invoke(this, EventArgs.Empty);
             };
             btnViewFood.Click += delegate
@@ -57,6 +56,7 @@ namespace CoffeeShop.View.MainFrame
 
             btnAdd.Click += delegate
             {
+                isEdit = false;
                 AddNewEvent?.Invoke(this, EventArgs.Empty);
                 tabControl1.TabPages.Remove(tabPage1);
                 tabControl1.TabPages.Remove(tabPage2);
@@ -65,6 +65,7 @@ namespace CoffeeShop.View.MainFrame
 
             btnEdit.Click += delegate
             {
+                isEdit = true;
                 EditNewEvent?.Invoke(this, EventArgs.Empty);
                 tabControl1.TabPages.Remove(tabPage1);
                 tabControl1.TabPages.Remove(tabPage2);
@@ -139,23 +140,5 @@ namespace CoffeeShop.View.MainFrame
         public event EventHandler ViewFoodEvent;
         public event EventHandler AddNewEvent;
         public event EventHandler EditNewEvent;
-        private void btnViewFood_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedTab = tabPage2;
-        }
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedTab = tabPage3;
-        }
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedTab = tabPage3;
-        }
-
-        private void btn_back_Click(object sender, EventArgs e)
-        {
-            // Chuyển về tabPage2
-            tabControl1.SelectedTab = tabPage2;
-        }
     }
 }
