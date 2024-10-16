@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop.View.MainFrame
 {
-	public interface ICategoryView
-	{
-		/// <summary>
-		/// Show form
-		/// </summary>
-		void Show();
-	}
+    public interface ICategoryView
+    {
+
+        bool IsEdit { get; set; }
+
+        /// <summary>
+        /// Show Form
+        /// </summary>
+        void Show();
+
+        #region Events
+        event EventHandler ShowEditDialogCheckList;
+        #endregion
+    }
 }
