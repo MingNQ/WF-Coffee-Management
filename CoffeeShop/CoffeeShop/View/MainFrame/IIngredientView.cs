@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop.View.MainFrame
 {
-	public interface ICategoryView
+	public interface IIngredientView
 	{
 
 		bool IsEdit { get; set; }
@@ -17,9 +17,7 @@ namespace CoffeeShop.View.MainFrame
 		void Show();
 
 		#region Events
-		event EventHandler ShowEditDialogCheckList;
-		//them skien cho nut View-Drink
-		event EventHandler ViewDrinkEvent;
+		event EventHandler ShowEditDialog;
 		#endregion
 	}
 }
