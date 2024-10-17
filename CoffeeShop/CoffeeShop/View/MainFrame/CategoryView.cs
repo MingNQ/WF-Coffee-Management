@@ -39,8 +39,8 @@ namespace CoffeeShop.View.MainFrame
         public CategoryView()
         {
             InitializeComponent();
-            tabControl1.TabPages.Remove(tabPage2);
-            tabControl1.TabPages.Remove(tabPage3);
+            tabControl_Food.TabPages.Remove(tabPage2);
+            tabControl_Food.TabPages.Remove(tabPage3);
 
             btnAdd_Ingredient.Click += delegate
             {
@@ -49,8 +49,8 @@ namespace CoffeeShop.View.MainFrame
             btnViewFood.Click += delegate
             {
                 ViewFoodEvent?.Invoke(this, EventArgs.Empty);
-                tabControl1.TabPages.Remove(tabPage1);
-                tabControl1.TabPages.Add(tabPage2);
+                tabControl_Food.TabPages.Remove(tabPage1);
+                tabControl_Food.TabPages.Add(tabPage2);
 
             };
 
@@ -58,44 +58,44 @@ namespace CoffeeShop.View.MainFrame
             {
                 isEdit = false;
                 AddNewEvent?.Invoke(this, EventArgs.Empty);
-                tabControl1.TabPages.Remove(tabPage1);
-                tabControl1.TabPages.Remove(tabPage2);
-                tabControl1.TabPages.Add(tabPage3);
+                tabControl_Food.TabPages.Remove(tabPage1);
+                tabControl_Food.TabPages.Remove(tabPage2);
+                tabControl_Food.TabPages.Add(tabPage3);
             };
 
             btnEdit.Click += delegate
             {
                 isEdit = true;
                 EditNewEvent?.Invoke(this, EventArgs.Empty);
-                tabControl1.TabPages.Remove(tabPage1);
-                tabControl1.TabPages.Remove(tabPage2);
-                tabControl1.TabPages.Add(tabPage3);
+                tabControl_Food.TabPages.Remove(tabPage1);
+                tabControl_Food.TabPages.Remove(tabPage2);
+                tabControl_Food.TabPages.Add(tabPage3);
             };
 
             btnBack.Click += delegate
             {
-                tabControl1.TabPages.Remove(tabPage2);
-                if (!tabControl1.TabPages.Contains(tabPage1))
+                tabControl_Food.TabPages.Remove(tabPage2);
+                if (!tabControl_Food.TabPages.Contains(tabPage1))
                 {
-                    tabControl1.TabPages.Add(tabPage1);
+                    tabControl_Food.TabPages.Add(tabPage1);
                 }
             };
 
             btn_back.Click += delegate
             {
                 // Xóa tabPage1 và tabPage3 khỏi tabControl1
-                tabControl1.TabPages.Remove(tabPage1);
-                tabControl1.TabPages.Remove(tabPage3);
+                tabControl_Food.TabPages.Remove(tabPage1);
+                tabControl_Food.TabPages.Remove(tabPage3);
 
                 // Thêm lại tabPage2 vào tabControl1 nếu nó chưa có
-                if (!tabControl1.TabPages.Contains(tabPage2))
+                if (!tabControl_Food.TabPages.Contains(tabPage2))
                 {
-                    tabControl1.TabPages.Add(tabPage2);
+                    tabControl_Food.TabPages.Add(tabPage2);
                 }
             };
 
 
-            this.Controls.Add(tabControl1);
+            this.Controls.Add(tabControl_Food);
 
 
         }
