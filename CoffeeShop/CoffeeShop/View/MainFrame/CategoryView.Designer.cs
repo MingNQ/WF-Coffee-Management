@@ -321,6 +321,7 @@
 			this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.btnEdit.BorderRadius = 10;
 			this.btnEdit.BorderThickness = 2;
+
 			this.btnEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
 			this.btnEdit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
 			this.btnEdit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));

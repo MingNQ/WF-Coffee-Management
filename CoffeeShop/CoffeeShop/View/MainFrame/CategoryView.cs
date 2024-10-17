@@ -35,6 +35,8 @@ namespace CoffeeShop.View.MainFrame
         /// </summary>
         public bool IsEdit { get { return isEdit; } set { isEdit = value; } }
         #endregion
+		
+
 
         public CategoryView()
         {
@@ -94,11 +96,19 @@ namespace CoffeeShop.View.MainFrame
                 }
             };
 
-
             this.Controls.Add(tabControl_Food);
 
-
+            //dki su kien cho nut View-Drink
+            btnDrinkView.Click += (s, e) => ViewDrinkClicked?.Invoke(this, EventArgs.Empty);
         }
+
+          public void ShowDrinkDetails()
+          {
+            //pnlCategory.Visible = false;
+            pnlCategoryDrink.Visible = true;
+            pnlCategoryDrink.BringToFront();
+            lblCategory.Text = "Category / Drink";
+          }
 
 		
 
@@ -136,9 +146,9 @@ namespace CoffeeShop.View.MainFrame
         public event EventHandler ShowEditDialogCheckList;
         #endregion
 
-
         public event EventHandler ViewFoodEvent;
         public event EventHandler AddNewEvent;
         public event EventHandler EditNewEvent;
+        public event EventHandler ViewDrinkClicked;
     }
 }

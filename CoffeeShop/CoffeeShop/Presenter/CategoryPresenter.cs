@@ -29,6 +29,9 @@ namespace CoffeeShop.Presenter
             this.categoryView.Show();
 
             this.categoryView.ShowEditDialogCheckList += ShowEditDialogCheckList;
+          
+            //dki skien khi nhan nut View-Drink
+            this.categoryView.ViewDrinkClicked += OnViewDrinkClicked;
         }
 
         /// <summary>
@@ -43,6 +46,11 @@ namespace CoffeeShop.Presenter
             view.TittleHeader = this.categoryView.IsEdit ? "Edit Ingredient" : "Add Ingredient";
 
             new EditCategoryPresenter(view);
+        }
+      
+        private void OnViewDrinkClicked(object sender, EventArgs e)
+        {
+          this.categoryView.ShowDrinkDetails();
         }
     }
 }
