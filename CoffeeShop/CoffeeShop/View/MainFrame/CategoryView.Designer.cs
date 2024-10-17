@@ -1,4 +1,4 @@
-﻿namespace CoffeeShop.View
+﻿namespace CoffeeShop.View.MainFrame
 {
     partial class CategoryView
     {
@@ -29,438 +29,591 @@
         private void InitializeComponent()
         {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryView));
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.lblCategory = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.pnlCategory = new System.Windows.Forms.Panel();
-			this.pnlCategoryDrink = new System.Windows.Forms.Panel();
-			this.tabDrink = new System.Windows.Forms.TabControl();
-			this.tabDrinkList = new System.Windows.Forms.TabPage();
-			this.txtDrinkSearch = new Guna.UI2.WinForms.Guna2TextBox();
+			this.tabControl_Food = new System.Windows.Forms.TabControl();
+			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+			this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+			this.lblFood = new System.Windows.Forms.Label();
+			this.pictureBox3 = new System.Windows.Forms.PictureBox();
+			this.btnViewFood = new Guna.UI2.WinForms.Guna2Button();
+			this.lblFoodItem = new System.Windows.Forms.Label();
+			this.guna2Panel2_Food = new Guna.UI2.WinForms.Guna2Panel();
+			this.lblDrink = new System.Windows.Forms.Label();
+			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.btnViewDrink = new Guna.UI2.WinForms.Guna2Button();
+			this.lblDrinkItem = new System.Windows.Forms.Label();
+			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
 			this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
 			this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
 			this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
+			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.panel3 = new System.Windows.Forms.Panel();
 			this.btnSearch = new Guna.UI2.WinForms.Guna2Button();
-			this.dgvDrinkList = new System.Windows.Forms.DataGridView();
-			this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.txtSearch = new System.Windows.Forms.TextBox();
 			this.pictureBox4 = new System.Windows.Forms.PictureBox();
-			this.panel4 = new System.Windows.Forms.Panel();
-			this.btnBack1 = new Guna.UI2.WinForms.Guna2Button();
-			this.tabDrinkDetail = new System.Windows.Forms.TabPage();
-			this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
-			this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
-			this.guna2TextBox4 = new Guna.UI2.WinForms.Guna2TextBox();
-			this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
+			this.guna2Panel5_FoodList = new Guna.UI2.WinForms.Guna2Panel();
+			this.btnBack = new Guna.UI2.WinForms.Guna2Button();
+			this.tabPage3 = new System.Windows.Forms.TabPage();
+			this.guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
+			this.btnClear = new Guna.UI2.WinForms.Guna2Button();
+			this.btn_save = new Guna.UI2.WinForms.Guna2Button();
+			this.btnAdd_Ingredient = new Guna.UI2.WinForms.Guna2Button();
 			this.label10 = new System.Windows.Forms.Label();
+			this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
+			this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
+			this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
-			this.panel5 = new System.Windows.Forms.Panel();
-			this.btnBack2 = new Guna.UI2.WinForms.Guna2Button();
-			this.btnFoodView = new Guna.UI2.WinForms.Guna2Button();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.pictureBox3 = new System.Windows.Forms.PictureBox();
-			this.btnDrinkView = new Guna.UI2.WinForms.Guna2Button();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.lstIngredient = new System.Windows.Forms.ListBox();
-			this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-			this.panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-			this.pnlCategory.SuspendLayout();
-			this.pnlCategoryDrink.SuspendLayout();
-			this.tabDrink.SuspendLayout();
-			this.tabDrinkList.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dgvDrinkList)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-			this.panel4.SuspendLayout();
-			this.tabDrinkDetail.SuspendLayout();
-			this.panel5.SuspendLayout();
+			this.guna2Panel7_FoodDetail = new Guna.UI2.WinForms.Guna2Panel();
+			this.btn_back = new Guna.UI2.WinForms.Guna2Button();
+			this.panel1_1 = new System.Windows.Forms.Panel();
+			this.label1 = new System.Windows.Forms.Label();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.tabControl_Food.SuspendLayout();
+			this.tabPage1.SuspendLayout();
+			this.guna2Panel1.SuspendLayout();
+			this.guna2Panel3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+			this.guna2Panel2_Food.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+			this.tabPage2.SuspendLayout();
+			this.guna2Panel4.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			this.panel3.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+			this.guna2Panel5_FoodList.SuspendLayout();
+			this.tabPage3.SuspendLayout();
+			this.guna2Panel6.SuspendLayout();
+			this.guna2Panel7_FoodDetail.SuspendLayout();
+			this.panel1_1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// panel1
+			// tabControl_Food
 			// 
-			this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
-			this.panel1.Controls.Add(this.pictureBox1);
-			this.panel1.Controls.Add(this.lblCategory);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel1.Location = new System.Drawing.Point(0, 0);
-			this.panel1.Margin = new System.Windows.Forms.Padding(2);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(867, 65);
-			this.panel1.TabIndex = 0;
+			this.tabControl_Food.Controls.Add(this.tabPage1);
+			this.tabControl_Food.Controls.Add(this.tabPage2);
+			this.tabControl_Food.Controls.Add(this.tabPage3);
+			this.tabControl_Food.Location = new System.Drawing.Point(0, 83);
+			this.tabControl_Food.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabControl_Food.Name = "tabControl_Food";
+			this.tabControl_Food.SelectedIndex = 0;
+			this.tabControl_Food.Size = new System.Drawing.Size(1031, 707);
+			this.tabControl_Food.TabIndex = 1;
 			// 
-			// pictureBox1
+			// tabPage1
 			// 
-			this.pictureBox1.Image = global::CoffeeShop.Properties.Resources.CupTea;
-			this.pictureBox1.Location = new System.Drawing.Point(25, 8);
-			this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(45, 49);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox1.TabIndex = 1;
-			this.pictureBox1.TabStop = false;
+			this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
+			this.tabPage1.Controls.Add(this.guna2Panel1);
+			this.tabPage1.Location = new System.Drawing.Point(4, 25);
+			this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPage1.Name = "tabPage1";
+			this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPage1.Size = new System.Drawing.Size(1023, 678);
+			this.tabPage1.TabIndex = 0;
+			this.tabPage1.Text = "Category";
 			// 
-			// lblCategory
+			// guna2Panel1
 			// 
-			this.lblCategory.AutoSize = true;
-			this.lblCategory.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblCategory.Location = new System.Drawing.Point(82, 19);
-			this.lblCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-			this.lblCategory.Name = "lblCategory";
-			this.lblCategory.Size = new System.Drawing.Size(133, 32);
-			this.lblCategory.TabIndex = 0;
-			this.lblCategory.Text = "Category";
+			this.guna2Panel1.BackColor = System.Drawing.Color.White;
+			this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
+			this.guna2Panel1.BorderThickness = 3;
+			this.guna2Panel1.Controls.Add(this.guna2Panel3);
+			this.guna2Panel1.Controls.Add(this.guna2Panel2_Food);
+			this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.guna2Panel1.Location = new System.Drawing.Point(2, 2);
+			this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.guna2Panel1.Name = "guna2Panel1";
+			this.guna2Panel1.Size = new System.Drawing.Size(1019, 674);
+			this.guna2Panel1.TabIndex = 2;
 			// 
-			// label1
+			// guna2Panel3
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(79, 277);
-			this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(0, 13);
-			this.label1.TabIndex = 0;
+			this.guna2Panel3.BorderColor = System.Drawing.Color.Black;
+			this.guna2Panel3.BorderThickness = 2;
+			this.guna2Panel3.Controls.Add(this.lblFood);
+			this.guna2Panel3.Controls.Add(this.pictureBox3);
+			this.guna2Panel3.Controls.Add(this.btnViewFood);
+			this.guna2Panel3.Controls.Add(this.lblFoodItem);
+			this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.guna2Panel3.Location = new System.Drawing.Point(0, 334);
+			this.guna2Panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.guna2Panel3.Name = "guna2Panel3";
+			this.guna2Panel3.Size = new System.Drawing.Size(1019, 340);
+			this.guna2Panel3.TabIndex = 1;
 			// 
-			// pnlCategory
+			// lblFood
 			// 
-			this.pnlCategory.BackColor = System.Drawing.Color.White;
-			this.pnlCategory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.pnlCategory.Controls.Add(this.pnlCategoryDrink);
-			this.pnlCategory.Controls.Add(this.btnFoodView);
-			this.pnlCategory.Controls.Add(this.label4);
-			this.pnlCategory.Controls.Add(this.label5);
-			this.pnlCategory.Controls.Add(this.pictureBox3);
-			this.pnlCategory.Controls.Add(this.btnDrinkView);
-			this.pnlCategory.Controls.Add(this.pictureBox2);
-			this.pnlCategory.Controls.Add(this.label3);
-			this.pnlCategory.Controls.Add(this.label2);
-			this.pnlCategory.Controls.Add(this.label1);
-			this.pnlCategory.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pnlCategory.Location = new System.Drawing.Point(0, 65);
-			this.pnlCategory.Margin = new System.Windows.Forms.Padding(2);
-			this.pnlCategory.Name = "pnlCategory";
-			this.pnlCategory.Size = new System.Drawing.Size(867, 577);
-			this.pnlCategory.TabIndex = 1;
+			this.lblFood.AutoSize = true;
+			this.lblFood.Font = new System.Drawing.Font("Arial Black", 23F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblFood.Location = new System.Drawing.Point(701, 42);
+			this.lblFood.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.lblFood.Name = "lblFood";
+			this.lblFood.Size = new System.Drawing.Size(127, 55);
+			this.lblFood.TabIndex = 5;
+			this.lblFood.Text = "Food";
 			// 
-			// pnlCategoryDrink
+			// pictureBox3
 			// 
-			this.pnlCategoryDrink.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.pnlCategoryDrink.Controls.Add(this.tabDrink);
-			this.pnlCategoryDrink.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pnlCategoryDrink.Location = new System.Drawing.Point(0, 0);
-			this.pnlCategoryDrink.Margin = new System.Windows.Forms.Padding(2);
-			this.pnlCategoryDrink.Name = "pnlCategoryDrink";
-			this.pnlCategoryDrink.Size = new System.Drawing.Size(863, 573);
-			this.pnlCategoryDrink.TabIndex = 9;
-			this.pnlCategoryDrink.Visible = false;
+			this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+			this.pictureBox3.Location = new System.Drawing.Point(65, 15);
+			this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.pictureBox3.Name = "pictureBox3";
+			this.pictureBox3.Size = new System.Drawing.Size(207, 237);
+			this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox3.TabIndex = 4;
+			this.pictureBox3.TabStop = false;
 			// 
-			// tabDrink
+			// btnViewFood
 			// 
-			this.tabDrink.Controls.Add(this.tabDrinkList);
-			this.tabDrink.Controls.Add(this.tabDrinkDetail);
-			this.tabDrink.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tabDrink.Location = new System.Drawing.Point(0, 0);
-			this.tabDrink.Margin = new System.Windows.Forms.Padding(2);
-			this.tabDrink.Name = "tabDrink";
-			this.tabDrink.SelectedIndex = 0;
-			this.tabDrink.Size = new System.Drawing.Size(859, 569);
-			this.tabDrink.TabIndex = 0;
+			this.btnViewFood.BorderRadius = 10;
+			this.btnViewFood.BorderThickness = 2;
+			this.btnViewFood.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+			this.btnViewFood.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+			this.btnViewFood.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.btnViewFood.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+			this.btnViewFood.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(202)))), ((int)(((byte)(165)))));
+			this.btnViewFood.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+			this.btnViewFood.ForeColor = System.Drawing.Color.Black;
+			this.btnViewFood.Location = new System.Drawing.Point(655, 196);
+			this.btnViewFood.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btnViewFood.Name = "btnViewFood";
+			this.btnViewFood.Size = new System.Drawing.Size(189, 34);
+			this.btnViewFood.TabIndex = 3;
+			this.btnViewFood.Text = "View";
 			// 
-			// tabDrinkList
+			// lblFoodItem
 			// 
-			this.tabDrinkList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(246)))));
-			this.tabDrinkList.Controls.Add(this.txtDrinkSearch);
-			this.tabDrinkList.Controls.Add(this.btnDelete);
-			this.tabDrinkList.Controls.Add(this.btnEdit);
-			this.tabDrinkList.Controls.Add(this.btnAdd);
-			this.tabDrinkList.Controls.Add(this.btnSearch);
-			this.tabDrinkList.Controls.Add(this.dgvDrinkList);
-			this.tabDrinkList.Controls.Add(this.pictureBox4);
-			this.tabDrinkList.Controls.Add(this.panel4);
-			this.tabDrinkList.Location = new System.Drawing.Point(4, 22);
-			this.tabDrinkList.Margin = new System.Windows.Forms.Padding(2);
-			this.tabDrinkList.Name = "tabDrinkList";
-			this.tabDrinkList.Padding = new System.Windows.Forms.Padding(2);
-			this.tabDrinkList.Size = new System.Drawing.Size(851, 543);
-			this.tabDrinkList.TabIndex = 0;
-			this.tabDrinkList.Text = "Drink List";
+			this.lblFoodItem.AutoSize = true;
+			this.lblFoodItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblFoodItem.Location = new System.Drawing.Point(689, 130);
+			this.lblFoodItem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.lblFoodItem.Name = "lblFoodItem";
+			this.lblFoodItem.Size = new System.Drawing.Size(151, 23);
+			this.lblFoodItem.TabIndex = 2;
+			this.lblFoodItem.Text = "Bread, Cake, ...";
 			// 
-			// txtDrinkSearch
+			// guna2Panel2_Food
 			// 
-			this.txtDrinkSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.txtDrinkSearch.BorderColor = System.Drawing.Color.Black;
-			this.txtDrinkSearch.BorderThickness = 2;
-			this.txtDrinkSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.txtDrinkSearch.DefaultText = "";
-			this.txtDrinkSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-			this.txtDrinkSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-			this.txtDrinkSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-			this.txtDrinkSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-			this.txtDrinkSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.txtDrinkSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
-			this.txtDrinkSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.txtDrinkSearch.Location = new System.Drawing.Point(82, 72);
-			this.txtDrinkSearch.Margin = new System.Windows.Forms.Padding(2);
-			this.txtDrinkSearch.Name = "txtDrinkSearch";
-			this.txtDrinkSearch.PasswordChar = '\0';
-			this.txtDrinkSearch.PlaceholderText = "Enter drink name";
-			this.txtDrinkSearch.SelectedText = "";
-			this.txtDrinkSearch.Size = new System.Drawing.Size(512, 23);
-			this.txtDrinkSearch.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-			this.txtDrinkSearch.TabIndex = 8;
+			this.guna2Panel2_Food.BorderColor = System.Drawing.Color.Black;
+			this.guna2Panel2_Food.BorderThickness = 2;
+			this.guna2Panel2_Food.Controls.Add(this.lblDrink);
+			this.guna2Panel2_Food.Controls.Add(this.pictureBox2);
+			this.guna2Panel2_Food.Controls.Add(this.btnViewDrink);
+			this.guna2Panel2_Food.Controls.Add(this.lblDrinkItem);
+			this.guna2Panel2_Food.Dock = System.Windows.Forms.DockStyle.Top;
+			this.guna2Panel2_Food.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.guna2Panel2_Food.Location = new System.Drawing.Point(0, 0);
+			this.guna2Panel2_Food.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.guna2Panel2_Food.Name = "guna2Panel2_Food";
+			this.guna2Panel2_Food.Size = new System.Drawing.Size(1019, 344);
+			this.guna2Panel2_Food.TabIndex = 0;
+			// 
+			// lblDrink
+			// 
+			this.lblDrink.AutoSize = true;
+			this.lblDrink.Font = new System.Drawing.Font("Arial Black", 23F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblDrink.Location = new System.Drawing.Point(55, 65);
+			this.lblDrink.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.lblDrink.Name = "lblDrink";
+			this.lblDrink.Size = new System.Drawing.Size(136, 55);
+			this.lblDrink.TabIndex = 4;
+			this.lblDrink.Text = "Drink";
+			// 
+			// pictureBox2
+			// 
+			this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+			this.pictureBox2.Location = new System.Drawing.Point(655, 61);
+			this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.pictureBox2.Name = "pictureBox2";
+			this.pictureBox2.Size = new System.Drawing.Size(201, 209);
+			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox2.TabIndex = 3;
+			this.pictureBox2.TabStop = false;
+			// 
+			// btnViewDrink
+			// 
+			this.btnViewDrink.BorderRadius = 10;
+			this.btnViewDrink.BorderThickness = 2;
+			this.btnViewDrink.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+			this.btnViewDrink.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+			this.btnViewDrink.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.btnViewDrink.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+			this.btnViewDrink.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(202)))), ((int)(((byte)(165)))));
+			this.btnViewDrink.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+			this.btnViewDrink.ForeColor = System.Drawing.Color.Black;
+			this.btnViewDrink.Location = new System.Drawing.Point(65, 216);
+			this.btnViewDrink.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btnViewDrink.Name = "btnViewDrink";
+			this.btnViewDrink.Size = new System.Drawing.Size(189, 34);
+			this.btnViewDrink.TabIndex = 2;
+			this.btnViewDrink.Text = "View";
+			// 
+			// lblDrinkItem
+			// 
+			this.lblDrinkItem.AutoSize = true;
+			this.lblDrinkItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblDrinkItem.Location = new System.Drawing.Point(61, 147);
+			this.lblDrinkItem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.lblDrinkItem.Name = "lblDrinkItem";
+			this.lblDrinkItem.Size = new System.Drawing.Size(212, 23);
+			this.lblDrinkItem.TabIndex = 1;
+			this.lblDrinkItem.Text = "Coffee, Tea, Yogurt, ...";
+			// 
+			// tabPage2
+			// 
+			this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
+			this.tabPage2.Controls.Add(this.guna2Panel4);
+			this.tabPage2.Location = new System.Drawing.Point(4, 25);
+			this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPage2.Name = "tabPage2";
+			this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPage2.Size = new System.Drawing.Size(1023, 678);
+			this.tabPage2.TabIndex = 1;
+			this.tabPage2.Text = "Category List";
+			// 
+			// guna2Panel4
+			// 
+			this.guna2Panel4.BackColor = System.Drawing.Color.FloralWhite;
+			this.guna2Panel4.BorderColor = System.Drawing.Color.Black;
+			this.guna2Panel4.BorderThickness = 2;
+			this.guna2Panel4.Controls.Add(this.btnDelete);
+			this.guna2Panel4.Controls.Add(this.btnEdit);
+			this.guna2Panel4.Controls.Add(this.btnAdd);
+			this.guna2Panel4.Controls.Add(this.dataGridView1);
+			this.guna2Panel4.Controls.Add(this.panel3);
+			this.guna2Panel4.Controls.Add(this.guna2Panel5_FoodList);
+			this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.guna2Panel4.Location = new System.Drawing.Point(2, 2);
+			this.guna2Panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.guna2Panel4.Name = "guna2Panel4";
+			this.guna2Panel4.Size = new System.Drawing.Size(1019, 674);
+			this.guna2Panel4.TabIndex = 0;
 			// 
 			// btnDelete
 			// 
-			this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.btnDelete.BorderRadius = 10;
-			this.btnDelete.BorderThickness = 1;
+			this.btnDelete.BorderThickness = 2;
 			this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
 			this.btnDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
 			this.btnDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
 			this.btnDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
 			this.btnDelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(51)))), ((int)(((byte)(25)))));
-			this.btnDelete.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnDelete.ForeColor = System.Drawing.Color.White;
-			this.btnDelete.Location = new System.Drawing.Point(734, 301);
-			this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
+			this.btnDelete.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnDelete.ForeColor = System.Drawing.Color.Black;
+			this.btnDelete.Location = new System.Drawing.Point(852, 478);
 			this.btnDelete.Name = "btnDelete";
-			this.btnDelete.Size = new System.Drawing.Size(85, 29);
-			this.btnDelete.TabIndex = 7;
+			this.btnDelete.ShadowDecoration.BorderRadius = 10;
+			this.btnDelete.ShadowDecoration.Color = System.Drawing.Color.Transparent;
+			this.btnDelete.Size = new System.Drawing.Size(123, 36);
+			this.btnDelete.TabIndex = 10;
 			this.btnDelete.Text = "Delete";
 			// 
 			// btnEdit
 			// 
-			this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.btnEdit.BorderRadius = 10;
-			this.btnEdit.BorderThickness = 1;
+			this.btnEdit.BorderThickness = 2;
+
 			this.btnEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
 			this.btnEdit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
 			this.btnEdit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
 			this.btnEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
 			this.btnEdit.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(125)))), ((int)(((byte)(232)))));
-			this.btnEdit.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnEdit.ForeColor = System.Drawing.Color.White;
-			this.btnEdit.Location = new System.Drawing.Point(734, 240);
-			this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
+			this.btnEdit.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnEdit.ForeColor = System.Drawing.Color.Black;
+			this.btnEdit.Location = new System.Drawing.Point(852, 359);
 			this.btnEdit.Name = "btnEdit";
-			this.btnEdit.Size = new System.Drawing.Size(85, 29);
-			this.btnEdit.TabIndex = 6;
+			this.btnEdit.ShadowDecoration.BorderRadius = 10;
+			this.btnEdit.ShadowDecoration.Color = System.Drawing.Color.Transparent;
+			this.btnEdit.Size = new System.Drawing.Size(123, 36);
+			this.btnEdit.TabIndex = 9;
 			this.btnEdit.Text = "Edit";
 			// 
 			// btnAdd
 			// 
-			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.btnAdd.BorderRadius = 10;
-			this.btnAdd.BorderThickness = 1;
+			this.btnAdd.BorderThickness = 2;
 			this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
 			this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
 			this.btnAdd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
 			this.btnAdd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
 			this.btnAdd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(230)))), ((int)(((byte)(118)))));
-			this.btnAdd.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnAdd.ForeColor = System.Drawing.Color.White;
-			this.btnAdd.Location = new System.Drawing.Point(734, 178);
-			this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+			this.btnAdd.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnAdd.ForeColor = System.Drawing.Color.Black;
+			this.btnAdd.Location = new System.Drawing.Point(852, 233);
 			this.btnAdd.Name = "btnAdd";
-			this.btnAdd.Size = new System.Drawing.Size(85, 29);
-			this.btnAdd.TabIndex = 5;
+			this.btnAdd.ShadowDecoration.BorderRadius = 10;
+			this.btnAdd.ShadowDecoration.Color = System.Drawing.Color.Transparent;
+			this.btnAdd.Size = new System.Drawing.Size(123, 36);
+			this.btnAdd.TabIndex = 8;
 			this.btnAdd.Text = "Add";
+			// 
+			// dataGridView1
+			// 
+			this.dataGridView1.BackgroundColor = System.Drawing.Color.FloralWhite;
+			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+			this.dataGridView1.Location = new System.Drawing.Point(33, 188);
+			this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.RowHeadersWidth = 82;
+			this.dataGridView1.RowTemplate.Height = 33;
+			this.dataGridView1.Size = new System.Drawing.Size(787, 470);
+			this.dataGridView1.TabIndex = 3;
+			// 
+			// Column1
+			// 
+			this.Column1.HeaderText = "ID";
+			this.Column1.MinimumWidth = 10;
+			this.Column1.Name = "Column1";
+			this.Column1.Width = 200;
+			// 
+			// Column2
+			// 
+			this.Column2.HeaderText = "Name";
+			this.Column2.MinimumWidth = 10;
+			this.Column2.Name = "Column2";
+			this.Column2.Width = 200;
+			// 
+			// Column3
+			// 
+			this.Column3.HeaderText = "Price";
+			this.Column3.MinimumWidth = 10;
+			this.Column3.Name = "Column3";
+			this.Column3.Width = 200;
+			// 
+			// panel3
+			// 
+			this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.panel3.BackColor = System.Drawing.Color.FloralWhite;
+			this.panel3.Controls.Add(this.btnSearch);
+			this.panel3.Controls.Add(this.txtSearch);
+			this.panel3.Controls.Add(this.pictureBox4);
+			this.panel3.Location = new System.Drawing.Point(3, 76);
+			this.panel3.Name = "panel3";
+			this.panel3.Size = new System.Drawing.Size(1013, 77);
+			this.panel3.TabIndex = 2;
 			// 
 			// btnSearch
 			// 
-			this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.btnSearch.BorderRadius = 10;
-			this.btnSearch.BorderThickness = 1;
+			this.btnSearch.BorderThickness = 2;
 			this.btnSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
 			this.btnSearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
 			this.btnSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
 			this.btnSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
 			this.btnSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(167)))), ((int)(((byte)(38)))));
-			this.btnSearch.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnSearch.ForeColor = System.Drawing.Color.White;
-			this.btnSearch.Location = new System.Drawing.Point(607, 70);
-			this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
+			this.btnSearch.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnSearch.ForeColor = System.Drawing.Color.Black;
+			this.btnSearch.Location = new System.Drawing.Point(850, 28);
 			this.btnSearch.Name = "btnSearch";
-			this.btnSearch.Size = new System.Drawing.Size(85, 29);
-			this.btnSearch.TabIndex = 4;
+			this.btnSearch.ShadowDecoration.BorderRadius = 10;
+			this.btnSearch.ShadowDecoration.Color = System.Drawing.Color.Transparent;
+			this.btnSearch.Size = new System.Drawing.Size(123, 36);
+			this.btnSearch.TabIndex = 7;
 			this.btnSearch.Text = "Search";
 			// 
-			// dgvDrinkList
+			// txtSearch
 			// 
-			this.dgvDrinkList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.dgvDrinkList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvDrinkList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.name,
-            this.price});
-			this.dgvDrinkList.Location = new System.Drawing.Point(29, 121);
-			this.dgvDrinkList.Margin = new System.Windows.Forms.Padding(2);
-			this.dgvDrinkList.Name = "dgvDrinkList";
-			this.dgvDrinkList.RowHeadersWidth = 62;
-			this.dgvDrinkList.RowTemplate.Height = 28;
-			this.dgvDrinkList.Size = new System.Drawing.Size(663, 356);
-			this.dgvDrinkList.TabIndex = 3;
-			// 
-			// id
-			// 
-			this.id.HeaderText = "ID";
-			this.id.MinimumWidth = 8;
-			this.id.Name = "id";
-			this.id.Width = 150;
-			// 
-			// name
-			// 
-			this.name.HeaderText = "Name";
-			this.name.MinimumWidth = 8;
-			this.name.Name = "name";
-			this.name.Width = 300;
-			// 
-			// price
-			// 
-			this.price.HeaderText = "Price";
-			this.price.MinimumWidth = 8;
-			this.price.Name = "price";
-			this.price.Width = 150;
+			this.txtSearch.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtSearch.Location = new System.Drawing.Point(194, 28);
+			this.txtSearch.Multiline = true;
+			this.txtSearch.Name = "txtSearch";
+			this.txtSearch.Size = new System.Drawing.Size(506, 37);
+			this.txtSearch.TabIndex = 1;
 			// 
 			// pictureBox4
 			// 
-			this.pictureBox4.Image = global::CoffeeShop.Properties.Resources.Search;
-			this.pictureBox4.Location = new System.Drawing.Point(29, 70);
-			this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
+			this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+			this.pictureBox4.Location = new System.Drawing.Point(79, 28);
 			this.pictureBox4.Name = "pictureBox4";
-			this.pictureBox4.Size = new System.Drawing.Size(41, 25);
+			this.pictureBox4.Size = new System.Drawing.Size(49, 33);
 			this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox4.TabIndex = 2;
+			this.pictureBox4.TabIndex = 0;
 			this.pictureBox4.TabStop = false;
 			// 
-			// panel4
+			// guna2Panel5_FoodList
 			// 
-			this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(171)))), ((int)(((byte)(147)))));
-			this.panel4.Controls.Add(this.btnBack1);
-			this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel4.Location = new System.Drawing.Point(2, 2);
-			this.panel4.Margin = new System.Windows.Forms.Padding(2);
-			this.panel4.Name = "panel4";
-			this.panel4.Size = new System.Drawing.Size(847, 44);
-			this.panel4.TabIndex = 0;
+			this.guna2Panel5_FoodList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(139)))), ((int)(((byte)(115)))));
+			this.guna2Panel5_FoodList.BorderColor = System.Drawing.Color.Black;
+			this.guna2Panel5_FoodList.BorderThickness = 2;
+			this.guna2Panel5_FoodList.Controls.Add(this.btnBack);
+			this.guna2Panel5_FoodList.Dock = System.Windows.Forms.DockStyle.Top;
+			this.guna2Panel5_FoodList.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(171)))), ((int)(((byte)(147)))));
+			this.guna2Panel5_FoodList.Location = new System.Drawing.Point(0, 0);
+			this.guna2Panel5_FoodList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.guna2Panel5_FoodList.Name = "guna2Panel5_FoodList";
+			this.guna2Panel5_FoodList.Size = new System.Drawing.Size(1019, 64);
+			this.guna2Panel5_FoodList.TabIndex = 0;
 			// 
-			// btnBack1
+			// btnBack
 			// 
-			this.btnBack1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-			this.btnBack1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-			this.btnBack1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.btnBack1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-			this.btnBack1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(171)))), ((int)(((byte)(147)))));
-			this.btnBack1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnBack1.ForeColor = System.Drawing.Color.Black;
-			this.btnBack1.Image = global::CoffeeShop.Properties.Resources.back;
-			this.btnBack1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-			this.btnBack1.ImageSize = new System.Drawing.Size(25, 25);
-			this.btnBack1.Location = new System.Drawing.Point(6, 1);
-			this.btnBack1.Name = "btnBack1";
-			this.btnBack1.PressedColor = System.Drawing.Color.Transparent;
-			this.btnBack1.Size = new System.Drawing.Size(89, 41);
-			this.btnBack1.TabIndex = 2;
-			this.btnBack1.Text = "Back";
-			this.btnBack1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.btnBack.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+			this.btnBack.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+			this.btnBack.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.btnBack.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+			this.btnBack.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(171)))), ((int)(((byte)(147)))));
+			this.btnBack.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnBack.ForeColor = System.Drawing.Color.Black;
+			this.btnBack.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.Image")));
+			this.btnBack.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+			this.btnBack.ImageSize = new System.Drawing.Size(25, 25);
+			this.btnBack.Location = new System.Drawing.Point(18, 4);
+			this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnBack.Name = "btnBack";
+			this.btnBack.PressedColor = System.Drawing.Color.Transparent;
+			this.btnBack.Size = new System.Drawing.Size(119, 54);
+			this.btnBack.TabIndex = 1;
+			this.btnBack.Text = "Back";
+			this.btnBack.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// tabDrinkDetail
+			// tabPage3
 			// 
-			this.tabDrinkDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(246)))));
-			this.tabDrinkDetail.Controls.Add(this.guna2Button1);
-			this.tabDrinkDetail.Controls.Add(this.lstIngredient);
-			this.tabDrinkDetail.Controls.Add(this.guna2Button6);
-			this.tabDrinkDetail.Controls.Add(this.guna2Button5);
-			this.tabDrinkDetail.Controls.Add(this.guna2TextBox4);
-			this.tabDrinkDetail.Controls.Add(this.guna2TextBox2);
-			this.tabDrinkDetail.Controls.Add(this.label10);
-			this.tabDrinkDetail.Controls.Add(this.label9);
-			this.tabDrinkDetail.Controls.Add(this.label8);
-			this.tabDrinkDetail.Controls.Add(this.label7);
-			this.tabDrinkDetail.Controls.Add(this.label6);
-			this.tabDrinkDetail.Controls.Add(this.panel5);
-			this.tabDrinkDetail.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.tabDrinkDetail.Location = new System.Drawing.Point(4, 22);
-			this.tabDrinkDetail.Margin = new System.Windows.Forms.Padding(2);
-			this.tabDrinkDetail.Name = "tabDrinkDetail";
-			this.tabDrinkDetail.Padding = new System.Windows.Forms.Padding(2);
-			this.tabDrinkDetail.Size = new System.Drawing.Size(851, 543);
-			this.tabDrinkDetail.TabIndex = 1;
-			this.tabDrinkDetail.Text = "Drink Detail";
+			this.tabPage3.Controls.Add(this.guna2Panel6);
+			this.tabPage3.Location = new System.Drawing.Point(4, 25);
+			this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPage3.Name = "tabPage3";
+			this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPage3.Size = new System.Drawing.Size(1023, 678);
+			this.tabPage3.TabIndex = 2;
+			this.tabPage3.Text = "Category Detail";
+			this.tabPage3.UseVisualStyleBackColor = true;
 			// 
-			// guna2Button6
+			// guna2Panel6
 			// 
-			this.guna2Button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.guna2Button6.BorderRadius = 10;
-			this.guna2Button6.BorderThickness = 1;
-			this.guna2Button6.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-			this.guna2Button6.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-			this.guna2Button6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.guna2Button6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-			this.guna2Button6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(51)))), ((int)(((byte)(25)))));
-			this.guna2Button6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.guna2Button6.ForeColor = System.Drawing.Color.White;
-			this.guna2Button6.Location = new System.Drawing.Point(389, 484);
-			this.guna2Button6.Margin = new System.Windows.Forms.Padding(2);
-			this.guna2Button6.Name = "guna2Button6";
-			this.guna2Button6.Size = new System.Drawing.Size(87, 29);
-			this.guna2Button6.TabIndex = 10;
-			this.guna2Button6.Text = "Clear";
+			this.guna2Panel6.BackColor = System.Drawing.Color.FloralWhite;
+			this.guna2Panel6.BorderColor = System.Drawing.Color.Black;
+			this.guna2Panel6.BorderThickness = 2;
+			this.guna2Panel6.Controls.Add(this.btnClear);
+			this.guna2Panel6.Controls.Add(this.btn_save);
+			this.guna2Panel6.Controls.Add(this.btnAdd_Ingredient);
+			this.guna2Panel6.Controls.Add(this.label10);
+			this.guna2Panel6.Controls.Add(this.guna2TextBox3);
+			this.guna2Panel6.Controls.Add(this.guna2TextBox2);
+			this.guna2Panel6.Controls.Add(this.guna2TextBox1);
+			this.guna2Panel6.Controls.Add(this.label9);
+			this.guna2Panel6.Controls.Add(this.label8);
+			this.guna2Panel6.Controls.Add(this.label7);
+			this.guna2Panel6.Controls.Add(this.label6);
+			this.guna2Panel6.Controls.Add(this.guna2Panel7_FoodDetail);
+			this.guna2Panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.guna2Panel6.Location = new System.Drawing.Point(2, 2);
+			this.guna2Panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.guna2Panel6.Name = "guna2Panel6";
+			this.guna2Panel6.Size = new System.Drawing.Size(1019, 674);
+			this.guna2Panel6.TabIndex = 0;
 			// 
-			// guna2Button5
+			// btnClear
 			// 
-			this.guna2Button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.guna2Button5.BorderRadius = 10;
-			this.guna2Button5.BorderThickness = 1;
-			this.guna2Button5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-			this.guna2Button5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-			this.guna2Button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.guna2Button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-			this.guna2Button5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(125)))), ((int)(((byte)(232)))));
-			this.guna2Button5.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.guna2Button5.ForeColor = System.Drawing.Color.White;
-			this.guna2Button5.Location = new System.Drawing.Point(164, 484);
-			this.guna2Button5.Margin = new System.Windows.Forms.Padding(2);
-			this.guna2Button5.Name = "guna2Button5";
-			this.guna2Button5.Size = new System.Drawing.Size(87, 29);
-			this.guna2Button5.TabIndex = 9;
-			this.guna2Button5.Text = "Save";
+			this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btnClear.BorderRadius = 10;
+			this.btnClear.BorderThickness = 2;
+			this.btnClear.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+			this.btnClear.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+			this.btnClear.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.btnClear.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+			this.btnClear.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(51)))), ((int)(((byte)(25)))));
+			this.btnClear.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnClear.ForeColor = System.Drawing.Color.Black;
+			this.btnClear.Location = new System.Drawing.Point(664, 615);
+			this.btnClear.Name = "btnClear";
+			this.btnClear.ShadowDecoration.BorderRadius = 10;
+			this.btnClear.ShadowDecoration.Color = System.Drawing.Color.Transparent;
+			this.btnClear.Size = new System.Drawing.Size(123, 36);
+			this.btnClear.TabIndex = 12;
+			this.btnClear.Text = "Clear";
 			// 
-			// guna2TextBox4
+			// btn_save
 			// 
-			this.guna2TextBox4.BorderColor = System.Drawing.Color.Black;
-			this.guna2TextBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.guna2TextBox4.DefaultText = "";
-			this.guna2TextBox4.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-			this.guna2TextBox4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-			this.guna2TextBox4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-			this.guna2TextBox4.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-			this.guna2TextBox4.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.guna2TextBox4.Font = new System.Drawing.Font("Segoe UI", 9F);
-			this.guna2TextBox4.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.guna2TextBox4.Location = new System.Drawing.Point(164, 410);
-			this.guna2TextBox4.Margin = new System.Windows.Forms.Padding(2);
-			this.guna2TextBox4.Name = "guna2TextBox4";
-			this.guna2TextBox4.PasswordChar = '\0';
-			this.guna2TextBox4.PlaceholderText = "Enter Price";
-			this.guna2TextBox4.SelectedText = "";
-			this.guna2TextBox4.Size = new System.Drawing.Size(194, 23);
-			this.guna2TextBox4.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-			this.guna2TextBox4.TabIndex = 8;
+			this.btn_save.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btn_save.BorderRadius = 10;
+			this.btn_save.BorderThickness = 2;
+			this.btn_save.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+			this.btn_save.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+			this.btn_save.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.btn_save.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+			this.btn_save.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(125)))), ((int)(((byte)(232)))));
+			this.btn_save.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_save.ForeColor = System.Drawing.Color.Black;
+			this.btn_save.Location = new System.Drawing.Point(304, 615);
+			this.btn_save.Name = "btn_save";
+			this.btn_save.ShadowDecoration.BorderRadius = 10;
+			this.btn_save.ShadowDecoration.Color = System.Drawing.Color.Transparent;
+			this.btn_save.Size = new System.Drawing.Size(123, 36);
+			this.btn_save.TabIndex = 11;
+			this.btn_save.Text = "Save";
+			// 
+			// btnAdd_Ingredient
+			// 
+			this.btnAdd_Ingredient.BorderRadius = 10;
+			this.btnAdd_Ingredient.BorderThickness = 2;
+			this.btnAdd_Ingredient.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+			this.btnAdd_Ingredient.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+			this.btnAdd_Ingredient.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.btnAdd_Ingredient.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+			this.btnAdd_Ingredient.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
+			this.btnAdd_Ingredient.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+			this.btnAdd_Ingredient.ForeColor = System.Drawing.Color.Black;
+			this.btnAdd_Ingredient.Location = new System.Drawing.Point(288, 442);
+			this.btnAdd_Ingredient.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btnAdd_Ingredient.Name = "btnAdd_Ingredient";
+			this.btnAdd_Ingredient.Size = new System.Drawing.Size(190, 34);
+			this.btnAdd_Ingredient.TabIndex = 10;
+			this.btnAdd_Ingredient.Text = "Add Ingredient";
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label10.Location = new System.Drawing.Point(447, 525);
+			this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(95, 27);
+			this.label10.TabIndex = 9;
+			this.label10.Text = "VND / $";
+			// 
+			// guna2TextBox3
+			// 
+			this.guna2TextBox3.BorderColor = System.Drawing.Color.Black;
+			this.guna2TextBox3.BorderThickness = 2;
+			this.guna2TextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
+			this.guna2TextBox3.DefaultText = "";
+			this.guna2TextBox3.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+			this.guna2TextBox3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+			this.guna2TextBox3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+			this.guna2TextBox3.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+			this.guna2TextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.guna2TextBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
+			this.guna2TextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.guna2TextBox3.Location = new System.Drawing.Point(288, 519);
+			this.guna2TextBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.guna2TextBox3.Name = "guna2TextBox3";
+			this.guna2TextBox3.PasswordChar = '\0';
+			this.guna2TextBox3.PlaceholderText = "";
+			this.guna2TextBox3.SelectedText = "";
+			this.guna2TextBox3.Size = new System.Drawing.Size(105, 33);
+			this.guna2TextBox3.TabIndex = 8;
 			// 
 			// guna2TextBox2
 			// 
 			this.guna2TextBox2.BorderColor = System.Drawing.Color.Black;
+			this.guna2TextBox2.BorderThickness = 2;
 			this.guna2TextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
 			this.guna2TextBox2.DefaultText = "";
 			this.guna2TextBox2.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -470,313 +623,233 @@
 			this.guna2TextBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
 			this.guna2TextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
 			this.guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.guna2TextBox2.Location = new System.Drawing.Point(164, 111);
-			this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(2);
+			this.guna2TextBox2.Location = new System.Drawing.Point(288, 266);
+			this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.guna2TextBox2.Name = "guna2TextBox2";
 			this.guna2TextBox2.PasswordChar = '\0';
-			this.guna2TextBox2.PlaceholderText = "Enter Item Name";
+			this.guna2TextBox2.PlaceholderText = "";
 			this.guna2TextBox2.SelectedText = "";
-			this.guna2TextBox2.Size = new System.Drawing.Size(372, 23);
-			this.guna2TextBox2.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-			this.guna2TextBox2.TabIndex = 6;
+			this.guna2TextBox2.Size = new System.Drawing.Size(613, 154);
+			this.guna2TextBox2.TabIndex = 7;
 			// 
-			// label10
+			// guna2TextBox1
 			// 
-			this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.label10.AutoSize = true;
-			this.label10.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label10.Location = new System.Drawing.Point(374, 411);
-			this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(50, 22);
-			this.label10.TabIndex = 5;
-			this.label10.Text = "VND";
+			this.guna2TextBox1.BorderColor = System.Drawing.Color.Black;
+			this.guna2TextBox1.BorderThickness = 2;
+			this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+			this.guna2TextBox1.DefaultText = "";
+			this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+			this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+			this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+			this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+			this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+			this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.guna2TextBox1.Location = new System.Drawing.Point(288, 168);
+			this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.guna2TextBox1.Name = "guna2TextBox1";
+			this.guna2TextBox1.PasswordChar = '\0';
+			this.guna2TextBox1.PlaceholderText = "";
+			this.guna2TextBox1.SelectedText = "";
+			this.guna2TextBox1.Size = new System.Drawing.Size(613, 28);
+			this.guna2TextBox1.TabIndex = 6;
 			// 
 			// label9
 			// 
 			this.label9.AutoSize = true;
-			this.label9.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label9.Location = new System.Drawing.Point(48, 410);
+			this.label9.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label9.Location = new System.Drawing.Point(41, 519);
 			this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(54, 22);
-			this.label9.TabIndex = 4;
+			this.label9.Size = new System.Drawing.Size(66, 27);
+			this.label9.TabIndex = 5;
 			this.label9.Text = "Price";
 			// 
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label8.Location = new System.Drawing.Point(48, 178);
+			this.label8.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label8.Location = new System.Drawing.Point(41, 266);
 			this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(95, 22);
-			this.label8.TabIndex = 3;
+			this.label8.Size = new System.Drawing.Size(120, 27);
+			this.label8.TabIndex = 4;
 			this.label8.Text = "Ingredient";
 			// 
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.Location = new System.Drawing.Point(48, 111);
+			this.label7.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label7.Location = new System.Drawing.Point(41, 168);
 			this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(103, 22);
-			this.label7.TabIndex = 2;
+			this.label7.Size = new System.Drawing.Size(128, 27);
+			this.label7.TabIndex = 3;
 			this.label7.Text = "Item Name";
 			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label6.Location = new System.Drawing.Point(70, 61);
+			this.label6.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label6.Location = new System.Drawing.Point(71, 83);
 			this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(155, 32);
-			this.label6.TabIndex = 1;
+			this.label6.Size = new System.Drawing.Size(134, 29);
+			this.label6.TabIndex = 2;
 			this.label6.Text = "Item Detail";
 			// 
-			// panel5
+			// guna2Panel7_FoodDetail
 			// 
-			this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(171)))), ((int)(((byte)(147)))));
-			this.panel5.Controls.Add(this.btnBack2);
-			this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel5.Location = new System.Drawing.Point(2, 2);
-			this.panel5.Margin = new System.Windows.Forms.Padding(2);
-			this.panel5.Name = "panel5";
-			this.panel5.Size = new System.Drawing.Size(847, 44);
-			this.panel5.TabIndex = 0;
+			this.guna2Panel7_FoodDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(139)))), ((int)(((byte)(115)))));
+			this.guna2Panel7_FoodDetail.BorderColor = System.Drawing.Color.Black;
+			this.guna2Panel7_FoodDetail.BorderThickness = 2;
+			this.guna2Panel7_FoodDetail.Controls.Add(this.btn_back);
+			this.guna2Panel7_FoodDetail.Dock = System.Windows.Forms.DockStyle.Top;
+			this.guna2Panel7_FoodDetail.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(171)))), ((int)(((byte)(147)))));
+			this.guna2Panel7_FoodDetail.Location = new System.Drawing.Point(0, 0);
+			this.guna2Panel7_FoodDetail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.guna2Panel7_FoodDetail.Name = "guna2Panel7_FoodDetail";
+			this.guna2Panel7_FoodDetail.Size = new System.Drawing.Size(1019, 64);
+			this.guna2Panel7_FoodDetail.TabIndex = 1;
 			// 
-			// btnBack2
+			// btn_back
 			// 
-			this.btnBack2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-			this.btnBack2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-			this.btnBack2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.btnBack2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-			this.btnBack2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(171)))), ((int)(((byte)(147)))));
-			this.btnBack2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnBack2.ForeColor = System.Drawing.Color.Black;
-			this.btnBack2.Image = global::CoffeeShop.Properties.Resources.back;
-			this.btnBack2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-			this.btnBack2.ImageSize = new System.Drawing.Size(25, 25);
-			this.btnBack2.Location = new System.Drawing.Point(6, 1);
-			this.btnBack2.Name = "btnBack2";
-			this.btnBack2.PressedColor = System.Drawing.Color.Transparent;
-			this.btnBack2.Size = new System.Drawing.Size(89, 41);
-			this.btnBack2.TabIndex = 1;
-			this.btnBack2.Text = "Back";
-			this.btnBack2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.btn_back.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+			this.btn_back.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+			this.btn_back.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.btn_back.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+			this.btn_back.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(171)))), ((int)(((byte)(147)))));
+			this.btn_back.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_back.ForeColor = System.Drawing.Color.Black;
+			this.btn_back.Image = ((System.Drawing.Image)(resources.GetObject("btn_back.Image")));
+			this.btn_back.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+			this.btn_back.ImageSize = new System.Drawing.Size(25, 25);
+			this.btn_back.Location = new System.Drawing.Point(18, 4);
+			this.btn_back.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btn_back.Name = "btn_back";
+			this.btn_back.PressedColor = System.Drawing.Color.Transparent;
+			this.btn_back.Size = new System.Drawing.Size(119, 54);
+			this.btn_back.TabIndex = 1;
+			this.btn_back.Text = "Back";
+			this.btn_back.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// btnFoodView
+			// panel1_1
 			// 
-			this.btnFoodView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnFoodView.BorderRadius = 10;
-			this.btnFoodView.BorderThickness = 1;
-			this.btnFoodView.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-			this.btnFoodView.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-			this.btnFoodView.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.btnFoodView.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-			this.btnFoodView.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-			this.btnFoodView.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnFoodView.ForeColor = System.Drawing.Color.Black;
-			this.btnFoodView.Location = new System.Drawing.Point(561, 401);
-			this.btnFoodView.Margin = new System.Windows.Forms.Padding(2);
-			this.btnFoodView.Name = "btnFoodView";
-			this.btnFoodView.Size = new System.Drawing.Size(93, 30);
-			this.btnFoodView.TabIndex = 8;
-			this.btnFoodView.Text = "View";
+			this.panel1_1.Controls.Add(this.label1);
+			this.panel1_1.Controls.Add(this.pictureBox1);
+			this.panel1_1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel1_1.Location = new System.Drawing.Point(0, 0);
+			this.panel1_1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.panel1_1.Name = "panel1_1";
+			this.panel1_1.Size = new System.Drawing.Size(1051, 83);
+			this.panel1_1.TabIndex = 4;
 			// 
-			// label4
+			// label1
 			// 
-			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label4.Location = new System.Drawing.Point(557, 369);
-			this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(109, 18);
-			this.label4.TabIndex = 7;
-			this.label4.Text = "Bread, Cake...";
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(127, 47);
+			this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(104, 26);
+			this.label1.TabIndex = 1;
+			this.label1.Text = "Category";
 			// 
-			// label5
+			// pictureBox1
 			// 
-			this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label5.Location = new System.Drawing.Point(553, 315);
-			this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(112, 45);
-			this.label5.TabIndex = 6;
-			this.label5.Text = "Food";
-			// 
-			// pictureBox3
-			// 
-			this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-			this.pictureBox3.Location = new System.Drawing.Point(141, 304);
-			this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
-			this.pictureBox3.Name = "pictureBox3";
-			this.pictureBox3.Size = new System.Drawing.Size(213, 153);
-			this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox3.TabIndex = 5;
-			this.pictureBox3.TabStop = false;
-			// 
-			// btnDrinkView
-			// 
-			this.btnDrinkView.BorderRadius = 10;
-			this.btnDrinkView.BorderThickness = 1;
-			this.btnDrinkView.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-			this.btnDrinkView.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-			this.btnDrinkView.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.btnDrinkView.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-			this.btnDrinkView.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-			this.btnDrinkView.Font = new System.Drawing.Font("Segoe UI", 10F);
-			this.btnDrinkView.ForeColor = System.Drawing.Color.Black;
-			this.btnDrinkView.Location = new System.Drawing.Point(175, 164);
-			this.btnDrinkView.Margin = new System.Windows.Forms.Padding(2);
-			this.btnDrinkView.Name = "btnDrinkView";
-			this.btnDrinkView.Size = new System.Drawing.Size(93, 30);
-			this.btnDrinkView.TabIndex = 4;
-			this.btnDrinkView.Text = "View";
-			// 
-			// pictureBox2
-			// 
-			this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-			this.pictureBox2.Location = new System.Drawing.Point(505, 55);
-			this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(213, 153);
-			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox2.TabIndex = 3;
-			this.pictureBox2.TabStop = false;
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.Location = new System.Drawing.Point(172, 132);
-			this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(151, 18);
-			this.label3.TabIndex = 2;
-			this.label3.Text = "Coffee, Tea, Yogurt...";
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(177, 75);
-			this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(117, 45);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "Drink";
-			// 
-			// lstIngredient
-			// 
-			this.lstIngredient.FormattingEnabled = true;
-			this.lstIngredient.ItemHeight = 22;
-			this.lstIngredient.Location = new System.Drawing.Point(164, 178);
-			this.lstIngredient.Name = "lstIngredient";
-			this.lstIngredient.Size = new System.Drawing.Size(372, 158);
-			this.lstIngredient.TabIndex = 11;
-			// 
-			// guna2Button1
-			// 
-			this.guna2Button1.BorderRadius = 10;
-			this.guna2Button1.BorderThickness = 1;
-			this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-			this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-			this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-			this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
-			this.guna2Button1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.guna2Button1.ForeColor = System.Drawing.Color.Black;
-			this.guna2Button1.Location = new System.Drawing.Point(164, 356);
-			this.guna2Button1.Margin = new System.Windows.Forms.Padding(2);
-			this.guna2Button1.Name = "guna2Button1";
-			this.guna2Button1.Size = new System.Drawing.Size(139, 29);
-			this.guna2Button1.TabIndex = 12;
-			this.guna2Button1.Text = "Add Ingredient";
+			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.Location = new System.Drawing.Point(33, 22);
+			this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(70, 63);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox1.TabIndex = 0;
+			this.pictureBox1.TabStop = false;
 			// 
 			// CategoryView
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.AutoSize = true;
-			this.BackColor = System.Drawing.SystemColors.Info;
-			this.ClientSize = new System.Drawing.Size(867, 642);
-			this.Controls.Add(this.pnlCategory);
-			this.Controls.Add(this.panel1);
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
+			this.ClientSize = new System.Drawing.Size(1051, 705);
+			this.Controls.Add(this.panel1_1);
+			this.Controls.Add(this.tabControl_Food);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Margin = new System.Windows.Forms.Padding(2);
 			this.Name = "CategoryView";
 			this.Text = "Category";
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-			this.pnlCategory.ResumeLayout(false);
-			this.pnlCategory.PerformLayout();
-			this.pnlCategoryDrink.ResumeLayout(false);
-			this.tabDrink.ResumeLayout(false);
-			this.tabDrinkList.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dgvDrinkList)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-			this.panel4.ResumeLayout(false);
-			this.tabDrinkDetail.ResumeLayout(false);
-			this.tabDrinkDetail.PerformLayout();
-			this.panel5.ResumeLayout(false);
+			this.tabControl_Food.ResumeLayout(false);
+			this.tabPage1.ResumeLayout(false);
+			this.guna2Panel1.ResumeLayout(false);
+			this.guna2Panel3.ResumeLayout(false);
+			this.guna2Panel3.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+			this.guna2Panel2_Food.ResumeLayout(false);
+			this.guna2Panel2_Food.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+			this.tabPage2.ResumeLayout(false);
+			this.guna2Panel4.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			this.panel3.ResumeLayout(false);
+			this.panel3.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+			this.guna2Panel5_FoodList.ResumeLayout(false);
+			this.tabPage3.ResumeLayout(false);
+			this.guna2Panel6.ResumeLayout(false);
+			this.guna2Panel6.PerformLayout();
+			this.guna2Panel7_FoodDetail.ResumeLayout(false);
+			this.panel1_1.ResumeLayout(false);
+			this.panel1_1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblCategory;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel pnlCategory;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private Guna.UI2.WinForms.Guna2Button btnDrinkView;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private Guna.UI2.WinForms.Guna2Button btnFoodView;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TabControl tabControl_Food;
+        private System.Windows.Forms.TabPage tabPage1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
+        private System.Windows.Forms.Label lblFood;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Panel pnlCategoryDrink;
-        private System.Windows.Forms.TabControl tabDrink;
-        private System.Windows.Forms.TabPage tabDrinkList;
-        private System.Windows.Forms.TabPage tabDrinkDetail;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Panel panel4;
+        private Guna.UI2.WinForms.Guna2Button btnViewFood;
+        private System.Windows.Forms.Label lblFoodItem;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2_Food;
+        private System.Windows.Forms.Label lblDrink;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private Guna.UI2.WinForms.Guna2Button btnViewDrink;
+        private System.Windows.Forms.Label lblDrinkItem;
+        private System.Windows.Forms.TabPage tabPage2;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel5_FoodList;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Panel panel3;
         private Guna.UI2.WinForms.Guna2Button btnSearch;
-        private System.Windows.Forms.DataGridView dgvDrinkList;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private Guna.UI2.WinForms.Guna2Button btnBack;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private Guna.UI2.WinForms.Guna2Button btnDelete;
         private Guna.UI2.WinForms.Guna2Button btnEdit;
         private Guna.UI2.WinForms.Guna2Button btnAdd;
-        private System.Windows.Forms.Label label10;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel5;
-        private Guna.UI2.WinForms.Guna2TextBox txtDrinkSearch;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button6;
-        private Guna.UI2.WinForms.Guna2Button guna2Button5;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox4;
-        private Guna.UI2.WinForms.Guna2Button btnBack1;
-        private Guna.UI2.WinForms.Guna2Button btnBack2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn price;
-		private Guna.UI2.WinForms.Guna2Button guna2Button1;
-		private System.Windows.Forms.ListBox lstIngredient;
-	}
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel7_FoodDetail;
+        private Guna.UI2.WinForms.Guna2Button btn_back;
+        private Guna.UI2.WinForms.Guna2Button btnClear;
+        private Guna.UI2.WinForms.Guna2Button btn_save;
+        private Guna.UI2.WinForms.Guna2Button btnAdd_Ingredient;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel panel1_1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+    }
 }
