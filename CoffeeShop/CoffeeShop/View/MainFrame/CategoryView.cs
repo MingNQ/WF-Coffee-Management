@@ -25,7 +25,7 @@ namespace CoffeeShop.View
 
 		public void ShowDrinkDetails()
 		{
-			pnlCategory.Visible = false;
+			//pnlCategory.Visible = false;
 			pnlCategoryDrink.Visible = true;
 			pnlCategoryDrink.BringToFront();
 			lblCategory.Text = "Category / Drink";
@@ -61,14 +61,5 @@ namespace CoffeeShop.View
 			return instance;
 		}
 
-        private void guna2CustomGradientPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
