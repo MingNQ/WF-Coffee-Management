@@ -29,6 +29,9 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryView));
+			this.panel1_1 = new System.Windows.Forms.Panel();
+			this.lblCategory = new System.Windows.Forms.Label();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.tabControl_Food = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
@@ -59,6 +62,7 @@
 			this.btnBackCategory = new Guna.UI2.WinForms.Guna2Button();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
+			this.listBox1 = new System.Windows.Forms.ListBox();
 			this.btnClear = new Guna.UI2.WinForms.Guna2Button();
 			this.btn_save = new Guna.UI2.WinForms.Guna2Button();
 			this.btnAdd_Ingredient = new Guna.UI2.WinForms.Guna2Button();
@@ -71,10 +75,8 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.guna2Panel7_FoodDetail = new Guna.UI2.WinForms.Guna2Panel();
 			this.btnBackToList = new Guna.UI2.WinForms.Guna2Button();
-			this.panel1_1 = new System.Windows.Forms.Panel();
-			this.lblCategory = new System.Windows.Forms.Label();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.listBox1 = new System.Windows.Forms.ListBox();
+			this.panel1_1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.tabControl_Food.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.guna2Panel1.SuspendLayout();
@@ -91,23 +93,55 @@
 			this.tabPage3.SuspendLayout();
 			this.guna2Panel6.SuspendLayout();
 			this.guna2Panel7_FoodDetail.SuspendLayout();
-			this.panel1_1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
+			// 
+			// panel1_1
+			// 
+			this.panel1_1.Controls.Add(this.lblCategory);
+			this.panel1_1.Controls.Add(this.pictureBox1);
+			this.panel1_1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel1_1.Location = new System.Drawing.Point(0, 0);
+			this.panel1_1.Margin = new System.Windows.Forms.Padding(2);
+			this.panel1_1.Name = "panel1_1";
+			this.panel1_1.Size = new System.Drawing.Size(1240, 61);
+			this.panel1_1.TabIndex = 4;
+			// 
+			// lblCategory
+			// 
+			this.lblCategory.AutoSize = true;
+			this.lblCategory.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblCategory.Location = new System.Drawing.Point(73, 13);
+			this.lblCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.lblCategory.Name = "lblCategory";
+			this.lblCategory.Size = new System.Drawing.Size(116, 29);
+			this.lblCategory.TabIndex = 1;
+			this.lblCategory.Text = "Category";
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.Location = new System.Drawing.Point(27, 10);
+			this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(35, 35);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox1.TabIndex = 0;
+			this.pictureBox1.TabStop = false;
 			// 
 			// tabControl_Food
 			// 
-			this.tabControl_Food.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.tabControl_Food.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tabControl_Food.Controls.Add(this.tabPage1);
 			this.tabControl_Food.Controls.Add(this.tabPage2);
 			this.tabControl_Food.Controls.Add(this.tabPage3);
-			this.tabControl_Food.Location = new System.Drawing.Point(0, 83);
+			this.tabControl_Food.Location = new System.Drawing.Point(0, 36);
 			this.tabControl_Food.Margin = new System.Windows.Forms.Padding(2);
 			this.tabControl_Food.Name = "tabControl_Food";
 			this.tabControl_Food.SelectedIndex = 0;
-			this.tabControl_Food.Size = new System.Drawing.Size(1049, 707);
-			this.tabControl_Food.TabIndex = 1;
+			this.tabControl_Food.Size = new System.Drawing.Size(1238, 751);
+			this.tabControl_Food.TabIndex = 5;
 			// 
 			// tabPage1
 			// 
@@ -117,7 +151,7 @@
 			this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-			this.tabPage1.Size = new System.Drawing.Size(1041, 678);
+			this.tabPage1.Size = new System.Drawing.Size(1230, 722);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Category";
 			// 
@@ -132,29 +166,31 @@
 			this.guna2Panel1.Location = new System.Drawing.Point(2, 2);
 			this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2);
 			this.guna2Panel1.Name = "guna2Panel1";
-			this.guna2Panel1.Size = new System.Drawing.Size(1037, 674);
+			this.guna2Panel1.Size = new System.Drawing.Size(1226, 718);
 			this.guna2Panel1.TabIndex = 2;
 			// 
 			// guna2Panel3
 			// 
+			this.guna2Panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(246)))));
 			this.guna2Panel3.BorderColor = System.Drawing.Color.Black;
 			this.guna2Panel3.BorderThickness = 2;
 			this.guna2Panel3.Controls.Add(this.lblFood);
 			this.guna2Panel3.Controls.Add(this.pictureBox3);
 			this.guna2Panel3.Controls.Add(this.btnViewFood);
 			this.guna2Panel3.Controls.Add(this.lblFoodItem);
-			this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.guna2Panel3.Location = new System.Drawing.Point(0, 334);
+			this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.guna2Panel3.Location = new System.Drawing.Point(0, 378);
 			this.guna2Panel3.Margin = new System.Windows.Forms.Padding(2);
 			this.guna2Panel3.Name = "guna2Panel3";
-			this.guna2Panel3.Size = new System.Drawing.Size(1037, 340);
+			this.guna2Panel3.Size = new System.Drawing.Size(1226, 340);
 			this.guna2Panel3.TabIndex = 1;
 			// 
 			// lblFood
 			// 
+			this.lblFood.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblFood.AutoSize = true;
 			this.lblFood.Font = new System.Drawing.Font("Arial Black", 23F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblFood.Location = new System.Drawing.Point(701, 42);
+			this.lblFood.Location = new System.Drawing.Point(818, 73);
 			this.lblFood.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblFood.Name = "lblFood";
 			this.lblFood.Size = new System.Drawing.Size(127, 55);
@@ -163,8 +199,9 @@
 			// 
 			// pictureBox3
 			// 
+			this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-			this.pictureBox3.Location = new System.Drawing.Point(65, 15);
+			this.pictureBox3.Location = new System.Drawing.Point(182, 46);
 			this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
 			this.pictureBox3.Name = "pictureBox3";
 			this.pictureBox3.Size = new System.Drawing.Size(207, 237);
@@ -174,8 +211,9 @@
 			// 
 			// btnViewFood
 			// 
+			this.btnViewFood.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnViewFood.BorderRadius = 10;
-			this.btnViewFood.BorderThickness = 2;
+			this.btnViewFood.BorderThickness = 1;
 			this.btnViewFood.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
 			this.btnViewFood.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
 			this.btnViewFood.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -183,7 +221,7 @@
 			this.btnViewFood.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(202)))), ((int)(((byte)(165)))));
 			this.btnViewFood.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
 			this.btnViewFood.ForeColor = System.Drawing.Color.Black;
-			this.btnViewFood.Location = new System.Drawing.Point(655, 196);
+			this.btnViewFood.Location = new System.Drawing.Point(772, 227);
 			this.btnViewFood.Margin = new System.Windows.Forms.Padding(2);
 			this.btnViewFood.Name = "btnViewFood";
 			this.btnViewFood.Size = new System.Drawing.Size(189, 34);
@@ -192,9 +230,10 @@
 			// 
 			// lblFoodItem
 			// 
+			this.lblFoodItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblFoodItem.AutoSize = true;
 			this.lblFoodItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblFoodItem.Location = new System.Drawing.Point(689, 130);
+			this.lblFoodItem.Location = new System.Drawing.Point(806, 161);
 			this.lblFoodItem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblFoodItem.Name = "lblFoodItem";
 			this.lblFoodItem.Size = new System.Drawing.Size(151, 23);
@@ -203,24 +242,26 @@
 			// 
 			// guna2Panel2_Food
 			// 
+			this.guna2Panel2_Food.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(246)))));
 			this.guna2Panel2_Food.BorderColor = System.Drawing.Color.Black;
 			this.guna2Panel2_Food.BorderThickness = 2;
 			this.guna2Panel2_Food.Controls.Add(this.lblDrink);
 			this.guna2Panel2_Food.Controls.Add(this.pictureBox2);
 			this.guna2Panel2_Food.Controls.Add(this.btnDrinkView);
 			this.guna2Panel2_Food.Controls.Add(this.lblDrinkItem);
+			this.guna2Panel2_Food.Dock = System.Windows.Forms.DockStyle.Top;
 			this.guna2Panel2_Food.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.guna2Panel2_Food.Location = new System.Drawing.Point(0, 0);
 			this.guna2Panel2_Food.Margin = new System.Windows.Forms.Padding(2);
 			this.guna2Panel2_Food.Name = "guna2Panel2_Food";
-			this.guna2Panel2_Food.Size = new System.Drawing.Size(1037, 344);
+			this.guna2Panel2_Food.Size = new System.Drawing.Size(1226, 378);
 			this.guna2Panel2_Food.TabIndex = 0;
 			// 
 			// lblDrink
 			// 
 			this.lblDrink.AutoSize = true;
 			this.lblDrink.Font = new System.Drawing.Font("Arial Black", 23F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblDrink.Location = new System.Drawing.Point(55, 65);
+			this.lblDrink.Location = new System.Drawing.Point(165, 64);
 			this.lblDrink.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblDrink.Name = "lblDrink";
 			this.lblDrink.Size = new System.Drawing.Size(136, 55);
@@ -229,8 +270,9 @@
 			// 
 			// pictureBox2
 			// 
+			this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-			this.pictureBox2.Location = new System.Drawing.Point(655, 61);
+			this.pictureBox2.Location = new System.Drawing.Point(765, 88);
 			this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
 			this.pictureBox2.Name = "pictureBox2";
 			this.pictureBox2.Size = new System.Drawing.Size(201, 209);
@@ -241,7 +283,7 @@
 			// btnDrinkView
 			// 
 			this.btnDrinkView.BorderRadius = 10;
-			this.btnDrinkView.BorderThickness = 2;
+			this.btnDrinkView.BorderThickness = 1;
 			this.btnDrinkView.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
 			this.btnDrinkView.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
 			this.btnDrinkView.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -249,7 +291,7 @@
 			this.btnDrinkView.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(202)))), ((int)(((byte)(165)))));
 			this.btnDrinkView.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
 			this.btnDrinkView.ForeColor = System.Drawing.Color.Black;
-			this.btnDrinkView.Location = new System.Drawing.Point(65, 216);
+			this.btnDrinkView.Location = new System.Drawing.Point(175, 215);
 			this.btnDrinkView.Margin = new System.Windows.Forms.Padding(2);
 			this.btnDrinkView.Name = "btnDrinkView";
 			this.btnDrinkView.Size = new System.Drawing.Size(189, 34);
@@ -260,7 +302,7 @@
 			// 
 			this.lblDrinkItem.AutoSize = true;
 			this.lblDrinkItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblDrinkItem.Location = new System.Drawing.Point(61, 147);
+			this.lblDrinkItem.Location = new System.Drawing.Point(171, 146);
 			this.lblDrinkItem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lblDrinkItem.Name = "lblDrinkItem";
 			this.lblDrinkItem.Size = new System.Drawing.Size(212, 23);
@@ -275,13 +317,13 @@
 			this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-			this.tabPage2.Size = new System.Drawing.Size(1041, 678);
+			this.tabPage2.Size = new System.Drawing.Size(1230, 722);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "Category List";
 			// 
 			// guna2Panel4
 			// 
-			this.guna2Panel4.BackColor = System.Drawing.Color.FloralWhite;
+			this.guna2Panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(246)))));
 			this.guna2Panel4.BorderColor = System.Drawing.Color.Black;
 			this.guna2Panel4.BorderThickness = 2;
 			this.guna2Panel4.Controls.Add(this.btnDelete);
@@ -294,12 +336,12 @@
 			this.guna2Panel4.Location = new System.Drawing.Point(2, 2);
 			this.guna2Panel4.Margin = new System.Windows.Forms.Padding(2);
 			this.guna2Panel4.Name = "guna2Panel4";
-			this.guna2Panel4.Size = new System.Drawing.Size(1037, 674);
+			this.guna2Panel4.Size = new System.Drawing.Size(1226, 718);
 			this.guna2Panel4.TabIndex = 0;
 			// 
 			// btnDelete
 			// 
-			this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.btnDelete.BorderRadius = 10;
 			this.btnDelete.BorderThickness = 1;
 			this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -309,7 +351,7 @@
 			this.btnDelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(51)))), ((int)(((byte)(25)))));
 			this.btnDelete.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnDelete.ForeColor = System.Drawing.Color.Black;
-			this.btnDelete.Location = new System.Drawing.Point(861, 478);
+			this.btnDelete.Location = new System.Drawing.Point(1008, 499);
 			this.btnDelete.Name = "btnDelete";
 			this.btnDelete.ShadowDecoration.BorderRadius = 10;
 			this.btnDelete.ShadowDecoration.Color = System.Drawing.Color.Transparent;
@@ -319,7 +361,7 @@
 			// 
 			// btnEdit
 			// 
-			this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.btnEdit.BorderRadius = 10;
 			this.btnEdit.BorderThickness = 1;
 			this.btnEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -329,7 +371,7 @@
 			this.btnEdit.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(125)))), ((int)(((byte)(232)))));
 			this.btnEdit.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnEdit.ForeColor = System.Drawing.Color.Black;
-			this.btnEdit.Location = new System.Drawing.Point(861, 359);
+			this.btnEdit.Location = new System.Drawing.Point(1008, 380);
 			this.btnEdit.Name = "btnEdit";
 			this.btnEdit.ShadowDecoration.BorderRadius = 10;
 			this.btnEdit.ShadowDecoration.Color = System.Drawing.Color.Transparent;
@@ -339,7 +381,7 @@
 			// 
 			// btnAdd
 			// 
-			this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.btnAdd.BorderRadius = 10;
 			this.btnAdd.BorderThickness = 1;
 			this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -349,7 +391,7 @@
 			this.btnAdd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(230)))), ((int)(((byte)(118)))));
 			this.btnAdd.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnAdd.ForeColor = System.Drawing.Color.Black;
-			this.btnAdd.Location = new System.Drawing.Point(861, 233);
+			this.btnAdd.Location = new System.Drawing.Point(1008, 261);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.ShadowDecoration.BorderRadius = 10;
 			this.btnAdd.ShadowDecoration.Color = System.Drawing.Color.Transparent;
@@ -359,18 +401,21 @@
 			// 
 			// dataGridView1
 			// 
-			this.dataGridView1.BackgroundColor = System.Drawing.Color.FloralWhite;
+			this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(246)))));
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3});
-			this.dataGridView1.Location = new System.Drawing.Point(33, 188);
+			this.dataGridView1.Location = new System.Drawing.Point(18, 188);
 			this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
 			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.RowHeadersWidth = 82;
+			this.dataGridView1.RowHeadersWidth = 150;
 			this.dataGridView1.RowTemplate.Height = 33;
-			this.dataGridView1.Size = new System.Drawing.Size(787, 470);
+			this.dataGridView1.Size = new System.Drawing.Size(892, 515);
 			this.dataGridView1.TabIndex = 3;
 			// 
 			// Column1
@@ -404,12 +449,12 @@
 			this.panel3.Controls.Add(this.pictureBox4);
 			this.panel3.Location = new System.Drawing.Point(3, 76);
 			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(1031, 77);
+			this.panel3.Size = new System.Drawing.Size(1220, 77);
 			this.panel3.TabIndex = 2;
 			// 
 			// btnSearch
 			// 
-			this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnSearch.BorderRadius = 10;
 			this.btnSearch.BorderThickness = 1;
 			this.btnSearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -419,7 +464,7 @@
 			this.btnSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(167)))), ((int)(((byte)(38)))));
 			this.btnSearch.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnSearch.ForeColor = System.Drawing.Color.Black;
-			this.btnSearch.Location = new System.Drawing.Point(859, 28);
+			this.btnSearch.Location = new System.Drawing.Point(1005, 29);
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.ShadowDecoration.BorderRadius = 10;
 			this.btnSearch.ShadowDecoration.Color = System.Drawing.Color.Transparent;
@@ -435,7 +480,7 @@
 			this.txtSearch.Location = new System.Drawing.Point(194, 28);
 			this.txtSearch.Multiline = true;
 			this.txtSearch.Name = "txtSearch";
-			this.txtSearch.Size = new System.Drawing.Size(524, 37);
+			this.txtSearch.Size = new System.Drawing.Size(713, 37);
 			this.txtSearch.TabIndex = 1;
 			// 
 			// pictureBox4
@@ -459,7 +504,7 @@
 			this.guna2Panel5_FoodList.Location = new System.Drawing.Point(0, 0);
 			this.guna2Panel5_FoodList.Margin = new System.Windows.Forms.Padding(2);
 			this.guna2Panel5_FoodList.Name = "guna2Panel5_FoodList";
-			this.guna2Panel5_FoodList.Size = new System.Drawing.Size(1037, 64);
+			this.guna2Panel5_FoodList.Size = new System.Drawing.Size(1226, 64);
 			this.guna2Panel5_FoodList.TabIndex = 0;
 			// 
 			// btnBackCategory
@@ -490,14 +535,14 @@
 			this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
 			this.tabPage3.Name = "tabPage3";
 			this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
-			this.tabPage3.Size = new System.Drawing.Size(1041, 678);
+			this.tabPage3.Size = new System.Drawing.Size(1230, 722);
 			this.tabPage3.TabIndex = 2;
 			this.tabPage3.Text = "Category Detail";
 			this.tabPage3.UseVisualStyleBackColor = true;
 			// 
 			// guna2Panel6
 			// 
-			this.guna2Panel6.BackColor = System.Drawing.Color.FloralWhite;
+			this.guna2Panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(246)))));
 			this.guna2Panel6.BorderColor = System.Drawing.Color.Black;
 			this.guna2Panel6.BorderThickness = 2;
 			this.guna2Panel6.Controls.Add(this.listBox1);
@@ -516,12 +561,23 @@
 			this.guna2Panel6.Location = new System.Drawing.Point(2, 2);
 			this.guna2Panel6.Margin = new System.Windows.Forms.Padding(2);
 			this.guna2Panel6.Name = "guna2Panel6";
-			this.guna2Panel6.Size = new System.Drawing.Size(1037, 674);
+			this.guna2Panel6.Size = new System.Drawing.Size(1226, 718);
 			this.guna2Panel6.TabIndex = 0;
+			// 
+			// listBox1
+			// 
+			this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.listBox1.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.listBox1.FormattingEnabled = true;
+			this.listBox1.ItemHeight = 21;
+			this.listBox1.Location = new System.Drawing.Point(288, 266);
+			this.listBox1.Name = "listBox1";
+			this.listBox1.Size = new System.Drawing.Size(613, 149);
+			this.listBox1.TabIndex = 13;
 			// 
 			// btnClear
 			// 
-			this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btnClear.BorderRadius = 10;
 			this.btnClear.BorderThickness = 2;
 			this.btnClear.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -531,7 +587,7 @@
 			this.btnClear.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(51)))), ((int)(((byte)(25)))));
 			this.btnClear.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnClear.ForeColor = System.Drawing.Color.Black;
-			this.btnClear.Location = new System.Drawing.Point(673, 615);
+			this.btnClear.Location = new System.Drawing.Point(768, 626);
 			this.btnClear.Name = "btnClear";
 			this.btnClear.ShadowDecoration.BorderRadius = 10;
 			this.btnClear.ShadowDecoration.Color = System.Drawing.Color.Transparent;
@@ -541,7 +597,7 @@
 			// 
 			// btn_save
 			// 
-			this.btn_save.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btn_save.BorderRadius = 10;
 			this.btn_save.BorderThickness = 2;
 			this.btn_save.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -551,7 +607,7 @@
 			this.btn_save.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(125)))), ((int)(((byte)(232)))));
 			this.btn_save.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btn_save.ForeColor = System.Drawing.Color.Black;
-			this.btn_save.Location = new System.Drawing.Point(313, 615);
+			this.btn_save.Location = new System.Drawing.Point(408, 626);
 			this.btn_save.Name = "btn_save";
 			this.btn_save.ShadowDecoration.BorderRadius = 10;
 			this.btn_save.ShadowDecoration.Color = System.Drawing.Color.Transparent;
@@ -685,7 +741,7 @@
 			this.guna2Panel7_FoodDetail.Location = new System.Drawing.Point(0, 0);
 			this.guna2Panel7_FoodDetail.Margin = new System.Windows.Forms.Padding(2);
 			this.guna2Panel7_FoodDetail.Name = "guna2Panel7_FoodDetail";
-			this.guna2Panel7_FoodDetail.Size = new System.Drawing.Size(1037, 64);
+			this.guna2Panel7_FoodDetail.Size = new System.Drawing.Size(1226, 64);
 			this.guna2Panel7_FoodDetail.TabIndex = 1;
 			// 
 			// btnBackToList
@@ -709,61 +765,20 @@
 			this.btnBackToList.Text = "Back";
 			this.btnBackToList.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// panel1_1
-			// 
-			this.panel1_1.Controls.Add(this.lblCategory);
-			this.panel1_1.Controls.Add(this.pictureBox1);
-			this.panel1_1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel1_1.Location = new System.Drawing.Point(0, 0);
-			this.panel1_1.Margin = new System.Windows.Forms.Padding(2);
-			this.panel1_1.Name = "panel1_1";
-			this.panel1_1.Size = new System.Drawing.Size(1051, 83);
-			this.panel1_1.TabIndex = 4;
-			// 
-			// lblCategory
-			// 
-			this.lblCategory.AutoSize = true;
-			this.lblCategory.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblCategory.Location = new System.Drawing.Point(127, 47);
-			this.lblCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-			this.lblCategory.Name = "lblCategory";
-			this.lblCategory.Size = new System.Drawing.Size(104, 26);
-			this.lblCategory.TabIndex = 1;
-			this.lblCategory.Text = "Category";
-			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-			this.pictureBox1.Location = new System.Drawing.Point(33, 22);
-			this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(70, 63);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox1.TabIndex = 0;
-			this.pictureBox1.TabStop = false;
-			// 
-			// listBox1
-			// 
-			this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.listBox1.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.listBox1.FormattingEnabled = true;
-			this.listBox1.ItemHeight = 21;
-			this.listBox1.Location = new System.Drawing.Point(288, 266);
-			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(613, 149);
-			this.listBox1.TabIndex = 13;
-			// 
 			// CategoryView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
-			this.ClientSize = new System.Drawing.Size(1051, 705);
-			this.Controls.Add(this.panel1_1);
+			this.ClientSize = new System.Drawing.Size(1240, 790);
 			this.Controls.Add(this.tabControl_Food);
+			this.Controls.Add(this.panel1_1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "CategoryView";
 			this.Text = "Category";
+			this.panel1_1.ResumeLayout(false);
+			this.panel1_1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.tabControl_Food.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
 			this.guna2Panel1.ResumeLayout(false);
@@ -784,14 +799,14 @@
 			this.guna2Panel6.ResumeLayout(false);
 			this.guna2Panel6.PerformLayout();
 			this.guna2Panel7_FoodDetail.ResumeLayout(false);
-			this.panel1_1.ResumeLayout(false);
-			this.panel1_1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
+		private System.Windows.Forms.Panel panel1_1;
+		private System.Windows.Forms.Label lblCategory;
+		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.TabControl tabControl_Food;
 		private System.Windows.Forms.TabPage tabPage1;
 		private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
@@ -807,21 +822,26 @@
 		private System.Windows.Forms.Label lblDrinkItem;
 		private System.Windows.Forms.TabPage tabPage2;
 		private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
-		private Guna.UI2.WinForms.Guna2Panel guna2Panel5_FoodList;
-		private System.Windows.Forms.TabPage tabPage3;
-		private System.Windows.Forms.Panel panel3;
-		private Guna.UI2.WinForms.Guna2Button btnSearch;
-		private System.Windows.Forms.TextBox txtSearch;
-		private System.Windows.Forms.PictureBox pictureBox4;
-		private Guna.UI2.WinForms.Guna2Button btnBackCategory;
+		private Guna.UI2.WinForms.Guna2Button btnDelete;
+		private Guna.UI2.WinForms.Guna2Button btnEdit;
+		private Guna.UI2.WinForms.Guna2Button btnAdd;
 		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-		private Guna.UI2.WinForms.Guna2Button btnDelete;
-		private Guna.UI2.WinForms.Guna2Button btnEdit;
-		private Guna.UI2.WinForms.Guna2Button btnAdd;
+		private System.Windows.Forms.Panel panel3;
+		private Guna.UI2.WinForms.Guna2Button btnSearch;
+		private System.Windows.Forms.TextBox txtSearch;
+		private System.Windows.Forms.PictureBox pictureBox4;
+		private Guna.UI2.WinForms.Guna2Panel guna2Panel5_FoodList;
+		private Guna.UI2.WinForms.Guna2Button btnBackCategory;
+		private System.Windows.Forms.TabPage tabPage3;
 		private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
+		private System.Windows.Forms.ListBox listBox1;
+		private Guna.UI2.WinForms.Guna2Button btnClear;
+		private Guna.UI2.WinForms.Guna2Button btn_save;
+		private Guna.UI2.WinForms.Guna2Button btnAdd_Ingredient;
+		private System.Windows.Forms.Label label10;
 		private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
 		private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
 		private System.Windows.Forms.Label label9;
@@ -830,13 +850,5 @@
 		private System.Windows.Forms.Label label6;
 		private Guna.UI2.WinForms.Guna2Panel guna2Panel7_FoodDetail;
 		private Guna.UI2.WinForms.Guna2Button btnBackToList;
-		private Guna.UI2.WinForms.Guna2Button btnClear;
-		private Guna.UI2.WinForms.Guna2Button btn_save;
-		private Guna.UI2.WinForms.Guna2Button btnAdd_Ingredient;
-		private System.Windows.Forms.Label label10;
-		private System.Windows.Forms.Panel panel1_1;
-		private System.Windows.Forms.Label lblCategory;
-		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.ListBox listBox1;
 	}
 }
