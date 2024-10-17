@@ -9,14 +9,22 @@ namespace CoffeeShop.Presenter
 {
 	public class EditIngredientPresenter
 	{
+		/// <summary>
+		/// View
+		/// </summary>
 		private IEditIngredientView editIngredientView;
 
+
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="view">View</param>
 		public EditIngredientPresenter(IEditIngredientView view)
 		{
 			this.editIngredientView = view;
 
 			// Show Form
-			this.editIngredientView.Show();
+			this.editIngredientView.ShowDialog();
 		}
 
 	}

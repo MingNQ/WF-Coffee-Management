@@ -46,7 +46,7 @@ namespace CoffeeShop.View.MainFrame
 
 			btnAdd_Ingredient.Click += delegate
 			{
-				ShowEditDialogCheckList?.Invoke(this, EventArgs.Empty);
+				ShowIngredientCheckList?.Invoke(this, EventArgs.Empty);
 			};
 
 			//dki su kien cho nut View-Drink
@@ -111,6 +111,10 @@ namespace CoffeeShop.View.MainFrame
 
 		}
 
+		#region private fields
+
+		#endregion
+
 		#region public fields
 
 		/// <summary>
@@ -142,7 +146,7 @@ namespace CoffeeShop.View.MainFrame
 		/// <summary>
 		/// Show Edit Dialog
 		/// </summary>
-		public event EventHandler ShowEditDialogCheckList;
+		public event EventHandler ShowIngredientCheckList;
 
 		/// <summary>
 		/// Show Food View Page

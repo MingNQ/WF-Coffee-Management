@@ -16,7 +16,7 @@ namespace CoffeeShop.Presenter
             this.editCategoryView = view;
 
             // Show Form
-            this.editCategoryView.Show();
+            this.editCategoryView.ShowDialog();
         }
 
     }

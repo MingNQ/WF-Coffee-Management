@@ -13,29 +13,75 @@ namespace CoffeeShop.View
 {
     public partial class CustomerView : Form, ICustomerView
     {
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public CustomerView()
+		#region Fields
+
+		/// <summary>
+		/// Instance for Customer
+		/// </summary>
+		private static CustomerView instance;
+
+		private bool isEdit;
+		private bool isSuccessful;
+
+		#endregion
+
+		#region Properties
+		public bool IsEdit { get => isEdit; set => isEdit = value; }
+		public bool IsSuccessful { get => isSuccessful; set => isSuccessful = value; }
+
+		#endregion
+
+		#region Events
+		public event EventHandler AddNewEvent;
+		public event EventHandler EditEvent;
+		public event EventHandler SearchEvent;
+		public event EventHandler DeleteEvent;
+		public event EventHandler SaveEvent;
+		public event EventHandler ClearEvent;
+		public event EventHandler BackToListEvent;
+		#endregion
+
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		public CustomerView()
         {
             InitializeComponent();
             AssociateAndRaiseViewEvents();
         }
 
-        #region private fields
-        /// <summary>
-        /// Instance for Customer
-        /// </summary>
-        private static CustomerView instance;
+		#region private fields
+
+		/// <summary>
+		/// Asssociate And Raise Event
+		/// </summary>
+		private void AssociateAndRaiseViewEvents()
+		{
+
+			//Add new
+			btnAdd.Click += delegate
+			{
+				AddNewEvent?.Invoke(this, EventArgs.Empty);
+
+			};
+
+			//Edit
+			btnEdit.Click += delegate
+			{
+				EditEvent?.Invoke(this, EventArgs.Empty);
+
+			};
+
+		}
 		#endregion
 
 		#region public fields
-        /// <summary>
-        /// Get Instance for Customer
-        /// </summary>
-        /// <param name="parentContainer">Parent Container</param>
-        /// <returns>Instance</returns>
-        public static CustomerView GetInstance(Form parentContainer)
+		/// <summary>
+		/// Get Instance for Customer
+		/// </summary>
+		/// <param name="parentContainer">Parent Container</param>
+		/// <returns>Instance</returns>
+		public static CustomerView GetInstance(Form parentContainer)
         {
             if (instance == null || instance.IsDisposed)
             { 
@@ -54,26 +100,6 @@ namespace CoffeeShop.View
         }
         #endregion
 
-        public event EventHandler AddNewEvent;
-        public event EventHandler EditEvent;
-
-        private void AssociateAndRaiseViewEvents()
-        {
-
-            //Add new
-            btnAddNew.Click += delegate
-            {
-                AddNewEvent?.Invoke(this, EventArgs.Empty);
-
-            };
-            //Edit
-            btnEdit.Click += delegate
-            {
-                EditEvent?.Invoke(this, EventArgs.Empty);
-
-            };
-
-        }
 	}
    
 

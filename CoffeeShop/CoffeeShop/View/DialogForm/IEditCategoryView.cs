@@ -14,7 +14,7 @@ namespace CoffeeShop.View.DialogCheckList
         /// <summary>
         /// Show Diaglog
         /// </summary>
-        void Show();
+        void ShowDialog();
 
         /// <summary>
         /// Hide Dialog

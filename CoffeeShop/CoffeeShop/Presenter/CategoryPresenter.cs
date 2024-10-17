@@ -28,7 +28,7 @@ namespace CoffeeShop.Presenter
 			// Show form
 			this.categoryView.Show();
 
-			this.categoryView.ShowEditDialogCheckList += ShowEditDialogCheckList;
+			this.categoryView.ShowIngredientCheckList += ShowIngredientCheckList;
 
 		}
 
@@ -37,7 +37,7 @@ namespace CoffeeShop.Presenter
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void ShowEditDialogCheckList(object sender, EventArgs e)
+		private void ShowIngredientCheckList(object sender, EventArgs e)
 		{
 			IEditCategoryView view = EditCategoryView.GetInstance();
 

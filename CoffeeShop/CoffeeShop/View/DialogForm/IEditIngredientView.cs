@@ -12,14 +12,13 @@ namespace CoffeeShop.View.DialogForm
 		string TittleHeader { get; set; }
 
 		/// <summary>
-		/// Show Diaglog
-		/// </summary>
-		void Show();
-
-		/// <summary>
 		/// Hide Dialog
 		/// </summary>
 		void Hide();
 
+		/// <summary>
+		/// Show Diaglog
+		/// </summary>
+		void ShowDialog();
 	}
 }

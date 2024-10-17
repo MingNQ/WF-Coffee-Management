@@ -24,6 +24,10 @@ namespace CoffeeShop.View.DialogForm
 		}
 
 		#endregion
+
+		/// <summary>
+		/// Constructor
+		/// </summary>
 		public EditIngredientView()
 		{
 			InitializeComponent();
@@ -53,6 +57,14 @@ namespace CoffeeShop.View.DialogForm
 			}
 
 			return instance;
+		}
+
+		/// <summary>
+		/// Show As Dialog 
+		/// </summary>
+		void IEditIngredientView.ShowDialog()
+		{
+			ShowDialog();
 		}
 
 		#region Events

@@ -17,7 +17,7 @@ namespace CoffeeShop.View.MainFrame
 		void Show();
 
 		#region Events
-		event EventHandler ShowEditDialogCheckList;
+		event EventHandler ShowIngredientCheckList;
 		//them skien cho nut View-Drink
 		event EventHandler ViewDrinkEvent;
 		#endregion

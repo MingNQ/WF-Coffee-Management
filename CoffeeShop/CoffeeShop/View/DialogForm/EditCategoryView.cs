@@ -55,7 +55,19 @@ namespace CoffeeShop.View.DialogCheckList
             return instance;
         }
 
-        #region Events
-        #endregion
-    }
+		#region Methods
+
+		/// <summary>
+		/// Show As Dialog
+		/// </summary>
+		void IEditCategoryView.ShowDialog()
+		{
+            ShowDialog();
+		}
+
+		#endregion
+
+		#region Events
+		#endregion
+	}
 }

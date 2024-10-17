@@ -12,6 +12,15 @@ namespace CoffeeShop.View
 {
 	public partial class DashboardView : Form, IDashboardView
 	{
+		#region Fields
+
+		/// <summary>
+		/// Instance for Dashboard view
+		/// </summary>
+		private static DashboardView instance;
+
+		#endregion
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
@@ -21,10 +30,6 @@ namespace CoffeeShop.View
 		}
 
 		#region private fields
-		/// <summary>
-		/// Instance for Dashboard view
-		/// </summary>
-		private static DashboardView instance;
 
 		#endregion
 
