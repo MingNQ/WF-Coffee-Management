@@ -6,22 +6,20 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop.View.MainFrame
 {
-    public interface ICategoryView
-    {
+	public interface ICategoryView
+	{
 
-        bool IsEdit { get; set; }
+		bool IsEdit { get; set; }
 
-        /// <summary>
-        /// Show Form
-        /// </summary>
-        void Show();
-        //phuong thuc de hien thi chi tiet do uong
-        void ShowDrinkDetails();
+		/// <summary>
+		/// Show Form
+		/// </summary>
+		void Show();
 
-        #region Events
-        event EventHandler ShowEditDialogCheckList;
-        //them skien cho nut View-Drink
-        event EventHandler ViewDrinkClicked;
-        #endregion
-    }
+		#region Events
+		event EventHandler ShowEditDialogCheckList;
+		//them skien cho nut View-Drink
+		event EventHandler ViewDrinkEvent;
+		#endregion
+	}
 }
