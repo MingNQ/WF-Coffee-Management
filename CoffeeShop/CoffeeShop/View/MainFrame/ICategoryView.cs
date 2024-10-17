@@ -8,9 +8,18 @@ namespace CoffeeShop.View.MainFrame
 {
 	public interface ICategoryView
 	{
+
+		bool IsEdit { get; set; }
+
 		/// <summary>
-		/// Show form
+		/// Show Form
 		/// </summary>
 		void Show();
+
+		#region Events
+		event EventHandler ShowEditDialogCheckList;
+		//them skien cho nut View-Drink
+		event EventHandler ViewDrinkEvent;
+		#endregion
 	}
 }
