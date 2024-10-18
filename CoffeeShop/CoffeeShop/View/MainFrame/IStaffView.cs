@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CoffeeShop.View.MainFrame
 {
@@ -14,6 +15,8 @@ namespace CoffeeShop.View.MainFrame
 
 		// Updating...
 		void Show();
+
+		void SetLPetListBindingSource(BindingSource staffList);
 
 		event EventHandler SearchEvent;
 		event EventHandler AddNewEvent;

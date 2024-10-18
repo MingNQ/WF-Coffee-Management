@@ -1,4 +1,6 @@
-﻿using CoffeeShop.View;
+﻿using CoffeeShop._Repositories;
+using CoffeeShop.Model.InterfaceModel;
+using CoffeeShop.View;
 using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
@@ -16,15 +18,18 @@ namespace CoffeeShop.Presenter
         /// </summary>
 		private IMainView mainView;
 
+		private readonly string sqlConnectionString;
+
 		#endregion
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="view">View</param>
-		public MainPresenter(IMainView view)
+		public MainPresenter(IMainView view, string sqlConnectionString)
         {
             this.mainView = view;
+			this.sqlConnectionString = sqlConnectionString;
             this.mainView.ShowDashboardView += ShowDashboardView;
             this.mainView.ShowStaffView += ShowStaffView;
 			this.mainView.ShowCustomerView += ShowCustomerView;
@@ -53,7 +58,9 @@ namespace CoffeeShop.Presenter
 		private void ShowStaffView(object sender, EventArgs e)
 		{
 			IStaffView view = StaffView.GetInstance((MainView)mainView);
-			new StaffPresenter(view);
+			IStaffRepository repository = new StaffRepository(sqlConnectionString);
+
+			new StaffPresenter(view, repository);
 		}
 
 		/// <summary>

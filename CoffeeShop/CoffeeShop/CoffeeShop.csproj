@@ -37,6 +37,7 @@
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.3.5\lib\net40\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
@@ -50,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Common\Gender.cs" />
+    <Compile Include="Model\InterfaceModel\IStaffRepository.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\StaffModel.cs" />
     <Compile Include="Presenter\CategoryPresenter.cs" />
@@ -137,6 +140,8 @@
     <Compile Include="View\MainFrame\StaffView.Designer.cs">
       <DependentUpon>StaffView.cs</DependentUpon>
     </Compile>
+    <Compile Include="_Repositories\BaseRepository.cs" />
+    <Compile Include="_Repositories\StaffRepository.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

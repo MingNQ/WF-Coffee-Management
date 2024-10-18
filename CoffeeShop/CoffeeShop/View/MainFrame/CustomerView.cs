@@ -20,13 +20,28 @@ namespace CoffeeShop.View
 		/// </summary>
 		private static CustomerView instance;
 
+		/// <summary>
+		/// Check if edit
+		/// </summary>
 		private bool isEdit;
+		
+		/// <summary>
+		/// Check if successful
+		/// </summary>
 		private bool isSuccessful;
 
 		#endregion
 
 		#region Properties
+
+		/// <summary>
+		/// Check if edit
+		/// </summary>
 		public bool IsEdit { get => isEdit; set => isEdit = value; }
+
+		/// <summary>
+		/// Check if successful
+		/// </summary>
 		public bool IsSuccessful { get => isSuccessful; set => isSuccessful = value; }
 
 		#endregion

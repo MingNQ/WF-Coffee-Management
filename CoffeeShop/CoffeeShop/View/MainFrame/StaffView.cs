@@ -185,6 +185,15 @@ namespace CoffeeShop.View
 
             return instance;
         }
+
+        /// <summary>
+        /// Get Data
+        /// </summary>
+        /// <param name="staffList"></param>
+        public void SetLPetListBindingSource(BindingSource staffList)
+        {
+            this.dgvStaff.DataSource = staffList;
+        }
         #endregion
-	}
+    }
 }
