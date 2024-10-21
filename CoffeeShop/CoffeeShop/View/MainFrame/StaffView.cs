@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -71,21 +72,118 @@ namespace CoffeeShop.View
 		public StaffView()
         {
             InitializeComponent();
-            AssociateAndRaiseNewEvents();
+            InitializeDataGridView();
+
+            AssociateAndRaiseEvents();
             tabStaff.TabPages.Remove(tabPageStaffDetail);
         }
 
         #region private fields
 
         /// <summary>
-        /// Associate And Raise New Event
+        /// Initialize data grid view
         /// </summary>
-        private void AssociateAndRaiseNewEvents()
+        private void InitializeDataGridView()
+        {
+            dgvStaff.AllowUserToAddRows = false;
+            dgvStaff.AllowUserToResizeRows = false;
+            dgvStaff.RowHeadersVisible = false;
+            dgvStaff.AutoGenerateColumns = false;
+            dgvStaff.MultiSelect = false;
+            dgvStaff.ReadOnly = true;
+
+            // Change color for header row
+            dgvStaff.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 251, 233);
+            dgvStaff.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold); // Kiểu chữ
+
+            // ID
+            DataGridViewTextBoxColumn colStaffId = new DataGridViewTextBoxColumn();
+            colStaffId.HeaderText = "Staff ID";
+            colStaffId.Width = 100;
+            colStaffId.DataPropertyName = "StaffID";
+            dgvStaff.Columns.Add(colStaffId);
+
+            // Name
+            DataGridViewTextBoxColumn colStaffName = new DataGridViewTextBoxColumn();
+            colStaffName.HeaderText = "Staff Name";
+            colStaffName.Width = 250;
+            colStaffName.DataPropertyName = "StaffName";
+            dgvStaff.Columns.Add(colStaffName);
+
+            // Phone
+            DataGridViewTextBoxColumn colPhone = new DataGridViewTextBoxColumn();
+            colPhone.HeaderText = "Staff Phone";
+            colPhone.Width = 100;
+            colPhone.DataPropertyName = "PhoneNumber";
+            dgvStaff.Columns.Add(colPhone);
+
+            // Date
+            DataGridViewTextBoxColumn colDate = new DataGridViewTextBoxColumn();
+            colDate.HeaderText = "Date of Birth";
+            colDate.Width = 140;
+            colDate.DataPropertyName = "DateOfBirth";
+            dgvStaff.Columns.Add(colDate);
+
+            // Email
+            DataGridViewTextBoxColumn colEmail = new DataGridViewTextBoxColumn();
+            colEmail.HeaderText = "Email";
+            colEmail.Width = 300;
+            colEmail.DataPropertyName = "Email";
+            dgvStaff.Columns.Add(colEmail);
+
+            // Role
+            DataGridViewTextBoxColumn colRole = new DataGridViewTextBoxColumn();
+            colRole.HeaderText = "Role";
+            colRole.Width = 100;
+            colRole.DataPropertyName = "Role";
+            dgvStaff.Columns.Add(colRole);
+
+            // Gender
+            DataGridViewTextBoxColumn colGender = new DataGridViewTextBoxColumn();
+            colGender.HeaderText = "Gender";
+            colGender.Width = 80;
+            colGender.DataPropertyName = "Gender";
+            dgvStaff.Columns.Add(colGender);
+
+            dgvStaff.CellFormatting += dgvStaff_CellFormatting;
+        }
+
+        /// <summary>
+        /// Event change looks of data grid view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvStaff_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex >= 0) 
+            {
+                if (e.RowIndex % 2 == 0) 
+                {
+                    dgvStaff.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGray;
+                }
+                else 
+                {
+                    dgvStaff.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Associate And Raise Events
+        /// </summary>
+        private void AssociateAndRaiseEvents()
         {
             // Search
-            btnSearch.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
+            btnSearch.Click += delegate 
+            {
+                btnDelete.Enabled = false;
+                btnEdit.Enabled = false;
+                SearchEvent?.Invoke(this, EventArgs.Empty); 
+            };
             txtSearch.KeyDown += (s, e) =>
             {
+                btnDelete.Enabled = false;
+                btnEdit.Enabled = false;
                 if (e.KeyCode == Keys.Enter)
                     SearchEvent?.Invoke(this, EventArgs.Empty);
             };
@@ -139,6 +237,9 @@ namespace CoffeeShop.View
             // Back
             btnBack.Click += delegate
             {
+                btnDelete.Enabled = false;
+                btnEdit.Enabled = false;
+
                 BackToListEvent?.Invoke(this, EventArgs.Empty);
 				tabStaff.TabPages.Remove(tabPageStaffDetail);
 				tabStaff.TabPages.Add(tabPageStaffList);
@@ -151,13 +252,16 @@ namespace CoffeeShop.View
                 btnEdit.Enabled = true;
             };
 
-            dgvStaff.CellDoubleClick += delegate
+            dgvStaff.CellDoubleClick += (s, e) =>
             {
-				EditEvent?.Invoke(this, EventArgs.Empty);
-				tabStaff.TabPages.Remove(tabPageStaffList);
-				tabStaff.TabPages.Add(tabPageStaffDetail);
-				tabPageStaffDetail.Text = "Edit Staff";
-			};
+                if (e.RowIndex >= 0)
+                {
+                    EditEvent?.Invoke(this, EventArgs.Empty);
+                    tabStaff.TabPages.Remove(tabPageStaffList);
+                    tabStaff.TabPages.Add(tabPageStaffDetail);
+                    tabPageStaffDetail.Text = "Edit Staff";
+                }
+            };
 		}
 
 		#endregion
