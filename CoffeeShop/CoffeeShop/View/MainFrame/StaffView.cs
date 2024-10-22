@@ -132,6 +132,22 @@ namespace CoffeeShop.View
             set => rdoOther.Checked = value; 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsOpen 
+        { 
+            get => Application.OpenForms.OfType<StaffView>().Any(); 
+        }
+        
+        /// <summary>
+        /// Search value
+        /// </summary>
+        public string SearchValue 
+        { 
+            get => txtSearch.Text; 
+        }
+
         #endregion
 
         #region Events
@@ -345,6 +361,9 @@ namespace CoffeeShop.View
             };
 		}
 
+        /// <summary>
+        /// Initialize ComboBox
+        /// </summary>
         private void InitializeComboBoxRole()
         {
             cbRole.Items.Add("Quản lí");

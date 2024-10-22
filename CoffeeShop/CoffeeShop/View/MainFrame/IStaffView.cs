@@ -21,9 +21,13 @@ namespace CoffeeShop.View.MainFrame
 		bool Female { get; set; }
 		bool Other { get; set; }
 
+		string SearchValue { get; }
+
         bool IsEdit { get; set; }
 
 		bool IsSuccessful { get; set; }
+
+		bool IsOpen { get; }
 
 		// Updating...
 		void Show();

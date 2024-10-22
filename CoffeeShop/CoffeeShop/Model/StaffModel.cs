@@ -37,7 +37,7 @@ namespace CoffeeShop.Model
 
 
         [DisplayName("Phone Number")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "Staff name must be between 5 and 50 characters")]
+        [Range(100000000, int.MaxValue, ErrorMessage = "Phone number is must more than 10 character")]
         public int PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
 
         [DisplayName("Date of Birth")]
@@ -57,7 +57,6 @@ namespace CoffeeShop.Model
         public string Role { get { return role; } set { role = value; } }
 
         [DisplayName("Gender")]
-        [Required(ErrorMessage ="Gender is required")]
         public Gender Gender { get { return gender; } set { gender = value; } }
 
         #endregion

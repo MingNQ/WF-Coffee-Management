@@ -10,7 +10,7 @@ namespace CoffeeShop.Model.InterfaceModel
     {
         void Add(StaffModel staffModel);
         void Edit(StaffModel staffModel);
-        void Delete(StaffModel staffModel);
+        void Delete(string staffID);
         IEnumerable<StaffModel> GetAll();
         IEnumerable<StaffModel> GetByValue(string value);
     }

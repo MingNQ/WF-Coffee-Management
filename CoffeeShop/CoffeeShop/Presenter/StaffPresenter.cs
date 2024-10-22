@@ -18,8 +18,19 @@ namespace CoffeeShop.Presenter
 		/// </summary>
 		private IStaffView staffView;
 
+		/// <summary>
+		/// 
+		/// </summary>
 		private IStaffRepository repository;
+		
+		/// <summary>
+		/// 
+		/// </summary>
 		private BindingSource staffBindingSource;
+		
+		/// <summary>
+		/// 
+		/// </summary>
 		private IEnumerable<StaffModel> staffList;
 		#endregion
 
@@ -29,30 +40,39 @@ namespace CoffeeShop.Presenter
 		/// <param name="view">Staff view</param>
 		public StaffPresenter(IStaffView view, IStaffRepository repository)
 		{
-			this.staffBindingSource = new BindingSource();
 			this.staffView = view;
-			this.repository = repository;
 
+            if (!staffView.IsOpen)
+            {
+                this.staffBindingSource = new BindingSource();
+                this.repository = repository;
 
-			this.staffView.AddNewEvent += AddNewEvent;
-			this.staffView.EditEvent += EditEvent;
-			this.staffView.DeleteEvent += DeleteEvent;
-			this.staffView.SaveEvent += SaveEvent;
-			this.staffView.ClearEvent += ClearEvent;
-			this.staffView.BackToListEvent += BackToListEvent;
+			    // Subcribe events
+			    this.staffView.AddNewEvent += AddNewEvent;
+			    this.staffView.EditEvent += EditEvent;
+			    this.staffView.DeleteEvent += DeleteEvent;
+                this.staffView.SearchEvent += SearchEvent;
+                this.staffView.SaveEvent += SaveEvent;
+			    this.staffView.ClearEvent += ClearEvent;
+			    this.staffView.BackToListEvent += BackToListEvent;
 
-			// Set Staff List binding source
-			this.staffView.SetLPetListBindingSource(staffBindingSource);
+                // Set Staff List binding source
+                this.staffView.SetLPetListBindingSource(staffBindingSource);
 
-			// Load Staff List
-			LoadAllStaff();
+                // Load Staff List
+                LoadAllStaff();
+            }
 
             // Display Staff view
             this.staffView.Show();
         }
 
+
         #region private fields
 
+        /// <summary>
+        /// Load staff list
+        /// </summary>
         private void LoadAllStaff()
         {
 			staffList = repository.GetAll();
@@ -60,7 +80,7 @@ namespace CoffeeShop.Presenter
         }
 
         /// <summary>
-        /// 
+        /// Add new staff
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -69,9 +89,8 @@ namespace CoffeeShop.Presenter
 			staffView.IsEdit = false;   
         }
 
-
 		/// <summary>
-		/// 
+		/// Edit staff
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
@@ -90,33 +109,107 @@ namespace CoffeeShop.Presenter
             staffView.IsEdit = true;
         }
 
+        /// <summary>
+        /// Search Staff
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SearchEvent(object sender, EventArgs e)
+        {
+            bool emptyValue = string.IsNullOrWhiteSpace(this.staffView.SearchValue);
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
+            if (!emptyValue)
+            {
+                staffList = repository.GetByValue(this.staffView.SearchValue);
+            }
+            else
+            {
+                staffList = repository.GetAll();
+            }
+            staffBindingSource.DataSource = staffList;
+        }
+
+
+        /// <summary>
+        /// Delete staff
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DeleteEvent(object sender, EventArgs e)
         {
+            try
+            {
+                var staff = (StaffModel)staffBindingSource.Current;
+                repository.Delete(staff.StaffID);
+                staffView.IsSuccessful = true;
+                LoadAllStaff();
+                MessageBox.Show("Successul delete staff", "Notify", MessageBoxButtons.OK, MessageBoxIcon.None);
+            }
+            catch
+            {
+                staffView.IsSuccessful = false;
+
+				MessageBox.Show("An error occured, could not delete this staff!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
 		/// <summary>
-		/// 
+		/// Save staff
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
         private void SaveEvent(object sender, EventArgs e)
         {
+            var staff = new StaffModel();
+
+			//staff.StaffID = staffView.StaffID;
+			
+            try
+            {
+                staff.StaffName = staffView.StaffName;
+                staff.PhoneNumber = Convert.ToInt32(staffView.PhoneNumber);
+                staff.DateOfBirth = DateTime.Parse(staffView.DateOfBirth);
+                staff.Email = staffView.Email;
+                staff.Role = staffView.StaffRole;
+                staff.Gender = staffView.Male ? Model.Common.Gender.Male : (staffView.Female ? Model.Common.Gender.Female : Model.Common.Gender.Other);
+
+                new Common.ModelValidation().Validate(staff);
+
+                if (staffView.IsEdit) // Edit model
+                {
+                    repository.Edit(staff);
+                }
+                else // Add new model
+                {
+                    repository.Add(staff);
+                }
+
+                staffView.IsSuccessful = true;
+                LoadAllStaff();
+                ClearFieldInformation();
+            }
+            catch (Exception ex)
+            {
+                staffView.IsSuccessful = false;
+				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 		/// <summary>
-		/// 
+		/// Clear information
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
         private void ClearEvent(object sender, EventArgs e)
         {
-			ClearFieldInformation();
+			if (staffView.IsEdit && 
+				MessageBox.Show("Are you sure to clear all information? Information once cleared can't be recovered!", 
+						"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
+				DialogResult.Yes
+				)
+			{
+				ClearFieldInformation();
+            }
         }
 
 		/// <summary>
@@ -144,6 +237,9 @@ namespace CoffeeShop.Presenter
             staffView.Other = false;
         }
 
+        #endregion
+
+        #region public fields
         #endregion
     }
 }

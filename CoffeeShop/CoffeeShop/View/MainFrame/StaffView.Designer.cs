@@ -328,7 +328,7 @@
             this.btnBack.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnBack.ImageSize = new System.Drawing.Size(25, 25);
             this.btnBack.Location = new System.Drawing.Point(37, 0);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
             this.btnBack.PressedColor = System.Drawing.Color.Transparent;
             this.btnBack.Size = new System.Drawing.Size(119, 54);
@@ -406,13 +406,13 @@
             this.dtpDob.FillColor = System.Drawing.Color.White;
             this.dtpDob.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDob.ForeColor = System.Drawing.Color.Black;
-            this.dtpDob.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtpDob.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDob.Location = new System.Drawing.Point(340, 610);
             this.dtpDob.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpDob.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpDob.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDob.Name = "dtpDob";
-            this.dtpDob.Size = new System.Drawing.Size(379, 46);
+            this.dtpDob.Size = new System.Drawing.Size(257, 46);
             this.dtpDob.TabIndex = 22;
             this.dtpDob.Value = new System.DateTime(2024, 10, 7, 11, 4, 24, 43);
             // 
