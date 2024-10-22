@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop.Model.Common
 {
-    public enum Gender
+    public enum Role
     {
-        Male, 
-        Female,
-        Other 
+        Manager,
+        Bartender,
+        Serve
     }
 }

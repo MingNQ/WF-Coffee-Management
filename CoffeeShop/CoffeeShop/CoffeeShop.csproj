@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Common\Gender.cs" />
+    <Compile Include="Model\Common\Role.cs" />
     <Compile Include="Model\InterfaceModel\IStaffRepository.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\StaffModel.cs" />

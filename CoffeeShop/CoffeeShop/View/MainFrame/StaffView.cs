@@ -1,4 +1,5 @@
-﻿using CoffeeShop.View.MainFrame;
+﻿using CoffeeShop.Model.Common;
+using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,11 +53,90 @@ namespace CoffeeShop.View
             set { isSuccessful = value; }
         }
 
-		#endregion
+        /// <summary>
+        /// 
+        /// </summary>
+        public string StaffName 
+        { 
+            get => txtStaffName.Text; 
+            set => txtStaffName.Text = value; 
+        }
 
-		#region Events
+        /// <summary>
+        /// 
+        /// </summary>
+        public string PhoneNumber 
+        { 
+            get => txtPhone.Text; 
+            set => txtPhone.Text = value; 
+        }
 
-		public event EventHandler SearchEvent;
+        /// <summary>
+        /// 
+        /// </summary>
+        public string DateOfBirth 
+        { 
+            get => dtpDob.Text; 
+            set => dtpDob.Text = value; 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Email 
+        { 
+            get => txtEmail.Text; 
+            set => txtEmail.Text = value; 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string StaffRole 
+        { 
+            get => cbRole.Text;
+            set
+            {
+                if (value == "")
+                {
+                    cbRole.SelectedItem = null;
+                }
+                cbRole.Text = value;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool Male 
+        {
+            get => rdoMale.Checked; 
+            set => rdoMale.Checked = value; 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool Female 
+        { 
+            get => rdoFemale.Checked; 
+            set => rdoFemale.Checked = value; 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool Other 
+        { 
+            get => rdoOther.Checked; 
+            set => rdoOther.Checked = value; 
+        }
+
+        #endregion
+
+        #region Events
+
+        public event EventHandler SearchEvent;
 		public event EventHandler AddNewEvent;
 		public event EventHandler EditEvent;
 		public event EventHandler DeleteEvent;
@@ -73,6 +153,7 @@ namespace CoffeeShop.View
         {
             InitializeComponent();
             InitializeDataGridView();
+            InitializeComboBoxRole();
 
             AssociateAndRaiseEvents();
             tabStaff.TabPages.Remove(tabPageStaffDetail);
@@ -263,6 +344,13 @@ namespace CoffeeShop.View
                 }
             };
 		}
+
+        private void InitializeComboBoxRole()
+        {
+            cbRole.Items.Add("Quản lí");
+            cbRole.Items.Add("Pha chế");
+            cbRole.Items.Add("Phục vụ");
+        }
 
 		#endregion
 

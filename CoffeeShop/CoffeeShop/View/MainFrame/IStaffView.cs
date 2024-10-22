@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeShop.Model.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,15 +10,28 @@ namespace CoffeeShop.View.MainFrame
 {
 	public interface IStaffView
 	{
-		bool IsEdit { get; set; }
+		// Properties
+		//string StaffID { set; }
+		string StaffName { get; set; }
+		string PhoneNumber { get; set; }
+		string  DateOfBirth { get; set; }
+        string Email { get; set; }
+        string StaffRole { get; set; }
+        bool Male { get; set; }
+		bool Female { get; set; }
+		bool Other { get; set; }
+
+        bool IsEdit { get; set; }
 
 		bool IsSuccessful { get; set; }
 
 		// Updating...
 		void Show();
 
+		// Methods
 		void SetLPetListBindingSource(BindingSource staffList);
 
+		// Events
 		event EventHandler SearchEvent;
 		event EventHandler AddNewEvent;
 		event EventHandler EditEvent;
