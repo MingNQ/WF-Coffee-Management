@@ -215,7 +215,7 @@ namespace CoffeeShop.View
             DataGridViewTextBoxColumn colStaffName = new DataGridViewTextBoxColumn();
             colStaffName.HeaderText = "Staff Name";
             colStaffName.Width = 225;
-            colStaffName.DataPropertyName = "StaffName";
+            colStaffName.DataPropertyName = "Staff";
             dgvStaff.Columns.Add(colStaffName);
 
             // Phone
