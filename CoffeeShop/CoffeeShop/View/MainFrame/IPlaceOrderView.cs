@@ -8,5 +8,6 @@ namespace CoffeeShop.View.MainFrame
 {
 	internal interface IPlaceOrderView
 	{
+        
 	}
 }

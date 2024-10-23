@@ -26,6 +26,7 @@ namespace CoffeeShop.View
             btnCustomer.Click += delegate { ShowCustomerView?.Invoke(this, EventArgs.Empty); };
             btnStaff.Click += delegate { ShowStaffView?.Invoke(this, EventArgs.Empty); };
             btnIngredient.Click += delegate { ShowIngredientView?.Invoke(this, EventArgs.Empty); };
+            btnPlaceOrder.Click += delegate { ShowMenuOrderView?.Invoke(this, EventArgs.Empty); };
         }
 
 		#region Event
@@ -35,6 +36,7 @@ namespace CoffeeShop.View
 		public event EventHandler ShowStaffView;
 		public event EventHandler ShowCustomerView;
 		public event EventHandler ShowIngredientView;
-		#endregion
-	}
+        public event EventHandler ShowMenuOrderView;
+        #endregion
+    }
 }

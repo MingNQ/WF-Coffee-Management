@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -50,7 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\DataProcessor.cs" />
     <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="Model\Product.cs" />
     <Compile Include="Model\StaffModel.cs" />
     <Compile Include="Presenter\CategoryPresenter.cs" />
     <Compile Include="Presenter\CustomerPresenter.cs" />
@@ -58,6 +60,7 @@
     <Compile Include="Presenter\EditIngredientPresenter.cs" />
     <Compile Include="Presenter\IngredientPresenter.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
+    <Compile Include="Presenter\MenuOrderPresenter.cs" />
     <Compile Include="Presenter\StaffPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +71,13 @@
       <DependentUpon>EditIngredientView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\DialogForm\IEditIngredientView.cs" />
+    <Compile Include="View\DialogForm\IItemDetail.cs" />
+    <Compile Include="View\DialogForm\ItemDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogForm\ItemDetail.Designer.cs">
+      <DependentUpon>ItemDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainFrame\CategoryView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +101,7 @@
     <Compile Include="View\MainFrame\IDashboardView.cs" />
     <Compile Include="View\MainFrame\IIngredientView.cs" />
     <Compile Include="View\MainFrame\IMainView.cs" />
+    <Compile Include="View\MainFrame\IMenuOrderView.cs" />
     <Compile Include="View\MainFrame\IngredientView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +115,12 @@
     </Compile>
     <Compile Include="View\MainFrame\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainFrame\MenuOrderView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainFrame\MenuOrderView.Designer.cs">
+      <DependentUpon>MenuOrderView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MainFrame\PlaceOrderView.cs">
       <SubType>Form</SubType>
@@ -142,6 +159,9 @@
     <EmbeddedResource Include="View\DialogForm\EditIngredientView.resx">
       <DependentUpon>EditIngredientView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogForm\ItemDetail.resx">
+      <DependentUpon>ItemDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainFrame\CategoryView.resx">
       <DependentUpon>CategoryView.cs</DependentUpon>
     </EmbeddedResource>
@@ -156,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainFrame\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainFrame\MenuOrderView.resx">
+      <DependentUpon>MenuOrderView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainFrame\PlaceOrderView.resx">
       <DependentUpon>PlaceOrderView.cs</DependentUpon>

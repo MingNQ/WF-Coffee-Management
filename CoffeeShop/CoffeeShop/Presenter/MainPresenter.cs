@@ -30,6 +30,7 @@ namespace CoffeeShop.Presenter
 			this.mainView.ShowCustomerView += ShowCustomerView;
 			this.mainView.ShowCategoryView += ShowCategoryView;
 			this.mainView.ShowIngredientView += ShowIngredientView;
+			this.mainView.ShowMenuOrderView += ShowMenuOrderView;
         }
 
 
@@ -88,6 +89,16 @@ namespace CoffeeShop.Presenter
 			ICategoryView view = CategoryView.GetInstance((MainView)mainView);
 			new CategoryPresenter(view);
 		}
-		#endregion
-	}
+        /// <summary>
+        /// Event Show Menu Order View
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowMenuOrderView(object sender, EventArgs e)
+        {
+            IMenuOrderView view = MenuOrderView.GetInstance((MainView)mainView);
+			new MenuOrderPresenter(view);         
+        }
+        #endregion
+    }
 }
