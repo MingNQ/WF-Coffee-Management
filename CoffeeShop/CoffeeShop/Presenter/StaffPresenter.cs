@@ -163,8 +163,6 @@ namespace CoffeeShop.Presenter
         private void SaveEvent(object sender, EventArgs e)
         {
             var staff = new StaffModel();
-
-			//staff.StaffID = staffView.StaffID;
 			
             try
             {
@@ -186,7 +184,7 @@ namespace CoffeeShop.Presenter
                 {
                     // Generate ID
                     int id = Convert.ToInt32(staffList.Last().StaffID.Substring(2)) + 1;
-                    staff.StaffID = "NV" + id.ToString();
+                    staff.StaffID = "NV" + id.ToString("D3");
                     
                     repository.Add(staff);
                 }
