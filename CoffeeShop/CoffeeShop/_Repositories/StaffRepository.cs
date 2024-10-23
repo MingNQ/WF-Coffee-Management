@@ -37,7 +37,7 @@ namespace CoffeeShop._Repositories
 
                 command.Parameters.Add("@StaffID", SqlDbType.NVarChar).Value = staffModel.StaffID;
                 command.Parameters.Add("@StaffName", SqlDbType.NVarChar).Value = staffModel.StaffName;
-                command.Parameters.Add("@PhoneNumber", SqlDbType.Int).Value = staffModel.PhoneNumber;
+                command.Parameters.Add("@PhoneNumber", SqlDbType.VarChar).Value = staffModel.PhoneNumber;
                 command.Parameters.Add("@DateOfBirth", SqlDbType.DateTime).Value = staffModel.DateOfBirth;
                 command.Parameters.Add("@Email", SqlDbType.NVarChar).Value = staffModel.Email;
                 command.Parameters.Add("@Role", SqlDbType.NVarChar).Value = staffModel.Role;
@@ -79,7 +79,7 @@ namespace CoffeeShop._Repositories
                                         where StaffID = @id";
                 command.Parameters.Add("@id", SqlDbType.NVarChar).Value = staffModel.StaffID;
                 command.Parameters.Add("@name", SqlDbType.NVarChar).Value = staffModel.StaffName;
-                command.Parameters.Add("@phoneNumber", SqlDbType.Int).Value = staffModel.PhoneNumber;
+                command.Parameters.Add("@phoneNumber", SqlDbType.VarChar).Value = staffModel.PhoneNumber;
                 command.Parameters.Add("@dateOfBirth", SqlDbType.DateTime).Value = staffModel.DateOfBirth;
                 command.Parameters.Add("@email", SqlDbType.NVarChar).Value = staffModel.Email;
                 command.Parameters.Add("@role", SqlDbType.NVarChar).Value = staffModel.Role;
@@ -110,7 +110,7 @@ namespace CoffeeShop._Repositories
                         var staffModel = new StaffModel();
                         staffModel.StaffID = reader[0].ToString();
                         staffModel.StaffName = reader[1].ToString();
-                        staffModel.PhoneNumber = string.IsNullOrEmpty(reader[2].ToString()) ? 0 : (int)reader[2];
+                        staffModel.PhoneNumber = string.IsNullOrEmpty(reader[2].ToString()) ? "" : reader[2].ToString();
                         staffModel.DateOfBirth = (DateTime)reader[3];
                         staffModel.Email = reader[4].ToString();
                         staffModel.Role = reader[5].ToString();
@@ -153,7 +153,7 @@ namespace CoffeeShop._Repositories
                         var staffModel = new StaffModel();
                         staffModel.StaffID = reader[0].ToString();
                         staffModel.StaffName = reader[1].ToString();
-                        staffModel.PhoneNumber = string.IsNullOrEmpty(reader[2].ToString()) ? 0 : (int)reader[2];
+                        staffModel.PhoneNumber = string.IsNullOrEmpty(reader[2].ToString()) ? "" : reader[2].ToString();
                         staffModel.DateOfBirth = (DateTime)reader[3];
                         staffModel.Email = reader[4].ToString();
                         staffModel.Role = reader[5].ToString();

@@ -168,7 +168,7 @@ namespace CoffeeShop.Presenter
             {
                 staff.StaffID = staffView.StaffID;
                 staff.StaffName = staffView.StaffName;
-                staff.PhoneNumber = Convert.ToInt32(staffView.PhoneNumber);
+                staff.PhoneNumber = staffView.PhoneNumber;
                 staff.DateOfBirth = DateTime.Parse(staffView.DateOfBirth);
                 staff.Email = staffView.Email;
                 staff.Role = staffView.StaffRole;

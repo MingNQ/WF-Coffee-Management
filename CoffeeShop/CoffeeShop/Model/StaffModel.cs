@@ -17,7 +17,7 @@ namespace CoffeeShop.Model
 
         private string staffID;
         private string staffName;
-        private int phoneNumber;
+        private string phoneNumber;
         private DateTime dateOfBirth;
         private string email;
         private string role;
@@ -32,13 +32,15 @@ namespace CoffeeShop.Model
         
         [DisplayName("Staff Name")]
         [Required(ErrorMessage ="Staff name is required")]
+        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Name can't contain number or special characters")]
         [StringLength(50, MinimumLength = 5, ErrorMessage ="Staff name must be between 5 and 50 characters")]
         public string StaffName { get { return staffName; } set { staffName = value; } }
 
 
         [DisplayName("Phone Number")]
-        [Range(100000000, 99999999999, ErrorMessage = "Phone number is must equal or more than 10 digits")]
-        public int PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
+        [RegularExpression("([0-9]+)", ErrorMessage ="This must be number")]
+        [StringLength(12, MinimumLength = 10, ErrorMessage ="Phone number must be between 10 and 12 digits")]
+        public string PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
 
         [DisplayName("Date of Birth")]
         [Required(ErrorMessage ="Date is required")]
