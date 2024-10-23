@@ -8,8 +8,8 @@ namespace CoffeeShop.Model.Common
 {
     public enum Gender
     {
-        Male, 
         Female,
-        Other 
+        Male,
+        Other
     }
 }

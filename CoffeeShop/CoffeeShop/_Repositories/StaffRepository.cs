@@ -28,6 +28,22 @@ namespace CoffeeShop._Repositories
         /// <param name="staffModel"></param>
         public void Add(StaffModel staffModel)
         {
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "insert into Staff values (@StaffID, @StaffName, @PhoneNumber, @DateOfBirth, @Email, @Role, @Gender)";
+
+                command.Parameters.Add("@StaffID", SqlDbType.NVarChar).Value = staffModel.StaffID;
+                command.Parameters.Add("@StaffName", SqlDbType.NVarChar).Value = staffModel.StaffName;
+                command.Parameters.Add("@PhoneNumber", SqlDbType.Int).Value = staffModel.PhoneNumber;
+                command.Parameters.Add("@DateOfBirth", SqlDbType.DateTime).Value = staffModel.DateOfBirth;
+                command.Parameters.Add("@Email", SqlDbType.NVarChar).Value = staffModel.Email;
+                command.Parameters.Add("@Role", SqlDbType.NVarChar).Value = staffModel.Role;
+                command.Parameters.Add("@Gender", SqlDbType.Int).Value = staffModel.Gender;
+                command.ExecuteNonQuery();
+            }
         }
 
         /// <summary>
@@ -36,6 +52,15 @@ namespace CoffeeShop._Repositories
         /// <param name="staffID"></param>
         public void Delete(string staffID)
         {
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "delete from Staff where StaffID = @id";
+                command.Parameters.Add("@id", SqlDbType.NVarChar).Value = staffID;
+                command.ExecuteNonQuery();
+            }
         }
 
         /// <summary>
@@ -44,6 +69,24 @@ namespace CoffeeShop._Repositories
         /// <param name="staffModel"></param>
         public void Edit(StaffModel staffModel)
         {
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"update Staff
+                                        set StaffName = @name, StaffPhoneNumber = @phoneNumber, DateOfBirth = @dateOfBirth, Email = @email, tRole = @role, Gender = @gender
+                                        where StaffID = @id";
+                command.Parameters.Add("@id", SqlDbType.NVarChar).Value = staffModel.StaffID;
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = staffModel.StaffName;
+                command.Parameters.Add("@phoneNumber", SqlDbType.Int).Value = staffModel.PhoneNumber;
+                command.Parameters.Add("@dateOfBirth", SqlDbType.DateTime).Value = staffModel.DateOfBirth;
+                command.Parameters.Add("@email", SqlDbType.NVarChar).Value = staffModel.Email;
+                command.Parameters.Add("@role", SqlDbType.NVarChar).Value = staffModel.Role;
+                command.Parameters.Add("@gender", SqlDbType.Int).Value = staffModel.Gender;
+                command.ExecuteNonQuery();
+            }
+
         }
 
         /// <summary>

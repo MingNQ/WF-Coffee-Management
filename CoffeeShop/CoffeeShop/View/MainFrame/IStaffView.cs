@@ -11,7 +11,7 @@ namespace CoffeeShop.View.MainFrame
 	public interface IStaffView
 	{
 		// Properties
-		//string StaffID { set; }
+		string StaffID { get; set; }
 		string StaffName { get; set; }
 		string PhoneNumber { get; set; }
 		string  DateOfBirth { get; set; }

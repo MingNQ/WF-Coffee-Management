@@ -3,6 +3,7 @@ using CoffeeShop.Model.InterfaceModel;
 using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -98,6 +99,7 @@ namespace CoffeeShop.Presenter
         {
 			var staff = (StaffModel)staffBindingSource.Current;
 
+            staffView.StaffID = staff.StaffID;
 			staffView.StaffName = staff.StaffName;
 			staffView.PhoneNumber = staff.PhoneNumber.ToString();
 			staffView.DateOfBirth = staff.DateOfBirth.ToString();
@@ -166,6 +168,7 @@ namespace CoffeeShop.Presenter
 			
             try
             {
+                staff.StaffID = staffView.StaffID;
                 staff.StaffName = staffView.StaffName;
                 staff.PhoneNumber = Convert.ToInt32(staffView.PhoneNumber);
                 staff.DateOfBirth = DateTime.Parse(staffView.DateOfBirth);
@@ -181,6 +184,10 @@ namespace CoffeeShop.Presenter
                 }
                 else // Add new model
                 {
+                    // Generate ID
+                    int id = Convert.ToInt32(staffList.Last().StaffID.Substring(2)) + 1;
+                    staff.StaffID = "NV" + id.ToString();
+                    
                     repository.Add(staff);
                 }
 

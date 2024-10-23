@@ -31,6 +31,11 @@ namespace CoffeeShop.View
         /// </summary>
         private bool isSuccessful;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private string staffID;
+
 		#endregion
 
 		#region Properties
@@ -51,6 +56,12 @@ namespace CoffeeShop.View
 		{
             get { return isSuccessful; }
             set { isSuccessful = value; }
+        }
+
+        public string StaffID
+        {
+            get => staffID; 
+            set => staffID = value; 
         }
 
         /// <summary>
@@ -203,14 +214,14 @@ namespace CoffeeShop.View
             // Name
             DataGridViewTextBoxColumn colStaffName = new DataGridViewTextBoxColumn();
             colStaffName.HeaderText = "Staff Name";
-            colStaffName.Width = 250;
+            colStaffName.Width = 225;
             colStaffName.DataPropertyName = "StaffName";
             dgvStaff.Columns.Add(colStaffName);
 
             // Phone
             DataGridViewTextBoxColumn colPhone = new DataGridViewTextBoxColumn();
             colPhone.HeaderText = "Staff Phone";
-            colPhone.Width = 100;
+            colPhone.Width = 125;
             colPhone.DataPropertyName = "PhoneNumber";
             dgvStaff.Columns.Add(colPhone);
 
@@ -366,7 +377,7 @@ namespace CoffeeShop.View
         /// </summary>
         private void InitializeComboBoxRole()
         {
-            cbRole.Items.Add("Quản lí");
+            cbRole.Items.Add("Quản Lý");
             cbRole.Items.Add("Pha chế");
             cbRole.Items.Add("Phục vụ");
         }
