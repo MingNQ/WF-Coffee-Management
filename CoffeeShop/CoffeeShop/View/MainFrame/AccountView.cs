@@ -22,7 +22,16 @@ namespace CoffeeShop.View.MainFrame
         #endregion
 
         #region Properties
+
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsOpen { get => Application.OpenForms.OfType<AccountView>().Any(); }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string SearchValue { get => txtSearch.Text; set => txtSearch.Text = value; }
 
         #endregion
 
@@ -43,7 +52,7 @@ namespace CoffeeShop.View.MainFrame
         public event EventHandler SearchEvent;
         public event EventHandler DeleteEvent;
         public event EventHandler ActiveEvent;
-        public event EventHandler EditEvent;
+        public event EventHandler DisableEvent;
         #endregion
 
         #region private fields
@@ -58,6 +67,7 @@ namespace CoffeeShop.View.MainFrame
             dgvAccountList.RowHeadersVisible = false;
             dgvAccountList.AutoGenerateColumns = false;
             dgvAccountList.MultiSelect = false;
+            dgvAccountList.ReadOnly = true;
 
             dgvAccountList.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 251, 233);
             dgvAccountList.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold); // Kiểu chữ
@@ -140,12 +150,13 @@ namespace CoffeeShop.View.MainFrame
 
             // Active
             btnActive.Click += delegate { ActiveEvent?.Invoke(this, EventArgs.Empty); };
-            
+
+            // Disable
+            btnDisable.Click += delegate { DisableEvent?.Invoke(this, EventArgs.Empty); };
+
             // Delete
             btnDelete.Click += delegate { DeleteEvent?.Invoke(this, EventArgs.Empty); };
 
-            // Data grid view change value
-            dgvAccountList.CellValueChanged += delegate { EditEvent?.Invoke(this, EventArgs.Empty); };
         }
 
         #endregion

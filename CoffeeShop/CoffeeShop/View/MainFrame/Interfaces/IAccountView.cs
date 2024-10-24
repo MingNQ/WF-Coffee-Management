@@ -11,6 +11,8 @@ namespace CoffeeShop.View.MainFrame.Interfaces
     {
         bool IsOpen { get; }
 
+        string SearchValue { get; set; }
+
         /// <summary>
         /// Show Form
         /// </summary>
@@ -26,6 +28,6 @@ namespace CoffeeShop.View.MainFrame.Interfaces
         event EventHandler SearchEvent;
         event EventHandler DeleteEvent;
         event EventHandler ActiveEvent;
-        event EventHandler EditEvent;
+        event EventHandler DisableEvent;
     }
 }

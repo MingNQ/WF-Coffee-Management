@@ -8,7 +8,6 @@ namespace CoffeeShop.Model.InterfaceModel
 {
     public interface IAccountRepository
     {
-        void Add(Account account);
         void Edit(Account account);
         void Delete(string accountID);
         IEnumerable<Account> GetAll();

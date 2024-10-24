@@ -55,6 +55,7 @@
     <Compile Include="Model\Common\Gender.cs" />
     <Compile Include="Model\InterfaceModel\IAccountRepository.cs" />
     <Compile Include="Presenter\AccountPresenter.cs" />
+    <Compile Include="Presenter\Common\EncryptPassword.cs" />
     <Compile Include="Presenter\Common\ModelValidation.cs" />
     <Compile Include="Model\Common\Role.cs" />
     <Compile Include="Model\InterfaceModel\IStaffRepository.cs" />
