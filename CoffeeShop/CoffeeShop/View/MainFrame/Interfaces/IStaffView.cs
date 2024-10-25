@@ -33,7 +33,7 @@ namespace CoffeeShop.View.MainFrame
 		void Show();
 
 		// Methods
-		void SetLPetListBindingSource(BindingSource staffList);
+		void SetLStaffListBindingSource(BindingSource staffList);
 
 		// Events
 		event EventHandler SearchEvent;

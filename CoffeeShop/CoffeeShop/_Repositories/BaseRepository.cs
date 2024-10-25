@@ -8,6 +8,9 @@ namespace CoffeeShop._Repositories
 {
     public abstract class BaseRepository
     {
+        /// <summary>
+        /// Connection string
+        /// </summary>
         protected string connectionString;
     }
 }

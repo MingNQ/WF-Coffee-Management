@@ -58,7 +58,7 @@ namespace CoffeeShop.Presenter
 			    this.staffView.BackToListEvent += BackToListEvent;
 
                 // Set Staff List binding source
-                this.staffView.SetLPetListBindingSource(staffBindingSource);
+                this.staffView.SetLStaffListBindingSource(staffBindingSource);
 
                 // Load Staff List
                 LoadAllStaff();

@@ -22,8 +22,9 @@ namespace CoffeeShop._Repositories
             this.connectionString = connectionString;
         }
 
+        #region public fields
         /// <summary>
-        /// 
+        /// Add new Staff
         /// </summary>
         /// <param name="staffModel"></param>
         public void Add(StaffModel staffModel)
@@ -47,7 +48,7 @@ namespace CoffeeShop._Repositories
         }
 
         /// <summary>
-        /// 
+        /// Delete Staff 
         /// </summary>
         /// <param name="staffID"></param>
         public void Delete(string staffID)
@@ -64,7 +65,7 @@ namespace CoffeeShop._Repositories
         }
 
         /// <summary>
-        /// 
+        /// Edit Staff
         /// </summary>
         /// <param name="staffModel"></param>
         public void Edit(StaffModel staffModel)
@@ -90,7 +91,7 @@ namespace CoffeeShop._Repositories
         }
 
         /// <summary>
-        /// 
+        /// Get list staff
         /// </summary>
         /// <returns></returns>
         public IEnumerable<StaffModel> GetAll()
@@ -124,7 +125,7 @@ namespace CoffeeShop._Repositories
         }
 
         /// <summary>
-        /// 
+        /// Get list staff by value
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -165,5 +166,6 @@ namespace CoffeeShop._Repositories
 
             return staffList;
         }
+        #endregion
     }
 }

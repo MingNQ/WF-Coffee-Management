@@ -33,9 +33,11 @@ namespace CoffeeShop.View.MainFrame
 		/// Check if is edit or add
 		/// </summary>
 		public bool IsEdit { get { return isEdit; } set { isEdit = value; } }
-		#endregion
 
-		public IngredientView()
+        public bool IsOpen => Application.OpenForms.OfType<IngredientView>().Any();
+        #endregion
+
+        public IngredientView()
 		{
 			InitializeComponent();
 			btnAdd.Click +=  delegate 

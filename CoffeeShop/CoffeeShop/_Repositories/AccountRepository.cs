@@ -14,7 +14,7 @@ namespace CoffeeShop._Repositories
     public class AccountRepository : BaseRepository, IAccountRepository
     {
         /// <summary>
-        /// 
+        /// Constructor
         /// </summary>
         /// <param name="connectionString"></param>
         public AccountRepository(string connectionString)
@@ -22,8 +22,9 @@ namespace CoffeeShop._Repositories
             this.connectionString = connectionString;
         }
 
+        #region public fields
         /// <summary>
-        /// 
+        /// Delete Account
         /// </summary>
         /// <param name="accountID"></param>
         public void Delete(string accountID)
@@ -52,7 +53,7 @@ namespace CoffeeShop._Repositories
         }
 
         /// <summary>
-        /// 
+        /// Edit Account
         /// </summary>
         /// <param name="account"></param>
         public void Edit(Account account)
@@ -72,7 +73,7 @@ namespace CoffeeShop._Repositories
         }
 
         /// <summary>
-        /// 
+        /// Get list account
         /// </summary>
         /// <returns></returns>
         public IEnumerable<Account> GetAll()
@@ -110,7 +111,7 @@ namespace CoffeeShop._Repositories
         }
 
         /// <summary>
-        /// 
+        /// Get list account by value
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -156,5 +157,6 @@ namespace CoffeeShop._Repositories
 
             return accountList;
         }
+        #endregion
     }
 }

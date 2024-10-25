@@ -8,8 +8,15 @@ namespace CoffeeShop.View.MainFrame
 {
 	public interface IIngredientView
 	{
-
+		/// <summary>
+		/// 
+		/// </summary>
 		bool IsEdit { get; set; }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		bool IsOpen { get; }
 
 		/// <summary>
 		/// Show Form

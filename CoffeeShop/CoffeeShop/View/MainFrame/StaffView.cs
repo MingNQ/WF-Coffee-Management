@@ -215,7 +215,7 @@ namespace CoffeeShop.View
             DataGridViewTextBoxColumn colStaffName = new DataGridViewTextBoxColumn();
             colStaffName.HeaderText = "Staff Name";
             colStaffName.Width = 225;
-            colStaffName.DataPropertyName = "Staff";
+            colStaffName.DataPropertyName = "StaffName";
             dgvStaff.Columns.Add(colStaffName);
 
             // Phone
@@ -412,7 +412,7 @@ namespace CoffeeShop.View
         /// Get Data
         /// </summary>
         /// <param name="staffList"></param>
-        public void SetLPetListBindingSource(BindingSource staffList)
+        public void SetLStaffListBindingSource(BindingSource staffList)
         {
             this.dgvStaff.DataSource = staffList;
         }

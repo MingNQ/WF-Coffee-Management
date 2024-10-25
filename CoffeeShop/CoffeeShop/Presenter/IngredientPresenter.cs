@@ -25,10 +25,13 @@ namespace CoffeeShop.Presenter
 		{
 			this.ingredientView = view;
 
-			// Show form
-			this.ingredientView.Show();
+			if (!this.ingredientView.IsOpen)
+            {
+                this.ingredientView.ShowEditDialog += ShowEditDialog;
+            }
 
-			this.ingredientView.ShowEditDialog += ShowEditDialog;
+            // Show form
+            this.ingredientView.Show();
 		}
 
 		/// <summary>
