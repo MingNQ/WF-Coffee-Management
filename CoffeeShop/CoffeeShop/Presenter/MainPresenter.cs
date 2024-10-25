@@ -2,6 +2,7 @@
 using CoffeeShop.Model.InterfaceModel;
 using CoffeeShop.View;
 using CoffeeShop.View.MainFrame;
+using CoffeeShop.View.MainFrame.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,16 +36,19 @@ namespace CoffeeShop.Presenter
 			this.mainView.ShowCustomerView += ShowCustomerView;
 			this.mainView.ShowCategoryView += ShowCategoryView;
 			this.mainView.ShowIngredientView += ShowIngredientView;
+			this.mainView.ShowAccountView += ShowAccountView;
         }
 
+        
 
-		#region private fields
-		/// <summary>
-		/// Event Show Dashboard view
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void ShowDashboardView(object sender, EventArgs e)
+
+        #region private fields
+        /// <summary>
+        /// Event Show Dashboard view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowDashboardView(object sender, EventArgs e)
 		{
             IDashboardView view = DashboardView.GetInstance((MainView)mainView);
             new DashboardPresenter(view);
@@ -95,6 +99,19 @@ namespace CoffeeShop.Presenter
 			ICategoryView view = CategoryView.GetInstance((MainView)mainView);
 			new CategoryPresenter(view);
 		}
-		#endregion
-	}
+
+		/// <summary>
+		/// Event Show Account View
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+        private void ShowAccountView(object sender, EventArgs e)
+        {
+			IAccountView view = AccountView.GetInstance((MainView)mainView);
+			IAccountRepository repository = new AccountRepository(sqlConnectionString);
+
+			new AccountPresenter(view, repository);
+        }
+        #endregion
+    }
 }

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.btnIngredient = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.btnCategory = new Guna.UI2.WinForms.Guna2Button();
@@ -40,18 +40,26 @@
             this.btnDashboard = new Guna.UI2.WinForms.Guna2Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.pnlSystemDrop = new System.Windows.Forms.Panel();
+            this.btnAccount = new System.Windows.Forms.Button();
+            this.btnSchedule = new System.Windows.Forms.Button();
+            this.timeDropDown = new System.Windows.Forms.Timer(this.components);
+            this.btnSystem = new Guna.UI2.WinForms.Guna2Button();
+            this.btnIngredient = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2CustomGradientPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.guna2Panel1.SuspendLayout();
+            this.pnlSystemDrop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2CustomGradientPanel2
             // 
             this.guna2CustomGradientPanel2.BackColor = System.Drawing.Color.White;
+            this.guna2CustomGradientPanel2.Controls.Add(this.pnlSystemDrop);
             this.guna2CustomGradientPanel2.Controls.Add(this.btnIngredient);
             this.guna2CustomGradientPanel2.Controls.Add(this.guna2Separator2);
             this.guna2CustomGradientPanel2.Controls.Add(this.guna2Button1);
@@ -70,35 +78,10 @@
             this.guna2CustomGradientPanel2.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(140)))), ((int)(((byte)(118)))));
             this.guna2CustomGradientPanel2.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(140)))), ((int)(((byte)(118)))));
             this.guna2CustomGradientPanel2.Location = new System.Drawing.Point(0, 0);
-            this.guna2CustomGradientPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2CustomGradientPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
-            this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(195, 720);
+            this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(260, 886);
             this.guna2CustomGradientPanel2.TabIndex = 9;
-            // 
-            // btnIngredient
-            // 
-            this.btnIngredient.BackColor = System.Drawing.Color.Transparent;
-            this.btnIngredient.BorderRadius = 10;
-            this.btnIngredient.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnIngredient.CustomImages.ImageSize = new System.Drawing.Size(30, 31);
-            this.btnIngredient.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnIngredient.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnIngredient.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnIngredient.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnIngredient.FillColor = System.Drawing.Color.Transparent;
-            this.btnIngredient.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIngredient.ForeColor = System.Drawing.Color.Black;
-            this.btnIngredient.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
-            this.btnIngredient.Image = global::CoffeeShop.Properties.Resources.food1;
-            this.btnIngredient.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnIngredient.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnIngredient.Location = new System.Drawing.Point(3, 330);
-            this.btnIngredient.Margin = new System.Windows.Forms.Padding(2);
-            this.btnIngredient.Name = "btnIngredient";
-            this.btnIngredient.Size = new System.Drawing.Size(192, 37);
-            this.btnIngredient.TabIndex = 12;
-            this.btnIngredient.Text = "Ingredient";
-            this.btnIngredient.UseTransparentBackground = true;
             // 
             // guna2Separator2
             // 
@@ -106,10 +89,10 @@
             this.guna2Separator2.BackColor = System.Drawing.Color.Transparent;
             this.guna2Separator2.FillColor = System.Drawing.Color.Black;
             this.guna2Separator2.FillThickness = 3;
-            this.guna2Separator2.Location = new System.Drawing.Point(3, 685);
-            this.guna2Separator2.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2Separator2.Location = new System.Drawing.Point(4, 817);
+            this.guna2Separator2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Separator2.Name = "guna2Separator2";
-            this.guna2Separator2.Size = new System.Drawing.Size(186, 6);
+            this.guna2Separator2.Size = new System.Drawing.Size(248, 7);
             this.guna2Separator2.TabIndex = 11;
             // 
             // guna2Button1
@@ -126,10 +109,10 @@
             this.guna2Button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.Black;
             this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
-            this.guna2Button1.Location = new System.Drawing.Point(3, 640);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2Button1.Location = new System.Drawing.Point(4, 828);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(191, 38);
+            this.guna2Button1.Size = new System.Drawing.Size(255, 47);
             this.guna2Button1.TabIndex = 10;
             this.guna2Button1.Text = "Log out";
             // 
@@ -148,10 +131,10 @@
             this.btnCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCategory.ForeColor = System.Drawing.Color.Black;
             this.btnCategory.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
-            this.btnCategory.Location = new System.Drawing.Point(3, 265);
-            this.btnCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCategory.Location = new System.Drawing.Point(4, 326);
+            this.btnCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCategory.Name = "btnCategory";
-            this.btnCategory.Size = new System.Drawing.Size(192, 37);
+            this.btnCategory.Size = new System.Drawing.Size(256, 46);
             this.btnCategory.TabIndex = 9;
             this.btnCategory.Text = "Category  ";
             this.btnCategory.UseTransparentBackground = true;
@@ -171,10 +154,10 @@
             this.btnPlaceOrder.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlaceOrder.ForeColor = System.Drawing.Color.Black;
             this.btnPlaceOrder.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
-            this.btnPlaceOrder.Location = new System.Drawing.Point(3, 200);
-            this.btnPlaceOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPlaceOrder.Location = new System.Drawing.Point(4, 246);
+            this.btnPlaceOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPlaceOrder.Name = "btnPlaceOrder";
-            this.btnPlaceOrder.Size = new System.Drawing.Size(192, 37);
+            this.btnPlaceOrder.Size = new System.Drawing.Size(256, 46);
             this.btnPlaceOrder.TabIndex = 8;
             this.btnPlaceOrder.Text = "  Place Order";
             this.btnPlaceOrder.UseTransparentBackground = true;
@@ -194,10 +177,10 @@
             this.btnCustomer.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomer.ForeColor = System.Drawing.Color.Black;
             this.btnCustomer.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
-            this.btnCustomer.Location = new System.Drawing.Point(3, 460);
-            this.btnCustomer.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCustomer.Location = new System.Drawing.Point(4, 566);
+            this.btnCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Size = new System.Drawing.Size(192, 37);
+            this.btnCustomer.Size = new System.Drawing.Size(256, 46);
             this.btnCustomer.TabIndex = 7;
             this.btnCustomer.Text = "Customer";
             this.btnCustomer.UseTransparentBackground = true;
@@ -217,10 +200,10 @@
             this.btnStaff.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStaff.ForeColor = System.Drawing.Color.Black;
             this.btnStaff.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
-            this.btnStaff.Location = new System.Drawing.Point(3, 395);
-            this.btnStaff.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStaff.Location = new System.Drawing.Point(4, 486);
+            this.btnStaff.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStaff.Name = "btnStaff";
-            this.btnStaff.Size = new System.Drawing.Size(192, 37);
+            this.btnStaff.Size = new System.Drawing.Size(256, 46);
             this.btnStaff.TabIndex = 6;
             this.btnStaff.Text = "Staff      ";
             this.btnStaff.UseTransparentBackground = true;
@@ -240,10 +223,10 @@
             this.btnDashboard.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashboard.ForeColor = System.Drawing.Color.Black;
             this.btnDashboard.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
-            this.btnDashboard.Location = new System.Drawing.Point(3, 135);
-            this.btnDashboard.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDashboard.Location = new System.Drawing.Point(4, 166);
+            this.btnDashboard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Size = new System.Drawing.Size(192, 37);
+            this.btnDashboard.Size = new System.Drawing.Size(256, 46);
             this.btnDashboard.TabIndex = 4;
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.UseTransparentBackground = true;
@@ -253,10 +236,9 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(79, 56);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(105, 69);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 16);
+            this.label2.Size = new System.Drawing.Size(96, 19);
             this.label2.TabIndex = 3;
             this.label2.Text = "Role: Admin";
             // 
@@ -265,47 +247,31 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(76, 32);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(101, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 19);
+            this.label1.Size = new System.Drawing.Size(105, 24);
             this.label1.TabIndex = 2;
             this.label1.Text = "Username";
-            // 
-            // guna2CirclePictureBox1
-            // 
-            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox1.Image = global::CoffeeShop.Properties.Resources.Account;
-            this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(17, 32);
-            this.guna2CirclePictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(48, 52);
-            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2CirclePictureBox1.TabIndex = 1;
-            this.guna2CirclePictureBox1.TabStop = false;
             // 
             // guna2Separator1
             // 
             this.guna2Separator1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Separator1.FillColor = System.Drawing.Color.Black;
             this.guna2Separator1.FillThickness = 4;
-            this.guna2Separator1.Location = new System.Drawing.Point(5, 114);
-            this.guna2Separator1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2Separator1.Location = new System.Drawing.Point(7, 140);
+            this.guna2Separator1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(186, 6);
+            this.guna2Separator1.Size = new System.Drawing.Size(248, 7);
             this.guna2Separator1.TabIndex = 0;
             // 
             // guna2Panel1
             // 
             this.guna2Panel1.Controls.Add(this.guna2ControlBox1);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel1.Location = new System.Drawing.Point(195, 0);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2Panel1.Location = new System.Drawing.Point(260, 0);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1085, 24);
+            this.guna2Panel1.Size = new System.Drawing.Size(1447, 30);
             this.guna2Panel1.TabIndex = 11;
             // 
             // guna2ControlBox1
@@ -316,31 +282,139 @@
             this.guna2ControlBox1.HoverState.FillColor = System.Drawing.Color.Red;
             this.guna2ControlBox1.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.Black;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1046, 1);
-            this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(1395, 1);
+            this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.Size = new System.Drawing.Size(38, 25);
+            this.guna2ControlBox1.Size = new System.Drawing.Size(51, 31);
             this.guna2ControlBox1.TabIndex = 0;
+            // 
+            // pnlSystemDrop
+            // 
+            this.pnlSystemDrop.BackColor = System.Drawing.Color.Transparent;
+            this.pnlSystemDrop.Controls.Add(this.btnSchedule);
+            this.pnlSystemDrop.Controls.Add(this.btnAccount);
+            this.pnlSystemDrop.Controls.Add(this.btnSystem);
+            this.pnlSystemDrop.Location = new System.Drawing.Point(4, 646);
+            this.pnlSystemDrop.MaximumSize = new System.Drawing.Size(256, 138);
+            this.pnlSystemDrop.MinimumSize = new System.Drawing.Size(256, 46);
+            this.pnlSystemDrop.Name = "pnlSystemDrop";
+            this.pnlSystemDrop.Size = new System.Drawing.Size(256, 46);
+            this.pnlSystemDrop.TabIndex = 13;
+            // 
+            // btnAccount
+            // 
+            this.btnAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(171)))), ((int)(((byte)(147)))));
+            this.btnAccount.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAccount.FlatAppearance.BorderSize = 0;
+            this.btnAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccount.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccount.Location = new System.Drawing.Point(0, 46);
+            this.btnAccount.Name = "btnAccount";
+            this.btnAccount.Size = new System.Drawing.Size(256, 46);
+            this.btnAccount.TabIndex = 14;
+            this.btnAccount.Text = "Account";
+            this.btnAccount.UseVisualStyleBackColor = false;
+            // 
+            // btnSchedule
+            // 
+            this.btnSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(171)))), ((int)(((byte)(147)))));
+            this.btnSchedule.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSchedule.FlatAppearance.BorderSize = 0;
+            this.btnSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSchedule.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchedule.Location = new System.Drawing.Point(0, 92);
+            this.btnSchedule.Name = "btnSchedule";
+            this.btnSchedule.Size = new System.Drawing.Size(256, 46);
+            this.btnSchedule.TabIndex = 15;
+            this.btnSchedule.Text = "button2";
+            this.btnSchedule.UseVisualStyleBackColor = false;
+            // 
+            // btnSystem
+            // 
+            this.btnSystem.BackColor = System.Drawing.Color.Transparent;
+            this.btnSystem.BorderRadius = 10;
+            this.btnSystem.CustomImages.Image = global::CoffeeShop.Properties.Resources.System;
+            this.btnSystem.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSystem.CustomImages.ImageSize = new System.Drawing.Size(30, 31);
+            this.btnSystem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSystem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSystem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSystem.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSystem.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSystem.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(140)))), ((int)(((byte)(118)))));
+            this.btnSystem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSystem.ForeColor = System.Drawing.Color.Black;
+            this.btnSystem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
+            this.btnSystem.Image = global::CoffeeShop.Properties.Resources.down;
+            this.btnSystem.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnSystem.Location = new System.Drawing.Point(0, 0);
+            this.btnSystem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSystem.Name = "btnSystem";
+            this.btnSystem.Size = new System.Drawing.Size(256, 46);
+            this.btnSystem.TabIndex = 13;
+            this.btnSystem.Text = "System";
+            this.btnSystem.UseTransparentBackground = true;
+            // 
+            // btnIngredient
+            // 
+            this.btnIngredient.BackColor = System.Drawing.Color.Transparent;
+            this.btnIngredient.BorderRadius = 10;
+            this.btnIngredient.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnIngredient.CustomImages.ImageSize = new System.Drawing.Size(30, 31);
+            this.btnIngredient.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnIngredient.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnIngredient.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnIngredient.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnIngredient.FillColor = System.Drawing.Color.Transparent;
+            this.btnIngredient.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngredient.ForeColor = System.Drawing.Color.Black;
+            this.btnIngredient.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(150)))));
+            this.btnIngredient.Image = global::CoffeeShop.Properties.Resources.food1;
+            this.btnIngredient.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnIngredient.ImageSize = new System.Drawing.Size(32, 32);
+            this.btnIngredient.Location = new System.Drawing.Point(4, 406);
+            this.btnIngredient.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnIngredient.Name = "btnIngredient";
+            this.btnIngredient.Size = new System.Drawing.Size(256, 46);
+            this.btnIngredient.TabIndex = 12;
+            this.btnIngredient.Text = "Ingredient";
+            this.btnIngredient.UseTransparentBackground = true;
+            // 
+            // guna2CirclePictureBox1
+            // 
+            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2CirclePictureBox1.Image = global::CoffeeShop.Properties.Resources.Account;
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(23, 39);
+            this.guna2CirclePictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2CirclePictureBox1.TabIndex = 1;
+            this.guna2CirclePictureBox1.TabStop = false;
             // 
             // MainView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(251)))), ((int)(((byte)(234)))));
-            this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.ClientSize = new System.Drawing.Size(1707, 886);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.guna2CustomGradientPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(1024, 576);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(1365, 709);
             this.Name = "MainView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.guna2CustomGradientPanel2.ResumeLayout(false);
             this.guna2CustomGradientPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
+            this.pnlSystemDrop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -361,5 +435,10 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
 		private Guna.UI2.WinForms.Guna2Button btnIngredient;
-	}
+        private Guna.UI2.WinForms.Guna2Button btnSystem;
+        private System.Windows.Forms.Panel pnlSystemDrop;
+        private System.Windows.Forms.Button btnSchedule;
+        private System.Windows.Forms.Button btnAccount;
+        private System.Windows.Forms.Timer timeDropDown;
+    }
 }

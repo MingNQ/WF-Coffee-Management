@@ -51,7 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Common\Gender.cs" />
+    <Compile Include="Model\InterfaceModel\IAccountRepository.cs" />
+    <Compile Include="Presenter\AccountPresenter.cs" />
+    <Compile Include="Presenter\Common\EncryptPassword.cs" />
     <Compile Include="Presenter\Common\ModelValidation.cs" />
     <Compile Include="Model\Common\Role.cs" />
     <Compile Include="Model\InterfaceModel\IStaffRepository.cs" />
@@ -81,6 +85,12 @@
       <DependentUpon>EditIngredientView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\DialogForm\IEditIngredientView.cs" />
+    <Compile Include="View\MainFrame\AccountView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainFrame\AccountView.Designer.cs">
+      <DependentUpon>AccountView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainFrame\CategoryView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,19 +109,20 @@
     <Compile Include="View\MainFrame\DashboardView.Designer.cs">
       <DependentUpon>DashboardView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\MainFrame\ICategoryView.cs" />
-    <Compile Include="View\MainFrame\ICustomerView.cs" />
-    <Compile Include="View\MainFrame\IDashboardView.cs" />
-    <Compile Include="View\MainFrame\IIngredientView.cs" />
-    <Compile Include="View\MainFrame\IMainView.cs" />
+    <Compile Include="View\MainFrame\Interfaces\IAccountView.cs" />
+    <Compile Include="View\MainFrame\Interfaces\ICategoryView.cs" />
+    <Compile Include="View\MainFrame\Interfaces\ICustomerView.cs" />
+    <Compile Include="View\MainFrame\Interfaces\IDashboardView.cs" />
+    <Compile Include="View\MainFrame\Interfaces\IIngredientView.cs" />
+    <Compile Include="View\MainFrame\Interfaces\IMainView.cs" />
     <Compile Include="View\MainFrame\IngredientView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\MainFrame\IngredientView.Designer.cs">
       <DependentUpon>IngredientView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\MainFrame\IPlaceOrderView.cs" />
-    <Compile Include="View\MainFrame\IStaffView.cs" />
+    <Compile Include="View\MainFrame\Interfaces\IPlaceOrderView.cs" />
+    <Compile Include="View\MainFrame\Interfaces\IStaffView.cs" />
     <Compile Include="View\MainFrame\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +153,7 @@
     <Compile Include="View\MainFrame\StaffView.Designer.cs">
       <DependentUpon>StaffView.cs</DependentUpon>
     </Compile>
+    <Compile Include="_Repositories\AccountRepository.cs" />
     <Compile Include="_Repositories\BaseRepository.cs" />
     <Compile Include="_Repositories\StaffRepository.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -159,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\DialogForm\EditIngredientView.resx">
       <DependentUpon>EditIngredientView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainFrame\AccountView.resx">
+      <DependentUpon>AccountView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainFrame\CategoryView.resx">
       <DependentUpon>CategoryView.cs</DependentUpon>
@@ -257,6 +272,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Images\donut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Icons\System.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Icons\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Icons\User.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
