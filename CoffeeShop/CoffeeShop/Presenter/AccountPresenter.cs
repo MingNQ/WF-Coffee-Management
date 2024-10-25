@@ -139,7 +139,7 @@ namespace CoffeeShop.Presenter
             }
             catch
             {
-                MessageBox.Show("An error occured, could not delete this Account!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("An error occured, Could not delete this Account because it's in used!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

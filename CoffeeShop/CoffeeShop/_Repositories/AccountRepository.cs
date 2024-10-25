@@ -39,10 +39,15 @@ namespace CoffeeShop._Repositories
 		                                    where Staff.StaffID is null
 	                                    )
                                         begin
-                                            delete from Account where Account = @id
+                                            delete from Account where AccountID = @id
                                         end";
                 command.Parameters.Add("@id", SqlDbType.NVarChar).Value = accountID;
-                command.ExecuteNonQuery();
+                int rowAffected = command.ExecuteNonQuery();
+
+                if (rowAffected <= 0)
+                {
+                    throw new Exception();
+                }
             }
         }
 
@@ -80,7 +85,7 @@ namespace CoffeeShop._Repositories
                 connection.Open();
                 command.Connection = connection;
                 command.CommandText = "select AccountID, Username, Password, Staff.StaffID, Active, StaffName" +
-                    " from Account join Staff on Account.StaffID = Staff.StaffID";
+                    " from Account left join Staff on Account.StaffID = Staff.StaffID";
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
