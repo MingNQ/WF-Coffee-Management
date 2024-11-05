@@ -1,5 +1,6 @@
 ﻿using CoffeeShop.Presenter;
 using CoffeeShop.View;
+using CoffeeShop.View.LoginFrame;
 using System;
 using System.Collections.Generic;
 using System.Linq;

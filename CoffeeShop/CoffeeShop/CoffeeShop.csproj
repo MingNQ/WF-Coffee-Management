@@ -74,6 +74,8 @@
     <Compile Include="Presenter\EditIngredientPresenter.cs" />
     <Compile Include="Presenter\IngredientPresenter.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
+    <Compile Include="Presenter\SignInPresenter.cs" />
+    <Compile Include="Presenter\SignUpPresenter.cs" />
     <Compile Include="Presenter\StaffPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
