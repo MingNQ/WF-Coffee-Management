@@ -14,6 +14,7 @@ namespace CoffeeShop.Model
         public string StaffID { get; set; }
         public bool Active { get; set; }
 
+        // Navigation
         public virtual StaffModel Staff { get; set; }
     }
 }

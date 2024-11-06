@@ -16,6 +16,10 @@ namespace CoffeeShop.View
 		event EventHandler ShowCustomerView;
 		event EventHandler ShowIngredientView;
 		event EventHandler ShowAccountView;
+		event EventHandler LogoutEvent;
 		#endregion
+
+		void Show();
+		void Hide();
 	}
 }

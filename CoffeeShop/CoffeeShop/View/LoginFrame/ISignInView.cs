@@ -12,10 +12,10 @@ namespace CoffeeShop.View.LoginFrame
         #region Properties - Fields
         Guna2TextBox TxtUsername { get; set; }
         Guna2TextBox TxtPassword { get; set; }
-
         string Message { get; set; }
         bool ShowPassword { get; set; }
         char PasswordChar { get; set; }
+        bool Successful { get; set; }
 
         #endregion
 
@@ -29,5 +29,6 @@ namespace CoffeeShop.View.LoginFrame
         #endregion
 
         void Show();
+        void Hide();
     }
 }

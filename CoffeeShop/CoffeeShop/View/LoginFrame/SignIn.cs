@@ -16,6 +16,11 @@ namespace CoffeeShop.View
     {
         #region Fields
 
+        /// <summary>
+        /// Sign In Successful
+        /// </summary>
+        private bool successful;
+
         #endregion
 
         /// <summary>
@@ -65,6 +70,14 @@ namespace CoffeeShop.View
             set { txtPassword.PasswordChar = value; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool Successful 
+        { 
+            get { return successful; }
+            set { successful = value; } 
+        }
 
         #endregion
 

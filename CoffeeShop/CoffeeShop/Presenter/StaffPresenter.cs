@@ -1,5 +1,6 @@
 ﻿using CoffeeShop.Model;
 using CoffeeShop.Model.InterfaceModel;
+using CoffeeShop.Utilities;
 using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
@@ -183,9 +184,16 @@ namespace CoffeeShop.Presenter
                 else // Add new model
                 {
                     // Generate ID
-                    int id = Convert.ToInt32(staffList.Last().StaffID.Substring(2)) + 1;
-                    staff.StaffID = "NV" + id.ToString("D3");
-                    
+                    while (true)
+                    {
+                        staff.StaffID = Generate.GenerateID("NV");
+
+                        if (!StaffExist(staff.StaffID))
+                        {
+                            break;
+                        }
+                    }
+
                     repository.Add(staff);
                 }
 
@@ -240,6 +248,16 @@ namespace CoffeeShop.Presenter
             staffView.Male = false;
             staffView.Female = false;
             staffView.Other = false;
+        }
+
+        /// <summary>
+        /// Check Exist Staff
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        private bool StaffExist(string id)
+        {
+            return staffList.Any(s => s.StaffID == id);
         }
 
         #endregion

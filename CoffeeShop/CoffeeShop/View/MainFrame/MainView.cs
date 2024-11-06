@@ -35,6 +35,7 @@ namespace CoffeeShop.View
             btnStaff.Click += delegate { ShowStaffView?.Invoke(this, EventArgs.Empty); };
             btnIngredient.Click += delegate { ShowIngredientView?.Invoke(this, EventArgs.Empty); };
             btnAccount.Click += delegate { ShowAccountView?.Invoke(this, EventArgs.Empty); };
+            btnLogout.Click += delegate { LogoutEvent?.Invoke(this, EventArgs.Empty); };
 
             isCollapsed = true;
             timeDropDown.Tick += DropDownMenuAppear;
@@ -50,8 +51,8 @@ namespace CoffeeShop.View
 		public event EventHandler ShowCustomerView;
 		public event EventHandler ShowIngredientView;
         public event EventHandler ShowAccountView;
+        public event EventHandler LogoutEvent;
         #endregion
-
 
         #region private fields
         /// <summary>

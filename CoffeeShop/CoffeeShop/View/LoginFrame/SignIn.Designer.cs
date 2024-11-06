@@ -134,7 +134,7 @@
             this.chkShowPassword.Location = new System.Drawing.Point(389, 332);
             this.chkShowPassword.Name = "chkShowPassword";
             this.chkShowPassword.Size = new System.Drawing.Size(124, 20);
-            this.chkShowPassword.TabIndex = 16;
+            this.chkShowPassword.TabIndex = 3;
             this.chkShowPassword.Text = "Show password";
             this.chkShowPassword.UseVisualStyleBackColor = true;
             // 
@@ -152,7 +152,7 @@
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.PressedColor = System.Drawing.Color.DimGray;
             this.btnLogin.Size = new System.Drawing.Size(461, 42);
-            this.btnLogin.TabIndex = 17;
+            this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Sign In";
             // 
             // btnSignUp
@@ -171,7 +171,7 @@
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.PressedColor = System.Drawing.Color.DimGray;
             this.btnSignUp.Size = new System.Drawing.Size(461, 42);
-            this.btnSignUp.TabIndex = 18;
+            this.btnSignUp.TabIndex = 5;
             this.btnSignUp.Text = "Sign Up";
             // 
             // guna2HtmlLabel6
@@ -236,7 +236,7 @@
             this.txtPassword.PlaceholderText = "Enter Password";
             this.txtPassword.SelectedText = "";
             this.txtPassword.Size = new System.Drawing.Size(464, 48);
-            this.txtPassword.TabIndex = 12;
+            this.txtPassword.TabIndex = 2;
             // 
             // txtUsername
             // 
@@ -259,7 +259,7 @@
             this.txtUsername.PlaceholderText = "Enter Username";
             this.txtUsername.SelectedText = "";
             this.txtUsername.Size = new System.Drawing.Size(464, 48);
-            this.txtUsername.TabIndex = 10;
+            this.txtUsername.TabIndex = 1;
             // 
             // lblMessage
             // 

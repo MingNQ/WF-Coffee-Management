@@ -1,4 +1,8 @@
-﻿using CoffeeShop.View.LoginFrame;
+﻿using CoffeeShop._Repositories;
+using CoffeeShop.Model;
+using CoffeeShop.Model.InterfaceModel;
+using CoffeeShop.Presenter.Common;
+using CoffeeShop.View.LoginFrame;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -17,15 +21,40 @@ namespace CoffeeShop.Presenter
         /// </summary>
         private ISignInView signInView;
 
+        /// <summary>
+        /// Connection String
+        /// </summary>
+        private readonly string sqlConnectionString;
+
+        /// <summary>
+        /// Account Repository
+        /// </summary>
+        private IAccountRepository repository;
+
+        /// <summary>
+        /// Binding Source
+        /// </summary>
+        private BindingSource accountBindingSource;
+
+        /// <summary>
+        /// Account list
+        /// </summary>
+        private IEnumerable<Account> accounts; 
+
         #endregion
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="view">View</param>
-        public SignInPresenter(ISignInView view)
+        public SignInPresenter(ISignInView view, string sqlConnectionString)
         {
+            // Init
             this.signInView = view;
+            this.sqlConnectionString = sqlConnectionString;
+            this.repository = new AccountRepository(sqlConnectionString);
+            this.accountBindingSource = new BindingSource();
+            this.accounts = repository.GetAll();
 
             // Add event
             this.signInView.LoginEvent += LoginAccount;
@@ -46,19 +75,36 @@ namespace CoffeeShop.Presenter
         /// <param name="e"></param>
         private void LoginAccount(object sender, EventArgs e)
         {
-            // TO-DO: Connect database to check Account
-            // TO-DO: Check value is not null
+            // Connect database to check Account
+            var account = accounts.Where(a => a.Username == signInView.TxtUsername.Text
+                                           && a.Password == EncryptPassword.HashPassword(signInView.TxtPassword.Text)).FirstOrDefault();
 
-            // Temporary: Check Account login
-            if (this.signInView.TxtUsername.Text != "admin" || this.signInView.TxtPassword.Text != "123")
+            // Check value is not null
+            if (string.IsNullOrEmpty(signInView.TxtUsername.Text) ||
+                string.IsNullOrEmpty(signInView.TxtPassword.Text))
             {
-                this.signInView.Message = "*Your username or password may be incorrect!";
-                this.signInView.TxtUsername.BorderColor = Color.Red;
-                this.signInView.TxtPassword.BorderColor = Color.Red;
-
+                signInView.Successful = false;
+                SignInError("*Your username or password must not null!");
                 return;
             }
-            MessageBox.Show("Login Successful!");
+
+            if (account != null)
+            {
+                if (!account.Active)
+                {
+                    signInView.Successful = false;
+                    SignInError("*Your account is not active!");
+                    return;
+                }
+
+                // Succesful
+                signInView.Successful = true;
+                return;
+            }
+
+            // If Not Ok
+            signInView.Successful = false;
+            SignInError("*Your username or password may be incorrect!");
         }
 
         /// <summary>
@@ -92,6 +138,17 @@ namespace CoffeeShop.Presenter
             this.signInView.Message = "";
             this.signInView.TxtUsername.BorderColor = Color.FromArgb(213, 218, 223);
             this.signInView.TxtPassword.BorderColor = Color.FromArgb(213, 218, 223);
+        }
+
+        /// <summary>
+        /// Notify Error with Message
+        /// </summary>
+        /// <param name="message"></param>
+        private void SignInError(string message)
+        {
+            this.signInView.Message = message;
+            this.signInView.TxtUsername.BorderColor = Color.Red;
+            this.signInView.TxtPassword.BorderColor = Color.Red;
         }
         #endregion
     }
