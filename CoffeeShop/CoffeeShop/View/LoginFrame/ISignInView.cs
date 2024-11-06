@@ -1,4 +1,5 @@
-﻿using Guna.UI2.WinForms;
+﻿using CoffeeShop.Model;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,14 @@ namespace CoffeeShop.View.LoginFrame
 {
     public interface ISignInView
     {
-        #region Properties - Fields
+        #region Properties
         Guna2TextBox TxtUsername { get; set; }
         Guna2TextBox TxtPassword { get; set; }
         string Message { get; set; }
         bool ShowPassword { get; set; }
         char PasswordChar { get; set; }
         bool Successful { get; set; }
+        Account Account { get; set; }
 
         #endregion
 
@@ -28,7 +30,9 @@ namespace CoffeeShop.View.LoginFrame
 
         #endregion
 
+        #region Methods
         void Show();
         void Hide();
+        #endregion
     }
 }

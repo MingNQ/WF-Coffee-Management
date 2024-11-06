@@ -1,4 +1,5 @@
-﻿using CoffeeShop.View.LoginFrame;
+﻿using CoffeeShop.Model;
+using CoffeeShop.View.LoginFrame;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -22,15 +23,6 @@ namespace CoffeeShop.View
         private bool successful;
 
         #endregion
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public SignIn()
-        {
-            InitializeComponent();
-            AssociateAndRaiseViewEvents();
-        }
 
         #region Properties
 
@@ -79,6 +71,11 @@ namespace CoffeeShop.View
             set { successful = value; } 
         }
 
+        /// <summary>
+        /// Account
+        /// </summary>
+        public Account Account { get; set; }
+
         #endregion
 
         #region Event
@@ -89,6 +86,15 @@ namespace CoffeeShop.View
         public event EventHandler HideMessage;
 
         #endregion
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public SignIn()
+        {
+            InitializeComponent();
+            AssociateAndRaiseViewEvents();
+        }
 
         #region private fields
 

@@ -43,8 +43,8 @@
             this.btnCustomer = new Guna.UI2.WinForms.Guna2Button();
             this.btnStaff = new Guna.UI2.WinForms.Guna2Button();
             this.btnDashboard = new Guna.UI2.WinForms.Guna2Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbRole = new System.Windows.Forms.Label();
+            this.lbUsername = new System.Windows.Forms.Label();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
@@ -68,8 +68,8 @@
             this.guna2CustomGradientPanel2.Controls.Add(this.btnCustomer);
             this.guna2CustomGradientPanel2.Controls.Add(this.btnStaff);
             this.guna2CustomGradientPanel2.Controls.Add(this.btnDashboard);
-            this.guna2CustomGradientPanel2.Controls.Add(this.label2);
-            this.guna2CustomGradientPanel2.Controls.Add(this.label1);
+            this.guna2CustomGradientPanel2.Controls.Add(this.lbRole);
+            this.guna2CustomGradientPanel2.Controls.Add(this.lbUsername);
             this.guna2CustomGradientPanel2.Controls.Add(this.guna2CirclePictureBox1);
             this.guna2CustomGradientPanel2.Controls.Add(this.guna2Separator1);
             this.guna2CustomGradientPanel2.Dock = System.Windows.Forms.DockStyle.Left;
@@ -326,27 +326,27 @@
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.UseTransparentBackground = true;
             // 
-            // label2
+            // lbRole
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(105, 69);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 19);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Role: Admin";
+            this.lbRole.AutoSize = true;
+            this.lbRole.BackColor = System.Drawing.Color.Transparent;
+            this.lbRole.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRole.Location = new System.Drawing.Point(105, 69);
+            this.lbRole.Name = "lbRole";
+            this.lbRole.Size = new System.Drawing.Size(96, 19);
+            this.lbRole.TabIndex = 3;
+            this.lbRole.Text = "Role: Admin";
             // 
-            // label1
+            // lbUsername
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(101, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 24);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Username";
+            this.lbUsername.AutoSize = true;
+            this.lbUsername.BackColor = System.Drawing.Color.Transparent;
+            this.lbUsername.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUsername.Location = new System.Drawing.Point(101, 39);
+            this.lbUsername.Name = "lbUsername";
+            this.lbUsername.Size = new System.Drawing.Size(105, 24);
+            this.lbUsername.TabIndex = 2;
+            this.lbUsername.Text = "Username";
             // 
             // guna2CirclePictureBox1
             // 
@@ -429,8 +429,8 @@
         private Guna.UI2.WinForms.Guna2Button btnCustomer;
         private Guna.UI2.WinForms.Guna2Button btnStaff;
         private Guna.UI2.WinForms.Guna2Button btnDashboard;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbRole;
+        private System.Windows.Forms.Label lbUsername;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private Guna.UI2.WinForms.Guna2Button btnLogout;

@@ -49,6 +49,7 @@ namespace CoffeeShop.Presenter
             // Raise Events
             this.signInView.LoginEvent += LoginEvent;
             this.mainView.LogoutEvent += LogoutEvent;
+            this.mainView.CloseEvent += LogoutEvent;
         }
 
 
@@ -65,16 +66,21 @@ namespace CoffeeShop.Presenter
             {
                 signInView.Hide();
                 new MainPresenter(mainView, connectionString);
+
+                // Get Username and Role
+                mainView.Username = "Hello, " + signInView.Account.Staff.StaffName.Trim().Split(' ').LastOrDefault() + "!";
+                mainView.Role = signInView.Account.Staff.Role;
             }
         }
 
         /// <summary>
-        /// 
+        /// Logout 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void LogoutEvent(object sender, EventArgs e)
         {
+            signInView.TxtPassword.Text = "";
             signInView.Show();
             mainView.Hide();
         }

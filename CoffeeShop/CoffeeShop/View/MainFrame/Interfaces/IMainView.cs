@@ -8,8 +8,13 @@ namespace CoffeeShop.View
 {
 	public interface IMainView
 	{
-		#region Event
-		event EventHandler ShowDashboardView;
+		#region Properties
+		string Username { get; set; }
+		string Role {  get; set; }
+        #endregion
+
+        #region Event
+        event EventHandler ShowDashboardView;
 		event EventHandler ShowPlaceOrderView;
 		event EventHandler ShowCategoryView;
 		event EventHandler ShowStaffView;
@@ -17,9 +22,12 @@ namespace CoffeeShop.View
 		event EventHandler ShowIngredientView;
 		event EventHandler ShowAccountView;
 		event EventHandler LogoutEvent;
-		#endregion
+		event EventHandler CloseEvent;
+        #endregion
 
-		void Show();
+        #region Methods
+        void Show();
 		void Hide();
-	}
+        #endregion
+    }
 }

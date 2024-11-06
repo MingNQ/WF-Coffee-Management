@@ -27,7 +27,7 @@ namespace CoffeeShop.Presenter
         private readonly string sqlConnectionString;
 
         /// <summary>
-        /// Account Repository
+        /// account Repository
         /// </summary>
         private IAccountRepository repository;
 
@@ -37,9 +37,9 @@ namespace CoffeeShop.Presenter
         private BindingSource accountBindingSource;
 
         /// <summary>
-        /// Account list
+        /// account list
         /// </summary>
-        private IEnumerable<Account> accounts; 
+        private IEnumerable<Account> accounts;
 
         #endregion
 
@@ -69,13 +69,13 @@ namespace CoffeeShop.Presenter
         #region private fields
 
         /// <summary>
-        /// Check Login Account
+        /// Check Login account
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void LoginAccount(object sender, EventArgs e)
         {
-            // Connect database to check Account
+            // Connect database to check account
             var account = accounts.Where(a => a.Username == signInView.TxtUsername.Text
                                            && a.Password == EncryptPassword.HashPassword(signInView.TxtPassword.Text)).FirstOrDefault();
 
@@ -99,6 +99,7 @@ namespace CoffeeShop.Presenter
 
                 // Succesful
                 signInView.Successful = true;
+                signInView.Account = account;
                 return;
             }
 
@@ -108,7 +109,7 @@ namespace CoffeeShop.Presenter
         }
 
         /// <summary>
-        /// Show Sign Up Account Form
+        /// Show Sign Up account Form
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
