@@ -76,6 +76,7 @@
     <Compile Include="Presenter\PrimaryPresenter.cs" />
     <Compile Include="Presenter\SignInPresenter.cs" />
     <Compile Include="Presenter\SignUpPresenter.cs" />
+    <Compile Include="Presenter\StaffDetailPresenter.cs" />
     <Compile Include="Presenter\StaffPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -139,6 +140,7 @@
       <DependentUpon>IngredientView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MainFrame\Interfaces\IPlaceOrderView.cs" />
+    <Compile Include="View\MainFrame\Interfaces\IStaffDetailView.cs" />
     <Compile Include="View\MainFrame\Interfaces\IStaffView.cs" />
     <Compile Include="View\MainFrame\MainView.cs">
       <SubType>Form</SubType>
@@ -163,6 +165,18 @@
     </Compile>
     <Compile Include="View\LoginFrame\SignUp.Designer.cs">
       <DependentUpon>SignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomControls\StaffInformationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\CustomControls\StaffInformationControl.Designer.cs">
+      <DependentUpon>StaffInformationControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainFrame\StaffDetailView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainFrame\StaffDetailView.Designer.cs">
+      <DependentUpon>StaffDetailView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MainFrame\StaffView.cs">
       <SubType>Form</SubType>
@@ -221,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginFrame\SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CustomControls\StaffInformationControl.resx">
+      <DependentUpon>StaffInformationControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainFrame\StaffView.resx">
       <DependentUpon>StaffView.cs</DependentUpon>
