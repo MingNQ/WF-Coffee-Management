@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ItemDetail_PiBox = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.Pib_Item = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -39,17 +39,18 @@
             this.txt_SoLuong = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_Ok = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Cancel = new Guna.UI2.WinForms.Guna2Button();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemDetail_PiBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pib_Item)).BeginInit();
             this.SuspendLayout();
             // 
-            // ItemDetail_PiBox
+            // Pib_Item
             // 
-            this.ItemDetail_PiBox.ImageRotate = 0F;
-            this.ItemDetail_PiBox.Location = new System.Drawing.Point(26, 34);
-            this.ItemDetail_PiBox.Name = "ItemDetail_PiBox";
-            this.ItemDetail_PiBox.Size = new System.Drawing.Size(113, 134);
-            this.ItemDetail_PiBox.TabIndex = 0;
-            this.ItemDetail_PiBox.TabStop = false;
+            this.Pib_Item.ImageRotate = 0F;
+            this.Pib_Item.Location = new System.Drawing.Point(26, 34);
+            this.Pib_Item.Name = "Pib_Item";
+            this.Pib_Item.Size = new System.Drawing.Size(113, 134);
+            this.Pib_Item.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pib_Item.TabIndex = 0;
+            this.Pib_Item.TabStop = false;
             // 
             // guna2HtmlLabel1
             // 
@@ -213,11 +214,11 @@
             this.Controls.Add(this.guna2HtmlLabel3);
             this.Controls.Add(this.guna2HtmlLabel2);
             this.Controls.Add(this.guna2HtmlLabel1);
-            this.Controls.Add(this.ItemDetail_PiBox);
+            this.Controls.Add(this.Pib_Item);
             this.Name = "ItemDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ItemDetail";
-            ((System.ComponentModel.ISupportInitialize)(this.ItemDetail_PiBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pib_Item)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,7 +226,7 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2PictureBox ItemDetail_PiBox;
+        private Guna.UI2.WinForms.Guna2PictureBox Pib_Item;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;

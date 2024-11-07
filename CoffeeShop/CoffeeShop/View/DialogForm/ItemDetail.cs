@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,16 +16,20 @@ namespace CoffeeShop.View.DialogForm
     {
         DataProcessor database = new DataProcessor();
         public bool isConfirmed { get; set; } = false;
-        public ItemDetail(string productName,int price)
+        public ItemDetail(string productName,double price,string imagePath)
         {
             InitializeComponent();
             txt_Ten.Text = productName;
             txt_Gia.Text = price.ToString();
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string projectPath = Directory.GetParent(Directory.GetParent(Directory.GetParent(basePath).FullName).FullName).FullName;
+            string fullPath = Path.Combine(projectPath, "Assets", "Menu", imagePath);
+            Pib_Item.Image = Image.FromFile(fullPath);
         }
 
         private void btn_Ok_Click(object sender, EventArgs e)
         {
-            isConfirmed = true;
+            
             if(txt_SoLuong.Text.Length == 0)
             {
                 MessageBox.Show("Bạn cần nhập số lượng");
@@ -33,9 +38,11 @@ namespace CoffeeShop.View.DialogForm
             else
             {
                 database.ChangeData("insert into OrderTemporary(ItemName,Price,Quantity,Demand) values(N'"
-                    + txt_Ten.Text + "',N'" + txt_Gia.Text + "',N'" + txt_SoLuong.Text + "',N'" +txt_YeuCau.Text + "')");
+                    + txt_Ten.Text + "',N'" + txt_Gia.Text + "',N'" + txt_SoLuong.Text + "',N'" +txt_YeuCau.Text + "')");               
+                Close();
+                isConfirmed = true;
             }
-            Close();
+           
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
