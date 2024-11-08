@@ -18,9 +18,9 @@ namespace CoffeeShop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            string sqlConnectionString = "Data Source=DESKTOP-04URNFP;Initial Catalog=CoffeeDB;Integrated Security=True;Encrypt=False";
+            //string sqlConnectionString = "Data Source=DESKTOP-04URNFP;Initial Catalog=CoffeeDB;Integrated Security=True;Encrypt=False";
             //string sqlConnectionString = "Data Source=ITK-20221221TUA\\SQLEXPRESS;Initial Catalog=CoffeeDB;Integrated Security=True;Encrypt=False";
-
+            string sqlConnectionString = "Data Source=DESKTOP-0Q5NETM;Initial Catalog=CoffeeDB;Integrated Security=True;Encrypt=False";
             IMainView mainView = new MainView();
             new MainPresenter(mainView, sqlConnectionString);
             Application.Run((Form)mainView);

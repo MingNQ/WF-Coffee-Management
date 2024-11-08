@@ -1,8 +1,10 @@
-﻿using CoffeeShop.View.MainFrame;
+﻿using CoffeeShop.Model.Common;
+using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,7 +16,6 @@ namespace CoffeeShop.View
     public partial class CustomerView : Form, ICustomerView
     {
 		#region Fields
-
 		/// <summary>
 		/// Instance for Customer
 		/// </summary>
@@ -30,6 +31,7 @@ namespace CoffeeShop.View
 		/// </summary>
 		private bool isSuccessful;
 
+		private string customerID;
 		#endregion
 
 		#region Properties
@@ -44,10 +46,94 @@ namespace CoffeeShop.View
 		/// </summary>
 		public bool IsSuccessful { get => isSuccessful; set => isSuccessful = value; }
 
-		#endregion
+        public string CustomerID 
+        {
+            get => customerID;
+            set => customerID = value;
+        }
 
-		#region Events
-		public event EventHandler AddNewEvent;
+        /// <summary>
+        /// 
+        /// </summary>
+        public string CustomerName
+        {
+            get => txtCustomerName.Text;
+            set => txtCustomerName.Text = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string PhoneNumber
+        {
+            get => txtPhone.Text;
+            set => txtPhone.Text = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Email
+        {
+            get => txtEmail.Text;
+            set => txtEmail.Text = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public decimal Coupon
+        {
+            get => decimal.TryParse(cbCoupon.Text, out var result) ? result : 0;
+            set => cbCoupon.Text = value.ToString();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool Male
+        {
+            get => rbMale.Checked;
+            set => rbMale.Checked = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool Female
+        {
+            get => rbFemale.Checked;
+            set => rbFemale.Checked = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool Other
+        {
+            get => rbOther.Checked;
+            set => rbOther.Checked = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsOpen
+        {
+            get => Application.OpenForms.OfType<CustomerView>().Any();
+        }
+
+        /// <summary>
+        /// Search value
+        /// </summary>
+        public string SearchValue
+        {
+            get => txtSearch.Text;
+        }
+        #endregion
+
+        #region Events
+        public event EventHandler AddNewEvent;
 		public event EventHandler EditEvent;
 		public event EventHandler SearchEvent;
 		public event EventHandler DeleteEvent;
@@ -62,41 +148,214 @@ namespace CoffeeShop.View
 		public CustomerView()
         {
             InitializeComponent();
+            InitializeDataGridView();
+            InitializeComboBoxCoupon();
             AssociateAndRaiseViewEvents();
+            tabCustomer.TabPages.Remove(tabPageCustomerDetail);
         }
 
-		#region private fields
+        #region private fields
 
-		/// <summary>
-		/// Asssociate And Raise Event
-		/// </summary>
-		private void AssociateAndRaiseViewEvents()
+        /// <summary>
+        /// Initialize data grid view
+        /// </summary>
+        private void InitializeDataGridView()
+        {
+            dgvCustomer.AllowUserToAddRows = false;
+            dgvCustomer.AllowUserToResizeRows = false;
+            dgvCustomer.RowHeadersVisible = false;
+            dgvCustomer.AutoGenerateColumns = false;
+            dgvCustomer.MultiSelect = false;
+            dgvCustomer.ReadOnly = true;
+
+            // Change color for header row
+            dgvCustomer.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 251, 233);
+            dgvCustomer.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold); // Kiểu chữ
+
+            // ID
+            DataGridViewTextBoxColumn colCustomerId = new DataGridViewTextBoxColumn();
+            colCustomerId.HeaderText = "Customer ID";
+            colCustomerId.Width = 100;
+            colCustomerId.DataPropertyName = "CustomerID";
+            dgvCustomer.Columns.Add(colCustomerId);
+
+            // Name
+            DataGridViewTextBoxColumn colCustomerName = new DataGridViewTextBoxColumn();
+            colCustomerName.HeaderText = "Customer Name";
+            colCustomerName.Width = 225;
+            colCustomerName.DataPropertyName = "CustomerName";
+            dgvCustomer.Columns.Add(colCustomerName);
+
+            // Phone
+            DataGridViewTextBoxColumn colPhone = new DataGridViewTextBoxColumn();
+            colPhone.HeaderText = "Customer Phone";
+            colPhone.Width = 125;
+            colPhone.DataPropertyName = "PhoneNumber";
+            dgvCustomer.Columns.Add(colPhone);
+
+            // Email
+            DataGridViewTextBoxColumn colEmail = new DataGridViewTextBoxColumn();
+            colEmail.HeaderText = "Email";
+            colEmail.Width = 300;
+            colEmail.DataPropertyName = "Email";
+            dgvCustomer.Columns.Add(colEmail);
+
+            // Coupon
+            DataGridViewTextBoxColumn colCoupon = new DataGridViewTextBoxColumn();
+            colCoupon.HeaderText = "Coupon";
+            colCoupon.Width = 100;
+            colCoupon.DataPropertyName = "Coupon";
+            dgvCustomer.Columns.Add(colCoupon);
+
+            // Gender
+            DataGridViewTextBoxColumn colGender = new DataGridViewTextBoxColumn();
+            colGender.HeaderText = "Gender";
+            colGender.Width = 80;
+            colGender.DataPropertyName = "Gender";
+            dgvCustomer.Columns.Add(colGender);
+
+            dgvCustomer.CellFormatting += dgvCustomer_CellFormatting;
+        }
+
+        /// <summary>
+        /// Event change looks of data grid view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvCustomer_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.RowIndex % 2 == 0)
+                {
+                    dgvCustomer.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGray;
+                }
+                else
+                {
+                    dgvCustomer.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Asssociate And Raise Event
+        /// </summary>
+        private void AssociateAndRaiseViewEvents()
 		{
 
-			//Add new
-			btnAdd.Click += delegate
-			{
-				AddNewEvent?.Invoke(this, EventArgs.Empty);
+            // Search
+            btnSearch.Click += delegate
+            {
+                btnDelete.Enabled = false;
+                btnEdit.Enabled = false;
+                SearchEvent?.Invoke(this, EventArgs.Empty);
+            };
+            txtSearch.KeyDown += (s, e) =>
+            {
+                btnDelete.Enabled = false;
+                btnEdit.Enabled = false;
+                if (e.KeyCode == Keys.Enter)
+                    SearchEvent?.Invoke(this, EventArgs.Empty);
+            };
 
-			};
+            // Add
+            btnAdd.Click += delegate
+            {
+                AddNewEvent?.Invoke(this, EventArgs.Empty);
+                tabCustomer.TabPages.Remove(tabPageCustomerList);
+                tabCustomer.TabPages.Add(tabPageCustomerDetail);
+                tabPageCustomerDetail.Text = "Add New Customer";
+            };
 
-			//Edit
-			btnEdit.Click += delegate
-			{
-				EditEvent?.Invoke(this, EventArgs.Empty);
+            // Edit
+            btnEdit.Enabled = false;
+            btnEdit.Click += delegate
+            {
+                EditEvent?.Invoke(this, EventArgs.Empty);
+                tabCustomer.TabPages.Remove(tabPageCustomerList);
+                tabCustomer.TabPages.Add(tabPageCustomerDetail);
+                tabPageCustomerDetail.Text = "Edit Customer";
+            };
 
-			};
+            // Delete
+            btnDelete.Enabled = false;
+            btnDelete.Click += delegate
+            {
+                if (MessageBox.Show("Are you sure to delete the selected customer?", "Warning",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    DeleteEvent?.Invoke(this, EventArgs.Empty);
+            };
 
-		}
-		#endregion
+            // Save
+            btnSave.Click += delegate
+            {
+                SaveEvent?.Invoke(this, EventArgs.Empty);
 
-		#region public fields
-		/// <summary>
-		/// Get Instance for Customer
-		/// </summary>
-		/// <param name="parentContainer">Parent Container</param>
-		/// <returns>Instance</returns>
-		public static CustomerView GetInstance(Form parentContainer)
+                if (isSuccessful)
+                {
+                    tabCustomer.TabPages.Remove(tabPageCustomerDetail);
+                    tabCustomer.TabPages.Add(tabPageCustomerList);
+                }
+            };
+
+            // Clear
+            btnClear.Click += delegate
+            {
+                ClearEvent?.Invoke(this, EventArgs.Empty);
+            };
+
+            // Back
+            btnBack.Click += delegate
+            {
+                btnDelete.Enabled = false;
+                btnEdit.Enabled = false;
+
+                BackToListEvent?.Invoke(this, EventArgs.Empty);
+                tabCustomer.TabPages.Remove(tabPageCustomerDetail);
+                tabCustomer.TabPages.Add(tabPageCustomerList);
+            };
+
+            // Data View
+            dgvCustomer.CellClick += delegate
+            {
+                btnDelete.Enabled = true;
+                btnEdit.Enabled = true;
+            };
+
+            dgvCustomer.CellDoubleClick += (s, e) =>
+            {
+                if (e.RowIndex >= 0)
+                {
+                    EditEvent?.Invoke(this, EventArgs.Empty);
+                    tabCustomer.TabPages.Remove(tabPageCustomerList);
+                    tabCustomer.TabPages.Add(tabPageCustomerDetail);
+                    tabPageCustomerDetail.Text = "Edit Customer";
+                }
+            };
+
+        }
+
+        /// <summary>
+        /// Initialize ComboBox
+        /// </summary>
+        private void InitializeComboBoxCoupon()
+        {
+            cbCoupon.Items.Add("10%");
+            cbCoupon.Items.Add("20%");
+            cbCoupon.Items.Add("30%");
+            cbCoupon.Items.Add("40%");
+            cbCoupon.Items.Add("50%");           
+        }
+
+        #endregion
+
+        #region public fields
+        /// <summary>
+        /// Get Instance for Customer
+        /// </summary>
+        /// <param name="parentContainer">Parent Container</param>
+        /// <returns>Instance</returns>
+        public static CustomerView GetInstance(Form parentContainer)
         {
             if (instance == null || instance.IsDisposed)
             { 
@@ -113,10 +372,17 @@ namespace CoffeeShop.View
 
             return instance;
         }
+
+        /// <summary>
+        /// Get Data
+        /// </summary>
+        /// <param name="customerList"></param>
+        public void SetCustomerListBindingSource(BindingSource customerList)
+        {
+            this.dgvCustomer.DataSource = customerList;
+        }
         #endregion
 
-	}
-   
+    }
 
 }
-

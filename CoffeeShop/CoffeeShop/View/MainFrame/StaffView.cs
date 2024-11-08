@@ -181,7 +181,6 @@ namespace CoffeeShop.View
             InitializeComponent();
             InitializeDataGridView();
             InitializeComboBoxRole();
-
             AssociateAndRaiseEvents();
             tabStaff.TabPages.Remove(tabPageStaffDetail);
         }
@@ -417,5 +416,10 @@ namespace CoffeeShop.View
             this.dgvStaff.DataSource = staffList;
         }
         #endregion
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

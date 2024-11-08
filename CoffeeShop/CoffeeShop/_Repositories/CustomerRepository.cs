@@ -2,6 +2,8 @@
 using CoffeeShop.Model.InterfaceModel;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +29,21 @@ namespace CoffeeShop._Repositories
         /// <param name="customerModel"></param>
         public void Add(CustomerModel customerModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "insert into Customer values (@CustomerID, @CustomerName, @PhoneNumber, @Email, @Coupon, @Gender)";
+
+                command.Parameters.Add("@CustomerID", SqlDbType.NVarChar).Value = customerModel.CustomerID;
+                command.Parameters.Add("@CustomerName", SqlDbType.NVarChar).Value = customerModel.CustomerName;
+                command.Parameters.Add("@PhoneNumber", SqlDbType.VarChar).Value = customerModel.CustomerPhone;
+                command.Parameters.Add("@Email", SqlDbType.NVarChar).Value = customerModel.CustomerEmail;
+                command.Parameters.Add("@Coupon", SqlDbType.Decimal).Value = customerModel.Coupon;
+                command.Parameters.Add("@Gender", SqlDbType.Int).Value = customerModel.Gender;
+                command.ExecuteNonQuery();
+            }
         }
 
         /// <summary>
@@ -36,7 +52,15 @@ namespace CoffeeShop._Repositories
         /// <param name="customerID"></param>
         public void Delete(string customerID)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "delete from Customer where CustomerID = @id";
+                command.Parameters.Add("@id", SqlDbType.NVarChar).Value = customerID;
+                command.ExecuteNonQuery();
+            }
         }
 
         /// <summary>
@@ -45,7 +69,22 @@ namespace CoffeeShop._Repositories
         /// <param name="customerModel"></param>
         public void Edit(CustomerModel customerModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"update Customer
+                                        set CustomerName = @name, CustomerPhoneNumber = @phoneNumber, Email = @email, Discount = @coupon, Gender = @gender
+                                        where CustomerID = @id";
+                command.Parameters.Add("@id", SqlDbType.NVarChar).Value = customerModel.CustomerID;
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = customerModel.CustomerName;
+                command.Parameters.Add("@phoneNumber", SqlDbType.VarChar).Value = customerModel.CustomerPhone;
+                command.Parameters.Add("@email", SqlDbType.NVarChar).Value = customerModel.CustomerEmail;
+                command.Parameters.Add("@coupon", SqlDbType.Decimal).Value = customerModel.Coupon;
+                command.Parameters.Add("@gender", SqlDbType.Int).Value = customerModel.Gender;
+                command.ExecuteNonQuery();
+            }
         }
 
         /// <summary>
@@ -54,8 +93,34 @@ namespace CoffeeShop._Repositories
         /// <returns></returns>
         public IEnumerable<CustomerModel> GetAll()
         {
-            throw new NotImplementedException();
+            var customerList = new List<CustomerModel>();
+
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "select * from Customer";
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var customerModel = new CustomerModel();
+                        customerModel.CustomerID = reader[0].ToString();
+                        customerModel.CustomerName = string.IsNullOrEmpty(reader[1].ToString()) ? "" : reader[1].ToString();
+                        customerModel.CustomerPhone = string.IsNullOrEmpty(reader[2].ToString()) ? "" : reader[2].ToString();           
+                        customerModel.CustomerEmail = string.IsNullOrEmpty(reader[3].ToString()) ? "" : reader[3].ToString();
+                        customerModel.Coupon = reader.IsDBNull(4) ? 0 : reader.GetDecimal(4);
+                        customerModel.Gender = Convert.ToBoolean(reader[5]) ? Model.Common.Gender.Male : Model.Common.Gender.Female;
+                        customerList.Add(customerModel);
+                    }
+                }
+            }
+
+            return customerList;
         }
+
+        
 
         /// <summary>
         /// Get list customer by value
@@ -64,9 +129,40 @@ namespace CoffeeShop._Repositories
         /// <returns></returns>
         public IEnumerable<CustomerModel> GetByValue(string value)
         {
-            throw new NotImplementedException();
-        }
+            var customerList = new List<CustomerModel>();
 
+            string customerID = value;
+            string customerName = value;
+
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"Select * 
+                                        from Customer 
+                                        where CustomerID like @id+'%' or CustomerName like '%'+@name+'%'";
+                command.Parameters.Add("@id", SqlDbType.NVarChar).Value = customerID;
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = customerName;
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var customerModel = new CustomerModel();
+                        customerModel.CustomerID = reader[0].ToString();
+                        customerModel.CustomerName = reader[1].ToString();
+                        customerModel.CustomerPhone = string.IsNullOrEmpty(reader[2].ToString()) ? "" : reader[2].ToString();
+                        customerModel.CustomerEmail = reader[3].ToString();
+                        customerModel.Coupon = reader.IsDBNull(4) ? 0 : reader.GetDecimal(4); 
+                        customerModel.Gender = Convert.ToBoolean(reader[5]) ? Model.Common.Gender.Male : Model.Common.Gender.Female;
+                        customerList.Add(customerModel);
+                    }
+                }
+            }
+
+            return customerList;
+        }
         #endregion
     }
 }
