@@ -43,29 +43,62 @@ namespace CoffeeShop.View.DialogCheckList
             btnCancle.Click += delegate { this.Close(); };
             dgvIngredient.MultiSelect = true;
             dgvIngredient.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            InitializeDataGridView();
+
 
         }
 
-
-        /// <summary>
-        /// Get instance
-        /// </summary>
-        /// <returns>instance</returns>
-        public static EditCategoryView GetInstance()
+        private void InitializeDataGridView()
         {
-            if (instance == null || instance.IsDisposed)
-            {
-                instance = new EditCategoryView();
-            }
-            else
-            {
-                if (instance.WindowState == FormWindowState.Minimized)
-                    instance.WindowState = FormWindowState.Normal;
-                instance.BringToFront();
-            }
+            dgvIngredient.AllowUserToAddRows = false;
+            dgvIngredient.AllowUserToResizeRows = false;
+            dgvIngredient.RowHeadersVisible = false;
+            dgvIngredient.AutoGenerateColumns = false;
+            dgvIngredient.MultiSelect = true;
+            dgvIngredient.ReadOnly = true;
 
-            return instance;
+            // Change color for header row
+            dgvIngredient.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 251, 233);
+            dgvIngredient.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold); // Kiểu chữ
+            dgvIngredient.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvIngredient.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvIngredient.DefaultCellStyle.Font = new Font("Arial", 10);
+
+            // ID
+            DataGridViewTextBoxColumn colIngredientID = new DataGridViewTextBoxColumn();
+            colIngredientID.HeaderText = "Ingredient ID";
+            colIngredientID.Width = 150;
+            colIngredientID.DataPropertyName = "IngredientID";
+            dgvIngredient.Columns.Add(colIngredientID);
+
+            // categoryID
+            DataGridViewTextBoxColumn colIngredientName = new DataGridViewTextBoxColumn();
+            colIngredientName.HeaderText = "Ingredient Name";
+            colIngredientName.Width = 220;
+            colIngredientName.DataPropertyName = "IngredientName";
+            dgvIngredient.Columns.Add(colIngredientName);
         }
+
+            /// <summary>
+            /// Get instance
+            /// </summary>
+            /// <returns>instance</returns>
+            public static EditCategoryView GetInstance()
+            {
+                if (instance == null || instance.IsDisposed)
+                {
+                    instance = new EditCategoryView();
+                }
+                else
+                {
+                    if (instance.WindowState == FormWindowState.Minimized)
+                        instance.WindowState = FormWindowState.Normal;
+                    instance.BringToFront();
+                }
+
+                return instance;
+            }
+        
 
 		#region Methods
 
@@ -87,5 +120,20 @@ namespace CoffeeShop.View.DialogCheckList
 
         #region Events
         #endregion
+
+        private void dgvIngredient_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.RowIndex % 2 == 0)
+                {
+                    dgvIngredient.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGray;
+                }
+                else
+                {
+                    dgvIngredient.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                }
+            }
+        }
     }
 }
