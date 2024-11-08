@@ -11,8 +11,17 @@ namespace CoffeeShop.Model.InterfaceModel
         void Add(ItemModel itemModel);
         void Edit(ItemModel itemModel);
         void Delete(string itemID);
+        void AddItemIngredients(string itemID, List<string> ingredientIDs);
+        void EditItemIngredients(string itemID, List<string> itemIngredientIDs, List<IngredientModel> newIngredientList);
+        void DeleteItemIngredients(string itemID);
+
         IEnumerable<ItemModel> GetAllFoods();
         IEnumerable<ItemModel> GetAllDrink();
-        IEnumerable<ItemModel> GetByValue(string value);
+        IEnumerable<ItemModel> GetByValue(string value, bool isDrink);
+        List<CategoryModel> GetAllCategories(bool isDrink);
+        List<IngredientModel> GetIngredientsByItemID(string itemID);
+        List<string> GetItemIngredients(string itemID);
+        string GetItemID();
+
     }
 }

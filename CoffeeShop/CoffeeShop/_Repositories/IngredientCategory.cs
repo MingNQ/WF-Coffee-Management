@@ -2,6 +2,7 @@
 using CoffeeShop.Model.InterfaceModel;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace CoffeeShop._Repositories
         /// Constructor
         /// </summary>
         /// <param name="connectionString"></param>
-        public IngredientCategory(string connectionString) 
+        public IngredientCategory(string connectionString)
         {
             this.connectionString = connectionString;
         }
@@ -54,7 +55,25 @@ namespace CoffeeShop._Repositories
         /// <returns></returns>
         public IEnumerable<IngredientModel> GetAll()
         {
-            throw new NotImplementedException();
+            var ingredientList = new List<IngredientModel>();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Select * from Ingredient";
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var ingredientModel = new IngredientModel();
+                        ingredientModel.IngredientID = reader[0].ToString();
+                        ingredientModel.IngredientName = reader[1].ToString();
+                        ingredientList.Add(ingredientModel);
+                    }
+                }
+            }
+            return ingredientList;
         }
 
         /// <summary>
@@ -63,10 +82,10 @@ namespace CoffeeShop._Repositories
         /// <param name="value"></param>
         /// <returns></returns>
         public IEnumerable<IngredientModel> GetByValue(string value)
-        {
-            throw new NotImplementedException();
-        }
+            {
+                throw new NotImplementedException();
+            }
 
-        #endregion
+            #endregion
     }
 }

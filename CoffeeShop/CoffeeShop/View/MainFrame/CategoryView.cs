@@ -1,4 +1,5 @@
-﻿using CoffeeShop.View.DialogCheckList;
+﻿using CoffeeShop.Model;
+using CoffeeShop.View.DialogCheckList;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,113 +17,220 @@ namespace CoffeeShop.View.MainFrame
 	public partial class CategoryView : Form, ICategoryView
 	{
 		#region Fields
-		/// <summary>
-		/// Instance
-		/// </summary>
 		private static CategoryView instance;
-
-		/// <summary>
-		/// Check if is edit or add
-		/// </summary>
 		private bool isEdit;
 
 		#endregion
-
+		private string message;
+		private bool isSuccessful;
 		#region Properties
 		/// <summary>
 		/// Check if is edit or add
 		/// </summary>
-		public bool IsEdit { get { return isEdit; } set { isEdit = value; } }
-		#endregion
+		public bool IsEdit { 
+			get { return isEdit; } 
+			set { isEdit = value; } 
+		}
 
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		public CategoryView()
+        public string ItemID { 
+			get => txtItemID.Text; 
+			set => txtItemID.Text = value; }
+        public int CategoryID {
+            get => (int)cboCategoryID.SelectedValue;
+            set => cboCategoryID.SelectedValue = value;
+        }
+        public string ItemName { 
+			get => txtItemName.Text; 
+			set => txtItemName.Text = value; }
+        public float Cost { 
+			get => float.Parse(txtPrice.Text); 
+			set => txtPrice.Text = value.ToString(); }
+        public string SearchValue {
+			get => txtSearch.Text; 
+			set => txtSearch.Text = value; }
+        public bool IsSuccessful { 
+			get => isSuccessful; 
+			set => isSuccessful = value; }
+        public string Message { 
+			get => message; 
+			set => message = value; }
+        private List<IngredientModel> _ingredients;
+        public List<IngredientModel> ingredients {
+            get => _ingredients;
+            set => _ingredients = value; }
+        #endregion
+        public CategoryView()
 		{
 			InitializeComponent();
 			tabControl_Food.TabPages.Remove(tabPage2);
 			tabControl_Food.TabPages.Remove(tabPage3);
+            AssociateAndRaiseEvents();
+            InitializeDataGridView();
+        }
 
-			btnAdd_Ingredient.Click += delegate
-			{
-				ShowIngredientCheckList?.Invoke(this, EventArgs.Empty);
-			};
+        private void InitializeDataGridView()
+        {
+            dgvItem.AllowUserToAddRows = false;
+            dgvItem.AllowUserToResizeRows = false;
+            dgvItem.RowHeadersVisible = false;
+            dgvItem.AutoGenerateColumns = false;
+            dgvItem.MultiSelect = false;
+            dgvItem.ReadOnly = true;
 
-			//dki su kien cho nut View-Drink
-			btnDrinkView.Click += delegate
-			{
-				lblCategory.Text = "Category / Drink";
-				ViewDrinkEvent?.Invoke(this, EventArgs.Empty);
-				tabControl_Food.TabPages.Remove(tabPage1);
-				tabControl_Food.TabPages.Add(tabPage2);
-			};
+            // Change color for header row
+            dgvItem.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 251, 233);
+            dgvItem.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold); // Kiểu chữ
+            dgvItem.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvItem.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvItem.DefaultCellStyle.Font = new Font("Arial", 10);
 
-			btnViewFood.Click += delegate
-			{
-				lblCategory.Text = "Category / Food";
-				ViewFoodEvent?.Invoke(this, EventArgs.Empty);
-				tabControl_Food.TabPages.Remove(tabPage1);
-				tabControl_Food.TabPages.Add(tabPage2);
-			};
+            // ID
+            DataGridViewTextBoxColumn colItemID = new DataGridViewTextBoxColumn();
+            colItemID.HeaderText = "Item ID";
+            colItemID.Width = 200;
+            colItemID.DataPropertyName = "ItemID";
+            dgvItem.Columns.Add(colItemID);
 
-			btnAdd.Click += delegate
-			{
-				isEdit = false;
-				AddNewEvent?.Invoke(this, EventArgs.Empty);
-				tabControl_Food.TabPages.Remove(tabPage1);
-				tabControl_Food.TabPages.Remove(tabPage2);
-				tabControl_Food.TabPages.Add(tabPage3);
-			};
+            // categoryID
+            DataGridViewTextBoxColumn colCateogryID = new DataGridViewTextBoxColumn();
+            colCateogryID.HeaderText = "Category ID";
+            colCateogryID.Width = 150;
+            colCateogryID.DataPropertyName = "CategoryID";
+            dgvItem.Columns.Add(colCateogryID);
 
-			btnEdit.Click += delegate
-			{
-				isEdit = true;
-				EditNewEvent?.Invoke(this, EventArgs.Empty);
-				tabControl_Food.TabPages.Remove(tabPage1);
-				tabControl_Food.TabPages.Remove(tabPage2);
-				tabControl_Food.TabPages.Add(tabPage3);
-			};
+            // name
+            DataGridViewTextBoxColumn colItemName = new DataGridViewTextBoxColumn();
+            colItemName.HeaderText = "Item Name";
+            colItemName.Width = 290;
+            colItemName.DataPropertyName = "ItemName";
+            dgvItem.Columns.Add(colItemName);
 
-			btnBackCategory.Click += delegate
-			{
-				lblCategory.Text = "Category";
-				tabControl_Food.TabPages.Remove(tabPage2);
-				if (!tabControl_Food.TabPages.Contains(tabPage1))
-				{
-					tabControl_Food.TabPages.Add(tabPage1);
-				}
-			};
+            // cost
+            DataGridViewTextBoxColumn colCost = new DataGridViewTextBoxColumn();
+            colCost.HeaderText = "Cost ";
+            colCost.Width = 180;
+            colCost.DataPropertyName = "Cost";
+            dgvItem.Columns.Add(colCost);
+        }
+        private void AssociateAndRaiseEvents()
+		{
+            btnAdd_Ingredient.Click += delegate
+            {
+                ShowIngredientCheckList?.Invoke(this, EventArgs.Empty);
+            };
 
-			btnBackToList.Click += delegate
-			{
-				// Xóa tabPage1 và tabPage3 khỏi tabControl1
-				tabControl_Food.TabPages.Remove(tabPage1);
-				tabControl_Food.TabPages.Remove(tabPage3);
+            //dki su kien cho nut View-Drink
+            btnDrinkView.Click += delegate
+            {
+                lblCategory.Text = "Category / Drink";
+                ViewDrinkEvent?.Invoke(this, EventArgs.Empty);
+                tabControl_Food.TabPages.Remove(tabPage1);
+                tabControl_Food.TabPages.Add(tabPage2);
+            };
 
-				// Thêm lại tabPage2 vào tabControl1 nếu nó chưa có
-				if (!tabControl_Food.TabPages.Contains(tabPage2))
-				{
-					tabControl_Food.TabPages.Add(tabPage2);
-				}
-			};
+            btnViewFood.Click += delegate
+            {
+                lblCategory.Text = "Category / Food";
+                ViewFoodEvent?.Invoke(this, EventArgs.Empty);
+                tabControl_Food.TabPages.Remove(tabPage1);
+                tabControl_Food.TabPages.Add(tabPage2);
+            };
 
-			this.Controls.Add(tabControl_Food);
+            //Search
+            btnSearch.Click += delegate
+            {
+                SearchEvent?.Invoke(this, EventArgs.Empty);
+            };
+            txtSearch.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    SearchEvent?.Invoke(this, EventArgs.Empty);
+                }
+            };
 
-		}
+            //Add new
+            btnAdd.Click += delegate
+            {
+                AddNewEvent?.Invoke(this, EventArgs.Empty);
+                tabControl_Food.TabPages.Remove(tabPage1);
+                tabControl_Food.TabPages.Remove(tabPage2);
+                tabControl_Food.TabPages.Add(tabPage3);
+                ltblItemDeatil.Text = "Add New Item";
+                txtItemID.Enabled = false;
+            };
 
-		#region private fields
+            //Edit
+            btnEdit.Click += delegate
+            {
+                EditEvent?.Invoke(this, EventArgs.Empty);
+                tabControl_Food.TabPages.Remove(tabPage1);
+                tabControl_Food.TabPages.Remove(tabPage2);
+                tabControl_Food.TabPages.Add(tabPage3);
+                ltblItemDeatil.Text = "Edit Item";
+                txtItemID.Enabled = false;
+            };
 
-		#endregion
+            //Delete
+            btnDelete.Click += delegate
+            {
+                var result = MessageBox.Show("Are you sure you want to delete the selected item?", "Warning",
+                      MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    DeleteEvent?.Invoke(this, EventArgs.Empty);
+                    MessageBox.Show(Message);
+                }
+            };
 
-		#region public fields
+            //Save changes
+            btnSave.Click += delegate
+            {
+                SaveEvent?.Invoke(this, EventArgs.Empty);
+                if (isSuccessful)
+                {
+                    tabControl_Food.TabPages.Remove(tabPage3);
+                    tabControl_Food.TabPages.Add(tabPage2);
+                }
+                MessageBox.Show(Message);
+            };
 
-		/// <summary>
-		/// Get Instance
-		/// </summary>
-		/// <param name="parentContainer"></param>
-		/// <returns>Instance</returns>
-		public static CategoryView GetInstance(Form parentContainer)
+            //Cancel
+            btnCancel.Click += delegate
+            {
+                CancelEvent?.Invoke(this, EventArgs.Empty);
+                tabControl_Food.TabPages.Remove(tabPage3);
+                tabControl_Food.TabPages.Add(tabPage2);
+            };
+
+            //BackCategory
+            btnBackCategory.Click += delegate
+            {
+                lblCategory.Text = "Category";
+                tabControl_Food.TabPages.Remove(tabPage2);
+                if (!tabControl_Food.TabPages.Contains(tabPage1))
+                {
+                    tabControl_Food.TabPages.Add(tabPage1);
+                }
+            };
+            //Back List
+            btnBackToList.Click += delegate
+            {
+                // Xóa tabPage1 và tabPage3 khỏi tabControl1
+                tabControl_Food.TabPages.Remove(tabPage1);
+                tabControl_Food.TabPages.Remove(tabPage3);
+
+                // Thêm lại tabPage2 vào tabControl1 nếu nó chưa có
+                if (!tabControl_Food.TabPages.Contains(tabPage2))
+                {
+                    tabControl_Food.TabPages.Add(tabPage2);
+                }
+            };
+
+            this.Controls.Add(tabControl_Food);
+        }
+
+        public static CategoryView GetInstance(Form parentContainer)
 		{
 			if (instance == null || instance.IsDisposed)
 			{
@@ -140,33 +248,74 @@ namespace CoffeeShop.View.MainFrame
 			return instance;
 		}
 
-		#endregion
+        public void SetItemListBindingSource(BindingSource itemList)
+        {
+			dgvItem.DataSource = itemList;
+        }
 
-		#region Events
-		/// <summary>
-		/// Show Edit Dialog
-		/// </summary>
-		public event EventHandler ShowIngredientCheckList;
+		public void LoadCategories(List<CategoryModel> categories)
+		{
+			cboCategoryID.DataSource = categories;
+            cboCategoryID.DisplayMember = "CategoryName";
+            cboCategoryID.ValueMember = "CategoryID";
+		}
 
-		/// <summary>
-		/// Show Food View Page
-		/// </summary>
+
+        public event EventHandler ShowIngredientCheckList;
+
 		public event EventHandler ViewFoodEvent;
-
-		/// <summary>
-		/// Show Drink View Page
-		/// </summary>
 		public event EventHandler ViewDrinkEvent;
 
-		/// <summary>
-		/// Add New Item Event
-		/// </summary>
 		public event EventHandler AddNewEvent;
+        public event EventHandler SearchEvent;
+        public event EventHandler EditEvent;
+        public event EventHandler DeleteEvent;
+        public event EventHandler SaveEvent;
+        public event EventHandler CancelEvent;
 
-		/// <summary>
-		/// Add New Food Event
-		/// </summary>
-		public event EventHandler EditNewEvent;
-		#endregion
-	}
+        public event EventHandler BackToListEvent;
+        public event EventHandler BackToCategoryEvent;
+
+        public event EventHandler Add_IngredientEvent;
+
+        private void dgvItem_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.RowIndex % 2 == 0)
+                {
+                    dgvItem.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGray;
+                }
+                else
+                {
+                    dgvItem.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                }
+            }
+        }
+
+        public void UpdateIngredientList(List<IngredientModel> ingredients)
+        {
+            lsbIngredient.Items.Clear();
+            this.ingredients = ingredients.OrderBy(i => i.IngredientID).ToList();
+            foreach (var item in ingredients)
+            {
+                lsbIngredient.Items.Add($"{item.IngredientID} - {item.IngredientName}");
+            }
+        }
+
+        public List<string> GetSelectedIngredientIDs()
+        {
+            var ingredientIDs = new List<string>();
+            foreach (var item in lsbIngredient.Items)
+            {              
+                var parts = item.ToString().Split('-');
+                if (parts.Length > 0)
+                {
+                    ingredientIDs.Add(parts[0].Trim());
+                }
+            }
+            return ingredientIDs;
+        }
+
+    }
 }

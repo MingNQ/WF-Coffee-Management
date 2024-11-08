@@ -1,6 +1,7 @@
 ﻿using CoffeeShop._Repositories;
 using CoffeeShop.Model.InterfaceModel;
 using CoffeeShop.View;
+using CoffeeShop.View.DialogCheckList;
 using CoffeeShop.View.MainFrame;
 using CoffeeShop.View.MainFrame.Interfaces;
 using System;
@@ -97,7 +98,10 @@ namespace CoffeeShop.Presenter
 		private void ShowCategoryView(object sender, EventArgs e)
 		{
 			ICategoryView view = CategoryView.GetInstance((MainView)mainView);
-			new CategoryPresenter(view);
+			IEditCategoryView editCategoryView = new EditCategoryView();
+			ICategoryRepository repository = new CategoryRepository(sqlConnectionString);
+			IIngredientRepository ingredientRepository = new IngredientCategory(sqlConnectionString);
+            new CategoryPresenter(view, repository,editCategoryView, ingredientRepository);
 		}
 
 		/// <summary>

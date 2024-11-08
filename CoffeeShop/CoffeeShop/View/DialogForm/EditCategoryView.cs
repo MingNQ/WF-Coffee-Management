@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeShop.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,17 +23,28 @@ namespace CoffeeShop.View.DialogCheckList
             get { return this.lbHeader.Text; }
             set { this.lbHeader.Text = value; }
         }
-
         #endregion
-        public EditCategoryView()
-        {
-            InitializeComponent();
-        }
-
         /// <summary>
         /// Instance
         /// </summary>
         private static EditCategoryView instance;
+
+        public event EventHandler SaveEvent;
+        public event EventHandler CancleEvent;
+
+        public EditCategoryView()
+        {
+            InitializeComponent();
+            btnSave.Click += delegate
+            {
+                SaveEvent?.Invoke(this, EventArgs.Empty);
+                this.Close();
+            };
+            btnCancle.Click += delegate { this.Close(); };
+            dgvIngredient.MultiSelect = true;
+            dgvIngredient.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+        }
 
 
         /// <summary>
@@ -65,9 +77,15 @@ namespace CoffeeShop.View.DialogCheckList
             ShowDialog();
 		}
 
-		#endregion
+        public void SetItemListBindingSource(BindingSource itemList)
+        {
+            dgvIngredient.DataSource = itemList;
+        }
+        public List<IngredientModel> SelectedIngredients => dgvIngredient.SelectedRows.Cast<DataGridViewRow>().Select(row => row.DataBoundItem as IngredientModel).ToList();
 
-		#region Events
-		#endregion
-	}
+        #endregion
+
+        #region Events
+        #endregion
+    }
 }
