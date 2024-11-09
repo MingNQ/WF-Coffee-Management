@@ -6,6 +6,7 @@ using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -101,6 +102,7 @@ namespace CoffeeShop.Presenter
         {
 			var staff = (StaffModel)staffBindingSource.Current;
 
+            // Fill Information
             staffView.StaffID = staff.StaffID;
 			staffView.StaffName = staff.StaffName;
 			staffView.PhoneNumber = staff.PhoneNumber.ToString();
@@ -111,6 +113,7 @@ namespace CoffeeShop.Presenter
 			staffView.Female = staff.Gender == Model.Common.Gender.Female;
 			staffView.Other = staff.Gender == Model.Common.Gender.Other;
             staffView.IsEdit = true;
+            staffView.Avatar = repository.GetStaffAvatar(staff.StaffID);
         }
 
         /// <summary>
@@ -175,6 +178,12 @@ namespace CoffeeShop.Presenter
                 staff.Email = staffView.Email;
                 staff.Role = staffView.StaffRole;
                 staff.Gender = staffView.Male ? Model.Common.Gender.Male : (staffView.Female ? Model.Common.Gender.Female : Model.Common.Gender.Other);
+                staff.Avatar = new Avatar()
+                {
+                    AvatarID = staffView.Avatar.AvatarID,
+                    StaffID = staffView.StaffID,
+                    ImageUrl = staffView.Avatar.ImageUrl
+                };
 
                 new Common.ModelValidation().Validate(staff);
 
@@ -195,12 +204,25 @@ namespace CoffeeShop.Presenter
                         }
                     }
 
+                    // Generate Avatar ID
+                    while (true)
+                    {
+                        string avatarID = Generate.GenerateID("AVT");
+                        var account = repository.GetStaffAvatar(null, avatarID);
+
+                        if (account.AvatarID == null)
+                        {
+                            staff.Avatar.AvatarID = avatarID;
+                            break;
+                        }
+                    }
+
                     repository.Add(staff);
                 }
 
+                repository.SaveAvatar(staffView.IsEdit, staff);
                 staffView.IsSuccessful = true;
                 LoadAllStaff();
-                ClearFieldInformation();
             }
             catch (Exception ex)
             {
@@ -210,11 +232,11 @@ namespace CoffeeShop.Presenter
             }
         }
 
-		/// <summary>
-		/// Clear information
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
+        /// <summary>
+        /// Clear information
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClearEvent(object sender, EventArgs e)
         {
             if (DialogMessageView.ShowMessage("warning", "Are you sure to clear all information? Information once cleared can't be recovered!") 

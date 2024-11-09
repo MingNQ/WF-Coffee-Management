@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\Avatar.cs" />
     <Compile Include="Model\Common\Gender.cs" />
     <Compile Include="Model\CustomerModel.cs" />
     <Compile Include="Model\IngredientModel.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Presenter\StaffPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\AppConst.cs" />
     <Compile Include="Utilities\Generate.cs" />
     <Compile Include="View\DialogForm\DialogMessageView.cs">
       <SubType>Form</SubType>
@@ -310,6 +312,9 @@
     <Content Include="Resources\informationIcon.png" />
     <Content Include="Resources\successIcon.png" />
     <Content Include="Resources\warningIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utilities\Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

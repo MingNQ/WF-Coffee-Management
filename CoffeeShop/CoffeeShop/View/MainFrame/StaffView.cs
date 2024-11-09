@@ -1,4 +1,6 @@
-﻿using CoffeeShop.Model.Common;
+﻿using CoffeeShop.Model;
+using CoffeeShop.Model.Common;
+using CoffeeShop.Utilities;
 using CoffeeShop.View.DialogForm;
 using CoffeeShop.View.MainFrame;
 using System;
@@ -7,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +39,11 @@ namespace CoffeeShop.View
         /// 
         /// </summary>
         private string staffID;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private Avatar avatar = new Avatar();
 
 		#endregion
 
@@ -160,6 +168,21 @@ namespace CoffeeShop.View
             get => txtSearch.Text; 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public Avatar Avatar 
+        { 
+            get => avatar;
+            set 
+            {
+                avatar = value;
+
+                if (avatar.ImageUrl != null)
+                    picAvatar.ImageLocation = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, avatar.ImageUrl);
+            }
+        }
+
         #endregion
 
         #region Events
@@ -171,13 +194,14 @@ namespace CoffeeShop.View
 		public event EventHandler SaveEvent;
 		public event EventHandler ClearEvent;
 		public event EventHandler BackToListEvent;
+        public event EventHandler ImportImageEvent;
 
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		public StaffView()
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public StaffView()
         {
             InitializeComponent();
             InitializeDataGridView();
@@ -333,13 +357,15 @@ namespace CoffeeShop.View
 				{
 					tabStaff.TabPages.Remove(tabPageStaffDetail);
 					tabStaff.TabPages.Add(tabPageStaffList);
-				}
+                    DialogMessageView.ShowMessage("success", IsEdit ? $"Successful Edit Staff: {StaffName}" : $"Successful Add New Staff: {StaffName}");
+                }
             };
 
             // Clear
             btnClear.Click += delegate
             {
                 ClearEvent?.Invoke(this, EventArgs.Empty);
+                picAvatar.Image = null;
             };
 
             // Back
@@ -351,6 +377,7 @@ namespace CoffeeShop.View
                 BackToListEvent?.Invoke(this, EventArgs.Empty);
 				tabStaff.TabPages.Remove(tabPageStaffDetail);
 				tabStaff.TabPages.Add(tabPageStaffList);
+                picAvatar.Image = null;
 			};
 
             // Data View
@@ -370,6 +397,10 @@ namespace CoffeeShop.View
                     tabPageStaffDetail.Text = "Edit Staff";
                 }
             };
+
+            // Import Image
+            btnImport.Click += LoadImage;
+            picAvatar.SizeMode = PictureBoxSizeMode.StretchImage;
 		}
 
         /// <summary>
@@ -377,9 +408,40 @@ namespace CoffeeShop.View
         /// </summary>
         private void InitializeComboBoxRole()
         {
-            cbRole.Items.Add("Quản Lý");
+            cbRole.Items.Add("Quản lý");
             cbRole.Items.Add("Pha chế");
             cbRole.Items.Add("Phục vụ");
+        }
+
+        /// <summary>
+        /// Import Image
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoadImage(object sender, EventArgs e)
+        {
+            // Open File Dialog
+            using(OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = Application.StartupPath;
+                openFileDialog.Filter = "PNG File (*.png)|*.png|JPEG File (*.jpeg)|*.jpeg|JPG File(*.jpg)|*.jpg|All Files (*.*)|*.*";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Combine Path to Save File
+                    string sourceFilePath = openFileDialog.FileName;
+                    string fileName = Path.GetFileName(sourceFilePath);
+                    string destinationPath = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, fileName);
+                    
+                    if (Path.GetFullPath(sourceFilePath) != Path.GetFullPath(destinationPath))
+                    {
+                        File.Copy(sourceFilePath, destinationPath, true);
+                    }
+
+                    avatar.ImageUrl = Path.GetFileName(destinationPath);
+                    picAvatar.ImageLocation = destinationPath;
+                }
+            }
         }
 
 		#endregion

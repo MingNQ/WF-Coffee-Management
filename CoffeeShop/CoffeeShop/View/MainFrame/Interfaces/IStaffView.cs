@@ -1,4 +1,5 @@
-﻿using CoffeeShop.Model.Common;
+﻿using CoffeeShop.Model;
+using CoffeeShop.Model.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace CoffeeShop.View.MainFrame
         bool Male { get; set; }
 		bool Female { get; set; }
 		bool Other { get; set; }
-
+		Avatar Avatar { get; set; }
 		string SearchValue { get; }
 
         bool IsEdit { get; set; }
@@ -43,5 +44,6 @@ namespace CoffeeShop.View.MainFrame
 		event EventHandler SaveEvent;
 		event EventHandler ClearEvent;
 		event EventHandler BackToListEvent;
+		event EventHandler ImportImageEvent;
 	}
 }
