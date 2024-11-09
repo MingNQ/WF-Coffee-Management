@@ -1,9 +1,11 @@
-﻿using System;
+﻿using CoffeeShop.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CoffeeShop.View.DialogForm
 {
@@ -11,14 +13,22 @@ namespace CoffeeShop.View.DialogForm
 	{
 		string TittleHeader { get; set; }
 
-		/// <summary>
-		/// Hide Dialog
-		/// </summary>
-		void Hide();
+        event EventHandler SaveEvent;
+        event EventHandler ClearEvent;
 
-		/// <summary>
-		/// Show Diaglog
-		/// </summary>
-		void ShowDialog();
+
+        /// <summary>
+        /// Hide Dialog
+        /// </summary>
+        void Hide();
+        void SetLIngredientListBindingSource(BindingSource ingredientBindingSource);
+
+        /// <summary>
+        /// Show Diaglog
+        /// </summary>
+        void ShowDialog();
 	}
+
+ 
+
 }
