@@ -11,7 +11,7 @@ namespace CoffeeShop.View.MainFrame
 	{
         // Properties
         string CustomerID { get; set; }
-        string CustomerName { get; set; }
+        string CustomerName { get; set; }        
         string PhoneNumber { get; set; }
         string Email { get; set; }
         Decimal Coupon {  get; set; }

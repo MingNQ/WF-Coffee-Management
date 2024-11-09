@@ -1,4 +1,5 @@
 ﻿using CoffeeShop.Model;
+using CoffeeShop.Model.Common;
 using CoffeeShop.Model.InterfaceModel;
 using System;
 using System.Collections.Generic;
@@ -111,7 +112,7 @@ namespace CoffeeShop._Repositories
                         customerModel.CustomerPhone = string.IsNullOrEmpty(reader[2].ToString()) ? "" : reader[2].ToString();           
                         customerModel.CustomerEmail = string.IsNullOrEmpty(reader[3].ToString()) ? "" : reader[3].ToString();
                         customerModel.Coupon = reader.IsDBNull(4) ? 0 : reader.GetDecimal(4);
-                        customerModel.Gender = Convert.ToBoolean(reader[5]) ? Model.Common.Gender.Male : Model.Common.Gender.Female;
+                        customerModel.Gender = reader[5].ToString() == "" ? Gender.Other : (Gender)Int32.Parse(reader[5].ToString());
                         customerList.Add(customerModel);
                     }
                 }
@@ -120,7 +121,7 @@ namespace CoffeeShop._Repositories
             return customerList;
         }
 
-        
+
 
         /// <summary>
         /// Get list customer by value
@@ -128,22 +129,31 @@ namespace CoffeeShop._Repositories
         /// <param name="value"></param>
         /// <returns></returns>
         public IEnumerable<CustomerModel> GetByValue(string value)
-        {
+        {           
             var customerList = new List<CustomerModel>();
-
-            string customerID = value;
-            string customerName = value;
 
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = @"Select * 
-                                        from Customer 
-                                        where CustomerID like @id+'%' or CustomerName like '%'+@name+'%'";
-                command.Parameters.Add("@id", SqlDbType.NVarChar).Value = customerID;
-                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = customerName;
+
+                // Kiểm tra nếu value là số điện thoại
+                if (int.TryParse(value, out int phoneNumber))
+                {
+                    // Tìm kiếm bằng số điện thoại
+                    command.CommandText = "SELECT * FROM Customer WHERE CustomerPhoneNumber = @phone";
+                    command.Parameters.Add("@phone", SqlDbType.Int).Value = phoneNumber;
+                }
+                else
+                {
+                    // Tìm kiếm bằng CustomerID hoặc CustomerName
+                    command.CommandText = @"SELECT * 
+                                    FROM Customer 
+                                    WHERE CustomerID LIKE @id + '%' OR CustomerName LIKE '%' + @name + '%'";
+                    command.Parameters.Add("@id", SqlDbType.NVarChar).Value = value;
+                    command.Parameters.Add("@name", SqlDbType.NVarChar).Value = value;
+                }
 
                 using (var reader = command.ExecuteReader())
                 {
@@ -151,11 +161,11 @@ namespace CoffeeShop._Repositories
                     {
                         var customerModel = new CustomerModel();
                         customerModel.CustomerID = reader[0].ToString();
-                        customerModel.CustomerName = reader[1].ToString();
+                        customerModel.CustomerName = string.IsNullOrEmpty(reader[1].ToString()) ? "" : reader[1].ToString();
                         customerModel.CustomerPhone = string.IsNullOrEmpty(reader[2].ToString()) ? "" : reader[2].ToString();
-                        customerModel.CustomerEmail = reader[3].ToString();
-                        customerModel.Coupon = reader.IsDBNull(4) ? 0 : reader.GetDecimal(4); 
-                        customerModel.Gender = Convert.ToBoolean(reader[5]) ? Model.Common.Gender.Male : Model.Common.Gender.Female;
+                        customerModel.CustomerEmail = string.IsNullOrEmpty(reader[3].ToString()) ? "" : reader[3].ToString();
+                        customerModel.Coupon = reader.IsDBNull(4) ? 0 : reader.GetDecimal(4);
+                        customerModel.Gender = reader[5].ToString() == "" ? Gender.Other : (Gender)Int32.Parse(reader[5].ToString());
                         customerList.Add(customerModel);
                     }
                 }

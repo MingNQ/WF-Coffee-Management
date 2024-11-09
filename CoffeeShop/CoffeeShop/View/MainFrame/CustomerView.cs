@@ -63,7 +63,7 @@ namespace CoffeeShop.View
 
         /// <summary>
         /// 
-        /// </summary>
+        /// </summary>     
         public string PhoneNumber
         {
             get => txtPhone.Text;
@@ -85,7 +85,7 @@ namespace CoffeeShop.View
         public decimal Coupon
         {
             get => decimal.TryParse(cbCoupon.Text, out var result) ? result : 0;
-            set => cbCoupon.Text = value.ToString();
+            set => cbCoupon.Text = value.ToString();           
         }
 
         /// <summary>
@@ -190,20 +190,20 @@ namespace CoffeeShop.View
             DataGridViewTextBoxColumn colPhone = new DataGridViewTextBoxColumn();
             colPhone.HeaderText = "Customer Phone";
             colPhone.Width = 125;
-            colPhone.DataPropertyName = "PhoneNumber";
+            colPhone.DataPropertyName = "CustomerPhone";
             dgvCustomer.Columns.Add(colPhone);
 
             // Email
             DataGridViewTextBoxColumn colEmail = new DataGridViewTextBoxColumn();
             colEmail.HeaderText = "Email";
             colEmail.Width = 300;
-            colEmail.DataPropertyName = "Email";
+            colEmail.DataPropertyName = "CustomerEmail";
             dgvCustomer.Columns.Add(colEmail);
 
             // Coupon
             DataGridViewTextBoxColumn colCoupon = new DataGridViewTextBoxColumn();
-            colCoupon.HeaderText = "Coupon";
-            colCoupon.Width = 100;
+            colCoupon.HeaderText = "Coupon(%)";
+            colCoupon.Width = 150;
             colCoupon.DataPropertyName = "Coupon";
             dgvCustomer.Columns.Add(colCoupon);
 
@@ -340,11 +340,11 @@ namespace CoffeeShop.View
         /// </summary>
         private void InitializeComboBoxCoupon()
         {
-            cbCoupon.Items.Add("10%");
-            cbCoupon.Items.Add("20%");
-            cbCoupon.Items.Add("30%");
-            cbCoupon.Items.Add("40%");
-            cbCoupon.Items.Add("50%");           
+            cbCoupon.Items.Add("10");
+            cbCoupon.Items.Add("20");
+            cbCoupon.Items.Add("30");
+            cbCoupon.Items.Add("40");
+            cbCoupon.Items.Add("50");           
         }
 
         #endregion

@@ -32,16 +32,19 @@ namespace CoffeeShop.Model
         [StringLength(50, MinimumLength = 5, ErrorMessage = "Customer name must be between 5 and 50 characters")]
         public string CustomerName { get { return customerName; } set { customerName = value; } }
 
+
         [DisplayName("Phone Number")]
         [RegularExpression("([0-9]+)", ErrorMessage = "This must be number")]
-        [StringLength(12, MinimumLength = 10, ErrorMessage = "Phone number must be between 10 and 12 digits")]
+        [StringLength(12, MinimumLength = 10, ErrorMessage = "Phone number must be between 10 and 12 digits")]       
         public string CustomerPhone { get { return customerPhone; } set { customerPhone = value; } }
+
 
         [DisplayName("Email")]
         [Required(ErrorMessage = "Email is required")]
         [DataType(DataType.EmailAddress)]
         [EmailAddress]
         public string CustomerEmail { get { return customerEmail; } set { customerEmail = value; } }  
+
 
         [DisplayName("Coupon")]
         //[Required(ErrorMessage = "Coupon is required")]
