@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeShop.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,20 +24,40 @@ namespace CoffeeShop.View.DialogForm
 			set { this.lblHeader.Text = value; }
 		}
 
-		#endregion
+        public string IngredientName
+        {
+            get => txtIngredientName.Text;
+            set => txtIngredientName.Text = value;
+        }
 
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		public EditIngredientView()
+        #endregion
+
+      
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public EditIngredientView()
 		{
 			InitializeComponent();
-		}
+            btnSave.Click += delegate
+            {
+                SaveEvent?.Invoke(this, EventArgs.Empty);
+                this.Close();
+            };
+
+            btnClear.Click += delegate { this.Close(); };
+        }
 
 		/// <summary>
 		/// Instance
 		/// </summary>
 		private static EditIngredientView instance;
+   
+
+        public event EventHandler SaveEvent;
+
+		public event EventHandler ClearEvent;
 
 
 		/// <summary>
@@ -67,7 +88,12 @@ namespace CoffeeShop.View.DialogForm
 			ShowDialog();
 		}
 
-		#region Events
-		#endregion
-	}
+        public void SetLIngredientListBindingSource(BindingSource ingredientList)
+        {
+            this.dgvIngredient.DataSource = ingredientList;
+        }
+
+        #region Events
+        #endregion
+    }
 }

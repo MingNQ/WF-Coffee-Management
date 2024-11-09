@@ -3,6 +3,7 @@ using CoffeeShop.Model.InterfaceModel;
 using CoffeeShop.View;
 using CoffeeShop.View.MainFrame;
 using CoffeeShop.View.MainFrame.Interfaces;
+using CoffeeShop.View.DialogForm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,7 +87,9 @@ namespace CoffeeShop.Presenter
 		private void ShowIngredientView(object sender, EventArgs e)
 		{
 			IIngredientView view = IngredientView.GetInstance((MainView)mainView);
-			new IngredientPresenter(view);
+			IEditIngredientView editIngredientView = new EditIngredientView();
+            IIngredientRepository repository = new IngredientCategory(sqlConnectionString);
+            new IngredientPresenter(view, repository);
 		}
 
 		/// <summary>
