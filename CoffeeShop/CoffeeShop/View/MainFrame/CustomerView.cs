@@ -167,6 +167,7 @@ namespace CoffeeShop.View
             dgvCustomer.AutoGenerateColumns = false;
             dgvCustomer.MultiSelect = false;
             dgvCustomer.ReadOnly = true;
+            //dgvCustomer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             // Change color for header row
             dgvCustomer.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 251, 233);
@@ -175,7 +176,7 @@ namespace CoffeeShop.View
             // ID
             DataGridViewTextBoxColumn colCustomerId = new DataGridViewTextBoxColumn();
             colCustomerId.HeaderText = "Customer ID";
-            colCustomerId.Width = 100;
+            colCustomerId.Width = 150;
             colCustomerId.DataPropertyName = "CustomerID";
             dgvCustomer.Columns.Add(colCustomerId);
 
@@ -189,28 +190,28 @@ namespace CoffeeShop.View
             // Phone
             DataGridViewTextBoxColumn colPhone = new DataGridViewTextBoxColumn();
             colPhone.HeaderText = "Customer Phone";
-            colPhone.Width = 125;
+            colPhone.Width = 175;
             colPhone.DataPropertyName = "CustomerPhone";
             dgvCustomer.Columns.Add(colPhone);
 
             // Email
             DataGridViewTextBoxColumn colEmail = new DataGridViewTextBoxColumn();
             colEmail.HeaderText = "Email";
-            colEmail.Width = 300;
+            colEmail.Width = 280;
             colEmail.DataPropertyName = "CustomerEmail";
             dgvCustomer.Columns.Add(colEmail);
 
             // Coupon
             DataGridViewTextBoxColumn colCoupon = new DataGridViewTextBoxColumn();
             colCoupon.HeaderText = "Coupon(%)";
-            colCoupon.Width = 150;
+            colCoupon.Width = 125;
             colCoupon.DataPropertyName = "Coupon";
             dgvCustomer.Columns.Add(colCoupon);
 
             // Gender
             DataGridViewTextBoxColumn colGender = new DataGridViewTextBoxColumn();
             colGender.HeaderText = "Gender";
-            colGender.Width = 80;
+            colGender.Width = 100;
             colGender.DataPropertyName = "Gender";
             dgvCustomer.Columns.Add(colGender);
 
@@ -255,7 +256,10 @@ namespace CoffeeShop.View
                 btnDelete.Enabled = false;
                 btnEdit.Enabled = false;
                 if (e.KeyCode == Keys.Enter)
+                {
                     SearchEvent?.Invoke(this, EventArgs.Empty);
+                    e.SuppressKeyPress = true;
+                }                                  
             };
 
             // Add

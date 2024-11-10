@@ -292,8 +292,10 @@ namespace CoffeeShop.View
                 btnDelete.Enabled = false;
                 btnEdit.Enabled = false;
                 if (e.KeyCode == Keys.Enter)
+                {
                     SearchEvent?.Invoke(this, EventArgs.Empty);
-            };
+                }
+            };           
 
             // Add
             btnAdd.Click += delegate
@@ -415,11 +417,6 @@ namespace CoffeeShop.View
         {
             this.dgvStaff.DataSource = staffList;
         }
-        #endregion
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        #endregion       
     }
 }

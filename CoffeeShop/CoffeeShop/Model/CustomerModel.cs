@@ -28,10 +28,9 @@ namespace CoffeeShop.Model
 
         [DisplayName("Customer Name")]
         [Required(ErrorMessage = "Customer name is required")]
-        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Name can't contain number or special characters")]
+        [RegularExpression(@"^[\p{L}\s]+$", ErrorMessage = "The name does not include numbers and special characters")]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "Customer name must be between 5 and 50 characters")]
         public string CustomerName { get { return customerName; } set { customerName = value; } }
-
 
         [DisplayName("Phone Number")]
         [RegularExpression("([0-9]+)", ErrorMessage = "This must be number")]
@@ -40,14 +39,11 @@ namespace CoffeeShop.Model
 
 
         [DisplayName("Email")]
-        [Required(ErrorMessage = "Email is required")]
-        [DataType(DataType.EmailAddress)]
-        [EmailAddress]
+        [RegularExpression(@"^[A-Za-z]+[A-Za-z0-9._%+-]*@gmail\.com$", ErrorMessage = "Email must be entered in the format abc(or abc123)@gmail.com")]
         public string CustomerEmail { get { return customerEmail; } set { customerEmail = value; } }  
 
 
         [DisplayName("Coupon")]
-        //[Required(ErrorMessage = "Coupon is required")]
         public decimal Coupon { get { return coupon; } set { coupon = value; } }
 
 
