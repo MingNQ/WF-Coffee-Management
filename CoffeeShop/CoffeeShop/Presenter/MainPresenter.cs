@@ -76,7 +76,9 @@ namespace CoffeeShop.Presenter
 		private void ShowCustomerView(object sender, EventArgs e)
 		{
 			ICustomerView view = CustomerView.GetInstance((MainView)mainView);
-			new CustomerPresenter(view);
+			ICustomerRepository repository = new CustomerRepository(sqlConnectionString);
+
+			new CustomerPresenter(view, repository);
 		}
 
 		/// <summary>
