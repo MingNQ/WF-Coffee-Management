@@ -43,7 +43,7 @@ namespace CoffeeShop.Presenter
         }
         private void LoadStaffDetails()
         {
-            StaffModel staff = Repository.GetStaffInformationByID("NV001");
+            StaffModel staff = Repository.GetStaffInformationByID(staffDetailView.StaffId);
             if (staff != null)
             {
                 if (staffDetailView != null && staffDetailView.StaffInformationControl != null)
@@ -80,7 +80,7 @@ namespace CoffeeShop.Presenter
             
             StaffModel updatedStaff = new StaffModel
             {
-                StaffID = "NV001",
+                StaffID = staffDetailView.StaffId,
                 StaffName = staffDetailView.StaffInformationControl.txtStaffName.Text,
                 DateOfBirth = staffDetailView.StaffInformationControl.dtpDob.Value,
                 PhoneNumber = staffDetailView.StaffInformationControl.txtPhone.Text,
