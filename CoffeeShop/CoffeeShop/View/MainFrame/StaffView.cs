@@ -54,8 +54,8 @@ namespace CoffeeShop.View
 		/// </summary>
 		public bool IsEdit
         {
-            get { return isEdit; }
-            set { isEdit = value; }
+            get => isEdit;
+            set => isEdit = value;
         }
 
         /// <summary>
@@ -63,8 +63,8 @@ namespace CoffeeShop.View
         /// </summary>
         public bool IsSuccessful
 		{
-            get { return isSuccessful; }
-            set { isSuccessful = value; }
+            get => isSuccessful; 
+            set => isSuccessful = value; 
         }
 
         public string StaffID
@@ -194,7 +194,6 @@ namespace CoffeeShop.View
 		public event EventHandler SaveEvent;
 		public event EventHandler ClearEvent;
 		public event EventHandler BackToListEvent;
-        public event EventHandler ImportImageEvent;
 
         #endregion
 
@@ -260,7 +259,7 @@ namespace CoffeeShop.View
             // Email
             DataGridViewTextBoxColumn colEmail = new DataGridViewTextBoxColumn();
             colEmail.HeaderText = "Email";
-            colEmail.Width = 300;
+            colEmail.Width = 270;
             colEmail.DataPropertyName = "Email";
             dgvStaff.Columns.Add(colEmail);
 
@@ -306,6 +305,9 @@ namespace CoffeeShop.View
         /// </summary>
         private void AssociateAndRaiseEvents()
         {
+            // Disable Button
+            btnSave.Enabled = false;
+
             // Search
             btnSearch.Click += delegate 
             {
@@ -334,11 +336,11 @@ namespace CoffeeShop.View
             btnEdit.Enabled = false;
             btnEdit.Click += delegate
 			{
-				EditEvent?.Invoke(this, EventArgs.Empty);
+                EditEvent?.Invoke(this, EventArgs.Empty);
 				tabStaff.TabPages.Remove(tabPageStaffList);
 				tabStaff.TabPages.Add(tabPageStaffDetail);
 				tabPageStaffDetail.Text = "Edit Staff";
-			};
+            };
 
             // Delete
             btnDelete.Enabled = false;
@@ -359,6 +361,10 @@ namespace CoffeeShop.View
 					tabStaff.TabPages.Add(tabPageStaffList);
                     DialogMessageView.ShowMessage("success", IsEdit ? $"Successful Edit Staff: {StaffName}" : $"Successful Add New Staff: {StaffName}");
                 }
+
+                // Clear Field In Mode Edit/Add
+                BackToListEvent?.Invoke(this, EventArgs.Empty);
+                picAvatar.Image = null;
             };
 
             // Clear
@@ -442,6 +448,14 @@ namespace CoffeeShop.View
                     picAvatar.ImageLocation = destinationPath;
                 }
             }
+        }
+
+        /// <summary>
+        /// Active Save Action
+        /// </summary>
+        private void ActiveActionSave(object sender, EventArgs e)
+        {
+            btnSave.Enabled = true;
         }
 
 		#endregion

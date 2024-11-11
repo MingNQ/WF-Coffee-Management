@@ -70,7 +70,9 @@ namespace CoffeeShop.View.MainFrame
             dgvAccountList.ReadOnly = true;
 
             dgvAccountList.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 251, 233);
-            dgvAccountList.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold); // Kiểu chữ
+            dgvAccountList.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold); // Header Font
+            dgvAccountList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Center
+            dgvAccountList.RowsDefaultCellStyle.Font = new Font("Arial", 11, FontStyle.Regular); // Row Font
 
             // ID
             DataGridViewTextBoxColumn colAccountID = new DataGridViewTextBoxColumn();

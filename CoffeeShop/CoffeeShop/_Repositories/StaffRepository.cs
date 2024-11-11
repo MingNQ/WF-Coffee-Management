@@ -101,11 +101,11 @@ namespace CoffeeShop._Repositories
                 connection.Open();
                 command.Connection = connection;
 
-                if (isEdit)
+                if (isEdit && GetStaffAvatar(staff.StaffID, staff.Avatar.AvatarID).AvatarID != null)
                 {
                     command.CommandText = @"update Avatar
-                                            set ImageUrl = @ImageUrl
-                                            where StaffID = @StaffID";
+                                                set ImageUrl = @ImageUrl
+                                                where StaffID = @StaffID";
                 }
                 else
                 {

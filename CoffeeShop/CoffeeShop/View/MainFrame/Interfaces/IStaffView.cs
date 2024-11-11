@@ -44,6 +44,5 @@ namespace CoffeeShop.View.MainFrame
 		event EventHandler SaveEvent;
 		event EventHandler ClearEvent;
 		event EventHandler BackToListEvent;
-		event EventHandler ImportImageEvent;
 	}
 }

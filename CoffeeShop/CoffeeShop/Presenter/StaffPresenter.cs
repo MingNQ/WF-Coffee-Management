@@ -71,7 +71,6 @@ namespace CoffeeShop.Presenter
             this.staffView.Show();
         }
 
-
         #region private fields
 
         /// <summary>
@@ -185,6 +184,22 @@ namespace CoffeeShop.Presenter
                     ImageUrl = staffView.Avatar.ImageUrl
                 };
 
+                if (staff.Avatar.AvatarID == null)
+                {
+                    // Generate Avatar ID
+                    while (true)
+                    {
+                        string avatarID = Generate.GenerateID("AVT");
+                        var account = repository.GetStaffAvatar(null, avatarID);
+
+                        if (account.AvatarID == null)
+                        {
+                            staff.Avatar.AvatarID = avatarID;
+                            break;
+                        }
+                    }
+                }
+
                 new Common.ModelValidation().Validate(staff);
 
                 if (staffView.IsEdit) // Edit model
@@ -204,23 +219,12 @@ namespace CoffeeShop.Presenter
                         }
                     }
 
-                    // Generate Avatar ID
-                    while (true)
-                    {
-                        string avatarID = Generate.GenerateID("AVT");
-                        var account = repository.GetStaffAvatar(null, avatarID);
-
-                        if (account.AvatarID == null)
-                        {
-                            staff.Avatar.AvatarID = avatarID;
-                            break;
-                        }
-                    }
-
                     repository.Add(staff);
                 }
 
-                repository.SaveAvatar(staffView.IsEdit, staff);
+                if (staffView.Avatar.ImageUrl != null) 
+                    repository.SaveAvatar(staffView.IsEdit, staff);
+                
                 staffView.IsSuccessful = true;
                 LoadAllStaff();
             }
