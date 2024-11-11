@@ -22,7 +22,6 @@ namespace CoffeeShop.View
 		event EventHandler ShowIngredientView;
 		event EventHandler ShowAccountView;
 		event EventHandler LogoutEvent;
-		event EventHandler CloseEvent;
         #endregion
 
         #region Methods

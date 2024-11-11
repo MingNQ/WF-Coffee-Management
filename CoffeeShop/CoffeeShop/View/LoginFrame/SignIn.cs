@@ -109,11 +109,14 @@ namespace CoffeeShop.View
             txtPassword.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
+                {
+                    this.ActiveControl = null;
                     LoginEvent?.Invoke(this, EventArgs.Empty);
+                }
             };
 
             // If User type username or password is hide warning message
-            txtPassword.KeyDown += delegate { HideMessage?.Invoke(this, EventArgs.Empty); };
+            txtPassword.GotFocus += delegate { HideMessage?.Invoke(this, EventArgs.Empty); };
             txtUsername.KeyDown += delegate { HideMessage?.Invoke(this, EventArgs.Empty); };
 
             // SignUp Event

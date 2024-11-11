@@ -139,6 +139,7 @@ namespace CoffeeShop.Presenter
             this.signInView.Message = "";
             this.signInView.TxtUsername.BorderColor = Color.FromArgb(213, 218, 223);
             this.signInView.TxtPassword.BorderColor = Color.FromArgb(213, 218, 223);
+            this.signInView.TxtPassword.Text = "";
         }
 
         /// <summary>
