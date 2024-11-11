@@ -1,5 +1,7 @@
 ﻿using CoffeeShop.Model;
 using CoffeeShop.Model.InterfaceModel;
+using CoffeeShop.Utilities;
+using CoffeeShop.View.DialogForm;
 using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
@@ -145,13 +147,13 @@ namespace CoffeeShop.Presenter
                 repository.Delete(staff.StaffID);
                 staffView.IsSuccessful = true;
                 LoadAllStaff();
-                MessageBox.Show("Successul delete staff", "Notify", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+                DialogMessageView.ShowMessage("success", "Successul delete staff");
             }
             catch
             {
                 staffView.IsSuccessful = false;
-
-				MessageBox.Show("An error occured, could not delete this staff!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogMessageView.ShowMessage("error", "An error occured, could not delete this staff!");
             }
         }
 
@@ -183,9 +185,16 @@ namespace CoffeeShop.Presenter
                 else // Add new model
                 {
                     // Generate ID
-                    int id = Convert.ToInt32(staffList.Last().StaffID.Substring(2)) + 1;
-                    staff.StaffID = "NV" + id.ToString("D3");
-                    
+                    while (true)
+                    {
+                        staff.StaffID = Generate.GenerateID("NV");
+
+                        if (!StaffExist(staff.StaffID))
+                        {
+                            break;
+                        }
+                    }
+
                     repository.Add(staff);
                 }
 
@@ -196,7 +205,8 @@ namespace CoffeeShop.Presenter
             catch (Exception ex)
             {
                 staffView.IsSuccessful = false;
-				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                DialogMessageView.ShowMessage("information", ex.Message);
             }
         }
 
@@ -207,13 +217,10 @@ namespace CoffeeShop.Presenter
 		/// <param name="e"></param>
         private void ClearEvent(object sender, EventArgs e)
         {
-			if (staffView.IsEdit && 
-				MessageBox.Show("Are you sure to clear all information? Information once cleared can't be recovered!", 
-						"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
-				DialogResult.Yes
-				)
-			{
-				ClearFieldInformation();
+            if (DialogMessageView.ShowMessage("warning", "Are you sure to clear all information? Information once cleared can't be recovered!") 
+                == DialogResult.OK)
+            {
+                ClearFieldInformation();
             }
         }
 
@@ -240,6 +247,16 @@ namespace CoffeeShop.Presenter
             staffView.Male = false;
             staffView.Female = false;
             staffView.Other = false;
+        }
+
+        /// <summary>
+        /// Check Exist Staff
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        private bool StaffExist(string id)
+        {
+            return staffList.Any(s => s.StaffID == id);
         }
 
         #endregion

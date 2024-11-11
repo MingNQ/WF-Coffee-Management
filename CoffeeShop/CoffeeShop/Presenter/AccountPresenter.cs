@@ -2,6 +2,7 @@
 using CoffeeShop.Model.InterfaceModel;
 using CoffeeShop.Presenter.Common;
 using CoffeeShop.View;
+using CoffeeShop.View.DialogForm;
 using CoffeeShop.View.MainFrame.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,7 @@ namespace CoffeeShop.Presenter
         private IEnumerable<Account> accountList;
 
         #endregion
+
         /// <summary>
         /// 
         /// </summary>
@@ -83,11 +85,12 @@ namespace CoffeeShop.Presenter
                 account.Active = true;
                 repository.Edit(account);
                 LoadAccountList();
-                MessageBox.Show($"Account ID {account.AccountID} is Activated", "Notify", MessageBoxButtons.OK);
+
+                DialogMessageView.ShowMessage("success", $"Account ID {account.AccountID} is Activated");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogMessageView.ShowMessage("Error", ex.Message);
             }
         }
 
@@ -114,12 +117,12 @@ namespace CoffeeShop.Presenter
                 account.Active = false;
                 repository.Edit(account);
                 LoadAccountList();
-                MessageBox.Show($"Account ID {account.AccountID} is Disabled", "Notify", MessageBoxButtons.OK);
 
+                DialogMessageView.ShowMessage("success", $"Account ID {account.AccountID} is Disabled");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogMessageView.ShowMessage("Error", ex.Message);
             }
         }
 
@@ -135,11 +138,12 @@ namespace CoffeeShop.Presenter
                 var accountUser = (AccountUser)accountBindingSource.Current;
                 repository.Delete(accountUser.AccountID);
                 LoadAccountList();
-                MessageBox.Show("Successul delete Account", "Notify", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+                DialogMessageView.ShowMessage("success", "Successul delete Account");
             }
             catch
             {
-                MessageBox.Show("An error occured, Could not delete this Account because it's in used!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogMessageView.ShowMessage("error", "An error occured, Could not delete this Account because it's in used!");
             }
         }
 

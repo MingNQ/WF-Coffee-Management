@@ -1,4 +1,5 @@
 ﻿using CoffeeShop.Model.Common;
+using CoffeeShop.View.DialogForm;
 using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
@@ -320,8 +321,7 @@ namespace CoffeeShop.View
             btnDelete.Enabled = false;
             btnDelete.Click += delegate
             {
-                if (MessageBox.Show("Are you sure to delte the selected staff?", "Warning", 
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (DialogMessageView.ShowMessage("warning", "Are you sure to delte the selected staff?") == DialogResult.OK)
                     DeleteEvent?.Invoke(this, EventArgs.Empty);
             };
 

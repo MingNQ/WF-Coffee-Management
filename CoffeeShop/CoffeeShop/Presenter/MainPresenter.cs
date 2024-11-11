@@ -19,6 +19,9 @@ namespace CoffeeShop.Presenter
         /// </summary>
 		private IMainView mainView;
 
+		/// <summary>
+		/// Connection String
+		/// </summary>
 		private readonly string sqlConnectionString;
 
 		#endregion
@@ -37,10 +40,8 @@ namespace CoffeeShop.Presenter
 			this.mainView.ShowCategoryView += ShowCategoryView;
 			this.mainView.ShowIngredientView += ShowIngredientView;
 			this.mainView.ShowAccountView += ShowAccountView;
+			this.mainView.Show();
         }
-
-        
-
 
         #region private fields
         /// <summary>

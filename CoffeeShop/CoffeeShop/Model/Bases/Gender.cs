@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoffeeShop.Model
+namespace CoffeeShop.Model.Bases
 {
-    public class LoginModel
+    public enum Gender
     {
+        Male = 1, 
+        Female = 0
     }
 }
