@@ -13,5 +13,6 @@ namespace CoffeeShop.Model.InterfaceModel
         void Delete(string ingredientID);
         IEnumerable<IngredientModel> GetAll();
         IEnumerable<IngredientModel> GetByValue(string value);
+        List<IngredientModel> GetAllIngredient();
     }
 }

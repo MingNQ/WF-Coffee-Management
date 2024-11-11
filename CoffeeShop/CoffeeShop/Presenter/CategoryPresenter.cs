@@ -1,6 +1,7 @@
 ﻿using CoffeeShop._Repositories;
 using CoffeeShop.Model;
 using CoffeeShop.Model.InterfaceModel;
+using CoffeeShop.View;
 using CoffeeShop.View.DialogCheckList;
 using CoffeeShop.View.MainFrame;
 using System;
@@ -34,40 +35,36 @@ namespace CoffeeShop.Presenter
         /// <param name="view">View</param>
         public CategoryPresenter(ICategoryView view, ICategoryRepository repository, IEditCategoryView editCategoryView, IIngredientRepository ingredientRepository)
 		{
-			this.itemsBindingSource = new BindingSource();
 
-			this.categoryView = view;
+            this.categoryView = view;
             this.editCategoryView = editCategoryView;
-			this.repository = repository;
+            this.repository = repository;
             this.ingredientRepository = ingredientRepository;
 
-            //Subscribe event handler methods to view events
-            this.categoryView.ViewDrinkEvent += ViewDrink;
-            this.categoryView.ViewFoodEvent += ViewFood;
+            if (!categoryView.IsOpen)
+            {
+                this.itemsBindingSource = new BindingSource();
 
-			this.categoryView.SearchEvent += SearchItem;
-            this.categoryView.AddNewEvent += AddNewItem;
-            this.categoryView.EditEvent += LoadSelectedItemToEdit;
-            this.categoryView.DeleteEvent += DeleteSelectedItem;
+                //Subscribe event handler methods to view events
+                this.categoryView.ViewDrinkEvent += ViewDrink;
+                this.categoryView.ViewFoodEvent += ViewFood;
 
-            this.categoryView.SaveEvent += SaveItem;
-            this.categoryView.CancelEvent += CancelAction;
+                this.categoryView.SearchEvent += SearchItem;
+                this.categoryView.AddNewEvent += AddNewItem;
+                this.categoryView.EditEvent += LoadSelectedItemToEdit;
+                this.categoryView.DeleteEvent += DeleteSelectedItem;
 
-            this.categoryView.Add_IngredientEvent += AddIngredient;
-            //Set items bindind source
-            this.categoryView.SetItemListBindingSource(itemsBindingSource);
-            
+                this.categoryView.SaveEvent += SaveItem;
+                this.categoryView.CancelEvent += CancelAction;
+
+                //Set items bindind source
+                this.categoryView.SetItemListBindingSource(itemsBindingSource);
+                this.categoryView.ShowIngredientCheckList += ShowIngredientCheckList;
+            }
             // Show form
             this.categoryView.Show();
-
-			this.categoryView.ShowIngredientCheckList += ShowIngredientCheckList;
-
-		}
-
-        private void AddIngredient(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
+
 
         private void ViewFood(object sender, EventArgs e)
         {
@@ -95,18 +92,18 @@ namespace CoffeeShop.Presenter
             itemList = repository.GetAllDrink();
             itemsBindingSource.DataSource = itemList;
         }
-        public void LoadCategoryData()
-        {
-            var categories = new List<CategoryModel>();
-            if (currentItemType == ItemType.Drink) {
-                categories = repository.GetAllCategories(isDrink:true);       
-            }
-            else if(currentItemType == ItemType.Food)
+            public void LoadCategoryData()
             {
-                categories = repository.GetAllCategories(isDrink: false);         
+                var categories = new List<CategoryModel>();
+                if (currentItemType == ItemType.Drink) {
+                    categories = repository.GetAllCategories(isDrink:true);       
+                }
+                else if(currentItemType == ItemType.Food)
+                {
+                    categories = repository.GetAllCategories(isDrink: false);         
+                }
+                categoryView.LoadCategories(categories);
             }
-            categoryView.LoadCategories(categories);
-        }
 
         private void SearchItem(object sender, EventArgs e)
         {
@@ -225,13 +222,14 @@ namespace CoffeeShop.Presenter
         }
 
         private void LoadSelectedItemToEdit(object sender, EventArgs e)
-        {
+        {  
             var item = (ItemModel)itemsBindingSource.Current;
             categoryView.ItemID = item.ItemID.ToString();
-            categoryView.CategoryID = int.Parse(item.CategoryID.ToString());
+            categoryView.CategoryID = item.CategoryID;
             categoryView.ItemName = item.ItemName;
             categoryView.Cost = item.Cost;
             categoryView.UpdateIngredientList(repository.GetIngredientsByItemID(item.ItemID.ToString()));
+            editCategoryView.SelectIngredientsInDataGridView(repository.GetIngredientsByItemID(item.ItemID.ToString()));
             categoryView.IsEdit = true;
         }
 
@@ -242,8 +240,8 @@ namespace CoffeeShop.Presenter
         }
         private void ShowIngredientCheckList(object sender, EventArgs e)
 		{
-			editCategoryView = EditCategoryView.GetInstance();
-			editCategoryView.TittleHeader = this.categoryView.IsEdit ? "Edit Ingredient" : "Add Ingredient";      
+            editCategoryView = EditCategoryView.GetInstance();
+			editCategoryView.TittleHeader = this.categoryView.IsEdit ? "Edit Ingredient" : "Add Ingredient";
 			new EditCategoryPresenter(categoryView,editCategoryView, ingredientRepository);            
 		}
 	}

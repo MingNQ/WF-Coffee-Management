@@ -224,7 +224,7 @@ namespace CoffeeShop._Repositories
             var itemList = new List<ItemModel>();
             string itemName = value;
             float cost = float.TryParse(value, out _) ? float.Parse(value) : 0;
-            string query = isDrink ? @"Select * from Item where CategoryID in (1,4,5,6) and (ItemName like N'" + itemName + "%' or Cost = '"+cost+"') ": @"Select * from Item where CategoryID in (2,3) and (ItemName like N'" + itemName + "%' or Cost = '"+cost+"')" ;
+            string query = isDrink ? @"Select * from Item where CategoryID in (1,4,5,6) and (ItemName like N'%" + itemName + "%' or Cost = '"+cost+"') ": @"Select * from Item where CategoryID in (2,3) and (ItemName like N'%" + itemName + "%' or Cost = '"+cost+"')" ;
             using (var connection = new SqlConnection(connectionString))
             using(var command = new SqlCommand())
             {

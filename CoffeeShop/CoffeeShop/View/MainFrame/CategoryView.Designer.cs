@@ -29,8 +29,8 @@
 		private void InitializeComponent()
 		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryView));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1_1 = new System.Windows.Forms.Panel();
             this.lblCategory = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -61,6 +61,7 @@
             this.btnBackCategory = new Guna.UI2.WinForms.Guna2Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
+            this.cboCategoryID = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lblCategoryID = new System.Windows.Forms.Label();
             this.txtItemID = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblItemID = new System.Windows.Forms.Label();
@@ -74,10 +75,9 @@
             this.lblPrice = new System.Windows.Forms.Label();
             this.lblIngredient = new System.Windows.Forms.Label();
             this.lblItemName = new System.Windows.Forms.Label();
-            this.ltblItemDeatil = new System.Windows.Forms.Label();
+            this.lblItemDeatil = new System.Windows.Forms.Label();
             this.guna2Panel7_FoodDetail = new Guna.UI2.WinForms.Guna2Panel();
             this.btnBackToList = new Guna.UI2.WinForms.Guna2Button();
-            this.cboCategoryID = new Guna.UI2.WinForms.Guna2ComboBox();
             this.panel1_1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl_Food.SuspendLayout();
@@ -409,28 +409,28 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvItem.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(246)))));
             this.dgvItem.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItem.GridColor = System.Drawing.Color.Black;
             this.dgvItem.Location = new System.Drawing.Point(18, 188);
             this.dgvItem.Margin = new System.Windows.Forms.Padding(2);
             this.dgvItem.Name = "dgvItem";
             this.dgvItem.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItem.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItem.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvItem.RowHeadersWidth = 150;
             this.dgvItem.RowTemplate.Height = 33;
             this.dgvItem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -557,7 +557,7 @@
             this.guna2Panel6.Controls.Add(this.lblPrice);
             this.guna2Panel6.Controls.Add(this.lblIngredient);
             this.guna2Panel6.Controls.Add(this.lblItemName);
-            this.guna2Panel6.Controls.Add(this.ltblItemDeatil);
+            this.guna2Panel6.Controls.Add(this.lblItemDeatil);
             this.guna2Panel6.Controls.Add(this.guna2Panel7_FoodDetail);
             this.guna2Panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel6.Location = new System.Drawing.Point(2, 2);
@@ -565,6 +565,22 @@
             this.guna2Panel6.Name = "guna2Panel6";
             this.guna2Panel6.Size = new System.Drawing.Size(1226, 718);
             this.guna2Panel6.TabIndex = 0;
+            // 
+            // cboCategoryID
+            // 
+            this.cboCategoryID.BackColor = System.Drawing.Color.Transparent;
+            this.cboCategoryID.BorderColor = System.Drawing.Color.Black;
+            this.cboCategoryID.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboCategoryID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCategoryID.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboCategoryID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboCategoryID.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCategoryID.ForeColor = System.Drawing.Color.Black;
+            this.cboCategoryID.ItemHeight = 30;
+            this.cboCategoryID.Location = new System.Drawing.Point(245, 218);
+            this.cboCategoryID.Name = "cboCategoryID";
+            this.cboCategoryID.Size = new System.Drawing.Size(437, 36);
+            this.cboCategoryID.TabIndex = 18;
             // 
             // lblCategoryID
             // 
@@ -769,16 +785,16 @@
             this.lblItemName.TabIndex = 3;
             this.lblItemName.Text = "Item Name";
             // 
-            // ltblItemDeatil
+            // lblItemDeatil
             // 
-            this.ltblItemDeatil.AutoSize = true;
-            this.ltblItemDeatil.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ltblItemDeatil.Location = new System.Drawing.Point(71, 83);
-            this.ltblItemDeatil.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.ltblItemDeatil.Name = "ltblItemDeatil";
-            this.ltblItemDeatil.Size = new System.Drawing.Size(134, 29);
-            this.ltblItemDeatil.TabIndex = 2;
-            this.ltblItemDeatil.Text = "Item Detail";
+            this.lblItemDeatil.AutoSize = true;
+            this.lblItemDeatil.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblItemDeatil.Location = new System.Drawing.Point(71, 83);
+            this.lblItemDeatil.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblItemDeatil.Name = "lblItemDeatil";
+            this.lblItemDeatil.Size = new System.Drawing.Size(134, 29);
+            this.lblItemDeatil.TabIndex = 2;
+            this.lblItemDeatil.Text = "Item Detail";
             // 
             // guna2Panel7_FoodDetail
             // 
@@ -814,22 +830,6 @@
             this.btnBackToList.TabIndex = 1;
             this.btnBackToList.Text = "Back";
             this.btnBackToList.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // cboCategoryID
-            // 
-            this.cboCategoryID.BackColor = System.Drawing.Color.Transparent;
-            this.cboCategoryID.BorderColor = System.Drawing.Color.Black;
-            this.cboCategoryID.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboCategoryID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCategoryID.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboCategoryID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboCategoryID.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboCategoryID.ForeColor = System.Drawing.Color.Black;
-            this.cboCategoryID.ItemHeight = 30;
-            this.cboCategoryID.Location = new System.Drawing.Point(245, 218);
-            this.cboCategoryID.Name = "cboCategoryID";
-            this.cboCategoryID.Size = new System.Drawing.Size(437, 36);
-            this.cboCategoryID.TabIndex = 18;
             // 
             // CategoryView
             // 
@@ -910,7 +910,7 @@
 		private System.Windows.Forms.Label lblPrice;
 		private System.Windows.Forms.Label lblIngredient;
 		private System.Windows.Forms.Label lblItemName;
-		private System.Windows.Forms.Label ltblItemDeatil;
+		private System.Windows.Forms.Label lblItemDeatil;
 		private Guna.UI2.WinForms.Guna2Panel guna2Panel7_FoodDetail;
 		private Guna.UI2.WinForms.Guna2Button btnBackToList;
         private Guna.UI2.WinForms.Guna2TextBox txtItemID;

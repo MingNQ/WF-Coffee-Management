@@ -220,7 +220,7 @@ namespace CoffeeShop.View
 
             // Phone
             DataGridViewTextBoxColumn colPhone = new DataGridViewTextBoxColumn();
-            colPhone.HeaderText = "Staff Phone";
+            colPhone.HeaderText = "Staff Phone";    
             colPhone.Width = 125;
             colPhone.DataPropertyName = "PhoneNumber";
             dgvStaff.Columns.Add(colPhone);

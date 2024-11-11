@@ -20,8 +20,8 @@ namespace CoffeeShop.View.MainFrame
         bool IsEdit { get; set; }
 		bool IsSuccessful { get; set; }
 		string Message { get; set; }
+        bool IsOpen { get; }
         List<IngredientModel> ingredients { get; set; }
-
         #endregion
         /// <summary>
         /// Show Form
@@ -46,7 +46,6 @@ namespace CoffeeShop.View.MainFrame
         event EventHandler SaveEvent;
         event EventHandler CancelEvent;
 
-        event EventHandler Add_IngredientEvent;
 
         event EventHandler BackToListEvent;
         event EventHandler BackToCategoryEvent;

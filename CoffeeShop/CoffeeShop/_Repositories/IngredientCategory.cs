@@ -55,6 +55,11 @@ namespace CoffeeShop._Repositories
         /// <returns></returns>
         public IEnumerable<IngredientModel> GetAll()
         {
+            throw new NotImplementedException();
+        }
+
+        public List<IngredientModel> GetAllIngredient()
+        {
             var ingredientList = new List<IngredientModel>();
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
@@ -86,6 +91,6 @@ namespace CoffeeShop._Repositories
                 throw new NotImplementedException();
             }
 
-            #endregion
+        #endregion
     }
 }

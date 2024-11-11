@@ -37,7 +37,7 @@ namespace CoffeeShop.View.MainFrame
 			set => txtItemID.Text = value; }
         public int CategoryID {
             get => (int)cboCategoryID.SelectedValue;
-            set => cboCategoryID.SelectedValue = value;
+            set => cboCategoryID.SelectedItem = value;
         }
         public string ItemName { 
 			get => txtItemName.Text; 
@@ -58,14 +58,15 @@ namespace CoffeeShop.View.MainFrame
         public List<IngredientModel> ingredients {
             get => _ingredients;
             set => _ingredients = value; }
+        public bool IsOpen { get => Application.OpenForms.OfType<StaffView>().Any(); }
         #endregion
         public CategoryView()
 		{
 			InitializeComponent();
-			tabControl_Food.TabPages.Remove(tabPage2);
-			tabControl_Food.TabPages.Remove(tabPage3);
+            tabControl_Food.TabPages.Remove(tabPage2);
+            tabControl_Food.TabPages.Remove(tabPage3);
             AssociateAndRaiseEvents();
-            InitializeDataGridView();
+            InitializeDataGridView();          
         }
 
         private void InitializeDataGridView()
@@ -126,6 +127,7 @@ namespace CoffeeShop.View.MainFrame
                 ViewDrinkEvent?.Invoke(this, EventArgs.Empty);
                 tabControl_Food.TabPages.Remove(tabPage1);
                 tabControl_Food.TabPages.Add(tabPage2);
+                txtSearch.Text = "";
             };
 
             btnViewFood.Click += delegate
@@ -134,6 +136,7 @@ namespace CoffeeShop.View.MainFrame
                 ViewFoodEvent?.Invoke(this, EventArgs.Empty);
                 tabControl_Food.TabPages.Remove(tabPage1);
                 tabControl_Food.TabPages.Add(tabPage2);
+                txtSearch.Text = "";
             };
 
             //Search
@@ -156,22 +159,24 @@ namespace CoffeeShop.View.MainFrame
                 tabControl_Food.TabPages.Remove(tabPage1);
                 tabControl_Food.TabPages.Remove(tabPage2);
                 tabControl_Food.TabPages.Add(tabPage3);
-                ltblItemDeatil.Text = "Add New Item";
+                lblItemDeatil.Text = "Add New Item";
                 txtItemID.Enabled = false;
             };
 
             //Edit
+            btnEdit.Enabled = false;
             btnEdit.Click += delegate
             {
                 EditEvent?.Invoke(this, EventArgs.Empty);
                 tabControl_Food.TabPages.Remove(tabPage1);
                 tabControl_Food.TabPages.Remove(tabPage2);
                 tabControl_Food.TabPages.Add(tabPage3);
-                ltblItemDeatil.Text = "Edit Item";
+                lblItemDeatil.Text = "Edit Item";
                 txtItemID.Enabled = false;
             };
 
             //Delete
+            btnDelete.Enabled = false;
             btnDelete.Click += delegate
             {
                 var result = MessageBox.Show("Are you sure you want to delete the selected item?", "Warning",
@@ -206,6 +211,8 @@ namespace CoffeeShop.View.MainFrame
             //BackCategory
             btnBackCategory.Click += delegate
             {
+                btnDelete.Enabled = false;
+                btnEdit.Enabled = false;
                 lblCategory.Text = "Category";
                 tabControl_Food.TabPages.Remove(tabPage2);
                 if (!tabControl_Food.TabPages.Contains(tabPage1))
@@ -227,6 +234,23 @@ namespace CoffeeShop.View.MainFrame
                 }
             };
 
+            dgvItem.CellClick += delegate
+             {
+                 btnDelete.Enabled = true;
+                 btnEdit.Enabled = true;
+             };
+            dgvItem.CellDoubleClick += (s, e) =>
+            {
+                if (e.RowIndex >= 0)
+                {
+                    EditEvent?.Invoke(this, EventArgs.Empty);
+                    tabControl_Food.TabPages.Remove(tabPage1);
+                    tabControl_Food.TabPages.Remove(tabPage2);
+                    tabControl_Food.TabPages.Add(tabPage3);
+                    lblItemDeatil.Text = "Edit Staff";
+                }
+            };
+
             this.Controls.Add(tabControl_Food);
         }
 
@@ -243,9 +267,9 @@ namespace CoffeeShop.View.MainFrame
 				if (instance.WindowState == FormWindowState.Minimized)
 					instance.WindowState = FormWindowState.Normal;
 				instance.BringToFront();
-			}
 
-			return instance;
+			}
+            return instance;
 		}
 
         public void SetItemListBindingSource(BindingSource itemList)
@@ -255,7 +279,8 @@ namespace CoffeeShop.View.MainFrame
 
 		public void LoadCategories(List<CategoryModel> categories)
 		{
-			cboCategoryID.DataSource = categories;
+            cboCategoryID.DataSource = null;
+            cboCategoryID.DataSource = categories;
             cboCategoryID.DisplayMember = "CategoryName";
             cboCategoryID.ValueMember = "CategoryID";
 		}

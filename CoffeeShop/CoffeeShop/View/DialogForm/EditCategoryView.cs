@@ -57,24 +57,29 @@ namespace CoffeeShop.View.DialogCheckList
             dgvIngredient.MultiSelect = true;
             dgvIngredient.ReadOnly = true;
 
-            // Change color for header row
             dgvIngredient.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 251, 233);
-            dgvIngredient.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold); // Kiểu chữ
+            dgvIngredient.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
             dgvIngredient.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvIngredient.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvIngredient.DefaultCellStyle.Font = new Font("Arial", 10);
 
-            // ID
+            // Thêm cột CheckBox để chọn
+            DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
+            checkBoxColumn.HeaderText = "Select";         
+            checkBoxColumn.Name = "SelectColumn";
+            dgvIngredient.Columns.Add(checkBoxColumn);
+
+            // Thêm cột IngredientID
             DataGridViewTextBoxColumn colIngredientID = new DataGridViewTextBoxColumn();
-            colIngredientID.HeaderText = "Ingredient ID";
-            colIngredientID.Width = 150;
+            colIngredientID.HeaderText = "IngredientID";
+            colIngredientID.Width = 100;
             colIngredientID.DataPropertyName = "IngredientID";
             dgvIngredient.Columns.Add(colIngredientID);
 
-            // categoryID
+            // Thêm cột IngredientName
             DataGridViewTextBoxColumn colIngredientName = new DataGridViewTextBoxColumn();
-            colIngredientName.HeaderText = "Ingredient Name";
-            colIngredientName.Width = 220;
+            colIngredientName.HeaderText = "IngredientName";
+            colIngredientName.Width = 170;
             colIngredientName.DataPropertyName = "IngredientName";
             dgvIngredient.Columns.Add(colIngredientName);
         }
@@ -133,6 +138,17 @@ namespace CoffeeShop.View.DialogCheckList
                 {
                     dgvIngredient.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
                 }
+            }
+        }
+       
+
+        public void SelectIngredientsInDataGridView(List<IngredientModel> selectedIngredients)
+        {
+            foreach (DataGridViewRow row in dgvIngredient.Rows)
+            {
+                string ingredientID = row.Cells["IngredientName"].Value.ToString();
+                bool isSelected = selectedIngredients.Any(i => i.IngredientID == ingredientID);
+                row.Cells["SelectColumn"].Value = isSelected;
             }
         }
     }

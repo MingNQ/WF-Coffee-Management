@@ -22,6 +22,7 @@ namespace CoffeeShop.Presenter
         public EditCategoryPresenter(ICategoryView categoryView, IEditCategoryView editCategoryView, IIngredientRepository repository)
         {
             this.ingredientBindingSource = new BindingSource();
+
             this.categoryView = categoryView;
             this.editCategoryView = editCategoryView;
             this.repository = repository;
@@ -39,11 +40,9 @@ namespace CoffeeShop.Presenter
 
         private void LoadAllIngredient()
         {
-            ingredientList = repository.GetAll();
+            ingredientList = repository.GetAllIngredient();
             ingredientBindingSource.DataSource = ingredientList;
         }
-
-        
 
         private void SaveIngredient(object sender, EventArgs e)
         {
