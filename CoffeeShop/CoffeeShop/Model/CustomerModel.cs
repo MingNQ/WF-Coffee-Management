@@ -39,7 +39,10 @@ namespace CoffeeShop.Model
 
 
         [DisplayName("Email")]
-        [RegularExpression(@"^[A-Za-z]+[A-Za-z0-9._%+-]*@gmail\.com$", ErrorMessage = "Email must be entered in the format abc(or abc123)@gmail.com")]
+        //[RegularExpression(@"^[A-Za-z]+[A-Za-z0-9._%+-]*@gmail\.com$", ErrorMessage = "Email must be entered in the format abc(or abc123)@gmail.com")]
+        //[Required(ErrorMessage = "Email is required")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string CustomerEmail { get { return customerEmail; } set { customerEmail = value; } }  
 
 
