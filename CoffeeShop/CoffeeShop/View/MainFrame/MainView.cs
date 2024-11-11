@@ -18,6 +18,7 @@ namespace CoffeeShop.View
         /// Dropdown menu is collapsed or not
         /// </summary>
         private bool isCollapsed;
+        private string staffID;
 
         #endregion
 
@@ -40,6 +41,14 @@ namespace CoffeeShop.View
             get { return lbRole.Text; }
             set { lbRole.Text = value; }
         }
+        /// <summary>
+        /// Get Staff ID 
+        /// </summary>
+        public string StaffID
+        {
+            get { return staffID; }
+            set { staffID = value; }
+        }
 
         #endregion
 
@@ -51,6 +60,7 @@ namespace CoffeeShop.View
         public event EventHandler ShowCustomerView;
         public event EventHandler ShowIngredientView;
         public event EventHandler ShowAccountView;
+        public event EventHandler ShowStaffDetailInformation;
         public event EventHandler LogoutEvent;
         public event EventHandler CloseEvent;
         #endregion
@@ -70,6 +80,7 @@ namespace CoffeeShop.View
             btnCustomer.Click += delegate { ShowCustomerView?.Invoke(this, EventArgs.Empty); };
             btnStaff.Click += delegate { ShowStaffView?.Invoke(this, EventArgs.Empty); };
             btnIngredient.Click += delegate { ShowIngredientView?.Invoke(this, EventArgs.Empty); };
+            btnViewProfile.Click += delegate { ShowStaffDetailInformation?.Invoke(this, EventArgs.Empty); };
             btnAccount.Click += delegate { ShowAccountView?.Invoke(this, EventArgs.Empty); };
             btnLogout.Click += delegate { LogoutEvent?.Invoke(this, EventArgs.Empty); };
             this.FormClosed += delegate { CloseEvent?.Invoke(this, EventArgs.Empty); };

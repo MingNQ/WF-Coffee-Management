@@ -11,6 +11,8 @@ namespace CoffeeShop.View
 		#region Properties
 		string Username { get; set; }
 		string Role {  get; set; }
+		
+		string StaffID {  get; set; }
         #endregion
 
         #region Event
@@ -23,6 +25,7 @@ namespace CoffeeShop.View
 		event EventHandler ShowAccountView;
 		event EventHandler LogoutEvent;
 		event EventHandler CloseEvent;
+		event EventHandler ShowStaffDetailInformation;
         #endregion
 
         #region Methods

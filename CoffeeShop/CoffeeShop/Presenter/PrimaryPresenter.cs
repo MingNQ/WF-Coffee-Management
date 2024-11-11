@@ -70,6 +70,7 @@ namespace CoffeeShop.Presenter
                 // Get Username and Role
                 mainView.Username = "Hello, " + signInView.Account.Staff.StaffName.Trim().Split(' ').LastOrDefault() + "!";
                 mainView.Role = signInView.Account.Staff.Role;
+                mainView.StaffID = signInView.Account.Staff.StaffID;
             }
         }
 

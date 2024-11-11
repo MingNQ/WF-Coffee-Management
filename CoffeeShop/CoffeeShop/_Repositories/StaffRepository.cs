@@ -17,7 +17,7 @@ namespace CoffeeShop._Repositories
         /// Constructor
         /// </summary>
         /// <param name="connectionString"></param>
-        public StaffRepository(string connectionString) 
+        public StaffRepository(string connectionString)
         {
             this.connectionString = connectionString;
         }
@@ -166,6 +166,45 @@ namespace CoffeeShop._Repositories
 
             return staffList;
         }
+
+        public StaffModel GetStaffInformationByID(string id)
+        {
+            StaffModel staff = null;
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"SELECT *
+                    FROM Staff
+                    WHERE StaffID = @id";
+                command.Parameters.Add("@id", SqlDbType.NVarChar).Value = id;
+
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        Console.WriteLine("Record found for ID: " + id);
+                        staff = new StaffModel
+                        {
+                            StaffID = reader["StaffID"].ToString(),
+                            StaffName = reader["StaffName"].ToString(),
+                            PhoneNumber = reader["StaffPhoneNumber"]?.ToString() ?? "",
+                            DateOfBirth = reader["DateOfBirth"] != DBNull.Value ? (DateTime)reader["DateOfBirth"] : DateTime.MinValue,
+                            Email = reader["Email"].ToString(),
+                            Role = reader["tRole"].ToString(),
+                            Gender = reader["Gender"] != DBNull.Value && Convert.ToBoolean(reader["Gender"]) ? Model.Common.Gender.Male : Model.Common.Gender.Female
+                        };
+                    }
+                    else
+                    {
+                        Console.WriteLine("No record found for ID: " + id);
+                    }
+                }
+            }
+            return staff;
+        }
+
         #endregion
     }
 }

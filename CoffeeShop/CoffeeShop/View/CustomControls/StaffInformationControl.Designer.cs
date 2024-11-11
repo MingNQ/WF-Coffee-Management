@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.btnImport = new System.Windows.Forms.Button();
-            this.btnClear = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
             this.dtpDob = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
+            this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.cbRole = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
@@ -47,6 +47,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
+            this.btnChangePassword = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,32 +57,32 @@
             this.btnImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(125)))), ((int)(((byte)(232)))));
             this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImport.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImport.Location = new System.Drawing.Point(31, 301);
-            this.btnImport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnImport.Location = new System.Drawing.Point(23, 245);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(2);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(185, 34);
+            this.btnImport.Size = new System.Drawing.Size(139, 28);
             this.btnImport.TabIndex = 42;
             this.btnImport.Text = "Import";
             this.btnImport.UseVisualStyleBackColor = false;
             // 
-            // btnClear
+            // btnCancel
             // 
-            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnClear.BorderRadius = 10;
-            this.btnClear.BorderThickness = 1;
-            this.btnClear.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnClear.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnClear.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnClear.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnClear.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(51)))), ((int)(((byte)(25)))));
-            this.btnClear.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(618, 507);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(115, 36);
-            this.btnClear.TabIndex = 32;
-            this.btnClear.Text = "Clear";
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCancel.BorderRadius = 10;
+            this.btnCancel.BorderThickness = 1;
+            this.btnCancel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCancel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCancel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCancel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCancel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(51)))), ((int)(((byte)(25)))));
+            this.btnCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.Black;
+            this.btnCancel.Location = new System.Drawing.Point(708, 470);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(110, 29);
+            this.btnCancel.TabIndex = 32;
+            this.btnCancel.Text = "Cancel";
             // 
             // dtpDob
             // 
@@ -89,33 +91,33 @@
             this.dtpDob.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDob.ForeColor = System.Drawing.Color.Black;
             this.dtpDob.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDob.Location = new System.Drawing.Point(452, 363);
-            this.dtpDob.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpDob.Location = new System.Drawing.Point(339, 289);
+            this.dtpDob.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDob.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpDob.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDob.Name = "dtpDob";
-            this.dtpDob.Size = new System.Drawing.Size(257, 46);
+            this.dtpDob.Size = new System.Drawing.Size(193, 37);
             this.dtpDob.TabIndex = 41;
             this.dtpDob.Value = new System.DateTime(2024, 10, 7, 11, 4, 24, 43);
             // 
-            // btnSave
+            // btnEdit
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSave.BorderRadius = 10;
-            this.btnSave.BorderThickness = 1;
-            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(125)))), ((int)(((byte)(232)))));
-            this.btnSave.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(454, 507);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(115, 36);
-            this.btnSave.TabIndex = 30;
-            this.btnSave.Text = "Save";
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEdit.BorderRadius = 10;
+            this.btnEdit.BorderThickness = 1;
+            this.btnEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEdit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEdit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEdit.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(125)))), ((int)(((byte)(232)))));
+            this.btnEdit.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.Black;
+            this.btnEdit.Location = new System.Drawing.Point(339, 470);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(104, 29);
+            this.btnEdit.TabIndex = 30;
+            this.btnEdit.Text = "Edit";
             // 
             // cbRole
             // 
@@ -128,19 +130,20 @@
             this.cbRole.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbRole.ForeColor = System.Drawing.Color.Black;
             this.cbRole.ItemHeight = 30;
-            this.cbRole.Location = new System.Drawing.Point(452, 442);
-            this.cbRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbRole.Location = new System.Drawing.Point(339, 359);
+            this.cbRole.Margin = new System.Windows.Forms.Padding(2);
             this.cbRole.Name = "cbRole";
-            this.cbRole.Size = new System.Drawing.Size(152, 36);
+            this.cbRole.Size = new System.Drawing.Size(115, 36);
             this.cbRole.TabIndex = 33;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(10, 10);
+            this.label9.Location = new System.Drawing.Point(8, 8);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(206, 29);
+            this.label9.Size = new System.Drawing.Size(163, 22);
             this.label9.TabIndex = 28;
             this.label9.Text = "Staff Information";
             // 
@@ -159,13 +162,13 @@
             this.txtEmail.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.Color.Black;
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(452, 230);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEmail.Location = new System.Drawing.Point(339, 200);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
             this.txtEmail.PlaceholderText = "Enter Email";
             this.txtEmail.SelectedText = "";
-            this.txtEmail.Size = new System.Drawing.Size(695, 46);
+            this.txtEmail.Size = new System.Drawing.Size(521, 24);
             this.txtEmail.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtEmail.TabIndex = 40;
             // 
@@ -184,13 +187,13 @@
             this.txtPhone.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhone.ForeColor = System.Drawing.Color.Black;
             this.txtPhone.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPhone.Location = new System.Drawing.Point(452, 151);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPhone.Location = new System.Drawing.Point(339, 136);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(2);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.PasswordChar = '\0';
             this.txtPhone.PlaceholderText = "Enter Phone No";
             this.txtPhone.SelectedText = "";
-            this.txtPhone.Size = new System.Drawing.Size(695, 46);
+            this.txtPhone.Size = new System.Drawing.Size(521, 24);
             this.txtPhone.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtPhone.TabIndex = 39;
             // 
@@ -199,10 +202,10 @@
             this.picAvatar.BackColor = System.Drawing.Color.LightGray;
             this.picAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picAvatar.ErrorImage = null;
-            this.picAvatar.Location = new System.Drawing.Point(31, 68);
-            this.picAvatar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picAvatar.Location = new System.Drawing.Point(23, 55);
+            this.picAvatar.Margin = new System.Windows.Forms.Padding(2);
             this.picAvatar.Name = "picAvatar";
-            this.picAvatar.Size = new System.Drawing.Size(185, 235);
+            this.picAvatar.Size = new System.Drawing.Size(139, 191);
             this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picAvatar.TabIndex = 37;
             this.picAvatar.TabStop = false;
@@ -222,13 +225,13 @@
             this.txtStaffName.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStaffName.ForeColor = System.Drawing.Color.Black;
             this.txtStaffName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtStaffName.Location = new System.Drawing.Point(452, 68);
-            this.txtStaffName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtStaffName.Location = new System.Drawing.Point(339, 68);
+            this.txtStaffName.Margin = new System.Windows.Forms.Padding(2);
             this.txtStaffName.Name = "txtStaffName";
             this.txtStaffName.PasswordChar = '\0';
             this.txtStaffName.PlaceholderText = "Enter Name\r\n";
             this.txtStaffName.SelectedText = "";
-            this.txtStaffName.Size = new System.Drawing.Size(695, 46);
+            this.txtStaffName.Size = new System.Drawing.Size(521, 24);
             this.txtStaffName.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtStaffName.TabIndex = 38;
             // 
@@ -236,10 +239,10 @@
             // 
             this.rdoOther.AutoSize = true;
             this.rdoOther.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoOther.Location = new System.Drawing.Point(966, 308);
-            this.rdoOther.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rdoOther.Location = new System.Drawing.Point(708, 249);
+            this.rdoOther.Margin = new System.Windows.Forms.Padding(2);
             this.rdoOther.Name = "rdoOther";
-            this.rdoOther.Size = new System.Drawing.Size(70, 23);
+            this.rdoOther.Size = new System.Drawing.Size(57, 20);
             this.rdoOther.TabIndex = 36;
             this.rdoOther.TabStop = true;
             this.rdoOther.Text = "Other";
@@ -248,10 +251,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(289, 85);
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(207, 68);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 27);
+            this.label3.Size = new System.Drawing.Size(53, 19);
             this.label3.TabIndex = 24;
             this.label3.Text = "Name";
             // 
@@ -259,10 +263,10 @@
             // 
             this.rdoFemale.AutoSize = true;
             this.rdoFemale.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoFemale.Location = new System.Drawing.Point(691, 308);
-            this.rdoFemale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rdoFemale.Location = new System.Drawing.Point(518, 250);
+            this.rdoFemale.Margin = new System.Windows.Forms.Padding(2);
             this.rdoFemale.Name = "rdoFemale";
-            this.rdoFemale.Size = new System.Drawing.Size(83, 23);
+            this.rdoFemale.Size = new System.Drawing.Size(68, 20);
             this.rdoFemale.TabIndex = 35;
             this.rdoFemale.TabStop = true;
             this.rdoFemale.Text = "Female";
@@ -272,10 +276,10 @@
             // 
             this.rdoMale.AutoSize = true;
             this.rdoMale.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoMale.Location = new System.Drawing.Point(452, 308);
-            this.rdoMale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rdoMale.Location = new System.Drawing.Point(339, 250);
+            this.rdoMale.Margin = new System.Windows.Forms.Padding(2);
             this.rdoMale.Name = "rdoMale";
-            this.rdoMale.Size = new System.Drawing.Size(64, 23);
+            this.rdoMale.Size = new System.Drawing.Size(53, 20);
             this.rdoMale.TabIndex = 34;
             this.rdoMale.TabStop = true;
             this.rdoMale.Text = "Male";
@@ -284,20 +288,22 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(290, 308);
+            this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(207, 250);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(94, 27);
+            this.label8.Size = new System.Drawing.Size(65, 19);
             this.label8.TabIndex = 31;
             this.label8.Text = "Gender";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(290, 442);
+            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(207, 376);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 27);
+            this.label7.Size = new System.Drawing.Size(44, 19);
             this.label7.TabIndex = 29;
             this.label7.Text = "Role";
             // 
@@ -306,10 +312,11 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(289, 372);
+            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(205, 302);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(153, 27);
+            this.label6.Size = new System.Drawing.Size(104, 19);
             this.label6.TabIndex = 27;
             this.label6.Text = "Date of Birth";
             // 
@@ -318,10 +325,11 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(290, 160);
+            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(207, 136);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 27);
+            this.label5.Size = new System.Drawing.Size(59, 19);
             this.label5.TabIndex = 26;
             this.label5.Text = "Phone";
             // 
@@ -330,21 +338,58 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(290, 240);
+            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(207, 200);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 27);
+            this.label4.Size = new System.Drawing.Size(51, 19);
             this.label4.TabIndex = 25;
             this.label4.Text = "Email";
             // 
-            // StaffInformationView
+            // btnSave
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSave.BorderRadius = 10;
+            this.btnSave.BorderThickness = 1;
+            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(125)))), ((int)(((byte)(232)))));
+            this.btnSave.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.Black;
+            this.btnSave.Location = new System.Drawing.Point(518, 470);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(104, 29);
+            this.btnSave.TabIndex = 30;
+            this.btnSave.Text = "Save";
+            // 
+            // btnChangePassword
+            // 
+            this.btnChangePassword.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnChangePassword.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnChangePassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnChangePassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnChangePassword.FillColor = System.Drawing.Color.Transparent;
+            this.btnChangePassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangePassword.ForeColor = System.Drawing.Color.Black;
+            this.btnChangePassword.Location = new System.Drawing.Point(313, 400);
+            this.btnChangePassword.Name = "btnChangePassword";
+            this.btnChangePassword.Size = new System.Drawing.Size(180, 29);
+            this.btnChangePassword.TabIndex = 43;
+            this.btnChangePassword.Text = "Change password";
+            // 
+            // StaffInformationControl
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnChangePassword);
             this.Controls.Add(this.btnImport);
-            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.dtpDob);
             this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.cbRole);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtEmail);
@@ -360,8 +405,9 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Name = "StaffInformationView";
-            this.Size = new System.Drawing.Size(1203, 674);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "StaffInformationControl";
+            this.Size = new System.Drawing.Size(902, 548);
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -369,25 +415,26 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnImport;
-        private Guna.UI2.WinForms.Guna2Button btnClear;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpDob;
-        private Guna.UI2.WinForms.Guna2Button btnSave;
-        private Guna.UI2.WinForms.Guna2ComboBox cbRole;
         private System.Windows.Forms.Label label9;
-        private Guna.UI2.WinForms.Guna2TextBox txtEmail;
-        private Guna.UI2.WinForms.Guna2TextBox txtPhone;
-        private System.Windows.Forms.PictureBox picAvatar;
-        private Guna.UI2.WinForms.Guna2TextBox txtStaffName;
-        private System.Windows.Forms.RadioButton rdoOther;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton rdoFemale;
-        private System.Windows.Forms.RadioButton rdoMale;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private Guna.UI2.WinForms.Guna2Button btnChangePassword;
+        public System.Windows.Forms.Button btnImport;
+        public Guna.UI2.WinForms.Guna2Button btnCancel;
+        public Guna.UI2.WinForms.Guna2DateTimePicker dtpDob;
+        public Guna.UI2.WinForms.Guna2Button btnEdit;
+        public Guna.UI2.WinForms.Guna2ComboBox cbRole;
+        public Guna.UI2.WinForms.Guna2TextBox txtEmail;
+        public Guna.UI2.WinForms.Guna2TextBox txtPhone;
+        public System.Windows.Forms.PictureBox picAvatar;
+        public Guna.UI2.WinForms.Guna2TextBox txtStaffName;
+        public System.Windows.Forms.RadioButton rdoOther;
+        public System.Windows.Forms.RadioButton rdoFemale;
+        public System.Windows.Forms.RadioButton rdoMale;
+        public Guna.UI2.WinForms.Guna2Button btnSave;
     }
 }

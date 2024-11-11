@@ -13,5 +13,7 @@ namespace CoffeeShop.Model.InterfaceModel
         void Delete(string staffID);
         IEnumerable<StaffModel> GetAll();
         IEnumerable<StaffModel> GetByValue(string value);
+
+        StaffModel GetStaffInformationByID(string id);
     }
 }
