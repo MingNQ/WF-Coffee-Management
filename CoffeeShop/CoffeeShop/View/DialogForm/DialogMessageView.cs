@@ -69,6 +69,11 @@ namespace CoffeeShop.View.DialogForm
 
             switch (type.ToLower())
             {
+                case "notify":
+                    imagePath = Path.Combine(Application.StartupPath, basePath, "informationIcon.png");
+                    btnPrimary.FillColor = Color.FromArgb(168, 140, 118);
+                    btnSecondary.Visible = true;
+                    break;
                 case "success":
                     imagePath = Path.Combine(Application.StartupPath, basePath, "successIcon.png");
                     btnPrimary.FillColor = Color.FromArgb(119, 204, 0);

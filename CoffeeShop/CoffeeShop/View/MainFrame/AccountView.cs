@@ -35,6 +35,13 @@ namespace CoffeeShop.View.MainFrame
 
         #endregion
 
+        #region Events
+        public event EventHandler SearchEvent;
+        public event EventHandler DeleteEvent;
+        public event EventHandler ActiveEvent;
+        public event EventHandler DisableEvent;
+        #endregion
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -48,13 +55,6 @@ namespace CoffeeShop.View.MainFrame
             btnDelete.Enabled = false;
         }
 
-        #region Events
-        public event EventHandler SearchEvent;
-        public event EventHandler DeleteEvent;
-        public event EventHandler ActiveEvent;
-        public event EventHandler DisableEvent;
-        #endregion
-
         #region private fields
 
         /// <summary>
@@ -62,12 +62,12 @@ namespace CoffeeShop.View.MainFrame
         /// </summary>
         private void InitializeDataGridAccountList()
         {
-            //dgvAccountList.AllowUserToAddRows = true;
             dgvAccountList.AllowUserToResizeRows = false;
             dgvAccountList.RowHeadersVisible = false;
             dgvAccountList.AutoGenerateColumns = false;
             dgvAccountList.MultiSelect = false;
             dgvAccountList.ReadOnly = true;
+            dgvAccountList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             dgvAccountList.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 251, 233);
             dgvAccountList.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold); // Header Font
@@ -77,34 +77,29 @@ namespace CoffeeShop.View.MainFrame
             // ID
             DataGridViewTextBoxColumn colAccountID = new DataGridViewTextBoxColumn();
             colAccountID.HeaderText = "Account ID";
-            colAccountID.Width = 150;
+            colAccountID.FillWeight = 25;
             colAccountID.DataPropertyName = "AccountID";
+            colAccountID.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvAccountList.Columns.Add(colAccountID);
 
             // Staff Name
             DataGridViewTextBoxColumn colStaffName = new DataGridViewTextBoxColumn();
             colStaffName.HeaderText = "Staff Name";
-            colStaffName.Width = 200;
+            colStaffName.FillWeight = 50;
             colStaffName.DataPropertyName = "StaffName";
             dgvAccountList.Columns.Add(colStaffName);
 
             // Username
             DataGridViewTextBoxColumn colUserName = new DataGridViewTextBoxColumn();
             colUserName.HeaderText = "User Name";
-            colUserName.Width = 250;
+            colUserName.FillWeight = 50;
             colUserName.DataPropertyName = "UserName";
             dgvAccountList.Columns.Add(colUserName);
-
-            // Password
-            DataGridViewTextBoxColumn colPassWord = new DataGridViewTextBoxColumn();
-            colPassWord.HeaderText = "Password";
-            colPassWord.Width = 250;
-            colPassWord.DataPropertyName = "Password";
-            dgvAccountList.Columns.Add(colPassWord);
 
             // Active
             DataGridViewCheckBoxColumn chkActive = new DataGridViewCheckBoxColumn();
             chkActive.HeaderText = "Active";
+            chkActive.FillWeight = 50;
             chkActive.DataPropertyName = "Active";
             chkActive.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvAccountList.Columns.Add(chkActive);
