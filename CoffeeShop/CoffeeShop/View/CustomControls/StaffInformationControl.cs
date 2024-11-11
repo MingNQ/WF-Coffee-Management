@@ -12,50 +12,80 @@ namespace CoffeeShop.View.MainFrame
 {
     public partial class StaffInformationControl : UserControl
     {
+        /// <summary>
+        /// Contructors
+        /// </summary>
         public StaffInformationControl()
         {
             InitializeComponent();
         }
+       
+        #region Properties
+        /// <summary>
+        /// 
+        /// </summary>
         public string TxtStaffName
         {
             get { return txtStaffName.Text; }
             set { txtStaffName.Text = value; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public string TxtPhone
         {
             get { return txtPhone.Text; }
             set { txtPhone.Text = value; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public string TxtEmail
         {
             get { return txtEmail.Text; }
             set { txtEmail.Text = value; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public bool Male
         {
             get => rdoMale.Checked;
             set => rdoMale.Checked = value;
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public bool Female
         {
             get => rdoFemale.Checked;
             set => rdoFemale.Checked = value;
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public bool RdoOther
         {
             get => rdoOther.Checked;
             set => rdoOther.Checked = value;
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public string DateOfBirth
         {
             get => dtpDob.Text;
             set => dtpDob.Text = value;
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public string StaffRole
         {
             get => cbRole.Text;
             set => cbRole.Text = value;
         }
+        #endregion
 
         #region Method
         // Method to add event

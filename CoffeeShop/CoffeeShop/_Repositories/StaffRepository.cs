@@ -166,25 +166,28 @@ namespace CoffeeShop._Repositories
 
             return staffList;
         }
-
+        /// <summary>
+        /// Get Staff Information By ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public StaffModel GetStaffInformationByID(string id)
         {
             StaffModel staff = null;
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = @"SELECT *
+               connection.Open();
+               command.Connection = connection;
+               command.CommandText = @"SELECT *
                     FROM Staff
                     WHERE StaffID = @id";
-                command.Parameters.Add("@id", SqlDbType.NVarChar).Value = id;
+               command.Parameters.Add("@id", SqlDbType.NVarChar).Value = id;
 
                 using (var reader = command.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        Console.WriteLine("Record found for ID: " + id);
+                {                   
+                   if(reader.Read())
+                   {
                         staff = new StaffModel
                         {
                             StaffID = reader["StaffID"].ToString(),
@@ -195,16 +198,12 @@ namespace CoffeeShop._Repositories
                             Role = reader["tRole"].ToString(),
                             Gender = reader["Gender"] != DBNull.Value && Convert.ToBoolean(reader["Gender"]) ? Model.Common.Gender.Male : Model.Common.Gender.Female
                         };
-                    }
-                    else
-                    {
-                        Console.WriteLine("No record found for ID: " + id);
-                    }
+                    }                       
                 }
             }
             return staff;
-        }
-
-        #endregion
+        }      
     }
+     #endregion
 }
+

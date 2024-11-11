@@ -114,6 +114,11 @@ namespace CoffeeShop.Presenter
 
 			new AccountPresenter(view, repository);
         }
+		/// <summary>
+		///  Evnet Show Staff Detail View
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void ShowStaffDetailView(object sender, EventArgs e)
 		{
 			IStaffDetailView view = StaffDetailView.GetInstance((MainView)mainView);

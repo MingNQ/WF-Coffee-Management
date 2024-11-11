@@ -30,6 +30,11 @@ namespace CoffeeShop.Presenter
 
         #endregion
 
+        /// <summary>
+        /// Contructor
+        /// </summary>
+        /// <param name="view"></param>
+        /// <param name="repository"></param>
         public StaffDetailPresenter(IStaffDetailView view,IStaffRepository repository)
         {
             Repository = repository;
@@ -41,6 +46,11 @@ namespace CoffeeShop.Presenter
             LoadStaffDetails();
             this.staffDetailView.Show();
         }
+
+        #region private fields
+        /// <summary>
+        /// Load Information Staff to Form
+        /// </summary>
         private void LoadStaffDetails()
         {
             StaffModel staff = Repository.GetStaffInformationByID(staffDetailView.StaffId);
@@ -68,16 +78,25 @@ namespace CoffeeShop.Presenter
                 }
             }
         }
+       
+        /// <summary>
+        /// Import Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="NotImplementedException"></exception>
 
         private void ImportEvent(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Save Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveEvent(object sender, EventArgs e)
-        {
-            
-            
+        {       
             StaffModel updatedStaff = new StaffModel
             {
                 StaffID = staffDetailView.StaffId,
@@ -97,16 +116,28 @@ namespace CoffeeShop.Presenter
             }
             LoadStaffDetails();
         }
-
+        /// <summary>
+        /// Cancel Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CancelEvent(object sender, EventArgs e)
         {
             staffDetailView.IsEdit = false;
             LoadStaffDetails();
         }
-
+        /// <summary>
+        /// Edit Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EditEvent(object sender, EventArgs e)
         {
            staffDetailView.IsEdit = true;
         }
+        #endregion
+
+        #region Public Fields
+        #endregion
     }
 }
