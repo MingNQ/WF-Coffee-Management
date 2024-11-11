@@ -1,4 +1,4 @@
-﻿namespace CoffeeShop.View
+namespace CoffeeShop.View
 {
     partial class StaffView
     {
