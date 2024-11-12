@@ -32,7 +32,6 @@
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
             this.dtpDob = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
-            this.cbRole = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
@@ -48,7 +47,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
-            this.btnChangePassword = new Guna.UI2.WinForms.Guna2Button();
+            this.txtRole = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lbChangePassword = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +61,7 @@
             this.btnImport.Margin = new System.Windows.Forms.Padding(2);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(139, 28);
-            this.btnImport.TabIndex = 42;
+            this.btnImport.TabIndex = 57;
             this.btnImport.Text = "Import";
             this.btnImport.UseVisualStyleBackColor = false;
             // 
@@ -81,7 +81,7 @@
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 29);
-            this.btnCancel.TabIndex = 32;
+            this.btnCancel.TabIndex = 60;
             this.btnCancel.Text = "Cancel";
             // 
             // dtpDob
@@ -97,7 +97,7 @@
             this.dtpDob.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDob.Name = "dtpDob";
             this.dtpDob.Size = new System.Drawing.Size(193, 37);
-            this.dtpDob.TabIndex = 41;
+            this.dtpDob.TabIndex = 56;
             this.dtpDob.Value = new System.DateTime(2024, 10, 7, 11, 4, 24, 43);
             // 
             // btnEdit
@@ -116,25 +116,8 @@
             this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(104, 29);
-            this.btnEdit.TabIndex = 30;
+            this.btnEdit.TabIndex = 58;
             this.btnEdit.Text = "Edit";
-            // 
-            // cbRole
-            // 
-            this.cbRole.BackColor = System.Drawing.Color.Transparent;
-            this.cbRole.BorderColor = System.Drawing.Color.Black;
-            this.cbRole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbRole.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbRole.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbRole.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbRole.ForeColor = System.Drawing.Color.Black;
-            this.cbRole.ItemHeight = 30;
-            this.cbRole.Location = new System.Drawing.Point(339, 359);
-            this.cbRole.Margin = new System.Windows.Forms.Padding(2);
-            this.cbRole.Name = "cbRole";
-            this.cbRole.Size = new System.Drawing.Size(115, 36);
-            this.cbRole.TabIndex = 33;
             // 
             // label9
             // 
@@ -170,7 +153,7 @@
             this.txtEmail.SelectedText = "";
             this.txtEmail.Size = new System.Drawing.Size(521, 24);
             this.txtEmail.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txtEmail.TabIndex = 40;
+            this.txtEmail.TabIndex = 52;
             // 
             // txtPhone
             // 
@@ -195,7 +178,7 @@
             this.txtPhone.SelectedText = "";
             this.txtPhone.Size = new System.Drawing.Size(521, 24);
             this.txtPhone.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txtPhone.TabIndex = 39;
+            this.txtPhone.TabIndex = 51;
             // 
             // picAvatar
             // 
@@ -233,7 +216,7 @@
             this.txtStaffName.SelectedText = "";
             this.txtStaffName.Size = new System.Drawing.Size(521, 24);
             this.txtStaffName.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txtStaffName.TabIndex = 38;
+            this.txtStaffName.TabIndex = 50;
             // 
             // rdoOther
             // 
@@ -243,7 +226,7 @@
             this.rdoOther.Margin = new System.Windows.Forms.Padding(2);
             this.rdoOther.Name = "rdoOther";
             this.rdoOther.Size = new System.Drawing.Size(57, 20);
-            this.rdoOther.TabIndex = 36;
+            this.rdoOther.TabIndex = 55;
             this.rdoOther.TabStop = true;
             this.rdoOther.Text = "Other";
             this.rdoOther.UseVisualStyleBackColor = true;
@@ -267,7 +250,7 @@
             this.rdoFemale.Margin = new System.Windows.Forms.Padding(2);
             this.rdoFemale.Name = "rdoFemale";
             this.rdoFemale.Size = new System.Drawing.Size(68, 20);
-            this.rdoFemale.TabIndex = 35;
+            this.rdoFemale.TabIndex = 54;
             this.rdoFemale.TabStop = true;
             this.rdoFemale.Text = "Female";
             this.rdoFemale.UseVisualStyleBackColor = true;
@@ -280,7 +263,7 @@
             this.rdoMale.Margin = new System.Windows.Forms.Padding(2);
             this.rdoMale.Name = "rdoMale";
             this.rdoMale.Size = new System.Drawing.Size(53, 20);
-            this.rdoMale.TabIndex = 34;
+            this.rdoMale.TabIndex = 53;
             this.rdoMale.TabStop = true;
             this.rdoMale.Text = "Male";
             this.rdoMale.UseVisualStyleBackColor = true;
@@ -362,35 +345,51 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(104, 29);
-            this.btnSave.TabIndex = 30;
+            this.btnSave.TabIndex = 59;
             this.btnSave.Text = "Save";
             // 
-            // btnChangePassword
+            // txtRole
             // 
-            this.btnChangePassword.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnChangePassword.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnChangePassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnChangePassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnChangePassword.FillColor = System.Drawing.Color.Transparent;
-            this.btnChangePassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangePassword.ForeColor = System.Drawing.Color.Black;
-            this.btnChangePassword.Location = new System.Drawing.Point(313, 400);
-            this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Size = new System.Drawing.Size(180, 29);
-            this.btnChangePassword.TabIndex = 43;
-            this.btnChangePassword.Text = "Change password";
+            this.txtRole.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRole.DefaultText = "";
+            this.txtRole.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtRole.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtRole.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtRole.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtRole.Enabled = false;
+            this.txtRole.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtRole.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRole.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtRole.Location = new System.Drawing.Point(339, 364);
+            this.txtRole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRole.Name = "txtRole";
+            this.txtRole.PasswordChar = '\0';
+            this.txtRole.PlaceholderText = "";
+            this.txtRole.SelectedText = "";
+            this.txtRole.Size = new System.Drawing.Size(193, 29);
+            this.txtRole.TabIndex = 44;
+            // 
+            // lbChangePassword
+            // 
+            this.lbChangePassword.AutoSize = true;
+            this.lbChangePassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbChangePassword.Location = new System.Drawing.Point(335, 410);
+            this.lbChangePassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbChangePassword.Name = "lbChangePassword";
+            this.lbChangePassword.Size = new System.Drawing.Size(137, 18);
+            this.lbChangePassword.TabIndex = 29;
+            this.lbChangePassword.Text = "Change Password";
             // 
             // StaffInformationControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnChangePassword);
+            this.Controls.Add(this.txtRole);
             this.Controls.Add(this.btnImport);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.dtpDob);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.cbRole);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtPhone);
@@ -401,6 +400,7 @@
             this.Controls.Add(this.rdoFemale);
             this.Controls.Add(this.rdoMale);
             this.Controls.Add(this.label8);
+            this.Controls.Add(this.lbChangePassword);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -422,12 +422,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private Guna.UI2.WinForms.Guna2Button btnChangePassword;
         public System.Windows.Forms.Button btnImport;
         public Guna.UI2.WinForms.Guna2Button btnCancel;
         public Guna.UI2.WinForms.Guna2DateTimePicker dtpDob;
         public Guna.UI2.WinForms.Guna2Button btnEdit;
-        public Guna.UI2.WinForms.Guna2ComboBox cbRole;
         public Guna.UI2.WinForms.Guna2TextBox txtEmail;
         public Guna.UI2.WinForms.Guna2TextBox txtPhone;
         public System.Windows.Forms.PictureBox picAvatar;
@@ -436,5 +434,7 @@
         public System.Windows.Forms.RadioButton rdoFemale;
         public System.Windows.Forms.RadioButton rdoMale;
         public Guna.UI2.WinForms.Guna2Button btnSave;
+        public Guna.UI2.WinForms.Guna2TextBox txtRole;
+        public System.Windows.Forms.Label lbChangePassword;
     }
 }

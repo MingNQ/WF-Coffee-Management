@@ -61,7 +61,7 @@ namespace CoffeeShop.Presenter
                     staffDetailView.StaffInformationControl.txtStaffName.Text = staff.StaffName.ToString();
                     staffDetailView.StaffInformationControl.txtEmail.Text = staff.Email ?? "";
                     staffDetailView.StaffInformationControl.txtPhone.Text = staff.PhoneNumber ?? "";
-                    staffDetailView.StaffInformationControl.cbRole.Text = staff.Role ?? "";
+                    staffDetailView.StaffInformationControl.txtRole.Text = staff.Role ?? "";
                     staffDetailView.StaffInformationControl.dtpDob.Value = staff.DateOfBirth != DateTime.MinValue ? staff.DateOfBirth : DateTime.Now;
                     if (staff.Gender.ToString() == "Male")
                     {
@@ -104,7 +104,7 @@ namespace CoffeeShop.Presenter
                 DateOfBirth = staffDetailView.StaffInformationControl.dtpDob.Value,
                 PhoneNumber = staffDetailView.StaffInformationControl.txtPhone.Text,
                 Email = staffDetailView.StaffInformationControl.txtEmail.Text,
-                Role = staffDetailView.StaffInformationControl.cbRole.Text,
+                Role = staffDetailView.StaffInformationControl.txtRole.Text,
                 Gender = staffDetailView.StaffInformationControl.rdoFemale.Checked ? Model.Common.Gender.Female:
                          staffDetailView.StaffInformationControl.rdoMale.Checked ? Model.Common.Gender.Male:
                          Model.Common.Gender.Other

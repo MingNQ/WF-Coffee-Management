@@ -84,8 +84,8 @@ namespace CoffeeShop.View.MainFrame
         /// </summary>
         public string StaffRole
         {
-            get => staffInformationControl.cbRole.Text;
-            set => staffInformationControl.cbRole.Text = value;
+            get => staffInformationControl.txtRole.Text;
+            set => staffInformationControl.txtRole.Text = value;
         }
         /// <summary>
         /// 
@@ -151,8 +151,7 @@ namespace CoffeeShop.View.MainFrame
             InitializeControl();
             // Đăng kí các sự kiện 
             AssociateAndRaiseEvents();
-            // Khởi tạo giá trị Items của ComboBox
-            InitializeComboBoxRole();
+           
         }
         #region Private Fields
         /// <summary>
@@ -169,13 +168,12 @@ namespace CoffeeShop.View.MainFrame
             staffInformationControl.rdoFemale.Enabled = false;
             staffInformationControl.rdoMale.Enabled = false;
             staffInformationControl.rdoOther.Enabled = false;
-            staffInformationControl.cbRole.Enabled = false;
             staffInformationControl.dtpDob.Enabled = false;
         }
         /// <summary>
         /// Initialize unit when click Edit
         /// </summary>
-        private void initializeAfterClickEdit()
+        private void InitializeAfterClickEdit()
         {
             staffInformationControl.btnEdit.Enabled = false;
             staffInformationControl.btnCancel.Enabled = true;
@@ -186,8 +184,7 @@ namespace CoffeeShop.View.MainFrame
             staffInformationControl.txtPhone.Enabled = true;
             staffInformationControl.rdoFemale.Enabled = true;
             staffInformationControl.rdoMale.Enabled = true;
-            staffInformationControl.rdoOther.Enabled = true;
-            staffInformationControl.cbRole.Enabled = true;
+            staffInformationControl.rdoOther.Enabled = true;            
             staffInformationControl.dtpDob.Enabled = true;
         }
 
@@ -199,7 +196,7 @@ namespace CoffeeShop.View.MainFrame
             staffInformationControl.btnEdit.Click += delegate
             {
                 EditEvent?.Invoke(this, EventArgs.Empty);
-                initializeAfterClickEdit();
+                InitializeAfterClickEdit();
             };
             staffInformationControl.btnSave.Click += delegate
             {
@@ -215,16 +212,15 @@ namespace CoffeeShop.View.MainFrame
             {
                 ImportEvent?.Invoke(this, EventArgs.Empty);
             };
+            staffInformationControl.lbChangePassword.Click += delegate
+            {
+                ChangePasswordEvent?.Invoke(this, EventArgs.Empty);
+            };
         }
         /// <summary>
         /// Initialize Combobox Role
         /// </summary>
-        private void InitializeComboBoxRole()
-        {
-            staffInformationControl.cbRole.Items.Add("Quản Lý");
-            staffInformationControl.cbRole.Items.Add("Pha chế");
-            staffInformationControl.cbRole.Items.Add("Phục vụ");
-        }
+        
         #endregion
 
         #region Public fields

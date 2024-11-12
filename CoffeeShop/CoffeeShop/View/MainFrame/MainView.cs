@@ -80,7 +80,7 @@ namespace CoffeeShop.View
             btnCustomer.Click += delegate { ShowCustomerView?.Invoke(this, EventArgs.Empty); };
             btnStaff.Click += delegate { ShowStaffView?.Invoke(this, EventArgs.Empty); };
             btnIngredient.Click += delegate { ShowIngredientView?.Invoke(this, EventArgs.Empty); };
-            btnViewProfile.Click += delegate { ShowStaffDetailInformation?.Invoke(this, EventArgs.Empty); };
+            lbViewProfile.Click += delegate { ShowStaffDetailInformation?.Invoke(this, EventArgs.Empty); };
             btnAccount.Click += delegate { ShowAccountView?.Invoke(this, EventArgs.Empty); };
             btnLogout.Click += delegate { LogoutEvent?.Invoke(this, EventArgs.Empty); };
             this.FormClosed += delegate { CloseEvent?.Invoke(this, EventArgs.Empty); };

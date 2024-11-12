@@ -82,8 +82,8 @@ namespace CoffeeShop.View.MainFrame
         /// </summary>
         public string StaffRole
         {
-            get => cbRole.Text;
-            set => cbRole.Text = value;
+            get => txtRole.Text;
+            set => txtRole.Text = value;
         }
         #endregion
 
@@ -107,7 +107,7 @@ namespace CoffeeShop.View.MainFrame
         }
         public void ChangePasswordButtonClickedHandler(EventHandler handler)
         {
-            btnChangePassword.Click += handler;
+             lbChangePassword.Click += handler;
         }
         #endregion
     }
