@@ -190,7 +190,7 @@
     <Compile Include="_Repositories\BaseRepository.cs" />
     <Compile Include="_Repositories\CategoryRepository.cs" />
     <Compile Include="_Repositories\CustomerRepository.cs" />
-    <Compile Include="_Repositories\IngredientCategory.cs" />
+    <Compile Include="_Repositories\IngredientRepository.cs" />
     <Compile Include="_Repositories\StaffRepository.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
