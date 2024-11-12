@@ -60,6 +60,10 @@ namespace CoffeeShop.Model
         [DisplayName("Gender")]
         public Gender Gender { get { return gender; } set { gender = value; } }
 
+        /// <summary>
+        /// Model Navigation
+        /// </summary>
+        public virtual Avatar Avatar { get; set; }
         #endregion
     }
 }

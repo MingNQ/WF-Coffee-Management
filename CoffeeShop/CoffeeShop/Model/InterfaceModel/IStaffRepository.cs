@@ -11,9 +11,10 @@ namespace CoffeeShop.Model.InterfaceModel
         void Add(StaffModel staffModel);
         void Edit(StaffModel staffModel);
         void Delete(string staffID);
+        void SaveAvatar(bool isEdit, StaffModel staff);
         IEnumerable<StaffModel> GetAll();
         IEnumerable<StaffModel> GetByValue(string value);
-
         StaffModel GetStaffInformationByID(string id);
+        Avatar GetStaffAvatar(string staffID = null, string avatarID = null);
     }
 }

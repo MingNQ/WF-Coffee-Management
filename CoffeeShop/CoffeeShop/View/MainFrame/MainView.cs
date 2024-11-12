@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeShop.View.DialogForm;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -62,7 +63,6 @@ namespace CoffeeShop.View
         public event EventHandler ShowAccountView;
         public event EventHandler ShowStaffDetailInformation;
         public event EventHandler LogoutEvent;
-        public event EventHandler CloseEvent;
         #endregion
 
 
@@ -72,7 +72,7 @@ namespace CoffeeShop.View
         public MainView()
         {
             InitializeComponent();
-            
+
             // Add event to button
             btnDashboard.Click += delegate { ShowDashboardView?.Invoke(this, EventArgs.Empty); };
             btnPlaceOrder.Click += delegate { ShowPlaceOrderView?.Invoke(this, EventArgs.Empty); };
@@ -83,7 +83,7 @@ namespace CoffeeShop.View
             lbViewProfile.Click += delegate { ShowStaffDetailInformation?.Invoke(this, EventArgs.Empty); };
             btnAccount.Click += delegate { ShowAccountView?.Invoke(this, EventArgs.Empty); };
             btnLogout.Click += delegate { LogoutEvent?.Invoke(this, EventArgs.Empty); };
-            this.FormClosed += delegate { CloseEvent?.Invoke(this, EventArgs.Empty); };
+            btnExit.Click += delegate { LogoutEvent?.Invoke(this, EventArgs.Empty); };
 
             isCollapsed = true;
             timeDropDown.Tick += DropDownMenuAppear;

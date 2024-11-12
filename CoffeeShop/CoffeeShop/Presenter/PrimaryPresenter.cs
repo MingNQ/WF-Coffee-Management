@@ -1,4 +1,5 @@
 ﻿using CoffeeShop.View;
+using CoffeeShop.View.DialogForm;
 using CoffeeShop.View.LoginFrame;
 using System;
 using System.Collections.Generic;
@@ -49,7 +50,6 @@ namespace CoffeeShop.Presenter
             // Raise Events
             this.signInView.LoginEvent += LoginEvent;
             this.mainView.LogoutEvent += LogoutEvent;
-            this.mainView.CloseEvent += LogoutEvent;
         }
 
 
@@ -81,9 +81,13 @@ namespace CoffeeShop.Presenter
         /// <param name="e"></param>
         private void LogoutEvent(object sender, EventArgs e)
         {
-            signInView.TxtPassword.Text = "";
-            signInView.Show();
-            mainView.Hide();
+            if (DialogMessageView.ShowMessage("notify", "Are you sure to Exit?") == System.Windows.Forms.DialogResult.OK)
+            {
+                signInView.TxtPassword.Text = "";
+                signInView.ShowPassword = false;
+                signInView.Show();
+                mainView.Hide();
+            }
         }
 
         #endregion
