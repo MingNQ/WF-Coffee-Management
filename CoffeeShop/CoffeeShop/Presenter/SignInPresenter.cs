@@ -27,7 +27,7 @@ namespace CoffeeShop.Presenter
         private readonly string sqlConnectionString;
 
         /// <summary>
-        /// account Repository
+        /// Account repository
         /// </summary>
         private IAccountRepository repository;
 

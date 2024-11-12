@@ -12,14 +12,6 @@ namespace CoffeeShop.View.MainFrame
 {
     public partial class StaffInformationControl : UserControl
     {
-        /// <summary>
-        /// Contructors
-        /// </summary>
-        public StaffInformationControl()
-        {
-            InitializeComponent();
-        }
-       
         #region Properties
         /// <summary>
         /// 
@@ -86,6 +78,14 @@ namespace CoffeeShop.View.MainFrame
             set => txtRole.Text = value;
         }
         #endregion
+
+        /// <summary>
+        /// Contructors
+        /// </summary>
+        public StaffInformationControl()
+        {
+            InitializeComponent();
+        }
 
         #region Method
         // Method to add event

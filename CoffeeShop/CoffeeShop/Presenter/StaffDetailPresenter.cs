@@ -19,14 +19,11 @@ namespace CoffeeShop.Presenter
         /// Interface StaffDetailView
         /// </summary>
         private IStaffDetailView staffDetailView;
+
         /// <summary>
         /// 
         /// </summary>
-        private IStaffRepository Repository;
-        /// <summary>
-        /// 
-        /// </summary>
-        private IEnumerable<StaffModel> staffList;
+        private IStaffRepository repository;
 
         #endregion
 
@@ -35,9 +32,9 @@ namespace CoffeeShop.Presenter
         /// </summary>
         /// <param name="view"></param>
         /// <param name="repository"></param>
-        public StaffDetailPresenter(IStaffDetailView view,IStaffRepository repository)
+        public StaffDetailPresenter(IStaffDetailView view, IStaffRepository repository)
         {
-            Repository = repository;
+            this.repository = repository;
             this.staffDetailView = view;
             this.staffDetailView.EditEvent += EditEvent;
             this.staffDetailView.CancelEvent += CancelEvent;
@@ -53,7 +50,7 @@ namespace CoffeeShop.Presenter
         /// </summary>
         private void LoadStaffDetails()
         {
-            StaffModel staff = Repository.GetStaffInformationByID(staffDetailView.StaffId);
+            StaffModel staff = repository.GetStaffInformationByID(staffDetailView.StaffId);
             if (staff != null)
             {
                 if (staffDetailView != null && staffDetailView.StaffInformationControl != null)
@@ -67,7 +64,7 @@ namespace CoffeeShop.Presenter
                     {
                         staffDetailView.StaffInformationControl.rdoMale.Checked = true;
                     }
-                    else if(staff.Gender.ToString() == "Female")
+                    else if (staff.Gender.ToString() == "Female")
                     {
                         staffDetailView.StaffInformationControl.rdoFemale.Checked = true;
                     }
@@ -78,25 +75,25 @@ namespace CoffeeShop.Presenter
                 }
             }
         }
-       
+
         /// <summary>
         /// Import Event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <exception cref="NotImplementedException"></exception>
-
         private void ImportEvent(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
+
         /// <summary>
         /// Save Event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SaveEvent(object sender, EventArgs e)
-        {       
+        {
             StaffModel updatedStaff = new StaffModel
             {
                 StaffID = staffDetailView.StaffId,
@@ -105,17 +102,18 @@ namespace CoffeeShop.Presenter
                 PhoneNumber = staffDetailView.StaffInformationControl.txtPhone.Text,
                 Email = staffDetailView.StaffInformationControl.txtEmail.Text,
                 Role = staffDetailView.StaffInformationControl.txtRole.Text,
-                Gender = staffDetailView.StaffInformationControl.rdoFemale.Checked ? Model.Common.Gender.Female:
-                         staffDetailView.StaffInformationControl.rdoMale.Checked ? Model.Common.Gender.Male:
+                Gender = staffDetailView.StaffInformationControl.rdoFemale.Checked ? Model.Common.Gender.Female :
+                         staffDetailView.StaffInformationControl.rdoMale.Checked ? Model.Common.Gender.Male :
                          Model.Common.Gender.Other
             };
             new Common.ModelValidation().Validate(updatedStaff);
             if (staffDetailView.IsEdit)
             {
-                Repository.Edit(updatedStaff);
+                repository.Edit(updatedStaff);
             }
             LoadStaffDetails();
         }
+
         /// <summary>
         /// Cancel Event
         /// </summary>
@@ -126,6 +124,7 @@ namespace CoffeeShop.Presenter
             staffDetailView.IsEdit = false;
             LoadStaffDetails();
         }
+
         /// <summary>
         /// Edit Event
         /// </summary>
@@ -133,7 +132,7 @@ namespace CoffeeShop.Presenter
         /// <param name="e"></param>
         private void EditEvent(object sender, EventArgs e)
         {
-           staffDetailView.IsEdit = true;
+            staffDetailView.IsEdit = true;
         }
         #endregion
 

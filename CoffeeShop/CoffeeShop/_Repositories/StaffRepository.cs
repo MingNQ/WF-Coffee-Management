@@ -195,6 +195,7 @@ namespace CoffeeShop._Repositories
 
             return staffList;
         }
+
         /// <summary>
         /// Get Staff Information By ID
         /// </summary>
@@ -231,7 +232,8 @@ namespace CoffeeShop._Repositories
                 }
             }
             return staff;
-        }      
+        }  
+        
         /// <summary>
         /// 
         /// </summary>
