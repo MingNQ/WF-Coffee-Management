@@ -12,6 +12,8 @@ namespace CoffeeShop.View.DialogForm
 	public interface IEditIngredientView
 	{
 		string TittleHeader { get; set; }
+        string Ingredientname { get; set; }
+        string IngredientName { get; set; }
 
         event EventHandler SaveEvent;
         event EventHandler ClearEvent;
@@ -21,7 +23,7 @@ namespace CoffeeShop.View.DialogForm
         /// Hide Dialog
         /// </summary>
         void Hide();
-        void SetLIngredientListBindingSource(BindingSource ingredientBindingSource);
+       
 
         /// <summary>
         /// Show Diaglog

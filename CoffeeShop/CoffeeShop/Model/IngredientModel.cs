@@ -26,8 +26,8 @@ namespace CoffeeShop.Model
 
         [DisplayName("Ingredient Name")]
         [Required(ErrorMessage = "Ingredient name is required")]
-        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Name can't contain number or special characters")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "Ingredient name must be between 5 and 50 characters")]
+   /*     [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Name can't contain number or special characters")]*/
+        [StringLength(50)]
         public string IngredientName { get { return ingredientName; } set { ingredientName = value; } }
 
         #endregion

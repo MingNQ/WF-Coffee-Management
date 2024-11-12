@@ -30,17 +30,29 @@ namespace CoffeeShop._Repositories
         public void Add(IngredientModel ingredientModel)
         {
             using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
             {
                 connection.Open();
-                command.Connection = connection;
-                command.CommandText = "insert into Ingredient values (@IngredientID, @IngredientName)";
 
-                command.Parameters.Add("@IngredientID", SqlDbType.NVarChar).Value = ingredientModel.IngredientID;
-                command.Parameters.Add("@IngredientName", SqlDbType.NVarChar).Value = ingredientModel.IngredientName;
-                command.ExecuteNonQuery();
+                using (var checkCommand = new SqlCommand("SELECT COUNT(*) FROM Ingredient WHERE IngredientID = @IngredientID", connection))
+                {
+                    checkCommand.Parameters.Add("@IngredientID", SqlDbType.NVarChar).Value = ingredientModel.IngredientID;
+
+                    int count = (int)checkCommand.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        throw new Exception("IngredientID already exists. Duplicate records cannot be added.");
+                    }
+                }
+                using (var insertCommand = new SqlCommand("INSERT INTO Ingredient VALUES (@IngredientID, @IngredientName)", connection))
+                {
+
+                    insertCommand.Parameters.Add("@IngredientID", SqlDbType.NVarChar).Value = ingredientModel.IngredientID;
+                    insertCommand.Parameters.Add("@IngredientName", SqlDbType.NVarChar).Value = ingredientModel.IngredientName;
+                    insertCommand.ExecuteNonQuery();
+                }
             }
         }
+       
 
         /// <summary>
         /// Delete ingredient

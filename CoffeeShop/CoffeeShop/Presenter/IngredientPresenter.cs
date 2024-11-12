@@ -35,6 +35,8 @@ namespace CoffeeShop.Presenter
         /// 
         /// </summary>
         private IEnumerable<IngredientModel> ingredientList;
+
+        private IEditIngredientView editIngredientView;
         #endregion
 
         /// <summary>
@@ -47,6 +49,7 @@ namespace CoffeeShop.Presenter
 
 			if (!this.ingredientView.IsOpen)
             {
+                editIngredientView = EditIngredientView.GetInstance();
                 this.ingredientView.ShowEditDialog += ShowEditDialog;
 
                 this.ingredientBindingSource = new BindingSource();
@@ -85,6 +88,7 @@ namespace CoffeeShop.Presenter
         private void AddNewEvent(object sender, EventArgs e)
         {
             ingredientView.IsEdit = false;
+            editIngredientView.Ingredientname = "";
         }
 
         /// <summary>
@@ -100,6 +104,7 @@ namespace CoffeeShop.Presenter
             ingredientView.IngredientName = ingredient.IngredientName;
   
             ingredientView.IsEdit = true;
+            editIngredientView.Ingredientname = ingredient.IngredientName;
         }
 
         /// <summary>
@@ -157,11 +162,11 @@ namespace CoffeeShop.Presenter
         /// <param name="e"></param>
         private void ShowEditDialog(object sender, EventArgs e)
 		{
-			IEditIngredientView view = EditIngredientView.GetInstance();
-			
-			view.TittleHeader = this.ingredientView.IsEdit ? "Edit Ingredient" : "Add Ingredient";
+		editIngredientView.TittleHeader = this.ingredientView.IsEdit ? "Edit Ingredient" : "Add Ingredient";
 
-			new EditIngredientPresenter(view);
+            new EditIngredientPresenter(editIngredientView, ingredientView, repository);
+
+			LoadAllIngredient() ;
 		}
 	}
 }

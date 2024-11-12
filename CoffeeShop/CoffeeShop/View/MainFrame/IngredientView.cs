@@ -61,18 +61,8 @@ namespace CoffeeShop.View.MainFrame
             InitializeDataGridView();
         
             AssociateAndRaiseEvents();
-      /*      btnAdd.Click +=  delegate 
-			{
-				isEdit = false;
-				ShowEditDialog?.Invoke(this, EventArgs.Empty);  
-			};
-
-			btnEdit.Click +=  delegate 
-			{ 
-				isEdit = true;
-				ShowEditDialog?.Invoke(this, EventArgs.Empty); 
-			};*/
-		}
+       
+        }
 
         private void InitializeDataGridView()
         {
@@ -82,6 +72,7 @@ namespace CoffeeShop.View.MainFrame
             dgvIngredient.AutoGenerateColumns = false;
             dgvIngredient.MultiSelect = false;
             dgvIngredient.ReadOnly = true;
+            dgvIngredient.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             // Change color for header row
             dgvIngredient.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 251, 233);
@@ -93,14 +84,13 @@ namespace CoffeeShop.View.MainFrame
             // ID
             DataGridViewTextBoxColumn colIngredientId = new DataGridViewTextBoxColumn();
             colIngredientId.HeaderText = "Ingredient ID";
-            colIngredientId.Width = 150;
+            colIngredientId.FillWeight = 40;
             colIngredientId.DataPropertyName = "IngredientID";
             dgvIngredient.Columns.Add(colIngredientId);
 
             // Name
             DataGridViewTextBoxColumn colIngredientName = new DataGridViewTextBoxColumn();
             colIngredientName.HeaderText = "Ingredient Name";
-            colIngredientName.Width = 831;
             colIngredientName.DataPropertyName = "IngredientName";
             dgvIngredient.Columns.Add(colIngredientName);
 

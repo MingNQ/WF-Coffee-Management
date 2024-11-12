@@ -29,10 +29,11 @@ namespace CoffeeShop.View.DialogForm
             get => txtIngredientName.Text;
             set => txtIngredientName.Text = value;
         }
+        public string Ingredientname { get ; set  ; }
 
         #endregion
 
-      
+
 
         /// <summary>
         /// Constructor
@@ -88,10 +89,6 @@ namespace CoffeeShop.View.DialogForm
 			ShowDialog();
 		}
 
-        public void SetLIngredientListBindingSource(BindingSource ingredientList)
-        {
-            this.dgvIngredient.DataSource = ingredientList;
-        }
 
         #region Events
         #endregion

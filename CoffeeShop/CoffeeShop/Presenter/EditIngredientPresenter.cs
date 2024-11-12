@@ -21,19 +21,11 @@ namespace CoffeeShop.Presenter
 		/// </summary>
 		private IEditIngredientView editIngredientView;
 
-		private IIngredientView ingredientView;
+        private IIngredientView ingredientView;
 
-		private IIngredientRepository repository;
-
-		private BindingSource ingredientBindingSource;
+        private IIngredientRepository repository;
 
 		private IEnumerable<IngredientModel> ingredientList;
-        private IEditIngredientView view;
-
-        public EditIngredientPresenter(IEditIngredientView view)
-        {
-            this.view = view;
-        }
 
 
         /// <summary>
@@ -46,23 +38,18 @@ namespace CoffeeShop.Presenter
 			this.ingredientView = ingredientView;
 			this.repository = repository;
 
-            this.ingredientBindingSource = new BindingSource();
-
             this.editIngredientView.SaveEvent += SaveEvent;
-            //this.editIngredientView.ClearEvent += ClearEvent;
+            this.editIngredientView.ClearEvent += ClearEvent;
 
-            this.editIngredientView.SetLIngredientListBindingSource(ingredientBindingSource);
-
-            LoadAllIngredient();
+            ingredientList = repository.GetAll();
 
             // Show Form
             this.editIngredientView.ShowDialog();
 		}
 
-        private void LoadAllIngredient()
+       private void ClearEvent(object sender, EventArgs e)
         {
-            ingredientList = repository.GetAll();
-            ingredientBindingSource.DataSource = ingredientList;
+            editIngredientView.IngredientName = "";
         }
 
         private void SaveEvent(object sender, EventArgs e)
@@ -72,7 +59,7 @@ namespace CoffeeShop.Presenter
             try
             {
                 ingredient.IngredientID = ingredientView.IngredientID;
-                ingredient.IngredientName = ingredientView.IngredientName;
+                ingredient.IngredientName = editIngredientView.IngredientName;
                 new Common.ModelValidation().Validate(ingredient);
 
                 if (ingredientView.IsEdit) // Edit model
@@ -82,15 +69,14 @@ namespace CoffeeShop.Presenter
                 else // Add new model
                 {
                     // Generate ID
-                    int id = Convert.ToInt32(ingredientList.Last().IngredientID.Substring(2)) + 1;
+                    int id = Convert.ToInt32(ingredientList.Last().IngredientID.Substring(3)) + 1;
                     ingredient.IngredientID = "ING" + id.ToString("D3");
 
                     repository.Add(ingredient);
                 }
 
                 ingredientView.IsSuccessful = true;
-                LoadAllIngredient();
-            
+              
             }
             catch (Exception ex)
             {
