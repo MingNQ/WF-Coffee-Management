@@ -724,9 +724,9 @@ namespace CoffeeShop.View
         private Guna.UI2.WinForms.Guna2TextBox txtPhone;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpDob;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
-		private System.Windows.Forms.PictureBox pictureBox3;
-		private System.Windows.Forms.Button btnImport;
-		private System.Windows.Forms.Panel panel2;
-		private Guna.UI2.WinForms.Guna2Button btnBack;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.Panel panel2;
+        private Guna.UI2.WinForms.Guna2Button btnBack;
 	}
 }

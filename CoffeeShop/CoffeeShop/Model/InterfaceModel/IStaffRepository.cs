@@ -14,6 +14,7 @@ namespace CoffeeShop.Model.InterfaceModel
         void SaveAvatar(bool isEdit, StaffModel staff);
         IEnumerable<StaffModel> GetAll();
         IEnumerable<StaffModel> GetByValue(string value);
+        StaffModel GetStaffInformationByID(string id);
         Avatar GetStaffAvatar(string staffID = null, string avatarID = null);
     }
 }

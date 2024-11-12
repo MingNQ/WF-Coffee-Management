@@ -50,6 +50,7 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnExit = new Guna.UI2.WinForms.Guna2ControlBox();
             this.timeDropDown = new System.Windows.Forms.Timer(this.components);
+            this.lbViewProfile = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel2.SuspendLayout();
             this.pnlSystemDrop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
@@ -59,6 +60,7 @@
             // guna2CustomGradientPanel2
             // 
             this.guna2CustomGradientPanel2.BackColor = System.Drawing.Color.White;
+            this.guna2CustomGradientPanel2.Controls.Add(this.lbViewProfile);
             this.guna2CustomGradientPanel2.Controls.Add(this.pnlSystemDrop);
             this.guna2CustomGradientPanel2.Controls.Add(this.btnIngredient);
             this.guna2CustomGradientPanel2.Controls.Add(this.guna2Separator2);
@@ -335,7 +337,7 @@
             this.lbRole.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbRole.Name = "lbRole";
             this.lbRole.Size = new System.Drawing.Size(77, 16);
-            this.lbRole.TabIndex = 3;
+            this.lbRole.TabIndex = 100;
             this.lbRole.Text = "Role: Admin";
             // 
             // lbUsername
@@ -347,7 +349,7 @@
             this.lbUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbUsername.Name = "lbUsername";
             this.lbUsername.Size = new System.Drawing.Size(87, 19);
-            this.lbUsername.TabIndex = 2;
+            this.lbUsername.TabIndex = 100;
             this.lbUsername.Text = "Username";
             // 
             // guna2CirclePictureBox1
@@ -401,6 +403,17 @@
             this.btnExit.Size = new System.Drawing.Size(38, 25);
             this.btnExit.TabIndex = 0;
             // 
+            // lbViewProfile
+            // 
+            this.lbViewProfile.AutoSize = true;
+            this.lbViewProfile.BackColor = System.Drawing.Color.Transparent;
+            this.lbViewProfile.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbViewProfile.Location = new System.Drawing.Point(79, 81);
+            this.lbViewProfile.Name = "lbViewProfile";
+            this.lbViewProfile.Size = new System.Drawing.Size(75, 16);
+            this.lbViewProfile.TabIndex = 14;
+            this.lbViewProfile.Text = "View Profile";
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,11 +454,12 @@
         private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2ControlBox btnExit;
-		private Guna.UI2.WinForms.Guna2Button btnIngredient;
+		    private Guna.UI2.WinForms.Guna2Button btnIngredient;
         private Guna.UI2.WinForms.Guna2Button btnSystem;
         private System.Windows.Forms.Panel pnlSystemDrop;
         private System.Windows.Forms.Button btnSchedule;
         private System.Windows.Forms.Button btnAccount;
         private System.Windows.Forms.Timer timeDropDown;
+        private System.Windows.Forms.Label lbViewProfile;
     }
 }
