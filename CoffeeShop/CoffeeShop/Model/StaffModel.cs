@@ -32,7 +32,7 @@ namespace CoffeeShop.Model
         
         [DisplayName("Staff Name")]
         [Required(ErrorMessage ="Staff name is required")]
-        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Name can't contain number or special characters")]
+        [RegularExpression(@"^[\p{L}\s]+$", ErrorMessage = "Name can't contain number or special characters")]
         [StringLength(50, MinimumLength = 5, ErrorMessage ="Staff name must be between 5 and 50 characters")]
         public string StaffName { get { return staffName; } set { staffName = value; } }
 
@@ -60,6 +60,10 @@ namespace CoffeeShop.Model
         [DisplayName("Gender")]
         public Gender Gender { get { return gender; } set { gender = value; } }
 
+        /// <summary>
+        /// Model Navigation
+        /// </summary>
+        public virtual Avatar Avatar { get; set; }
         #endregion
     }
 }
