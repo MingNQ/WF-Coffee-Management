@@ -10,13 +10,13 @@ using System.Data.SqlClient;
 
 namespace CoffeeShop._Repositories
 {
-    public class IngredientCategory : BaseRepository, IIngredientRepository
+    public class IngredientRepository : BaseRepository, IIngredientRepository
     {
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="connectionString"></param>
-        public IngredientCategory(string connectionString) 
+        public IngredientRepository(string connectionString) 
         {
             this.connectionString = connectionString;
         }

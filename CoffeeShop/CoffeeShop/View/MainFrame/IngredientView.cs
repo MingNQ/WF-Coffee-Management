@@ -55,15 +55,32 @@ namespace CoffeeShop.View.MainFrame
         public bool IsOpen => Application.OpenForms.OfType<IngredientView>().Any();
         #endregion
 
+        #region Events
+        /// <summary>
+        /// 
+        /// </summary>
+        public event EventHandler ShowEditDialog;
+        public event EventHandler SearchEvent;
+        public event EventHandler AddNewEvent;
+        public event EventHandler EditEvent;
+        public event EventHandler DeleteEvent;
+        #endregion
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public IngredientView()
 		{
 			InitializeComponent();
             InitializeDataGridView();
-        
             AssociateAndRaiseEvents();
-       
         }
 
+        #region private fiedls
+
+        /// <summary>
+        /// Initialize Data Grid View
+        /// </summary>
         private void InitializeDataGridView()
         {
             dgvIngredient.AllowUserToAddRows = false;
@@ -117,6 +134,9 @@ namespace CoffeeShop.View.MainFrame
             }
         }
 
+        /// <summary>
+        /// Associate And Raise Events
+        /// </summary>
         private void AssociateAndRaiseEvents()
         {
             // Search
@@ -138,9 +158,7 @@ namespace CoffeeShop.View.MainFrame
             btnAdd.Click += delegate
             {
                 AddNewEvent?.Invoke(this, EventArgs.Empty);
-                isEdit = false;
                 ShowEditDialog?.Invoke(this, EventArgs.Empty);
-
             };
 
             // Edit
@@ -148,9 +166,7 @@ namespace CoffeeShop.View.MainFrame
             btnEdit.Click += delegate
             {
                 EditEvent?.Invoke(this, EventArgs.Empty);
-                isEdit = true;
                 ShowEditDialog?.Invoke(this, EventArgs.Empty);
-
             };
 
             // Delete
@@ -174,10 +190,12 @@ namespace CoffeeShop.View.MainFrame
                 if (e.RowIndex >= 0)
                 {
                     EditEvent?.Invoke(this, EventArgs.Empty);
-                  
+                    ShowEditDialog?.Invoke(this, EventArgs.Empty);
                 }
             };
         }
+
+        #endregion
 
         #region public fields
 
@@ -203,22 +221,16 @@ namespace CoffeeShop.View.MainFrame
 
 			return instance;
 		}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ingredientList"></param>
         public void SetLIngredientListBindingSource(BindingSource ingredientList)
         {
             this.dgvIngredient.DataSource = ingredientList;
         }
 
-        #endregion
-
-        #region Events
-        /// <summary>
-        /// 
-        /// </summary>
-        public event EventHandler ShowEditDialog;
-        public event EventHandler SearchEvent;
-        public event EventHandler AddNewEvent;
-        public event EventHandler EditEvent;
-        public event EventHandler DeleteEvent;
         #endregion
     }
 }

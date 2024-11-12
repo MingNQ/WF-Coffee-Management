@@ -14,44 +14,69 @@ using CoffeeShop.View;
 
 namespace CoffeeShop.Presenter
 {
-	public class EditIngredientPresenter
-	{
-		/// <summary>
-		/// View
-		/// </summary>
-		private IEditIngredientView editIngredientView;
+    public class EditIngredientPresenter
+    {
+        #region Fields
+     
+        /// <summary>
+        /// View
+        /// </summary>
+        private IEditIngredientView editIngredientView;
 
+        /// <summary>
+        /// 
+        /// </summary>
         private IIngredientView ingredientView;
 
+        /// <summary>
+        /// 
+        /// </summary>
         private IIngredientRepository repository;
 
-		private IEnumerable<IngredientModel> ingredientList;
+        /// <summary>
+        /// 
+        /// </summary>
+        private IEnumerable<IngredientModel> ingredientList;
 
+        #endregion
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="view">View</param>
-        public EditIngredientPresenter(IEditIngredientView view,IIngredientView ingredientView, IIngredientRepository repository)
-		{
-			this.editIngredientView = view;
-			this.ingredientView = ingredientView;
-			this.repository = repository;
+        public EditIngredientPresenter(IEditIngredientView view, IIngredientView ingredientView, IIngredientRepository repository)
+        {
+            this.editIngredientView = view;
+            this.ingredientView = ingredientView;
+            this.repository = repository;
 
             this.editIngredientView.SaveEvent += SaveEvent;
             this.editIngredientView.ClearEvent += ClearEvent;
+            this.editIngredientView.CloseEvent += CloseEvent;
 
             ingredientList = repository.GetAll();
 
             // Show Form
             this.editIngredientView.ShowDialog();
-		}
+        }
 
-       private void ClearEvent(object sender, EventArgs e)
+        #region private fields
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClearEvent(object sender, EventArgs e)
         {
             editIngredientView.IngredientName = "";
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveEvent(object sender, EventArgs e)
         {
             var ingredient = new IngredientModel();
@@ -76,7 +101,6 @@ namespace CoffeeShop.Presenter
                 }
 
                 ingredientView.IsSuccessful = true;
-              
             }
             catch (Exception ex)
             {
@@ -85,5 +109,19 @@ namespace CoffeeShop.Presenter
             }
         }
 
+        /// <summary>
+        /// Close event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CloseEvent(object sender, EventArgs e)
+        {
+            // Dispose Events
+            editIngredientView.SaveEvent -= SaveEvent;
+            editIngredientView.ClearEvent -= ClearEvent;
+            editIngredientView.CloseEvent -= CloseEvent;
+            editIngredientView.Close();
+        }
+        #endregion
     }
 }

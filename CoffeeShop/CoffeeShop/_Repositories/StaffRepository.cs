@@ -12,7 +12,6 @@ namespace CoffeeShop._Repositories
 {
     public class StaffRepository : BaseRepository, IStaffRepository
     {
-
         /// <summary>
         /// Constructor
         /// </summary>
