@@ -26,14 +26,18 @@ namespace CoffeeShop.View.MainFrame.Interfaces
 
         bool IsSuccesful {  get; set; }
 
+        bool IsChangePass { get; set; }
+
         //Event 
         event EventHandler ImportEvent;
         event EventHandler EditEvent;
         event EventHandler SaveEvent;
         event EventHandler CancelEvent;
         event EventHandler ChangePasswordEvent;
+        event EventHandler HideMessageEvent;
 
         //Method 
         void Show();
+        void InitializeControl();
     }
 }

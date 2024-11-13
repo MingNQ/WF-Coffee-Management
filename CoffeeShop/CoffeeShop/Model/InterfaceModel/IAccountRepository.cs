@@ -12,5 +12,9 @@ namespace CoffeeShop.Model.InterfaceModel
         void Delete(string accountID);
         IEnumerable<Account> GetAll();
         IEnumerable<Account> GetByValue(string value);
+
+        string GetPasswordByID(string id);
+
+        void ChangePasswordByID(Account account);
     }
 }
