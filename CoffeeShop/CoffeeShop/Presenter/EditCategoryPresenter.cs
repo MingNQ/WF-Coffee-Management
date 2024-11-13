@@ -13,12 +13,39 @@ namespace CoffeeShop.Presenter
 {
     public class EditCategoryPresenter
     {
+        #region Fields
+        /// <summary>
+        /// 
+        /// </summary>
         private ICategoryView categoryView;
-        private IEditCategoryView editCategoryView;
-        private IIngredientRepository repository;
-        private BindingSource ingredientBindingSource;
-        private IEnumerable<IngredientModel> ingredientList;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private IEditCategoryView editCategoryView;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private IIngredientRepository repository;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private BindingSource ingredientBindingSource;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private IEnumerable<IngredientModel> ingredientList;
+        #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="categoryView"></param>
+        /// <param name="editCategoryView"></param>
+        /// <param name="repository"></param>
         public EditCategoryPresenter(ICategoryView categoryView, IEditCategoryView editCategoryView, IIngredientRepository repository)
         {
             this.ingredientBindingSource = new BindingSource();
@@ -38,17 +65,30 @@ namespace CoffeeShop.Presenter
             this.editCategoryView.ShowDialog();
         }
 
+        #region private fields
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void LoadAllIngredient()
         {
             ingredientList = repository.GetAllIngredient();
             ingredientBindingSource.DataSource = ingredientList;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveIngredient(object sender, EventArgs e)
         {
             var selectedIngredients = editCategoryView.SelectedIngredients;
-            int selectedIngredientCount = selectedIngredients.Count;
             categoryView.UpdateIngredientList(selectedIngredients);
+
+            // Dispose Event
+            editCategoryView.SaveEvent -= SaveIngredient;
         }
+        #endregion
     }
 }

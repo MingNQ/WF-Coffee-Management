@@ -40,9 +40,6 @@ namespace CoffeeShop.Presenter
 			this.mainView.ShowAccountView += ShowAccountView;
         }
 
-        
-
-
         #region private fields
         /// <summary>
         /// Event Show Dashboard view
@@ -101,7 +98,7 @@ namespace CoffeeShop.Presenter
 			IEditCategoryView editCategoryView = new EditCategoryView();
 			ICategoryRepository repository = new CategoryRepository(sqlConnectionString);
 			IIngredientRepository ingredientRepository = new IngredientCategory(sqlConnectionString);
-            new CategoryPresenter(view, repository,editCategoryView, ingredientRepository);
+            new CategoryPresenter(view, repository, editCategoryView, ingredientRepository);
 		}
 
 		/// <summary>

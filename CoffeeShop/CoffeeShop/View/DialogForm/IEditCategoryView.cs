@@ -17,7 +17,6 @@ namespace CoffeeShop.View.DialogCheckList
 
         void SetItemListBindingSource(BindingSource itemList);
         List<IngredientModel> SelectedIngredients { get; }
-        void SelectIngredientsInDataGridView(List<IngredientModel> selectedIngredients);
         event EventHandler SaveEvent;
         event EventHandler CancleEvent;
     }

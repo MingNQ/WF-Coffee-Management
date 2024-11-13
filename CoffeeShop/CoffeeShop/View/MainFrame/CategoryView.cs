@@ -14,61 +14,156 @@ using System.Windows.Forms;
 
 namespace CoffeeShop.View.MainFrame
 {
-	public partial class CategoryView : Form, ICategoryView
-	{
-		#region Fields
-		private static CategoryView instance;
+    public partial class CategoryView : Form, ICategoryView
+    {
+        #region Fields
+        /// <summary>
+        /// 
+        /// </summary>
+        private static CategoryView instance;
+
+        /// <summary>
+        /// 
+        /// </summary>
 		private bool isEdit;
 
-		#endregion
-		private string message;
-		private bool isSuccessful;
-		#region Properties
-		/// <summary>
-		/// Check if is edit or add
-		/// </summary>
-		public bool IsEdit { 
-			get { return isEdit; } 
-			set { isEdit = value; } 
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        private string message;
 
-        public string ItemID { 
-			get => txtItemID.Text; 
-			set => txtItemID.Text = value; }
-        public int CategoryID {
-            get => (int)cboCategoryID.SelectedValue;
-            set => cboCategoryID.SelectedItem = value;
-        }
-        public string ItemName { 
-			get => txtItemName.Text; 
-			set => txtItemName.Text = value; }
-        public float Cost { 
-			get => float.Parse(txtPrice.Text); 
-			set => txtPrice.Text = value.ToString(); }
-        public string SearchValue {
-			get => txtSearch.Text; 
-			set => txtSearch.Text = value; }
-        public bool IsSuccessful { 
-			get => isSuccessful; 
-			set => isSuccessful = value; }
-        public string Message { 
-			get => message; 
-			set => message = value; }
-        private List<IngredientModel> _ingredients;
-        public List<IngredientModel> ingredients {
-            get => _ingredients;
-            set => _ingredients = value; }
-        public bool IsOpen { get => Application.OpenForms.OfType<StaffView>().Any(); }
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool isSuccessful;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private List<IngredientModel> ingredients = new List<IngredientModel>();
+
         #endregion
-        public CategoryView()
-		{
-			InitializeComponent();
-            tabControl_Food.TabPages.Remove(tabPage2);
-            tabControl_Food.TabPages.Remove(tabPage3);
-            AssociateAndRaiseEvents();
-            InitializeDataGridView();          
+
+        #region Properties
+        /// <summary>
+        /// Check if is edit or add
+        /// </summary>
+        public bool IsEdit
+        {
+            get { return isEdit; }
+            set { isEdit = value; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ItemID
+        {
+            get => txtItemID.Text;
+            set => txtItemID.Text = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int CategoryID
+        {
+            get => !isEdit ? (int)cbCategory.SelectedValue : int.Parse(txtCategory.Text);
+            set
+            {
+                txtCategory.Text = value.ToString();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ItemName
+        {
+            get => txtItemName.Text;
+            set => txtItemName.Text = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float Cost
+        {
+            get => float.Parse(txtPrice.Text);
+            set => txtPrice.Text = value.ToString();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string SearchValue
+        {
+            get => txtSearch.Text;
+            set => txtSearch.Text = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsSuccessful
+        {
+            get => isSuccessful;
+            set => isSuccessful = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Message
+        {
+            get => message;
+            set => message = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<IngredientModel> Ingredients 
+        { 
+            get => ingredients; 
+            set => ingredients = value; 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsOpen { get => Application.OpenForms.OfType<StaffView>().Any(); }
+
+        #endregion
+
+        #region Events
+        public event EventHandler ShowIngredientCheckList;
+        public event EventHandler ViewFoodEvent;
+        public event EventHandler ViewDrinkEvent;
+        public event EventHandler AddNewEvent;
+        public event EventHandler SearchEvent;
+        public event EventHandler EditEvent;
+        public event EventHandler DeleteEvent;
+        public event EventHandler SaveEvent;
+        public event EventHandler CancelEvent;
+        public event EventHandler BackEvent;
+        #endregion
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public CategoryView()
+        {
+            InitializeComponent();
+            AssociateAndRaiseEvents();
+            InitializeDataGridView();
+        }
+
+        #region private fields
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void InitializeDataGridView()
         {
             dgvItem.AllowUserToAddRows = false;
@@ -113,20 +208,22 @@ namespace CoffeeShop.View.MainFrame
             colCost.DataPropertyName = "Cost";
             dgvItem.Columns.Add(colCost);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void AssociateAndRaiseEvents()
-		{
-            btnAdd_Ingredient.Click += delegate
-            {
-                ShowIngredientCheckList?.Invoke(this, EventArgs.Empty);
-            };
+        {
+            txtItemID.Enabled = false;
+            txtCategory.Enabled = false;
 
             //dki su kien cho nut View-Drink
             btnDrinkView.Click += delegate
             {
                 lblCategory.Text = "Category / Drink";
                 ViewDrinkEvent?.Invoke(this, EventArgs.Empty);
-                tabControl_Food.TabPages.Remove(tabPage1);
-                tabControl_Food.TabPages.Add(tabPage2);
+                tabControlCategory.TabPages.Remove(tabCategory);
+                tabControlCategory.TabPages.Add(tabCategoryList);
                 txtSearch.Text = "";
             };
 
@@ -134,8 +231,8 @@ namespace CoffeeShop.View.MainFrame
             {
                 lblCategory.Text = "Category / Food";
                 ViewFoodEvent?.Invoke(this, EventArgs.Empty);
-                tabControl_Food.TabPages.Remove(tabPage1);
-                tabControl_Food.TabPages.Add(tabPage2);
+                tabControlCategory.TabPages.Remove(tabCategory);
+                tabControlCategory.TabPages.Add(tabCategoryList);
                 txtSearch.Text = "";
             };
 
@@ -156,11 +253,11 @@ namespace CoffeeShop.View.MainFrame
             btnAdd.Click += delegate
             {
                 AddNewEvent?.Invoke(this, EventArgs.Empty);
-                tabControl_Food.TabPages.Remove(tabPage1);
-                tabControl_Food.TabPages.Remove(tabPage2);
-                tabControl_Food.TabPages.Add(tabPage3);
+                tabControlCategory.TabPages.Remove(tabCategory);
+                tabControlCategory.TabPages.Remove(tabCategoryList);
+                tabControlCategory.TabPages.Add(tabCategoryDetail);
                 lblItemDeatil.Text = "Add New Item";
-                txtItemID.Enabled = false;
+                ShowControl(false);
             };
 
             //Edit
@@ -168,11 +265,11 @@ namespace CoffeeShop.View.MainFrame
             btnEdit.Click += delegate
             {
                 EditEvent?.Invoke(this, EventArgs.Empty);
-                tabControl_Food.TabPages.Remove(tabPage1);
-                tabControl_Food.TabPages.Remove(tabPage2);
-                tabControl_Food.TabPages.Add(tabPage3);
+                tabControlCategory.TabPages.Remove(tabCategory);
+                tabControlCategory.TabPages.Remove(tabCategoryList);
+                tabControlCategory.TabPages.Add(tabCategoryDetail);
                 lblItemDeatil.Text = "Edit Item";
-                txtItemID.Enabled = false;
+                ShowControl(true);
             };
 
             //Delete
@@ -184,8 +281,8 @@ namespace CoffeeShop.View.MainFrame
                 if (result == DialogResult.Yes)
                 {
                     DeleteEvent?.Invoke(this, EventArgs.Empty);
-                    MessageBox.Show(Message);
                 }
+                MessageBox.Show(Message);
             };
 
             //Save changes
@@ -194,8 +291,9 @@ namespace CoffeeShop.View.MainFrame
                 SaveEvent?.Invoke(this, EventArgs.Empty);
                 if (isSuccessful)
                 {
-                    tabControl_Food.TabPages.Remove(tabPage3);
-                    tabControl_Food.TabPages.Add(tabPage2);
+                    tabControlCategory.TabPages.Remove(tabCategoryDetail);
+                    tabControlCategory.TabPages.Add(tabCategoryList);
+                    lsbIngredient.Items.Clear();
                 }
                 MessageBox.Show(Message);
             };
@@ -204,8 +302,9 @@ namespace CoffeeShop.View.MainFrame
             btnCancel.Click += delegate
             {
                 CancelEvent?.Invoke(this, EventArgs.Empty);
-                tabControl_Food.TabPages.Remove(tabPage3);
-                tabControl_Food.TabPages.Add(tabPage2);
+                tabControlCategory.TabPages.Remove(tabCategoryDetail);
+                tabControlCategory.TabPages.Add(tabCategoryList);
+
             };
 
             //BackCategory
@@ -214,95 +313,86 @@ namespace CoffeeShop.View.MainFrame
                 btnDelete.Enabled = false;
                 btnEdit.Enabled = false;
                 lblCategory.Text = "Category";
-                tabControl_Food.TabPages.Remove(tabPage2);
-                if (!tabControl_Food.TabPages.Contains(tabPage1))
+                tabControlCategory.TabPages.Remove(tabCategoryList);
+                if (!tabControlCategory.TabPages.Contains(tabCategory))
                 {
-                    tabControl_Food.TabPages.Add(tabPage1);
+                    tabControlCategory.TabPages.Add(tabCategory);
                 }
+                lsbIngredient.Items.Clear();
             };
+
             //Back List
             btnBackToList.Click += delegate
             {
+                BackEvent?.Invoke(this, EventArgs.Empty);
                 // Xóa tabPage1 và tabPage3 khỏi tabControl1
-                tabControl_Food.TabPages.Remove(tabPage1);
-                tabControl_Food.TabPages.Remove(tabPage3);
+                tabControlCategory.TabPages.Remove(tabCategory);
+                tabControlCategory.TabPages.Remove(tabCategoryDetail);
 
                 // Thêm lại tabPage2 vào tabControl1 nếu nó chưa có
-                if (!tabControl_Food.TabPages.Contains(tabPage2))
+                if (!tabControlCategory.TabPages.Contains(tabCategoryList))
                 {
-                    tabControl_Food.TabPages.Add(tabPage2);
+                    tabControlCategory.TabPages.Add(tabCategoryList);
                 }
+                lsbIngredient.Items.Clear();
+            };
+
+            // Add ingredient
+            btnAdd_Ingredient.Click += delegate
+            {
+                ShowIngredientCheckList?.Invoke(this, EventArgs.Empty);
             };
 
             dgvItem.CellClick += delegate
-             {
+            {
                  btnDelete.Enabled = true;
                  btnEdit.Enabled = true;
-             };
+            };
+
+            // Delete Ingredient When DoubleClick
             dgvItem.CellDoubleClick += (s, e) =>
             {
                 if (e.RowIndex >= 0)
                 {
                     EditEvent?.Invoke(this, EventArgs.Empty);
-                    tabControl_Food.TabPages.Remove(tabPage1);
-                    tabControl_Food.TabPages.Remove(tabPage2);
-                    tabControl_Food.TabPages.Add(tabPage3);
-                    lblItemDeatil.Text = "Edit Staff";
+                    tabControlCategory.TabPages.Remove(tabCategory);
+                    tabControlCategory.TabPages.Remove(tabCategoryList);
+                    tabControlCategory.TabPages.Add(tabCategoryDetail);
+                    lblItemDeatil.Text = "Edit Item";
                 }
             };
 
-            this.Controls.Add(tabControl_Food);
+            lsbIngredient.MouseDoubleClick += MouseClickEvent;
+
+            this.Controls.Add(tabControlCategory);
         }
 
-        public static CategoryView GetInstance(Form parentContainer)
-		{
-			if (instance == null || instance.IsDisposed)
-			{
-				instance = new CategoryView();
-				instance.MdiParent = parentContainer;
-				instance.Dock = DockStyle.Fill;
-			}
-			else
-			{
-				if (instance.WindowState == FormWindowState.Minimized)
-					instance.WindowState = FormWindowState.Normal;
-				instance.BringToFront();
-
-			}
-            return instance;
-		}
-
-        public void SetItemListBindingSource(BindingSource itemList)
+        /// <summary>
+        /// Delete Ingredient When DoubleClick Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MouseClickEvent(object sender, MouseEventArgs e)
         {
-			dgvItem.DataSource = itemList;
+            if (lsbIngredient.SelectedItem != null)
+            {
+                var selectedItem = lsbIngredient.SelectedItem;
+                var itemName = selectedItem.ToString().Split('-').Last().Trim();
+
+                if (MessageBox.Show($"Are you sure to DELETE item \"{selectedItem}\"", "Warning", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    lsbIngredient.Items.Remove(selectedItem);
+                    ingredients.Remove(ingredients.Where(i => i.IngredientName == itemName).FirstOrDefault());
+                    MessageBox.Show($"Deleted {selectedItem}");
+                }
+            }
         }
 
-		public void LoadCategories(List<CategoryModel> categories)
-		{
-            cboCategoryID.DataSource = null;
-            cboCategoryID.DataSource = categories;
-            cboCategoryID.DisplayMember = "CategoryName";
-            cboCategoryID.ValueMember = "CategoryID";
-		}
-
-
-        public event EventHandler ShowIngredientCheckList;
-
-		public event EventHandler ViewFoodEvent;
-		public event EventHandler ViewDrinkEvent;
-
-		public event EventHandler AddNewEvent;
-        public event EventHandler SearchEvent;
-        public event EventHandler EditEvent;
-        public event EventHandler DeleteEvent;
-        public event EventHandler SaveEvent;
-        public event EventHandler CancelEvent;
-
-        public event EventHandler BackToListEvent;
-        public event EventHandler BackToCategoryEvent;
-
-        public event EventHandler Add_IngredientEvent;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvItem_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -318,21 +408,90 @@ namespace CoffeeShop.View.MainFrame
             }
         }
 
-        public void UpdateIngredientList(List<IngredientModel> ingredients)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="isEdit"></param>
+        private void ShowControl(bool isEdit)
         {
-            lsbIngredient.Items.Clear();
-            this.ingredients = ingredients.OrderBy(i => i.IngredientID).ToList();
-            foreach (var item in ingredients)
-            {
-                lsbIngredient.Items.Add($"{item.IngredientID} - {item.IngredientName}");
-            }
+            txtCategory.Visible = isEdit;
+            cbCategory.Visible = !isEdit;
         }
 
+        #endregion
+
+        #region public fields
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parentContainer"></param>
+        /// <returns></returns>
+        public static CategoryView GetInstance(Form parentContainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new CategoryView();
+                instance.MdiParent = parentContainer;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                    instance.WindowState = FormWindowState.Normal;
+                instance.BringToFront();
+
+            }
+            return instance;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="itemList"></param>
+        public void SetItemListBindingSource(BindingSource itemList)
+        {
+            dgvItem.DataSource = itemList;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="categories"></param>
+        public void LoadCategories(List<CategoryModel> categories)
+        {
+            cbCategory.DataSource = categories;
+            cbCategory.ValueMember = "CategoryID";
+            cbCategory.DisplayMember = "CategoryName";
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ingredients"></param>
+        public void UpdateIngredientList(List<IngredientModel> ingredients)
+        {
+            foreach (var item in ingredients)
+            {
+                if (!this.ingredients.Any(i => i.IngredientID == item.IngredientID))
+                {
+                    lsbIngredient.Items.Add($"{item.IngredientID} - {item.IngredientName}");
+                    this.ingredients.Add(item);
+                }
+            }
+
+            this.ingredients = this.ingredients.OrderBy(i => i.IngredientID).ToList();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetSelectedIngredientIDs()
         {
             var ingredientIDs = new List<string>();
             foreach (var item in lsbIngredient.Items)
-            {              
+            {
                 var parts = item.ToString().Split('-');
                 if (parts.Length > 0)
                 {
@@ -342,5 +501,22 @@ namespace CoffeeShop.View.MainFrame
             return ingredientIDs;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ShowPage()
+        {
+            if (!tabControlCategory.TabPages.Contains(tabCategory))
+            {
+                tabControlCategory.TabPages.Add(tabCategory);
+                BackEvent?.Invoke(this, EventArgs.Empty);
+                lsbIngredient.Items.Clear();
+            }
+            tabControlCategory.TabPages.Remove(tabCategoryList);
+            tabControlCategory.TabPages.Remove(tabCategoryDetail);
+            this.Show();
+        }
+
+        #endregion
     }
 }
