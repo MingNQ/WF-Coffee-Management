@@ -1,5 +1,6 @@
-﻿using CoffeeShop.Presenter;
+using CoffeeShop.Presenter;
 using CoffeeShop.View;
+using CoffeeShop.View.LoginFrame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,10 @@ namespace CoffeeShop
             //string sqlConnectionString = "Data Source=ITK-20221221TUA\\SQLEXPRESS;Initial Catalog=CoffeeDB;Integrated Security=True;Encrypt=False";
 
             IMainView mainView = new MainView();
-            new MainPresenter(mainView, sqlConnectionString);
-            Application.Run((Form)mainView);
+            ISignInView signInView = new SignIn();
+
+            new PrimaryPresenter(signInView, mainView, sqlConnectionString);
+            Application.Run((Form)signInView);
         }
     }
 }

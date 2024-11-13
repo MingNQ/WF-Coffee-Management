@@ -1,9 +1,12 @@
 ﻿using CoffeeShop.Model;
 using CoffeeShop.Model.InterfaceModel;
+using CoffeeShop.Utilities;
+using CoffeeShop.View.DialogForm;
 using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,7 +71,6 @@ namespace CoffeeShop.Presenter
             this.staffView.Show();
         }
 
-
         #region private fields
 
         /// <summary>
@@ -99,6 +101,7 @@ namespace CoffeeShop.Presenter
         {
 			var staff = (StaffModel)staffBindingSource.Current;
 
+            // Fill Information
             staffView.StaffID = staff.StaffID;
 			staffView.StaffName = staff.StaffName;
 			staffView.PhoneNumber = staff.PhoneNumber.ToString();
@@ -109,6 +112,7 @@ namespace CoffeeShop.Presenter
 			staffView.Female = staff.Gender == Model.Common.Gender.Female;
 			staffView.Other = staff.Gender == Model.Common.Gender.Other;
             staffView.IsEdit = true;
+            staffView.Avatar = repository.GetStaffAvatar(staff.StaffID);
         }
 
         /// <summary>
@@ -145,13 +149,13 @@ namespace CoffeeShop.Presenter
                 repository.Delete(staff.StaffID);
                 staffView.IsSuccessful = true;
                 LoadAllStaff();
-                MessageBox.Show("Successul delete staff", "Notify", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+                DialogMessageView.ShowMessage("success", "Successul delete staff");
             }
             catch
             {
                 staffView.IsSuccessful = false;
-
-				MessageBox.Show("An error occured, could not delete this staff!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogMessageView.ShowMessage("error", "An error occured, could not delete this staff!");
             }
         }
 
@@ -173,6 +177,28 @@ namespace CoffeeShop.Presenter
                 staff.Email = staffView.Email;
                 staff.Role = staffView.StaffRole;
                 staff.Gender = staffView.Male ? Model.Common.Gender.Male : (staffView.Female ? Model.Common.Gender.Female : Model.Common.Gender.Other);
+                staff.Avatar = new Avatar()
+                {
+                    AvatarID = staffView.Avatar.AvatarID,
+                    StaffID = staffView.StaffID,
+                    ImageUrl = staffView.Avatar.ImageUrl
+                };
+
+                if (staff.Avatar.AvatarID == null)
+                {
+                    // Generate Avatar ID
+                    while (true)
+                    {
+                        string avatarID = Generate.GenerateID("AVT");
+                        var account = repository.GetStaffAvatar(null, avatarID);
+
+                        if (account.AvatarID == null)
+                        {
+                            staff.Avatar.AvatarID = avatarID;
+                            break;
+                        }
+                    }
+                }
 
                 new Common.ModelValidation().Validate(staff);
 
@@ -183,37 +209,44 @@ namespace CoffeeShop.Presenter
                 else // Add new model
                 {
                     // Generate ID
-                    int id = Convert.ToInt32(staffList.Last().StaffID.Substring(2)) + 1;
-                    staff.StaffID = "NV" + id.ToString("D3");
-                    
+                    while (true)
+                    {
+                        staff.StaffID = Generate.GenerateID("NV");
+
+                        if (!StaffExist(staff.StaffID))
+                        {
+                            break;
+                        }
+                    }
+
                     repository.Add(staff);
                 }
 
+                if (staffView.Avatar.ImageUrl != null) 
+                    repository.SaveAvatar(staffView.IsEdit, staff);
+                
                 staffView.IsSuccessful = true;
                 LoadAllStaff();
-                ClearFieldInformation();
             }
             catch (Exception ex)
             {
                 staffView.IsSuccessful = false;
-				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                DialogMessageView.ShowMessage("information", ex.Message);
             }
         }
 
-		/// <summary>
-		/// Clear information
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
+        /// <summary>
+        /// Clear information
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClearEvent(object sender, EventArgs e)
         {
-			if (staffView.IsEdit && 
-				MessageBox.Show("Are you sure to clear all information? Information once cleared can't be recovered!", 
-						"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
-				DialogResult.Yes
-				)
-			{
-				ClearFieldInformation();
+            if (DialogMessageView.ShowMessage("warning", "Are you sure to clear all information? Information once cleared can't be recovered!") 
+                == DialogResult.OK)
+            {
+                ClearFieldInformation();
             }
         }
 
@@ -240,6 +273,16 @@ namespace CoffeeShop.Presenter
             staffView.Male = false;
             staffView.Female = false;
             staffView.Other = false;
+        }
+
+        /// <summary>
+        /// Check Exist Staff
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        private bool StaffExist(string id)
+        {
+            return staffList.Any(s => s.StaffID == id);
         }
 
         #endregion
