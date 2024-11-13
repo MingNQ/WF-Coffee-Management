@@ -72,7 +72,7 @@ namespace CoffeeShop.Presenter
         /// </summary>
         private void LoadAllIngredient()
         {
-            ingredientList = repository.GetAllIngredient();
+            ingredientList = repository.GetAll();
             ingredientBindingSource.DataSource = ingredientList;
         }
 

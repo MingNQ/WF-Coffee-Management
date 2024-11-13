@@ -107,7 +107,7 @@ namespace CoffeeShop.Presenter
 			ICategoryView view = CategoryView.GetInstance((MainView)mainView);
 			IEditCategoryView editCategoryView = new EditCategoryView();
 			ICategoryRepository repository = new CategoryRepository(sqlConnectionString);
-			IIngredientRepository ingredientRepository = new IngredientCategory(sqlConnectionString);
+			IIngredientRepository ingredientRepository = new IngredientRepository(sqlConnectionString);
             new CategoryPresenter(view, repository, editCategoryView, ingredientRepository);
 		}
 
