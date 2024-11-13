@@ -37,6 +37,7 @@ namespace CoffeeShop.Presenter
             this.mainView = view;
             this.sqlConnectionString = sqlConnectionString;
             this.mainView.ShowDashboardView += ShowDashboardView;
+            this.mainView.ShowPlaceOrderView += ShowPlaceOrderView;
             this.mainView.ShowStaffView += ShowStaffView;
             this.mainView.ShowCustomerView += ShowCustomerView;
             this.mainView.ShowCategoryView += ShowCategoryView;
@@ -123,7 +124,7 @@ namespace CoffeeShop.Presenter
             new AccountPresenter(view, repository);
         }
         /// <summary>
-        ///  Evnet Show Staff Detail View
+        /// Event Show Staff Detail View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -133,6 +134,19 @@ namespace CoffeeShop.Presenter
             IStaffRepository repository = new StaffRepository(sqlConnectionString);
             view.StaffId = mainView.StaffID;
             new StaffDetailPresenter(view, repository);
+        }
+
+        /// <summary>
+        /// Event Show Place Order View
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowPlaceOrderView(object sender, EventArgs e)
+        {
+            IPlaceOrderView view = PlaceOrderView.GetInstance((MainView)mainView);
+            //IRe repository = new AccountRepository(sqlConnectionString);
+
+            new PlaceOrderPresenter(view);
         }
         #endregion
     }

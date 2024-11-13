@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop.View.MainFrame
 {
-	internal interface IPlaceOrderView
+	public interface IPlaceOrderView
 	{
+		void Show();
 	}
 }
