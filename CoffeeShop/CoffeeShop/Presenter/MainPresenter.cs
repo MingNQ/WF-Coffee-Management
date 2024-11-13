@@ -92,7 +92,6 @@ namespace CoffeeShop.Presenter
         private void ShowIngredientView(object sender, EventArgs e)
         {
             IIngredientView view = IngredientView.GetInstance((MainView)mainView);
-            IEditIngredientView editIngredientView = new EditIngredientView();
             IIngredientRepository repository = new IngredientRepository(sqlConnectionString);
             new IngredientPresenter(view, repository);
         }

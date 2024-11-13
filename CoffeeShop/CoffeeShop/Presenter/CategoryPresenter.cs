@@ -63,7 +63,6 @@ namespace CoffeeShop.Presenter
         /// <param name="view">View</param>
         public CategoryPresenter(ICategoryView view, ICategoryRepository repository, IEditCategoryView editCategoryView, IIngredientRepository ingredientRepository)
         {
-
             this.categoryView = view;
             this.editCategoryView = editCategoryView;
             this.repository = repository;
