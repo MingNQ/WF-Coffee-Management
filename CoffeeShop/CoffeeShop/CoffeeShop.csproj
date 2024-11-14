@@ -56,17 +56,21 @@
     <Compile Include="Model\CategoryModel.cs" />
     <Compile Include="Model\Common\Gender.cs" />
     <Compile Include="Model\CustomerModel.cs" />
+    <Compile Include="Model\Floor.cs" />
     <Compile Include="Model\IngredientModel.cs" />
-    <Compile Include="Model\InterfaceModel\IAccountRepository.cs" />
-    <Compile Include="Model\InterfaceModel\ICategoryRepository.cs" />
-    <Compile Include="Model\InterfaceModel\ICustomerRepository.cs" />
-    <Compile Include="Model\InterfaceModel\IIngredientRepository.cs" />
+    <Compile Include="_Repositories\InterfaceModel\IAccountRepository.cs" />
+    <Compile Include="_Repositories\InterfaceModel\ICategoryRepository.cs" />
+    <Compile Include="_Repositories\InterfaceModel\ICustomerRepository.cs" />
+    <Compile Include="_Repositories\InterfaceModel\IFloorRepository.cs" />
+    <Compile Include="_Repositories\InterfaceModel\IIngredientRepository.cs" />
     <Compile Include="Model\ItemModel.cs" />
+    <Compile Include="Model\TableOrder.cs" />
     <Compile Include="Presenter\AccountPresenter.cs" />
     <Compile Include="Presenter\Common\EncryptPassword.cs" />
     <Compile Include="Presenter\Common\ModelValidation.cs" />
     <Compile Include="Model\Common\Role.cs" />
-    <Compile Include="Model\InterfaceModel\IStaffRepository.cs" />
+    <Compile Include="_Repositories\InterfaceModel\IPlaceOrderRepository.cs" />
+    <Compile Include="_Repositories\InterfaceModel\IStaffRepository.cs" />
     <Compile Include="Model\StaffModel.cs" />
     <Compile Include="Presenter\CategoryPresenter.cs" />
     <Compile Include="Presenter\CustomerPresenter.cs" />
@@ -199,6 +203,8 @@
     <Compile Include="_Repositories\CategoryRepository.cs" />
     <Compile Include="_Repositories\CustomerRepository.cs" />
     <Compile Include="_Repositories\IngredientRepository.cs" />
+    <Compile Include="_Repositories\InterfaceModel\ITableRepository.cs" />
+    <Compile Include="_Repositories\PlaceOrderRepository.cs" />
     <Compile Include="_Repositories\StaffRepository.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

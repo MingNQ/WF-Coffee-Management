@@ -1,4 +1,5 @@
-﻿using CoffeeShop.View.CustomControls;
+﻿using CoffeeShop.Model;
+using CoffeeShop.View.CustomControls;
 using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
@@ -20,27 +21,35 @@ namespace CoffeeShop.View
         /// Instance
         /// </summary>
         private static PlaceOrderView instance;
-        
-        /// <summary>
-        /// Current Page
-        /// </summary>
-        private int currentPage = 1;
-        
-        /// <summary>
-        /// Total of Pages
-        /// </summary>
-        private int totalPages;
+
+        #endregion
+
+        #region Properties
 
         /// <summary>
-        /// Page Current Size
+        /// Floor Number
         /// </summary>
-        private int pageSize;
+        public int FloorNo 
+        { 
+            get { return int.Parse(lblFloor.Text.Substring(lblFloor.Text.Length - 1)); }
+            set { lblFloor.Text = "Floor: " + value; } 
+        }
 
         /// <summary>
-        /// Size Each Page
+        /// Form is open
         /// </summary>
-        private List<int> pageSizes = new List<int> { 6, 5, 2, 8 };
+        public bool IsOpen 
+        {
+            get => Application.OpenForms.OfType<PlaceOrderView>().Any();
+        }
 
+        #endregion
+
+        #region Events
+        public event EventHandler DisplayPage;
+        public event EventHandler DisplayPreviousPage;
+        public event EventHandler DisplayNextPage;
+        public event EventHandler OrderEvent;
         #endregion
 
         /// <summary>
@@ -49,66 +58,32 @@ namespace CoffeeShop.View
         public PlaceOrderView()
         {
             InitializeComponent();
-            InitializeTableOrder();
+            InitiateAndRaiseEvents();
+            tabPlaceOrder.TabPages.Remove(tabPageOrder);
         }
 
         #region private fields
 
         /// <summary>
-        /// Initialize Table
+        /// Initiate And Raise Events
         /// </summary>
-        private void InitializeTableOrder()
+        private void InitiateAndRaiseEvents()
         {
-            totalPages = pageSizes.Count;
-            btnPrevious.Click += DisplayPreviousPage;
-            btnNext.Click += DisplayNextPage;
-            currentPage = 1;
-            DisplayPage(currentPage);
-        }
+            // Initialize Table
+            tabPageTableOrder.Text = "Select Table";
+            tabPageOrder.Text = "Order";
 
-        /// <summary>
-        /// Display Page No
-        /// </summary>
-        /// <param name="page"></param>
-        private void DisplayPage(int page)
-        {
-            // Clear previous page
-            flowPnlTableOrder.Controls.Clear();
+            // Pagination table order
+            this.Load += delegate { DisplayPage?.Invoke(this, EventArgs.Empty); };
+            btnPrevious.Click += delegate { DisplayPreviousPage?.Invoke(this, EventArgs.Empty); };
+            btnNext.Click += delegate { DisplayNextPage?.Invoke(this, EventArgs.Empty); };
 
-            // Take number of data
-            pageSize = pageSizes[page - 1];
-            for (int i = 0; i < pageSize; i++) 
+            // Back
+            btnBack.Click += (s, e) =>
             {
-                flowPnlTableOrder.Controls.Add(new TableOrderControl());
-            }
-        }
-
-        /// <summary>
-        /// Display Next Page
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void DisplayNextPage(object sender, EventArgs e)
-        {
-            if (currentPage < totalPages)
-            {
-                currentPage++;
-                DisplayPage(currentPage);
-            }
-        }
-
-        /// <summary>
-        /// Display Previous Page
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void DisplayPreviousPage(object sender, EventArgs e)
-        {
-            if (currentPage > 1)
-            {
-                currentPage--;
-                DisplayPage(currentPage);
-            }
+                tabPlaceOrder.TabPages.Remove(tabPageOrder);
+                tabPlaceOrder.TabPages.Add(tabPageTableOrder);
+            };
         }
 
         #endregion
@@ -136,6 +111,33 @@ namespace CoffeeShop.View
             }
 
             return instance;
+        }
+
+        /// <summary>
+        /// Update Flow Panel Table View
+        /// </summary>
+        public void UpdateTableView(IEnumerable<TableOrder> floor)
+        {
+            flowPnlTableOrder.Controls.Clear();
+            var emptyTables = floor.Count(t => t.Status == "Trống");
+            lblEmpty.Text = $"Empty: {emptyTables}/{floor.Count()}";
+
+            foreach (var table in floor)
+            {
+                var tmp = new TableOrderControl()
+                {
+                    TableID = table.TableID,
+                    Status = table.Status,
+                };
+                tmp.ClickEvent += (s, e) =>
+                {
+                    tabPlaceOrder.TabPages.Remove(tabPageTableOrder);
+                    tabPlaceOrder.TabPages.Add(tabPageOrder);
+                    OrderEvent?.Invoke(this, EventArgs.Empty);
+                };
+
+                flowPnlTableOrder.Controls.Add(tmp);
+            }
         }
 
         #endregion

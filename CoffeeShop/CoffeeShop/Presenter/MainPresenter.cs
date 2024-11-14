@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CoffeeShop._Repositories.InterfaceModel;
 
 namespace CoffeeShop.Presenter
 {
@@ -144,9 +145,9 @@ namespace CoffeeShop.Presenter
         private void ShowPlaceOrderView(object sender, EventArgs e)
         {
             IPlaceOrderView view = PlaceOrderView.GetInstance((MainView)mainView);
-            //IRe repository = new AccountRepository(sqlConnectionString);
+            IPlaceOrderRepository repository = new PlaceOrderRepository(sqlConnectionString);
 
-            new PlaceOrderPresenter(view);
+            new PlaceOrderPresenter(view, repository);
         }
         #endregion
     }
