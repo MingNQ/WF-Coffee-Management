@@ -1,5 +1,7 @@
 ﻿using CoffeeShop.Model;
+using CoffeeShop.Utilities;
 using CoffeeShop.View.CustomControls;
+using CoffeeShop.View.DialogForm;
 using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
@@ -22,6 +24,11 @@ namespace CoffeeShop.View
         /// </summary>
         private static PlaceOrderView instance;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private string itemID;
+
         #endregion
 
         #region Properties
@@ -43,6 +50,108 @@ namespace CoffeeShop.View
             get => Application.OpenForms.OfType<PlaceOrderView>().Any();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string TableNo 
+        { 
+            get
+            {
+                return lbTableNo.Text.Substring(7);
+            }
+            set
+            {
+                lbTableNo.Text = "Table: " + value;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string StaffName 
+        { 
+            get
+            {
+                return lbStaff.Text.Substring(7);
+            }
+            set
+            {
+                lbStaff.Text = "Staff: " + value;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string OrderID 
+        { 
+            get 
+            {
+                return lbOrder.Text.Substring(7);
+            }
+            set
+            {
+                lbOrder.Text = "Order: " + value;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ItemName 
+        { 
+            get { return cbbItemName.Text; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Quantity 
+        { 
+            get { return Convert.ToInt32(numQuantity.Value); }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float Price 
+        { 
+            get { return float.Parse(txtPrice.Text); }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public float Total 
+        {
+            get { return float.Parse(txtTotal.Text); }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Description 
+        {
+            get { return rTxtDescription.Text; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int NumberPeople 
+        { 
+            get { return Convert.ToInt32(numPeople.Value); }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ItemID 
+        { 
+            get { return cbbItemName.SelectedValue.ToString(); }
+            set { }
+        }
+
         #endregion
 
         #region Events
@@ -50,6 +159,12 @@ namespace CoffeeShop.View
         public event EventHandler DisplayPreviousPage;
         public event EventHandler DisplayNextPage;
         public event EventHandler OrderEvent;
+        public event EventHandler SelectedCategoryChangeEvent;
+        public event EventHandler SelectedItemChangeEvent;
+        public event EventHandler AddToCartEvent;
+        public event EventHandler RemoveEvent;
+        public event EventHandler RemoveAllEvent;
+        public event EventHandler ReduceEvent;
         #endregion
 
         /// <summary>
@@ -58,6 +173,7 @@ namespace CoffeeShop.View
         public PlaceOrderView()
         {
             InitializeComponent();
+            InitializeDataGridView();
             InitiateAndRaiseEvents();
             tabPlaceOrder.TabPages.Remove(tabPageOrder);
         }
@@ -65,10 +181,69 @@ namespace CoffeeShop.View
         #region private fields
 
         /// <summary>
+        /// Initialize Data Grid View
+        /// </summary>
+        private void InitializeDataGridView()
+        {
+            dgvOrder.AllowUserToAddRows = false;
+            dgvOrder.AllowUserToResizeRows = false;
+            dgvOrder.RowHeadersVisible = false;
+            dgvOrder.AutoGenerateColumns = false;
+            dgvOrder.MultiSelect = false;
+            dgvOrder.ReadOnly = true;
+            dgvOrder.EnableHeadersVisualStyles = false;
+            dgvOrder.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            // Change color for header row
+            dgvOrder.DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
+            dgvOrder.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold); // Kiểu chữ
+            dgvOrder.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(168, 140, 118);
+            dgvOrder.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(168, 140, 118);
+
+            // Item Name
+            DataGridViewTextBoxColumn colItemName = new DataGridViewTextBoxColumn();
+            colItemName.HeaderText = "Item Name";
+            colItemName.DataPropertyName = "ItemName";
+            dgvOrder.Columns.Add(colItemName);
+
+            // Item Price
+            DataGridViewTextBoxColumn colItemPrice = new DataGridViewTextBoxColumn();
+            colItemPrice.HeaderText = "Unit Price";
+            colItemPrice.DataPropertyName = "UnitPrice";
+            dgvOrder.Columns.Add(colItemPrice);
+
+            // Item Price
+            DataGridViewTextBoxColumn colItemQuantity = new DataGridViewTextBoxColumn();
+            colItemQuantity.HeaderText = "Quantity";
+            colItemQuantity.DataPropertyName = "Quantity";
+            dgvOrder.Columns.Add(colItemQuantity);
+
+            // Total Price
+            DataGridViewTextBoxColumn colTotal = new DataGridViewTextBoxColumn();
+            colTotal.HeaderText = "Total";
+            colTotal.DataPropertyName = "Total";
+            dgvOrder.Columns.Add(colTotal);
+
+            // Total Price
+            DataGridViewTextBoxColumn colDescription = new DataGridViewTextBoxColumn();
+            colDescription.HeaderText = "Description";
+            colDescription.DataPropertyName = "Description";
+            dgvOrder.Columns.Add(colDescription);
+        }
+
+        /// <summary>
         /// Initiate And Raise Events
         /// </summary>
         private void InitiateAndRaiseEvents()
         {
+            // Initialize Button
+            btnRemove.Enabled = false;
+
+            // Initialize Text
+            txtPrice.Enabled = false;
+            txtTotal.Enabled = false;
+
             // Initialize Table
             tabPageTableOrder.Text = "Select Table";
             tabPageOrder.Text = "Order";
@@ -84,6 +259,64 @@ namespace CoffeeShop.View
                 tabPlaceOrder.TabPages.Remove(tabPageOrder);
                 tabPlaceOrder.TabPages.Add(tabPageTableOrder);
             };
+
+            // List Category Event
+            cbbCategory.SelectedIndexChanged += delegate 
+            {
+                numQuantity.Value = 0;
+                txtTotal.Text = "";
+                SelectedCategoryChangeEvent?.Invoke(this, EventArgs.Empty);
+            };
+            cbbItemName.SelectedIndexChanged += delegate 
+            {
+                numQuantity.Value = 0;
+                txtTotal.Text = "";
+                SelectedItemChangeEvent?.Invoke(this, EventArgs.Empty); 
+            };
+
+            // Calculate Cost
+            numQuantity.ValueChanged += CalculateTotalPrice;
+
+            // Add to Cart
+            btnAddToCart.Click += delegate 
+            { 
+                if (numQuantity.Value <= 0)
+                {
+                    DialogMessageView.ShowMessage("information", "Please Select Quantity!");
+                    return;
+                }
+
+                AddToCartEvent?.Invoke(this, EventArgs.Empty); 
+            };
+
+            // Data Grid View
+            dgvOrder.CellClick +=  delegate { btnRemove.Enabled = true; };
+            dgvOrder.CellDoubleClick += (s, e) =>
+            {
+                if (e.RowIndex >= 0)
+                {
+                    RemoveEvent?.Invoke(this, EventArgs.Empty);
+                }
+            };
+
+            // Remove 
+            btnRemove.Click += delegate 
+            {
+                RemoveEvent?.Invoke(this, EventArgs.Empty); 
+            };
+        }
+
+        /// <summary>
+        /// Calculate Total Price
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CalculateTotalPrice(object sender, EventArgs e)
+        {
+            float unitPrice = float.Parse(txtPrice.Text);
+            int quantity = Convert.ToInt32(numQuantity.Value);
+
+            txtTotal.Text = String.Format("{0:N0}", unitPrice * quantity);
         }
 
         #endregion
@@ -133,6 +366,12 @@ namespace CoffeeShop.View
                 {
                     tabPlaceOrder.TabPages.Remove(tabPageTableOrder);
                     tabPlaceOrder.TabPages.Add(tabPageOrder);
+                    TableNo = tmp.TableID;
+                    StaffName = Generate.StaffName;
+                    if (tmp.Status == "Trống")
+                    {
+                        OrderID = Generate.GenerateID("O");
+                    }
                     OrderEvent?.Invoke(this, EventArgs.Empty);
                 };
 
@@ -140,6 +379,61 @@ namespace CoffeeShop.View
             }
         }
 
+        /// <summary>
+        /// Get Category List
+        /// </summary>
+        /// <param name="categories"></param>
+        public void GetListCategoy(IEnumerable<CategoryModel> categories)
+        {
+            cbbCategory.DataSource = categories;
+            cbbCategory.ValueMember = "CategoryID";
+            cbbCategory.DisplayMember = "CategoryName";
+        }
+
+        /// <summary>
+        /// Get Item List
+        /// </summary>
+        /// <param name="categories"></param>
+        public void GetListItem(IEnumerable<ItemModel> items)
+        {
+            var listItemByCategory = items.Where(i => i.CategoryID == Convert.ToInt32(cbbCategory.SelectedValue)).ToList();
+            cbbItemName.DataSource = listItemByCategory;
+            cbbItemName.ValueMember = "ItemID";
+            cbbItemName.DisplayMember = "ItemName";
+        }
+
+        /// <summary>
+        /// Update Price when select Item
+        /// </summary>
+        public void UpdatePrice(IEnumerable<ItemModel> items)
+        {
+            var item = items.Where(i => i.ItemID == cbbItemName.SelectedValue.ToString()).FirstOrDefault();
+            txtPrice.Text = item.Cost.ToString("N0");
+        }
+
+        /// <summary>
+        /// Set List for Data grid view
+        /// </summary>
+        /// <param name="orderDetail"></param>
+        public void SetListBindingSource(BindingSource orderDetail)
+        {
+            dgvOrder.DataSource = orderDetail;
+        }
+
+        /// <summary>
+        /// Calculate Grand Total 
+        /// </summary>
+        public void CalculateGrandTotal(List<OrderDetailModel> orderDetails)
+        {
+            float sum = 0;
+
+            orderDetails.ForEach(order =>
+            {
+                sum += order.Total;
+            });
+
+            lbGrandTotal.Text = sum.ToString("N0") + " VNĐ";
+        }
         #endregion
     }
 }

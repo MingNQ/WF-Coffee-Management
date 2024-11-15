@@ -146,8 +146,9 @@ namespace CoffeeShop.Presenter
         {
             IPlaceOrderView view = PlaceOrderView.GetInstance((MainView)mainView);
             IPlaceOrderRepository repository = new PlaceOrderRepository(sqlConnectionString);
+            ICategoryRepository category = new CategoryRepository(sqlConnectionString);
 
-            new PlaceOrderPresenter(view, repository);
+            new PlaceOrderPresenter(view, repository, category);
         }
         #endregion
     }

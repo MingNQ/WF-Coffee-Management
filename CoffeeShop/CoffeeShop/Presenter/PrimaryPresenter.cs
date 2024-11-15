@@ -1,4 +1,5 @@
-﻿using CoffeeShop.View;
+﻿using CoffeeShop.Utilities;
+using CoffeeShop.View;
 using CoffeeShop.View.DialogForm;
 using CoffeeShop.View.LoginFrame;
 using System;
@@ -68,9 +69,13 @@ namespace CoffeeShop.Presenter
                 new MainPresenter(mainView, connectionString);
 
                 // Get Username and Role
-                mainView.Username = "Hello, " + signInView.Account.Staff.StaffName.Trim().Split(' ').LastOrDefault() + "!";
+                Generate.StaffID = signInView.Account.Staff.StaffID;
+                Generate.StaffName = signInView.Account.Staff.StaffName.Trim();
+
+                mainView.Username = "Hello, " + Generate.StaffName.Split(' ').LastOrDefault() + "!";
                 mainView.Role = signInView.Account.Staff.Role;
-                mainView.StaffID = signInView.Account.Staff.StaffID;
+                mainView.StaffID = Generate.StaffID;
+
             }
         }
 

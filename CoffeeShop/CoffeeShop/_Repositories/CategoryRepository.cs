@@ -422,6 +422,64 @@ namespace CoffeeShop._Repositories
             return ItemIngredientIDs;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<CategoryModel> GetAll()
+        {
+            var result = new List<CategoryModel>();
+
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "select * from Category";
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var category = new CategoryModel();
+                        category.CategoryID = Convert.ToInt32(reader[0].ToString());
+                        category.CategoryName = reader[1].ToString();
+                        result.Add(category);
+                    }
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<ItemModel> GetAllItems()
+        {
+            var result = new List<ItemModel>();
+
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "select * from Item";
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var item = new ItemModel();
+                        item.ItemID = reader[0].ToString();
+                        item.CategoryID = Convert.ToInt32(reader[1].ToString());
+                        item.ItemName = reader[2].ToString();
+                        item.Cost = float.Parse(reader[3].ToString());
+                        result.Add(item);
+                    }
+                }
+            }
+            return result;
+        }
+
         #endregion
     }
 }

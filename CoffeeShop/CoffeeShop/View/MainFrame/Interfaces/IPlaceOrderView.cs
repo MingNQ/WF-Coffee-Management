@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CoffeeShop.View.MainFrame
 {
@@ -21,6 +22,56 @@ namespace CoffeeShop.View.MainFrame
         /// </summary>
         bool IsOpen { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        string TableNo { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        string StaffName { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        string OrderID { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        string ItemID { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        string ItemName { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        int Quantity { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        float Price { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        float Total { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        string Description { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        int NumberPeople { get; }
+
         #endregion
 
         #region Events
@@ -28,6 +79,12 @@ namespace CoffeeShop.View.MainFrame
         event EventHandler DisplayPreviousPage;
         event EventHandler DisplayNextPage;
         event EventHandler OrderEvent;
+        event EventHandler SelectedCategoryChangeEvent;
+        event EventHandler SelectedItemChangeEvent;
+        event EventHandler AddToCartEvent;
+        event EventHandler RemoveEvent;
+        event EventHandler RemoveAllEvent;
+        event EventHandler ReduceEvent;
         #endregion
 
         #region Methods
@@ -41,6 +98,34 @@ namespace CoffeeShop.View.MainFrame
         /// </summary>
         /// <param name="floor"></param>
         void UpdateTableView(IEnumerable<TableOrder> floor);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="categories"></param>
+        void GetListCategoy(IEnumerable<CategoryModel> categories);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="items"></param>
+        void GetListItem(IEnumerable<ItemModel> items);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        void UpdatePrice(IEnumerable<ItemModel> items);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="orderdDetail"></param>
+        void SetListBindingSource(BindingSource orderDetail);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        void CalculateGrandTotal(List<OrderDetailModel> orderDetails);
         #endregion
     }
 }

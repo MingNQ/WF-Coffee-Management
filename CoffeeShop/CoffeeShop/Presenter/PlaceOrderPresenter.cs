@@ -1,5 +1,9 @@
 ﻿using CoffeeShop._Repositories.InterfaceModel;
 using CoffeeShop.Model;
+using CoffeeShop.Model.InterfaceModel;
+using CoffeeShop.Utilities;
+using CoffeeShop.View;
+using CoffeeShop.View.DialogForm;
 using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
@@ -25,6 +29,11 @@ namespace CoffeeShop.Presenter
         private IPlaceOrderRepository repository;
 
         /// <summary>
+        /// Category
+        /// </summary>
+        private ICategoryRepository category;
+
+        /// <summary>
         /// Binding Source
         /// </summary>
         private BindingSource bindingSource;
@@ -39,6 +48,11 @@ namespace CoffeeShop.Presenter
         /// </summary>
         private IEnumerable<Floor> floors;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private List<OrderDetailModel> orderDetails = new List<OrderDetailModel>();
+
         #endregion
 
         /// <summary>
@@ -46,7 +60,7 @@ namespace CoffeeShop.Presenter
         /// </summary>
         /// <param name="_view"></param>
         /// <param name="_repository"></param>
-        public PlaceOrderPresenter(IPlaceOrderView _view, IPlaceOrderRepository _repository)
+        public PlaceOrderPresenter(IPlaceOrderView _view, IPlaceOrderRepository _repository, ICategoryRepository _category)
         {
             view = _view;
 
@@ -54,12 +68,20 @@ namespace CoffeeShop.Presenter
             if (!view.IsOpen)
             {
                 repository = _repository;
+                category = _category;
                 bindingSource = new BindingSource();
 
                 view.FloorNo = 1;
                 view.DisplayPage += DisplayPageEvent;
                 view.DisplayPreviousPage += DisplayPreviousPageEvent;
                 view.DisplayNextPage += DisplayNextPageEvent;
+                view.OrderEvent += OrderEvent;
+                view.SelectedCategoryChangeEvent += SelectedCategoryChangeEvent;
+                view.SelectedItemChangeEvent += SelectedItemChangeEvent;
+                view.AddToCartEvent += AddToCartEvent;
+                view.RemoveEvent += RemoveEvent;
+                view.SetListBindingSource(bindingSource);
+
                 floors = repository.GetAllFloor();
             }
 
@@ -108,6 +130,113 @@ namespace CoffeeShop.Presenter
         {
             floor = repository.GetTablesByFloor(CurrFloor(view.FloorNo));
             view.UpdateTableView(floor);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OrderEvent(object sender, EventArgs e)
+        {
+            view.SelectedCategoryChangeEvent -= SelectedCategoryChangeEvent;
+            view.SelectedItemChangeEvent -= SelectedItemChangeEvent;
+
+            view.GetListCategoy(category.GetAll());
+            view.GetListItem(category.GetAllItems());
+            view.UpdatePrice(category.GetAllItems());
+
+            view.SelectedCategoryChangeEvent += SelectedCategoryChangeEvent;
+            view.SelectedItemChangeEvent += SelectedItemChangeEvent;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SelectedCategoryChangeEvent(object sender, EventArgs e)
+        {
+            view.GetListItem(category.GetAllItems());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SelectedItemChangeEvent(object sender, EventArgs e)
+        {
+            view.UpdatePrice(category.GetAllItems());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddToCartEvent(object sender, EventArgs e)
+        {
+            var orderDetail = new OrderDetailModel()
+            {
+                OrderDetailID = Generate.GenerateID("OD"),
+                OrderID = view.OrderID,
+                ItemID = view.ItemID,
+                Item = new ItemModel()
+                {
+                    ItemID = view.ItemID,
+                    ItemName = view.ItemName,
+                    Cost = view.Price
+                },
+                Quantity = view.Quantity,
+                Total = view.Total,
+                Description = view.Description,
+            };
+
+            // If Exist Add Quantity and Total
+            bool isExit = false;
+            orderDetails.ForEach(order =>
+            {
+                if (order.Item.ItemName == orderDetail.Item.ItemName)
+                {
+                    order.Quantity += orderDetail.Quantity;
+                    order.Total += orderDetail.Total;
+                    isExit = true;
+                }
+            });
+
+            // If not exist add new
+            if (!isExit)
+            {
+                orderDetails.Add(orderDetail);
+            }
+
+            bindingSource.DataSource = null;
+            bindingSource.DataSource = orderDetails;
+            view.CalculateGrandTotal(orderDetails);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemoveEvent(object sender, EventArgs e)
+        {
+            var order = (OrderDetailModel)bindingSource.Current;
+
+            if (orderDetails.Remove(orderDetails.Where(o => o.ItemID == order.ItemID).FirstOrDefault()))
+            {
+                bindingSource.DataSource = null;
+                bindingSource.DataSource = orderDetails;
+                view.CalculateGrandTotal(orderDetails);
+
+                DialogMessageView.ShowMessage("success", $"Remove {order.ItemName}!");
+            }
+            else
+            {
+                DialogMessageView.ShowMessage("information", $"Something went wrong. Can't remove {order.ItemName}!");
+            }
         }
 
         /// <summary>

@@ -58,6 +58,8 @@
     <Compile Include="Model\CustomerModel.cs" />
     <Compile Include="Model\Floor.cs" />
     <Compile Include="Model\IngredientModel.cs" />
+    <Compile Include="Model\OrderModel.cs" />
+    <Compile Include="Model\OrderDetailModel.cs" />
     <Compile Include="_Repositories\InterfaceModel\IAccountRepository.cs" />
     <Compile Include="_Repositories\InterfaceModel\ICategoryRepository.cs" />
     <Compile Include="_Repositories\InterfaceModel\ICustomerRepository.cs" />
