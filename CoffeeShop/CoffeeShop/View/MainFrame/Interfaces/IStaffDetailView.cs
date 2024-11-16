@@ -35,6 +35,7 @@ namespace CoffeeShop.View.MainFrame.Interfaces
         event EventHandler CancelEvent;
         event EventHandler ChangePasswordEvent;
         event EventHandler HideMessageEvent;
+        event EventHandler ShowPasswordEvent;
 
         //Method 
         void Show();

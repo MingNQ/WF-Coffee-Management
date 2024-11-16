@@ -30,6 +30,7 @@ namespace CoffeeShop.View.MainFrame
         /// Check if Succesful
         /// </summary>
         private bool isSuccessful;
+
        
         /// <summary>
         /// StaffID
@@ -40,6 +41,8 @@ namespace CoffeeShop.View.MainFrame
         /// Check if ChangePassword
         /// </summary>
         private bool isChangePass;
+
+        
 
         #endregion
 
@@ -141,12 +144,16 @@ namespace CoffeeShop.View.MainFrame
             get { return staffInformationControl; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsChangePass 
         {
             get { return isChangePass; }
             set { isChangePass = value; }
         }
-
+        
+               
         #endregion
         /// <summary>
         /// Constructor
@@ -217,8 +224,7 @@ namespace CoffeeShop.View.MainFrame
             };
             staffInformationControl.btnSave.Click += delegate
             {
-                SaveEvent?.Invoke(this, EventArgs.Empty);
-                //InitializeControl();                 
+                SaveEvent?.Invoke(this, EventArgs.Empty);              
             };
             staffInformationControl.btnCancel.Click += delegate
             {
@@ -237,6 +243,10 @@ namespace CoffeeShop.View.MainFrame
             staffInformationControl.txtOldPassword.GotFocus += delegate 
             {
                 HideMessageEvent?.Invoke(this, EventArgs.Empty);
+            };
+            staffInformationControl.checkBoxShowPassword.CheckedChanged += delegate
+            {
+                ShowPasswordEvent?.Invoke(this, EventArgs.Empty);
             };
         }
         
@@ -277,6 +287,7 @@ namespace CoffeeShop.View.MainFrame
         public event EventHandler CancelEvent;
         public event EventHandler ChangePasswordEvent;
         public event EventHandler HideMessageEvent;
+        public event EventHandler ShowPasswordEvent;
         #endregion
     }
 }

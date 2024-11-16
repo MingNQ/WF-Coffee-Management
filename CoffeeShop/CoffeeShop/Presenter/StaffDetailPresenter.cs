@@ -2,6 +2,7 @@
 using CoffeeShop.Model;
 using CoffeeShop.Model.Common;
 using CoffeeShop.Model.InterfaceModel;
+using CoffeeShop.Presenter.Common;
 using CoffeeShop.View.MainFrame.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -50,9 +51,12 @@ namespace CoffeeShop.Presenter
             this.staffDetailView.ImportEvent += ImportEvent;
             this.staffDetailView.ChangePasswordEvent += ChangePasswordEvent;
             this.staffDetailView.HideMessageEvent += HideMessageEvent;
+            this.staffDetailView.ShowPasswordEvent += ShowPasswordEvent;
             LoadStaffDetails();
             this.staffDetailView.Show();
         }
+
+        
 
         #region private fields
         /// <summary>
@@ -146,7 +150,7 @@ namespace CoffeeShop.Presenter
                         }
                         else
                         {
-                            if (staffDetailView.StaffInformationControl.txtOldPassword.Text != accountRepository.GetPasswordByID(staffDetailView.StaffId))
+                            if (accountRepository.GetPasswordByID(staffDetailView.StaffId) != EncryptPassword.HashPassword(staffDetailView.StaffInformationControl.txtOldPassword.Text))
                             {
                                 ErrorMessage("Input Wrong Password");
                             }
@@ -173,7 +177,8 @@ namespace CoffeeShop.Presenter
                                     new Common.ModelValidation().Validate(updatedStaff);
                                     Account updatedPassword = new Account
                                     {
-                                        Password = staffDetailView.StaffInformationControl.txtNewPassword.Text,
+                                       // Password = staffDetailView.StaffInformationControl.txtNewPassword.Text,
+                                        Password = EncryptPassword.HashPassword(staffDetailView.StaffInformationControl.txtNewPassword.Text),
                                         StaffID = staffDetailView.StaffId
                                     };
                                     if (staffDetailView.IsEdit)
@@ -248,6 +253,27 @@ namespace CoffeeShop.Presenter
             this.staffDetailView.StaffInformationControl.txtNewPassword.BorderColor = Color.Red;
             this.staffDetailView.StaffInformationControl.txtOldPassword.BorderColor= Color.Red;
             this.staffDetailView.StaffInformationControl.txtConfirmPassword.BorderColor= Color.Red;
+        }
+        /// <summary>
+        /// Show password when checkbox change 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void ShowPasswordEvent(object sender, EventArgs e)
+        {
+            if (staffDetailView.StaffInformationControl.checkBoxShowPassword.Checked)
+            {
+                staffDetailView.StaffInformationControl.txtOldPassword.PasswordChar = '\0';
+                staffDetailView.StaffInformationControl.txtNewPassword.PasswordChar = '\0';
+                staffDetailView.StaffInformationControl.txtConfirmPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                staffDetailView.StaffInformationControl.txtOldPassword.PasswordChar = '*';
+                staffDetailView.StaffInformationControl.txtNewPassword.PasswordChar = '*';
+                staffDetailView.StaffInformationControl.txtConfirmPassword.PasswordChar = '*';
+            }
         }
         #endregion
 
