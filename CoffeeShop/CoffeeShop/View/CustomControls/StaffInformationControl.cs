@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeShop.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,12 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CoffeeShop.Utilities;
+using System.IO;
 
 namespace CoffeeShop.View.MainFrame
 {
     public partial class StaffInformationControl : UserControl
     {
+        private string avatarPath;
+
         #region Properties
+
         /// <summary>
         /// 
         /// </summary>
@@ -77,6 +83,30 @@ namespace CoffeeShop.View.MainFrame
             get => txtRole.Text;
             set => txtRole.Text = value;
         }
+
+        public string Avatar
+        {
+            get => avatarPath;
+            set
+            {
+                avatarPath = value;
+                if(!string.IsNullOrEmpty(avatarPath) && File.Exists(avatarPath))
+                {
+                    picAvatar.Image = Image.FromFile(avatarPath); //hien thi anh
+                    picAvatar.SizeMode = PictureBoxSizeMode.StretchImage; //tuy chinh anh
+                }
+                else
+                {
+                    picAvatar.Image = null; //anh mac dinh neu co
+                }
+            }
+        }
+
+        public PictureBox ProfilePicture
+        {
+            get { return picAvatar; }
+        }
+
         #endregion
 
         /// <summary>
@@ -99,7 +129,7 @@ namespace CoffeeShop.View.MainFrame
         }
         public void ImportButtonClickHandler(EventHandler handler) 
         { 
-            btnImport.Click += handler; 
+            btnImport.Click += handler;
         }
         public void CancelButtonClickHandler(EventHandler handler)
         {
@@ -109,6 +139,6 @@ namespace CoffeeShop.View.MainFrame
         {
              lbChangePassword.Click += handler;
         }
-        #endregion
+        #endregion      
     }
 }

@@ -1,9 +1,11 @@
 ﻿using CoffeeShop.Model;
 using CoffeeShop.Model.Common;
 using CoffeeShop.Model.InterfaceModel;
+using CoffeeShop.Utilities;
 using CoffeeShop.View.MainFrame.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
@@ -72,6 +74,9 @@ namespace CoffeeShop.Presenter
                     {
                         staffDetailView.StaffInformationControl.rdoOther.Checked = true;
                     }
+                    //staffDetailView.StaffInformationControl.Avatar = !string.IsNullOrEmpty(staff.Avatar)
+                    //? Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, staff.Avatar) : null;
+                    staffDetailView.StaffInformationControl.Avatar = staff.Avatar?.ImageUrl ?? null;
                 }
             }
         }
@@ -84,8 +89,72 @@ namespace CoffeeShop.Presenter
         /// <exception cref="NotImplementedException"></exception>
         private void ImportEvent(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            // Open File Dialog
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = Application.StartupPath;
+                openFileDialog.Filter = "PNG File (*.png)|*.png|JPEG File (*.jpeg)|*.jpeg|JPG File(*.jpg)|*.jpg|All Files (*.*)|*.*";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Combine Path to Save File
+                    string sourceFilePath = openFileDialog.FileName;
+                    string fileName = Path.GetFileName(sourceFilePath);
+                    string destinationPath = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, fileName);
+
+                    if (Path.GetFullPath(sourceFilePath) != Path.GetFullPath(destinationPath))
+                    {
+                        File.Copy(sourceFilePath, destinationPath, true);
+                    }
+
+                    // Update Avatar in StaffInformationControl
+                    staffDetailView.StaffInformationControl.Avatar = destinationPath;
+
+                    // Update Avatar in the database
+                    var updatedStaff = repository.GetStaffInformationByID(staffDetailView.StaffId);
+                    if (updatedStaff != null)
+                    {
+                        if (updatedStaff.Avatar == null)
+                        {
+                            // Add a new Avatar if it doesn't exist
+                            updatedStaff.Avatar = new Avatar
+                            {
+                                AvatarID = Guid.NewGuid().ToString(),
+                                StaffID = staffDetailView.StaffId,
+                                ImageUrl = fileName
+                            };
+                        }
+                        else
+                        {
+                            // Update existing Avatar
+                            updatedStaff.Avatar.ImageUrl = fileName;
+                        }
+
+                        repository.Edit(updatedStaff);
+
+                        // Update "Your Profile" UI immediately
+                        UpdateProfileView(destinationPath);
+
+                        MessageBox.Show("Avatar has been updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
         }
+
+        private void UpdateProfileView(string imagePath)
+        {
+            // Kiểm tra xem ảnh có tồn tại không
+            if (File.Exists(imagePath))
+            {
+                // Gán lại ảnh cho PictureBox trong giao diện "Your Profile"         
+                staffDetailView.StaffInformationControl.ProfilePicture.ImageLocation = imagePath;
+            }
+            else
+            {
+                MessageBox.Show("Image file not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         /// <summary>
         /// Save Event
@@ -104,7 +173,14 @@ namespace CoffeeShop.Presenter
                 Role = staffDetailView.StaffInformationControl.txtRole.Text,
                 Gender = staffDetailView.StaffInformationControl.rdoFemale.Checked ? Model.Common.Gender.Female :
                          staffDetailView.StaffInformationControl.rdoMale.Checked ? Model.Common.Gender.Male :
-                         Model.Common.Gender.Other
+                         Model.Common.Gender.Other,
+                Avatar = new Avatar
+                {
+                    AvatarID = Guid.NewGuid().ToString(),
+                    StaffID = staffDetailView.StaffId,
+                    ImageUrl = SaveAvatar(staffDetailView.StaffInformationControl.Avatar) // Lưu ảnh
+                }
+
             };
             new Common.ModelValidation().Validate(updatedStaff);
             if (staffDetailView.IsEdit)
@@ -113,6 +189,23 @@ namespace CoffeeShop.Presenter
             }
             LoadStaffDetails();
         }
+
+        private string SaveAvatar(string avatarPath)
+        {
+            if(!string.IsNullOrEmpty(avatarPath) && File.Exists(avatarPath))
+            {
+                string fileName = Path.GetFileName(avatarPath);
+                string destinationPath = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, fileName);
+                
+                // Sao chép ảnh vào thư mục ứng dụng nếu chưa tồn tại
+                if (!File.Exists(destinationPath))
+                {
+                    File.Copy(avatarPath, destinationPath, true);
+                }
+                return fileName; // Trả về tên file để lưu vào cơ sở dữ liệu
+            }
+            return null;// Nếu không có ảnh thì trả về null
+        } 
 
         /// <summary>
         /// Cancel Event
