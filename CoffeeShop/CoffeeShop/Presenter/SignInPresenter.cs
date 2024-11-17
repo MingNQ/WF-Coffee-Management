@@ -87,7 +87,7 @@ namespace CoffeeShop.Presenter
                 SignInError("*Your username or password must not null!");
                 return;
             }
-
+            var tmp = EncryptPassword.HashPassword("123");
             if (account != null)
             {
                 if (!account.Active)
