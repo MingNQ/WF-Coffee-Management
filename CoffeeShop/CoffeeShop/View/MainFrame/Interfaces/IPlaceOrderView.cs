@@ -81,6 +81,7 @@ namespace CoffeeShop.View.MainFrame
         /// 
         /// </summary>
         int NumberPeople { get; set; }
+        string ReduceQuantity { get; }
 
         #endregion
 
@@ -140,6 +141,7 @@ namespace CoffeeShop.View.MainFrame
         /// 
         /// </summary>
         void CalculateGrandTotal(List<OrderDetailModel> orderDetails);
+
         #endregion
     }
 }
