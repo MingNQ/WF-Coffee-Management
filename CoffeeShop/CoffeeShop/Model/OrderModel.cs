@@ -22,5 +22,10 @@ namespace CoffeeShop.Model
         /// 
         /// </summary>
         public string TableID { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int NumberPeople { get; set; }
     }
 }

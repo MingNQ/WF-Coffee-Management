@@ -45,6 +45,8 @@
             this.tabPageOrder = new System.Windows.Forms.TabPage();
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnRemoveAll = new Guna.UI2.WinForms.Guna2Button();
+            this.btnReduce = new Guna.UI2.WinForms.Guna2Button();
             this.lbOrder = new System.Windows.Forms.Label();
             this.lbStaff = new System.Windows.Forms.Label();
             this.numPeople = new Guna.UI2.WinForms.Guna2NumericUpDown();
@@ -73,8 +75,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lbTableNo = new System.Windows.Forms.Label();
             this.btnBack = new Guna.UI2.WinForms.Guna2Button();
-            this.btnReduce = new Guna.UI2.WinForms.Guna2Button();
-            this.btnRemoveAll = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCompleteOrder = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.tabPlaceOrder.SuspendLayout();
@@ -251,6 +252,7 @@
             // 
             this.guna2Panel1.AutoSize = true;
             this.guna2Panel1.BorderColor = System.Drawing.Color.White;
+            this.guna2Panel1.Controls.Add(this.btnCompleteOrder);
             this.guna2Panel1.Controls.Add(this.btnRemoveAll);
             this.guna2Panel1.Controls.Add(this.btnReduce);
             this.guna2Panel1.Controls.Add(this.lbOrder);
@@ -270,6 +272,44 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(1008, 529);
             this.guna2Panel1.TabIndex = 4;
+            // 
+            // btnRemoveAll
+            // 
+            this.btnRemoveAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRemoveAll.BackColor = System.Drawing.Color.Transparent;
+            this.btnRemoveAll.BorderRadius = 5;
+            this.btnRemoveAll.BorderThickness = 1;
+            this.btnRemoveAll.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnRemoveAll.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnRemoveAll.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnRemoveAll.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnRemoveAll.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(52)))));
+            this.btnRemoveAll.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveAll.ForeColor = System.Drawing.Color.Black;
+            this.btnRemoveAll.Location = new System.Drawing.Point(287, 486);
+            this.btnRemoveAll.Name = "btnRemoveAll";
+            this.btnRemoveAll.Size = new System.Drawing.Size(111, 28);
+            this.btnRemoveAll.TabIndex = 14;
+            this.btnRemoveAll.Text = "Remove All";
+            // 
+            // btnReduce
+            // 
+            this.btnReduce.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnReduce.BackColor = System.Drawing.Color.Transparent;
+            this.btnReduce.BorderRadius = 5;
+            this.btnReduce.BorderThickness = 1;
+            this.btnReduce.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnReduce.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnReduce.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnReduce.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnReduce.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(59)))), ((int)(((byte)(87)))));
+            this.btnReduce.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReduce.ForeColor = System.Drawing.Color.Black;
+            this.btnReduce.Location = new System.Drawing.Point(18, 486);
+            this.btnReduce.Name = "btnReduce";
+            this.btnReduce.Size = new System.Drawing.Size(115, 28);
+            this.btnReduce.TabIndex = 13;
+            this.btnReduce.Text = "Reduce";
             // 
             // lbOrder
             // 
@@ -328,7 +368,7 @@
             this.guna2GroupBox2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(202)))), ((int)(((byte)(165)))));
             this.guna2GroupBox2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2GroupBox2.Location = new System.Drawing.Point(436, 445);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(422, 445);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
             this.guna2GroupBox2.Size = new System.Drawing.Size(190, 73);
             this.guna2GroupBox2.TabIndex = 9;
@@ -369,9 +409,9 @@
             this.btnPay.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnPay.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnPay.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(222)))), ((int)(((byte)(129)))));
-            this.btnPay.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPay.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPay.ForeColor = System.Drawing.Color.Black;
-            this.btnPay.Location = new System.Drawing.Point(874, 486);
+            this.btnPay.Location = new System.Drawing.Point(760, 486);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(100, 30);
             this.btnPay.TabIndex = 3;
@@ -388,9 +428,9 @@
             this.btnPrint.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnPrint.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnPrint.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(123)))), ((int)(((byte)(236)))));
-            this.btnPrint.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ForeColor = System.Drawing.Color.Black;
-            this.btnPrint.Location = new System.Drawing.Point(715, 486);
+            this.btnPrint.Location = new System.Drawing.Point(632, 486);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(100, 30);
             this.btnPrint.TabIndex = 3;
@@ -407,7 +447,7 @@
             this.btnRemove.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnRemove.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnRemove.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(94)))), ((int)(((byte)(87)))));
-            this.btnRemove.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemove.ForeColor = System.Drawing.Color.Black;
             this.btnRemove.Location = new System.Drawing.Point(155, 486);
             this.btnRemove.Name = "btnRemove";
@@ -484,7 +524,7 @@
             this.btnAddToCart.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAddToCart.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAddToCart.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(171)))), ((int)(((byte)(147)))));
-            this.btnAddToCart.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddToCart.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddToCart.ForeColor = System.Drawing.Color.Black;
             this.btnAddToCart.Location = new System.Drawing.Point(842, 152);
             this.btnAddToCart.Name = "btnAddToCart";
@@ -673,43 +713,24 @@
             this.btnBack.TabIndex = 0;
             this.btnBack.Text = "Back";
             // 
-            // btnReduce
+            // btnCompleteOrder
             // 
-            this.btnReduce.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnReduce.BackColor = System.Drawing.Color.Transparent;
-            this.btnReduce.BorderRadius = 5;
-            this.btnReduce.BorderThickness = 1;
-            this.btnReduce.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnReduce.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnReduce.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnReduce.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnReduce.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(59)))), ((int)(((byte)(87)))));
-            this.btnReduce.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReduce.ForeColor = System.Drawing.Color.Black;
-            this.btnReduce.Location = new System.Drawing.Point(18, 486);
-            this.btnReduce.Name = "btnReduce";
-            this.btnReduce.Size = new System.Drawing.Size(115, 28);
-            this.btnReduce.TabIndex = 13;
-            this.btnReduce.Text = "Reduce";
-            // 
-            // btnRemoveAll
-            // 
-            this.btnRemoveAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRemoveAll.BackColor = System.Drawing.Color.Transparent;
-            this.btnRemoveAll.BorderRadius = 5;
-            this.btnRemoveAll.BorderThickness = 1;
-            this.btnRemoveAll.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnRemoveAll.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnRemoveAll.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnRemoveAll.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnRemoveAll.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(52)))));
-            this.btnRemoveAll.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveAll.ForeColor = System.Drawing.Color.Black;
-            this.btnRemoveAll.Location = new System.Drawing.Point(287, 486);
-            this.btnRemoveAll.Name = "btnRemoveAll";
-            this.btnRemoveAll.Size = new System.Drawing.Size(111, 28);
-            this.btnRemoveAll.TabIndex = 14;
-            this.btnRemoveAll.Text = "Remove All";
+            this.btnCompleteOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCompleteOrder.BackColor = System.Drawing.Color.Transparent;
+            this.btnCompleteOrder.BorderRadius = 5;
+            this.btnCompleteOrder.BorderThickness = 1;
+            this.btnCompleteOrder.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCompleteOrder.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCompleteOrder.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCompleteOrder.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCompleteOrder.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(203)))), ((int)(((byte)(110)))));
+            this.btnCompleteOrder.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCompleteOrder.ForeColor = System.Drawing.Color.Black;
+            this.btnCompleteOrder.Location = new System.Drawing.Point(890, 486);
+            this.btnCompleteOrder.Name = "btnCompleteOrder";
+            this.btnCompleteOrder.Size = new System.Drawing.Size(100, 30);
+            this.btnCompleteOrder.TabIndex = 15;
+            this.btnCompleteOrder.Text = "Order";
             // 
             // PlaceOrderView
             // 
@@ -793,5 +814,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
         private Guna.UI2.WinForms.Guna2Button btnRemoveAll;
         private Guna.UI2.WinForms.Guna2Button btnReduce;
+        private Guna.UI2.WinForms.Guna2Button btnCompleteOrder;
     }
 }

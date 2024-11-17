@@ -46,6 +46,5 @@ namespace CoffeeShop.View.CustomControls
             lblTableNo.Click += delegate { ClickEvent?.Invoke(this, EventArgs.Empty); };
             lblStatus.Click += delegate { ClickEvent?.Invoke(this, EventArgs.Empty); };
         }
-
     }
 }

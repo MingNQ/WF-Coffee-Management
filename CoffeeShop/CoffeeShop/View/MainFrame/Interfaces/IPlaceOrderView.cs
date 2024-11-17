@@ -13,6 +13,16 @@ namespace CoffeeShop.View.MainFrame
         #region Fields - Properties
 
         /// <summary>
+        /// Edit or Add 
+        /// </summary>
+        bool IsEdit { get; set; }
+
+        /// <summary>
+        /// Successful 
+        /// </summary>
+        bool IsSuccessful { get; set; }
+
+        /// <summary>
         /// Floor Number
         /// </summary>
         int FloorNo { get; set; }
@@ -30,7 +40,7 @@ namespace CoffeeShop.View.MainFrame
         /// <summary>
         /// 
         /// </summary>
-        string StaffName { get; }
+        string StaffName { get; set; }
 
         /// <summary>
         /// 
@@ -65,12 +75,12 @@ namespace CoffeeShop.View.MainFrame
         /// <summary>
         /// 
         /// </summary>
-        string Description { get; }
+        string Description { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        int NumberPeople { get; }
+        int NumberPeople { get; set; }
 
         #endregion
 
@@ -85,6 +95,10 @@ namespace CoffeeShop.View.MainFrame
         event EventHandler RemoveEvent;
         event EventHandler RemoveAllEvent;
         event EventHandler ReduceEvent;
+        event EventHandler CompleteOrderEvent;
+        event EventHandler PayEvent;
+        event EventHandler PrintEvent;
+        event EventHandler BackEvent;
         #endregion
 
         #region Methods

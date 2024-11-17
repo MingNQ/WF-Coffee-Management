@@ -480,6 +480,33 @@ namespace CoffeeShop._Repositories
             return result;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string GetItemName(string id)
+        {
+            string itemName = "";
+
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand()) 
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "select ItemName where ItemID = @id";
+                command.Parameters.Add("id", SqlDbType.NVarChar).Value = id;
+
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        itemName = reader[0].ToString();
+                    }
+                }
+            }
+
+            return itemName;
+        }
         #endregion
     }
 }

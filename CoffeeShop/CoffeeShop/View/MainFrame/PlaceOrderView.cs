@@ -29,6 +29,16 @@ namespace CoffeeShop.View
         /// </summary>
         private string itemID;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool isSuccessful;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool isEdit;
+
         #endregion
 
         #region Properties
@@ -133,6 +143,7 @@ namespace CoffeeShop.View
         public string Description 
         {
             get { return rTxtDescription.Text; }
+            set {  rTxtDescription.Text = value; }
         }
 
         /// <summary>
@@ -141,6 +152,7 @@ namespace CoffeeShop.View
         public int NumberPeople 
         { 
             get { return Convert.ToInt32(numPeople.Value); }
+            set { numPeople.Value = value; }
         }
 
         /// <summary>
@@ -150,6 +162,24 @@ namespace CoffeeShop.View
         { 
             get { return cbbItemName.SelectedValue.ToString(); }
             set { }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsSuccessful
+        {
+            get { return isSuccessful; }
+            set { isSuccessful = value; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsEdit 
+        {
+            get { return isEdit; }
+            set { isEdit = value; }
         }
 
         #endregion
@@ -165,6 +195,10 @@ namespace CoffeeShop.View
         public event EventHandler RemoveEvent;
         public event EventHandler RemoveAllEvent;
         public event EventHandler ReduceEvent;
+        public event EventHandler CompleteOrderEvent;
+        public event EventHandler BackEvent;
+        public event EventHandler PayEvent;
+        public event EventHandler PrintEvent;
         #endregion
 
         /// <summary>
@@ -237,12 +271,7 @@ namespace CoffeeShop.View
         /// </summary>
         private void InitiateAndRaiseEvents()
         {
-            // Initialize Button
-            btnRemove.Enabled = false;
-
-            // Initialize Text
-            txtPrice.Enabled = false;
-            txtTotal.Enabled = false;
+            ResetControl();
 
             // Initialize Table
             tabPageTableOrder.Text = "Select Table";
@@ -254,10 +283,12 @@ namespace CoffeeShop.View
             btnNext.Click += delegate { DisplayNextPage?.Invoke(this, EventArgs.Empty); };
 
             // Back
-            btnBack.Click += (s, e) =>
+            btnBack.Click += delegate
             {
+                BackEvent?.Invoke(this, EventArgs.Empty);
                 tabPlaceOrder.TabPages.Remove(tabPageOrder);
                 tabPlaceOrder.TabPages.Add(tabPageTableOrder);
+                ResetControl();
             };
 
             // List Category Event
@@ -286,11 +317,13 @@ namespace CoffeeShop.View
                     return;
                 }
 
-                AddToCartEvent?.Invoke(this, EventArgs.Empty); 
+                AddToCartEvent?.Invoke(this, EventArgs.Empty);
+                btnPrint.Enabled = true;
+                btnPay.Enabled = true;
             };
 
             // Data Grid View
-            dgvOrder.CellClick +=  delegate { btnRemove.Enabled = true; };
+            dgvOrder.CellClick +=  delegate { btnRemove.Enabled = true; btnReduce.Enabled = true; };
             dgvOrder.CellDoubleClick += (s, e) =>
             {
                 if (e.RowIndex >= 0)
@@ -304,6 +337,57 @@ namespace CoffeeShop.View
             {
                 RemoveEvent?.Invoke(this, EventArgs.Empty); 
             };
+
+            // Reduce
+            btnReduce.Click += delegate
+            {
+                ReduceEvent?.Invoke(this, EventArgs.Empty);
+            };
+
+            // Remove All
+            btnRemoveAll.Click += delegate
+            {
+                RemoveAllEvent?.Invoke(this, EventArgs.Empty);
+            };
+
+            // Complete Order
+            btnCompleteOrder.Click += delegate
+            {
+                CompleteOrderEvent?.Invoke(this, EventArgs.Empty);
+
+                if (isSuccessful)
+                {
+                    // Return select
+                    BackEvent?.Invoke(this, EventArgs.Empty);
+                    tabPlaceOrder.TabPages.Remove(tabPageOrder);
+                    tabPlaceOrder.TabPages.Add(tabPageTableOrder);
+                    ResetControl();
+
+                    DialogMessageView.ShowMessage("success", $"Success Order! ID: {OrderID}, Table {TableNo}");
+                }
+            };
+
+            // Print 
+            btnPrint.Click += delegate { PrintEvent?.Invoke(this, EventArgs.Empty); };
+
+            // Pay
+            btnPay.Click += delegate { PayEvent?.Invoke(this, EventArgs.Empty); };
+        }
+
+        /// <summary>
+        /// Reset
+        /// </summary>
+        private void ResetControl()
+        {
+            // Initialize Button
+            btnRemove.Enabled = false;
+            btnReduce.Enabled = false;
+            btnPay.Enabled = false;
+            btnPrint.Enabled = false;
+
+            // Initialize Text
+            txtPrice.Enabled = false;
+            txtTotal.Enabled = false;
         }
 
         /// <summary>
@@ -368,9 +452,18 @@ namespace CoffeeShop.View
                     tabPlaceOrder.TabPages.Add(tabPageOrder);
                     TableNo = tmp.TableID;
                     StaffName = Generate.StaffName;
-                    if (tmp.Status == "Trống")
+
+                    // Check table status
+                    if (tmp.Status == AppConst.TABLE_AVAILABLE)
                     {
                         OrderID = Generate.GenerateID("O");
+                        isEdit = false;
+                    }
+                    else
+                    {
+                        btnPrint.Enabled = true;
+                        btnPay.Enabled = true;
+                        isEdit = true;
                     }
                     OrderEvent?.Invoke(this, EventArgs.Empty);
                 };

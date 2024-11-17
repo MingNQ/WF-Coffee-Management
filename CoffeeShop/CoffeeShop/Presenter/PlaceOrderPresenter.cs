@@ -1,4 +1,5 @@
-﻿using CoffeeShop._Repositories.InterfaceModel;
+﻿using CoffeeShop._Repositories;
+using CoffeeShop._Repositories.InterfaceModel;
 using CoffeeShop.Model;
 using CoffeeShop.Model.InterfaceModel;
 using CoffeeShop.Utilities;
@@ -80,6 +81,12 @@ namespace CoffeeShop.Presenter
                 view.SelectedItemChangeEvent += SelectedItemChangeEvent;
                 view.AddToCartEvent += AddToCartEvent;
                 view.RemoveEvent += RemoveEvent;
+                view.ReduceEvent += ReduceEvent;
+                view.RemoveAllEvent += RemoveAlEvent;
+                view.CompleteOrderEvent += CompleteOrderEvent;
+                view.PrintEvent += PrintEvent;
+                view.PayEvent += PayEvent;
+                view.BackEvent += BackEvent;
                 view.SetListBindingSource(bindingSource);
 
                 floors = repository.GetAllFloor();
@@ -133,7 +140,7 @@ namespace CoffeeShop.Presenter
         }
 
         /// <summary>
-        /// 
+        /// Order
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -146,12 +153,29 @@ namespace CoffeeShop.Presenter
             view.GetListItem(category.GetAllItems());
             view.UpdatePrice(category.GetAllItems());
 
+            if (view.IsEdit)
+            {
+                OrderModel order = repository.GetOrder(view.TableNo);
+                view.OrderID = order.OrderID;
+                orderDetails = repository.GetOrderDetails(view.OrderID);
+                view.NumberPeople = order.NumberPeople;
+                view.StaffName = repository.GetStaffInformationByID(order.StaffID).StaffName;
+                var items = category.GetAllItems();
+
+                foreach (var item in orderDetails)
+                {
+                    item.Item = items.Where(i => i.ItemID == item.ItemID).FirstOrDefault();
+                }
+
+                UpdateData();
+            }
+
             view.SelectedCategoryChangeEvent += SelectedCategoryChangeEvent;
             view.SelectedItemChangeEvent += SelectedItemChangeEvent;
         }
 
         /// <summary>
-        /// 
+        /// Select Category Change
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -161,7 +185,7 @@ namespace CoffeeShop.Presenter
         }
 
         /// <summary>
-        /// 
+        /// Select Item Change 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -171,7 +195,7 @@ namespace CoffeeShop.Presenter
         }
 
         /// <summary>
-        /// 
+        /// Add to cart
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -211,13 +235,11 @@ namespace CoffeeShop.Presenter
                 orderDetails.Add(orderDetail);
             }
 
-            bindingSource.DataSource = null;
-            bindingSource.DataSource = orderDetails;
-            view.CalculateGrandTotal(orderDetails);
+            UpdateData();
         }
 
         /// <summary>
-        /// 
+        /// Remove Item
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -227,9 +249,7 @@ namespace CoffeeShop.Presenter
 
             if (orderDetails.Remove(orderDetails.Where(o => o.ItemID == order.ItemID).FirstOrDefault()))
             {
-                bindingSource.DataSource = null;
-                bindingSource.DataSource = orderDetails;
-                view.CalculateGrandTotal(orderDetails);
+                UpdateData();
 
                 DialogMessageView.ShowMessage("success", $"Remove {order.ItemName}!");
             }
@@ -240,6 +260,126 @@ namespace CoffeeShop.Presenter
         }
 
         /// <summary>
+        /// Remove Items
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemoveAlEvent(object sender, EventArgs e)
+        {
+            if (orderDetails.Count > 0 && DialogMessageView.ShowMessage("warning", "Are you sure to remove all items?") == DialogResult.OK)
+            {
+                orderDetails.Clear();
+                UpdateData();
+            }
+        }
+
+        /// <summary>
+        /// Reduce Quantity Item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ReduceEvent(object sender, EventArgs e)
+        {
+            // TO-DO: Reduce Quantity Item
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PayEvent(object sender, EventArgs e)
+        {
+            // TO-DO: Coding Pay
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PrintEvent(object sender, EventArgs e)
+        {
+            // TO-DO: Coding Print 
+        }
+
+        /// <summary>
+        /// Complete Order Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CompleteOrderEvent(object sender, EventArgs e)
+        {
+            if (orderDetails.Count <= 0)
+            {
+                DialogMessageView.ShowMessage("information", "No item selected? Please order one!");
+                return;
+            }
+
+            if (view.NumberPeople <= 0)
+            {
+                DialogMessageView.ShowMessage("information", "No people selected? Please select one!");
+                return;
+            }
+
+            try
+            {
+
+                if (!view.IsEdit)
+                {
+                    OrderModel order = new OrderModel()
+                    {
+                        OrderID = view.OrderID,
+                        StaffID = Generate.StaffID,
+                        TableID = view.TableNo,
+                        NumberPeople = view.NumberPeople,
+                    };
+
+                    repository.AddOrder(order);
+                    repository.AddOrderDetail(orderDetails);
+                    repository.UpdateTableStatus(view.TableNo, AppConst.TABLE_IN_USED);
+                }
+                else
+                {
+                    var oldOrderDetail = repository.GetOrderDetails(view.OrderID);
+
+                    // Check what will delete
+                    var deleteOrderDetails = oldOrderDetail.Where(o => !orderDetails.Any(n => n.OrderDetailID == o.OrderDetailID)).ToList();
+                    
+                    // Check what will add
+                    var addOrderDetails = orderDetails.Where(n => !oldOrderDetail.Any(o => o.OrderDetailID == n.OrderDetailID)).ToList();   
+                    
+                    // Check what will update/edit
+                    var updateOrderDetails = orderDetails.Where(n => oldOrderDetail.Any(o => o.OrderDetailID == n.OrderDetailID)).ToList();
+
+                    repository.DeleteOrderDetail(deleteOrderDetails);
+                    repository.AddOrderDetail(addOrderDetails);
+                    repository.EditOrderDetail(updateOrderDetails);
+                }
+
+                floor = repository.GetTablesByFloor(CurrFloor(1));
+                view.UpdateTableView(floor);
+                view.IsSuccessful = true;
+            }
+            catch
+            {
+                DialogMessageView.ShowMessage("warning", "Something went wrong. Can't order. Please try again!");
+            }
+        }
+
+        /// <summary>
+        /// Back event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BackEvent(object sender, EventArgs e)
+        {
+            view.NumberPeople = 0;
+            orderDetails.Clear();
+            UpdateData();
+        }
+
+        /// <summary>
         /// Curr Floor
         /// </summary>
         /// <param name="no"></param>
@@ -247,6 +387,17 @@ namespace CoffeeShop.Presenter
         private string CurrFloor(int no)
         {
             return "Floor0" + no;
+        }
+
+        /// <summary>
+        /// Update Data 
+        /// </summary>
+        private void UpdateData()
+        {
+            view.Description = "";
+            bindingSource.DataSource = null;
+            bindingSource.DataSource = orderDetails;
+            view.CalculateGrandTotal(orderDetails);
         }
 
         #endregion
