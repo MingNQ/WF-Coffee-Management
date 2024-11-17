@@ -280,7 +280,31 @@ namespace CoffeeShop.Presenter
         /// <param name="e"></param>
         private void ReduceEvent(object sender, EventArgs e)
         {
-            // TO-DO: Reduce Quantity Item
+            var orderDetail = (OrderDetailModel)bindingSource.Current;
+            if (view.ReduceQuantity != "" && int.TryParse(view.ReduceQuantity, out int reduceQuantity) && reduceQuantity > 0)
+            {
+                if (reduceQuantity >= orderDetail.Quantity)
+                {
+                    orderDetails.Remove(orderDetail);
+                    DialogMessageView.ShowMessage("information", $"Removed {orderDetail.Item.ItemName} as quantity reached zero.");
+                }
+                else
+                {
+                    orderDetail.Quantity -= reduceQuantity;
+                    orderDetail.Total = orderDetail.Quantity * orderDetail.Item.Cost;
+                }
+            }
+            else
+            {
+                orderDetail.Quantity -= 1;
+                orderDetail.Total = orderDetail.Quantity * orderDetail.Item.Cost;
+                if (orderDetail.Quantity <= 0)
+                {
+                    orderDetails.Remove(orderDetail);
+                    DialogMessageView.ShowMessage("information", $"Removed {orderDetail.Item.ItemName} as quantity reached zero.");
+                }
+            }
+            UpdateData();
         }
 
         /// <summary>

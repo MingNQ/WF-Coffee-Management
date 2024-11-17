@@ -181,7 +181,7 @@ namespace CoffeeShop.View
             get { return isEdit; }
             set { isEdit = value; }
         }
-
+        public string ReduceQuantity => txtReduceQuantity.Text;
         #endregion
 
         #region Events
@@ -323,7 +323,7 @@ namespace CoffeeShop.View
             };
 
             // Data Grid View
-            dgvOrder.CellClick +=  delegate { btnRemove.Enabled = true; btnReduce.Enabled = true; };
+            dgvOrder.CellClick +=  delegate { btnRemove.Enabled = true; btnReduce.Enabled = true; txtReduceQuantity.Enabled = true; };
             dgvOrder.CellDoubleClick += (s, e) =>
             {
                 if (e.RowIndex >= 0)
@@ -342,6 +342,8 @@ namespace CoffeeShop.View
             btnReduce.Click += delegate
             {
                 ReduceEvent?.Invoke(this, EventArgs.Empty);
+                txtReduceQuantity.Text = "";
+
             };
 
             // Remove All
@@ -372,6 +374,16 @@ namespace CoffeeShop.View
 
             // Pay
             btnPay.Click += delegate { PayEvent?.Invoke(this, EventArgs.Empty); };
+
+            this.txtReduceQuantity.KeyPress += new KeyPressEventHandler(this.txtReduceQuantity_KeyPress);
+        }
+
+        private void txtReduceQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;  
+            }
         }
 
         /// <summary>
@@ -388,6 +400,7 @@ namespace CoffeeShop.View
             // Initialize Text
             txtPrice.Enabled = false;
             txtTotal.Enabled = false;
+            txtReduceQuantity.Enabled = false;
         }
 
         /// <summary>
