@@ -58,8 +58,6 @@ namespace CoffeeShop.Presenter
             this.staffDetailView.Show();
         }
 
-        
-
         #region private fields
         /// <summary>
         /// Load Information Staff to Form
@@ -206,7 +204,7 @@ namespace CoffeeShop.Presenter
                                             staffDetailView.InitializeControl();
                                             LoadStaffDetails();
                                         }                                        
-                                        DialogMessageView.ShowMessage("information", "Updated Successfully");
+                                        DialogMessageView.ShowMessage("success", "Updated Successfully");
                                     }
                                     catch (ValidationException ex) // Xử lý lỗi validate
                                     {
