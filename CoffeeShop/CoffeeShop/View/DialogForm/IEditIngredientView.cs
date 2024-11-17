@@ -12,6 +12,7 @@ namespace CoffeeShop.View.DialogForm
 	public interface IEditIngredientView
 	{
         #region Fields - Properties
+   
         string TittleHeader { get; set; }
         string IngredientName { get; set; }
         #endregion

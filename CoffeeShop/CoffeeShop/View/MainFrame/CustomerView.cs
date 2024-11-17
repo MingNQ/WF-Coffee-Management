@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CoffeeShop.View.DialogForm;
 using System.Windows.Forms;
 
 namespace CoffeeShop.View
@@ -285,8 +286,7 @@ namespace CoffeeShop.View
             btnDelete.Enabled = false;
             btnDelete.Click += delegate
             {
-                if (MessageBox.Show("Are you sure to delete the selected customer?", "Warning",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (DialogMessageView.ShowMessage("warning", "Are you sure to delte the selected customer?") == DialogResult.OK)
                     DeleteEvent?.Invoke(this, EventArgs.Empty);
             };
 
@@ -299,6 +299,7 @@ namespace CoffeeShop.View
                 {
                     tabCustomer.TabPages.Remove(tabPageCustomerDetail);
                     tabCustomer.TabPages.Add(tabPageCustomerList);
+                    DialogMessageView.ShowMessage("success", IsEdit ? $"Successful Edit Customer: {CustomerName}" : $"Successful Add New Customer: {CustomerName}");
                 }
             };
 

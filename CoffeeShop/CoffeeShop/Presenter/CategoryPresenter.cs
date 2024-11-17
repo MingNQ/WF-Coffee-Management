@@ -3,6 +3,7 @@ using CoffeeShop.Model;
 using CoffeeShop.Model.InterfaceModel;
 using CoffeeShop.View;
 using CoffeeShop.View.DialogCheckList;
+using CoffeeShop.View.DialogForm;
 using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
@@ -264,7 +265,7 @@ namespace CoffeeShop.Presenter
             catch (Exception ex)
             {
                 categoryView.IsSuccessful = false;
-                categoryView.Message = ex.Message;
+                DialogMessageView.ShowMessage("information", ex.Message);
             }
         }
 
@@ -282,7 +283,7 @@ namespace CoffeeShop.Presenter
                 repository.DeleteItemIngredients(item.ItemID);
                 repository.Delete(item.ItemID);
                 categoryView.IsSuccessful = true;
-                categoryView.Message = "Item deleted successfully";
+                DialogMessageView.ShowMessage("success", "Successul delete item");
                 if (currentItemType == ItemType.Food)
                 {
                     LoadAllFoodList();
@@ -295,7 +296,7 @@ namespace CoffeeShop.Presenter
             catch
             {
                 categoryView.IsSuccessful = false;
-                categoryView.Message = "An error ocurred, could not delete item";
+                DialogMessageView.ShowMessage("error", "An error occured, could not delete this item!");
             }
         }
 

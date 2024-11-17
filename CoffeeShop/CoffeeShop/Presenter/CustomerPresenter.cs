@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CoffeeShop.View.DialogForm;
 using System.Windows.Forms;
 
 namespace CoffeeShop.Presenter
@@ -139,18 +140,18 @@ namespace CoffeeShop.Presenter
         private void DeleteEvent(object sender, EventArgs e)
         {
             try
-            {
+            {   
                 var staff = (CustomerModel)customerBindingSource.Current;
                 repository.Delete(staff.CustomerID);
                 customerView.IsSuccessful = true;
                 LoadAllCustomer();
-                MessageBox.Show("Successul delete customer", "Notify", MessageBoxButtons.OK, MessageBoxIcon.None);
+                DialogMessageView.ShowMessage("success", "Successul delete customer");
             }
             catch
             {
                 customerView.IsSuccessful = false;
 
-                MessageBox.Show("An error occured, could not delete this customer!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogMessageView.ShowMessage("error", "An error occured, could not delete this customer!");
             }
         }
 
@@ -194,7 +195,7 @@ namespace CoffeeShop.Presenter
             catch (Exception ex)
             {
                 customerView.IsSuccessful = false;
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogMessageView.ShowMessage("information", ex.Message);
             }
         }
 
@@ -205,11 +206,7 @@ namespace CoffeeShop.Presenter
         /// <param name="e"></param>
         private void ClearEvent(object sender, EventArgs e)
         {
-            if (customerView.IsEdit &&
-                MessageBox.Show("Are you sure to clear all information? Information once cleared can't be recovered!",
-                        "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) ==
-                DialogResult.Yes
-                )
+            if (DialogMessageView.ShowMessage("warning", "Are you sure to clear all information? Information once cleared can't be recovered!")== DialogResult.OK)
             {
                 ClearFieldInformation();
             }

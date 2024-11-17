@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CoffeeShop.View.DialogForm;
 using System.Windows.Forms;
 
 namespace CoffeeShop.View.DialogCheckList
@@ -65,6 +66,7 @@ namespace CoffeeShop.View.DialogCheckList
             btnSave.Click += delegate
             {
                 SaveEvent?.Invoke(this, EventArgs.Empty);
+                DialogMessageView.ShowMessage("success", "Successful Add Ingredient");
                 this.Close();
             };
             btnCancle.Click += delegate { this.Close(); };

@@ -1,5 +1,6 @@
 ﻿using CoffeeShop.Model;
 using CoffeeShop.View.DialogCheckList;
+using CoffeeShop.View.DialogForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -276,13 +277,8 @@ namespace CoffeeShop.View.MainFrame
             btnDelete.Enabled = false;
             btnDelete.Click += delegate
             {
-                var result = MessageBox.Show("Are you sure you want to delete the selected item?", "Warning",
-                      MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                {
+                if (DialogMessageView.ShowMessage("warning", "Are you sure to delte the selected item?") == DialogResult.OK)
                     DeleteEvent?.Invoke(this, EventArgs.Empty);
-                }
-                MessageBox.Show(Message);
             };
 
             //Save changes
@@ -295,7 +291,7 @@ namespace CoffeeShop.View.MainFrame
                     tabControlCategory.TabPages.Add(tabCategoryList);
                     lsbIngredient.Items.Clear();
                 }
-                MessageBox.Show(Message);
+                DialogMessageView.ShowMessage("success", Message);
             };
 
             //Cancel

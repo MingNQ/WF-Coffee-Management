@@ -173,8 +173,7 @@ namespace CoffeeShop.View.MainFrame
             btnDelete.Enabled = false;
             btnDelete.Click += delegate
             {
-                if (MessageBox.Show("Are you sure to delte the selected ingredient?", "Warning",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (DialogMessageView.ShowMessage("warning", "Are you sure to delte the selected ingredient?") == DialogResult.OK)
                     DeleteEvent?.Invoke(this, EventArgs.Empty);
             };
 

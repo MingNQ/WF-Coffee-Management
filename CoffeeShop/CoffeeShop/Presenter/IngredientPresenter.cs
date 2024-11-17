@@ -141,13 +141,13 @@ namespace CoffeeShop.Presenter
                 repository.Delete(ingredient.IngredientID);
                 ingredientView.IsSuccessful = true;
                 LoadAllIngredient();
-                MessageBox.Show("Successul delete ingredient", "Notify", MessageBoxButtons.OK, MessageBoxIcon.None);
+                DialogMessageView.ShowMessage("success", "Successul delete ingredient");
             }
             catch
             {
                 ingredientView.IsSuccessful = false;
 
-                MessageBox.Show("An error occured, could not delete this ingredient!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogMessageView.ShowMessage("error", "An error occured, could not delete this ingredient!");
             }
         }
 
