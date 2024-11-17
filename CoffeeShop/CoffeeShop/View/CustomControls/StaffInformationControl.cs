@@ -15,7 +15,7 @@ namespace CoffeeShop.View.MainFrame
 {
     public partial class StaffInformationControl : UserControl
     {
-        private string avatarPath;
+        private string avatarPath; //biến lưu đường dẫn đến file ảnh của nhân viên
 
         #region Properties
 
@@ -24,8 +24,8 @@ namespace CoffeeShop.View.MainFrame
         /// </summary>
         public string TxtStaffName
         {
-            get { return txtStaffName.Text; }
-            set { txtStaffName.Text = value; }
+            get { return txtStaffName.Text; } //lấy giá trị từ textbox
+            set { txtStaffName.Text = value; } //gán giá trị vào textbox
         }
         /// <summary>
         /// 
@@ -86,12 +86,13 @@ namespace CoffeeShop.View.MainFrame
 
         public string Avatar
         {
-            get => avatarPath;
+            get => avatarPath;  //trả về đường dẫn của ảnh đại diện
             set
             {
-                avatarPath = value;
+                avatarPath = value; //gán đường dẫn ảnh
                 if(!string.IsNullOrEmpty(avatarPath))
                 {
+                    //nếu khác rỗng thì tải ảnh lên PictureBox từ đường dẫn được tạo bằng cách nối Application.StartupPath với đường dẫn của file ảnh
                     picAvatar.ImageLocation = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, avatarPath);
                     picAvatar.SizeMode = PictureBoxSizeMode.StretchImage; //tuy chinh anh
                 }
@@ -119,14 +120,18 @@ namespace CoffeeShop.View.MainFrame
 
         #region Method
         // Method to add event
+
+        //gán sự kiện click cho nút edit
         public void EditButtonClickHandler(EventHandler handler)
         {
             btnEdit.Click += handler;
         }
+        //gán sk click cho nút Save
         public void SaveButtonClickHandler(EventHandler handler)
         {
             btnSave.Click += handler;
         }
+        //gán sự kiện click cho nút cancel
         public void CancelButtonClickHandler(EventHandler handler)
         {
             btnCancel.Click += handler;

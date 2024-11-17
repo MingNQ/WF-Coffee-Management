@@ -41,13 +41,14 @@ namespace CoffeeShop.Presenter
 
             if (!staffDetailView.IsOpen)
             {
+                //gán các sự kiện từ view với các phương thức tương ứng
                 this.staffDetailView.EditEvent += EditEvent;
                 this.staffDetailView.CancelEvent += CancelEvent;
                 this.staffDetailView.SaveEvent += SaveEvent;
                 this.staffDetailView.ImportEvent += ImportEvent;
             }
-            LoadStaffDetails();
-            this.staffDetailView.Show();
+            LoadStaffDetails();  //Tải thông tin nhân viên lên giao diện
+            this.staffDetailView.Show();  //hiển thị giao diện
         }
 
         #region private fields
@@ -56,12 +57,14 @@ namespace CoffeeShop.Presenter
         /// </summary>
         private void LoadStaffDetails()
         {
-            StaffModel staff = repository.GetStaffInformationByID(staffDetailView.StaffId);
+            StaffModel staff = repository.GetStaffInformationByID(staffDetailView.StaffId); //lấy thông tin nhân viên
             if (staff != null)
             {
+                //nếu view và phần điều kiển thông tin nhân viên ko bị null
                 if (staffDetailView != null && staffDetailView.StaffInformationControl != null)
                 {
                     staffDetailView.StaffInformationControl.txtStaffName.Text = staff.StaffName.ToString();
+                    // ?? "" : nếu trường này null thì thay bằng chuỗi rỗng ("") để hiển thị 
                     staffDetailView.StaffInformationControl.txtEmail.Text = staff.Email ?? "";
                     staffDetailView.StaffInformationControl.txtPhone.Text = staff.PhoneNumber ?? "";
                     staffDetailView.StaffInformationControl.txtRole.Text = staff.Role ?? "";
@@ -79,8 +82,9 @@ namespace CoffeeShop.Presenter
                         staffDetailView.StaffInformationControl.rdoOther.Checked = true;
                     }
 
-                    // Get avatar
+                    // Lấy đường dẫn ảnh đại diện của nhân viên từ cơ sở dữ liệu và gán vào điều khiển avatar 
                     staffDetailView.StaffInformationControl.Avatar = repository.GetStaffAvatar(staffDetailView.StaffId).ImageUrl;
+                    // Xác định xem nhân viên có ảnh đại diện hay không
                     staffDetailView.HasAvatar = !string.IsNullOrEmpty(staffDetailView.StaffInformationControl.Avatar);
                 }
             }
@@ -95,20 +99,23 @@ namespace CoffeeShop.Presenter
         private void ImportEvent(object sender, EventArgs e)
         {
             // Open File Dialog
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            using (OpenFileDialog openFileDialog = new OpenFileDialog()) //tạo hộp thoại mở file, cho phép ng dùng chọn 1 tệp từ máy tính 
             {
-                openFileDialog.InitialDirectory = Application.StartupPath;
+                openFileDialog.InitialDirectory = Application.StartupPath; //đường dẫn thư mục chứa file nơi ứng dụng chạy
                 openFileDialog.Filter = "PNG File (*.png)|*.png|JPEG File (*.jpeg)|*.jpeg|JPG File(*.jpg)|*.jpg|All Files (*.*)|*.*";
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     // Combine Path to Save File
-                    string sourceFilePath = openFileDialog.FileName;
-                    string fileName = Path.GetFileName(sourceFilePath);
+                    string sourceFilePath = openFileDialog.FileName; //đường dẫn đầy đủ của tệp mà ng dùng đã chọn
+                    string fileName = Path.GetFileName(sourceFilePath); //lấy tên file từ đường dẫn đầy đủ (vd: avatar.png)
+                    //tạo đường dẫn lưu trữ file mới trong thư mục của ứng dụng 
                     string destinationPath = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, fileName);
 
                     if (Path.GetFullPath(sourceFilePath) != Path.GetFullPath(destinationPath))
                     {
+                        // sao chép file từ đường dẫn nguồn sang đường dẫn đích
+                        // File.Copy(nguồn, đích, ghi đè file đích nếu file đã tồn tại)
                         File.Copy(sourceFilePath, destinationPath, true);
                     }
 
@@ -155,7 +162,7 @@ namespace CoffeeShop.Presenter
             // Kiểm tra xem ảnh có tồn tại không
             if (File.Exists(imagePath))
             {
-                // Gán lại ảnh cho PictureBox trong giao diện "Your Profile"         
+                // Gán lại ảnh cho PictureBox trong giao diện         
                 staffDetailView.StaffInformationControl.ProfilePicture.ImageLocation = imagePath;
             }
             else
