@@ -36,12 +36,16 @@ namespace CoffeeShop.Presenter
         /// <param name="repository"></param>
         public StaffDetailPresenter(IStaffDetailView view, IStaffRepository repository)
         {
-            this.repository = repository;
             this.staffDetailView = view;
-            this.staffDetailView.EditEvent += EditEvent;
-            this.staffDetailView.CancelEvent += CancelEvent;
-            this.staffDetailView.SaveEvent += SaveEvent;
-            this.staffDetailView.ImportEvent += ImportEvent;
+            this.repository = repository;
+
+            if (!staffDetailView.IsOpen)
+            {
+                this.staffDetailView.EditEvent += EditEvent;
+                this.staffDetailView.CancelEvent += CancelEvent;
+                this.staffDetailView.SaveEvent += SaveEvent;
+                this.staffDetailView.ImportEvent += ImportEvent;
+            }
             LoadStaffDetails();
             this.staffDetailView.Show();
         }
@@ -74,9 +78,10 @@ namespace CoffeeShop.Presenter
                     {
                         staffDetailView.StaffInformationControl.rdoOther.Checked = true;
                     }
-                    //staffDetailView.StaffInformationControl.Avatar = !string.IsNullOrEmpty(staff.Avatar)
-                    //? Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, staff.Avatar) : null;
-                    staffDetailView.StaffInformationControl.Avatar = staff.Avatar?.ImageUrl ?? null;
+
+                    // Get avatar
+                    staffDetailView.StaffInformationControl.Avatar = repository.GetStaffAvatar(staffDetailView.StaffId).ImageUrl;
+                    staffDetailView.HasAvatar = !string.IsNullOrEmpty(staffDetailView.StaffInformationControl.Avatar);
                 }
             }
         }
@@ -119,7 +124,7 @@ namespace CoffeeShop.Presenter
                             // Add a new Avatar if it doesn't exist
                             updatedStaff.Avatar = new Avatar
                             {
-                                AvatarID = Guid.NewGuid().ToString(),
+                                AvatarID = Generate.GenerateID("AVT"),
                                 StaffID = staffDetailView.StaffId,
                                 ImageUrl = fileName
                             };
@@ -141,6 +146,10 @@ namespace CoffeeShop.Presenter
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="imagePath"></param>
         private void UpdateProfileView(string imagePath)
         {
             // Kiểm tra xem ảnh có tồn tại không
@@ -176,20 +185,25 @@ namespace CoffeeShop.Presenter
                          Model.Common.Gender.Other,
                 Avatar = new Avatar
                 {
-                    AvatarID = Guid.NewGuid().ToString(),
+                    AvatarID = Generate.GenerateID("AVT"),
                     StaffID = staffDetailView.StaffId,
                     ImageUrl = SaveAvatar(staffDetailView.StaffInformationControl.Avatar) // Lưu ảnh
                 }
-
             };
             new Common.ModelValidation().Validate(updatedStaff);
             if (staffDetailView.IsEdit)
             {
                 repository.Edit(updatedStaff);
+                repository.SaveAvatar(staffDetailView.HasAvatar, updatedStaff);
             }
             LoadStaffDetails();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="avatarPath"></param>
+        /// <returns></returns>
         private string SaveAvatar(string avatarPath)
         {
             if(!string.IsNullOrEmpty(avatarPath) && File.Exists(avatarPath))

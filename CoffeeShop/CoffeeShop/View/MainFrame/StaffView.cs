@@ -304,9 +304,6 @@ namespace CoffeeShop.View
         /// </summary>
         private void AssociateAndRaiseEvents()
         {
-            // Disable Button
-            btnSave.Enabled = false;
-
             // Search
             btnSearch.Click += delegate 
             {

@@ -26,6 +26,10 @@ namespace CoffeeShop.View.MainFrame.Interfaces
 
         bool IsSuccesful {  get; set; }
 
+        bool IsOpen { get; }
+
+        bool HasAvatar { get; set; }
+
         //Event 
         event EventHandler ImportEvent;
         event EventHandler EditEvent;

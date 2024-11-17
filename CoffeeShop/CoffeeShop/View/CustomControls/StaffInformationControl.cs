@@ -90,9 +90,9 @@ namespace CoffeeShop.View.MainFrame
             set
             {
                 avatarPath = value;
-                if(!string.IsNullOrEmpty(avatarPath) && File.Exists(avatarPath))
+                if(!string.IsNullOrEmpty(avatarPath))
                 {
-                    picAvatar.Image = Image.FromFile(avatarPath); //hien thi anh
+                    picAvatar.ImageLocation = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, avatarPath);
                     picAvatar.SizeMode = PictureBoxSizeMode.StretchImage; //tuy chinh anh
                 }
                 else
@@ -126,10 +126,6 @@ namespace CoffeeShop.View.MainFrame
         public void SaveButtonClickHandler(EventHandler handler)
         {
             btnSave.Click += handler;
-        }
-        public void ImportButtonClickHandler(EventHandler handler) 
-        { 
-            btnImport.Click += handler;
         }
         public void CancelButtonClickHandler(EventHandler handler)
         {

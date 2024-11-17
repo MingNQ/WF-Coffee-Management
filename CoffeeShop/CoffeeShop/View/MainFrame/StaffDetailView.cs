@@ -36,6 +36,11 @@ namespace CoffeeShop.View.MainFrame
         /// </summary>
         private string staffID;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool hasAvatar;
+
         #endregion
 
         #region Properties
@@ -136,6 +141,23 @@ namespace CoffeeShop.View.MainFrame
             get { return staffInformationControl; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsOpen 
+        { 
+            get => Application.OpenForms.OfType<StaffDetailView>().Any();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool HasAvatar 
+        { 
+            get { return hasAvatar; } 
+            set { hasAvatar = value; } 
+        }
+
         #endregion
         /// <summary>
         /// Constructor
@@ -169,6 +191,7 @@ namespace CoffeeShop.View.MainFrame
             staffInformationControl.rdoMale.Enabled = false;
             staffInformationControl.rdoOther.Enabled = false;
             staffInformationControl.dtpDob.Enabled = false;
+            staffInformationControl.btnImport.Enabled = false;
         }
         /// <summary>
         /// Initialize unit when click Edit
@@ -217,9 +240,6 @@ namespace CoffeeShop.View.MainFrame
                 ChangePasswordEvent?.Invoke(this, EventArgs.Empty);
             };
         }
-        /// <summary>
-        /// Initialize Combobox Role
-        /// </summary>
         
         #endregion
 
