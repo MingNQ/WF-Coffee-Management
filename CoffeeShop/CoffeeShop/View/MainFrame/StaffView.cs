@@ -1,4 +1,7 @@
-﻿using CoffeeShop.Model.Common;
+﻿using CoffeeShop.Model;
+using CoffeeShop.Model.Common;
+using CoffeeShop.Utilities;
+using CoffeeShop.View.DialogForm;
 using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
@@ -6,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +40,11 @@ namespace CoffeeShop.View
         /// </summary>
         private string staffID;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private Avatar avatar = new Avatar();
+
 		#endregion
 
 		#region Properties
@@ -45,8 +54,8 @@ namespace CoffeeShop.View
 		/// </summary>
 		public bool IsEdit
         {
-            get { return isEdit; }
-            set { isEdit = value; }
+            get => isEdit;
+            set => isEdit = value;
         }
 
         /// <summary>
@@ -54,8 +63,8 @@ namespace CoffeeShop.View
         /// </summary>
         public bool IsSuccessful
 		{
-            get { return isSuccessful; }
-            set { isSuccessful = value; }
+            get => isSuccessful; 
+            set => isSuccessful = value; 
         }
 
         public string StaffID
@@ -159,6 +168,21 @@ namespace CoffeeShop.View
             get => txtSearch.Text; 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public Avatar Avatar 
+        { 
+            get => avatar;
+            set 
+            {
+                avatar = value;
+
+                if (avatar.ImageUrl != null)
+                    picAvatar.ImageLocation = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, avatar.ImageUrl);
+            }
+        }
+
         #endregion
 
         #region Events
@@ -171,17 +195,16 @@ namespace CoffeeShop.View
 		public event EventHandler ClearEvent;
 		public event EventHandler BackToListEvent;
 
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		public StaffView()
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public StaffView()
         {
             InitializeComponent();
             InitializeDataGridView();
             InitializeComboBoxRole();
-
             AssociateAndRaiseEvents();
             tabStaff.TabPages.Remove(tabPageStaffDetail);
         }
@@ -235,7 +258,7 @@ namespace CoffeeShop.View
             // Email
             DataGridViewTextBoxColumn colEmail = new DataGridViewTextBoxColumn();
             colEmail.HeaderText = "Email";
-            colEmail.Width = 300;
+            colEmail.Width = 270;
             colEmail.DataPropertyName = "Email";
             dgvStaff.Columns.Add(colEmail);
 
@@ -281,6 +304,9 @@ namespace CoffeeShop.View
         /// </summary>
         private void AssociateAndRaiseEvents()
         {
+            // Disable Button
+            btnSave.Enabled = false;
+
             // Search
             btnSearch.Click += delegate 
             {
@@ -293,8 +319,10 @@ namespace CoffeeShop.View
                 btnDelete.Enabled = false;
                 btnEdit.Enabled = false;
                 if (e.KeyCode == Keys.Enter)
+                {
                     SearchEvent?.Invoke(this, EventArgs.Empty);
-            };
+                }
+            };           
 
             // Add
             btnAdd.Click += delegate
@@ -309,18 +337,17 @@ namespace CoffeeShop.View
             btnEdit.Enabled = false;
             btnEdit.Click += delegate
 			{
-				EditEvent?.Invoke(this, EventArgs.Empty);
+                EditEvent?.Invoke(this, EventArgs.Empty);
 				tabStaff.TabPages.Remove(tabPageStaffList);
 				tabStaff.TabPages.Add(tabPageStaffDetail);
 				tabPageStaffDetail.Text = "Edit Staff";
-			};
+            };
 
             // Delete
             btnDelete.Enabled = false;
             btnDelete.Click += delegate
             {
-                if (MessageBox.Show("Are you sure to delte the selected staff?", "Warning", 
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (DialogMessageView.ShowMessage("warning", "Are you sure to delte the selected staff?") == DialogResult.OK)
                     DeleteEvent?.Invoke(this, EventArgs.Empty);
             };
 
@@ -333,13 +360,19 @@ namespace CoffeeShop.View
 				{
 					tabStaff.TabPages.Remove(tabPageStaffDetail);
 					tabStaff.TabPages.Add(tabPageStaffList);
-				}
+                    DialogMessageView.ShowMessage("success", IsEdit ? $"Successful Edit Staff: {StaffName}" : $"Successful Add New Staff: {StaffName}");
+                }
+
+                // Clear Field In Mode Edit/Add
+                BackToListEvent?.Invoke(this, EventArgs.Empty);
+                picAvatar.Image = null;
             };
 
             // Clear
             btnClear.Click += delegate
             {
                 ClearEvent?.Invoke(this, EventArgs.Empty);
+                picAvatar.Image = null;
             };
 
             // Back
@@ -351,6 +384,7 @@ namespace CoffeeShop.View
                 BackToListEvent?.Invoke(this, EventArgs.Empty);
 				tabStaff.TabPages.Remove(tabPageStaffDetail);
 				tabStaff.TabPages.Add(tabPageStaffList);
+                picAvatar.Image = null;
 			};
 
             // Data View
@@ -370,6 +404,10 @@ namespace CoffeeShop.View
                     tabPageStaffDetail.Text = "Edit Staff";
                 }
             };
+
+            // Import Image
+            btnImport.Click += LoadImage;
+            picAvatar.SizeMode = PictureBoxSizeMode.StretchImage;
 		}
 
         /// <summary>
@@ -377,9 +415,48 @@ namespace CoffeeShop.View
         /// </summary>
         private void InitializeComboBoxRole()
         {
-            cbRole.Items.Add("Quản Lý");
+            cbRole.Items.Add("Quản lý");
             cbRole.Items.Add("Pha chế");
             cbRole.Items.Add("Phục vụ");
+        }
+
+        /// <summary>
+        /// Import Image
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoadImage(object sender, EventArgs e)
+        {
+            // Open File Dialog
+            using(OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = Application.StartupPath;
+                openFileDialog.Filter = "PNG File (*.png)|*.png|JPEG File (*.jpeg)|*.jpeg|JPG File(*.jpg)|*.jpg|All Files (*.*)|*.*";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Combine Path to Save File
+                    string sourceFilePath = openFileDialog.FileName;
+                    string fileName = Path.GetFileName(sourceFilePath);
+                    string destinationPath = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, fileName);
+                    
+                    if (Path.GetFullPath(sourceFilePath) != Path.GetFullPath(destinationPath))
+                    {
+                        File.Copy(sourceFilePath, destinationPath, true);
+                    }
+
+                    avatar.ImageUrl = Path.GetFileName(destinationPath);
+                    picAvatar.ImageLocation = destinationPath;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Active Save Action
+        /// </summary>
+        private void ActiveActionSave(object sender, EventArgs e)
+        {
+            btnSave.Enabled = true;
         }
 
 		#endregion
@@ -416,6 +493,6 @@ namespace CoffeeShop.View
         {
             this.dgvStaff.DataSource = staffList;
         }
-        #endregion
+        #endregion       
     }
 }

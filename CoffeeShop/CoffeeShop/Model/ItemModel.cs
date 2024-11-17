@@ -17,7 +17,7 @@ namespace CoffeeShop.Model
         private float cost;
         #endregion
 
-        #region
+        #region Properties
         [DisplayName("ItemID")]
         public string ItemID { get => itemID; set => itemID = value; }
         public int CategoryID { get => categoryID; set => categoryID = value; }
@@ -34,5 +34,8 @@ namespace CoffeeShop.Model
         public float Cost { get => cost; set => cost = value; }
         #endregion
 
+        #region Navigation
+        public virtual CategoryModel Category { get; set; }
+        #endregion
     }
 }

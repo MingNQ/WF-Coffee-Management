@@ -13,6 +13,14 @@ namespace CoffeeShop.View.DialogCheckList
 {
     public partial class EditCategoryView : Form, IEditCategoryView
     {
+        #region Fields
+
+        /// <summary>
+        /// Instance
+        /// </summary>
+        private static EditCategoryView instance;
+
+        #endregion
 
         #region Properties
         /// <summary>
@@ -23,15 +31,34 @@ namespace CoffeeShop.View.DialogCheckList
             get { return this.lbHeader.Text; }
             set { this.lbHeader.Text = value; }
         }
-        #endregion
-        /// <summary>
-        /// Instance
-        /// </summary>
-        private static EditCategoryView instance;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<IngredientModel> SelectedIngredients
+        {
+            get
+            {
+                var selectedIngredients = new List<IngredientModel>();
+
+                selectedIngredients = dgvIngredient.Rows.Cast<DataGridViewRow>().
+                                                    Where(row => Convert.ToBoolean(row.Cells["SelectColumn"].Value) == true).
+                                                    Select(row => row.DataBoundItem as IngredientModel).ToList();
+
+                return selectedIngredients;
+            }
+        }
+
+        #endregion
+
+        #region Events
         public event EventHandler SaveEvent;
         public event EventHandler CancleEvent;
+        #endregion
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public EditCategoryView()
         {
             InitializeComponent();
@@ -41,13 +68,14 @@ namespace CoffeeShop.View.DialogCheckList
                 this.Close();
             };
             btnCancle.Click += delegate { this.Close(); };
-            dgvIngredient.MultiSelect = true;
-            dgvIngredient.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             InitializeDataGridView();
-
-
         }
 
+        #region private fields
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void InitializeDataGridView()
         {
             dgvIngredient.AllowUserToAddRows = false;
@@ -62,6 +90,7 @@ namespace CoffeeShop.View.DialogCheckList
             dgvIngredient.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvIngredient.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvIngredient.DefaultCellStyle.Font = new Font("Arial", 10);
+            dgvIngredient.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             // Thêm cột CheckBox để chọn
             DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
@@ -82,51 +111,37 @@ namespace CoffeeShop.View.DialogCheckList
             colIngredientName.Width = 170;
             colIngredientName.DataPropertyName = "IngredientName";
             dgvIngredient.Columns.Add(colIngredientName);
+
+            dgvIngredient.CellFormatting += CellFomat;
+            dgvIngredient.CellClick += CellClick;
         }
 
-            /// <summary>
-            /// Get instance
-            /// </summary>
-            /// <returns>instance</returns>
-            public static EditCategoryView GetInstance()
-            {
-                if (instance == null || instance.IsDisposed)
-                {
-                    instance = new EditCategoryView();
-                }
-                else
-                {
-                    if (instance.WindowState == FormWindowState.Minimized)
-                        instance.WindowState = FormWindowState.Normal;
-                    instance.BringToFront();
-                }
-
-                return instance;
-            }
-        
-
-		#region Methods
-
-		/// <summary>
-		/// Show As Dialog
-		/// </summary>
-		void IEditCategoryView.ShowDialog()
-		{
-            ShowDialog();
-		}
-
-        public void SetItemListBindingSource(BindingSource itemList)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvIngredient.DataSource = itemList;
+           
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                if (dgvIngredient.Columns[e.ColumnIndex].Name != "SelectColumn")
+                {
+                    DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)dgvIngredient.Rows[e.RowIndex].Cells["SelectColumn"];
+                    bool isChecked = (bool)(checkBoxCell.Value ?? false);
+                    checkBoxCell.Value = !isChecked;
+                }
+            }
         }
-        public List<IngredientModel> SelectedIngredients => dgvIngredient.SelectedRows.Cast<DataGridViewRow>().Select(row => row.DataBoundItem as IngredientModel).ToList();
 
-        #endregion
-
-        #region Events
-        #endregion
-
-        private void dgvIngredient_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CellFomat(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -140,16 +155,47 @@ namespace CoffeeShop.View.DialogCheckList
                 }
             }
         }
-       
 
-        public void SelectIngredientsInDataGridView(List<IngredientModel> selectedIngredients)
+        #endregion
+
+        #region public fields
+
+        /// <summary>
+        /// Show As Dialog
+        /// </summary>
+        void IEditCategoryView.ShowDialog()
+		{
+            ShowDialog();
+		}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="itemList"></param>
+        public void SetItemListBindingSource(BindingSource itemList)
         {
-            foreach (DataGridViewRow row in dgvIngredient.Rows)
-            {
-                string ingredientID = row.Cells["IngredientName"].Value.ToString();
-                bool isSelected = selectedIngredients.Any(i => i.IngredientID == ingredientID);
-                row.Cells["SelectColumn"].Value = isSelected;
-            }
+            dgvIngredient.DataSource = itemList;
         }
+
+        /// <summary>
+        /// Get instance
+        /// </summary>
+        /// <returns>instance</returns>
+        public static EditCategoryView GetInstance()
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new EditCategoryView();
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                    instance.WindowState = FormWindowState.Normal;
+                instance.BringToFront();
+            }
+
+            return instance;
+        }
+        #endregion
     }
 }

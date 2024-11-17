@@ -8,6 +8,7 @@ namespace CoffeeShop.Model.Common
 {
     public enum Role
     {
+        Admin,
         Manager,
         Bartender,
         Serve

@@ -85,7 +85,7 @@ namespace CoffeeShop._Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "select AccountID, Username, Password, Staff.StaffID, Active, StaffName" +
+                command.CommandText = "select AccountID, Username, Password, Staff.StaffID, Active, StaffName, tRole" +
                     " from Account left join Staff on Account.StaffID = Staff.StaffID";
                 using (var reader = command.ExecuteReader())
                 {
@@ -100,7 +100,8 @@ namespace CoffeeShop._Repositories
                         account.Staff = new StaffModel
                         {
                             StaffID = account.StaffID,
-                            StaffName = reader[5].ToString()
+                            StaffName = reader[5].ToString(),
+                            Role = reader[6].ToString(),
                         };
                         accountList.Add(account);
                     }

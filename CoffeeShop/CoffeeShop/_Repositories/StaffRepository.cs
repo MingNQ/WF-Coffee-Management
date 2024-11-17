@@ -12,12 +12,11 @@ namespace CoffeeShop._Repositories
 {
     public class StaffRepository : BaseRepository, IStaffRepository
     {
-
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="connectionString"></param>
-        public StaffRepository(string connectionString) 
+        public StaffRepository(string connectionString)
         {
             this.connectionString = connectionString;
         }
@@ -35,7 +34,6 @@ namespace CoffeeShop._Repositories
                 connection.Open();
                 command.Connection = connection;
                 command.CommandText = "insert into Staff values (@StaffID, @StaffName, @PhoneNumber, @DateOfBirth, @Email, @Role, @Gender)";
-
                 command.Parameters.Add("@StaffID", SqlDbType.NVarChar).Value = staffModel.StaffID;
                 command.Parameters.Add("@StaffName", SqlDbType.NVarChar).Value = staffModel.StaffName;
                 command.Parameters.Add("@PhoneNumber", SqlDbType.VarChar).Value = staffModel.PhoneNumber;
@@ -58,7 +56,8 @@ namespace CoffeeShop._Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "delete from Staff where StaffID = @id";
+                command.CommandText = @"delete from Staff where StaffID = @id 
+                                        delete from Avatar where StaffID = @id";
                 command.Parameters.Add("@id", SqlDbType.NVarChar).Value = staffID;
                 command.ExecuteNonQuery();
             }
@@ -87,7 +86,36 @@ namespace CoffeeShop._Repositories
                 command.Parameters.Add("@gender", SqlDbType.Int).Value = staffModel.Gender;
                 command.ExecuteNonQuery();
             }
+        }
 
+        /// <summary>
+        /// Save Avatar
+        /// </summary>
+        /// <param name="staffID"></param>
+        public void SaveAvatar(bool isEdit, StaffModel staff)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+
+                if (isEdit && GetStaffAvatar(staff.StaffID, staff.Avatar.AvatarID).AvatarID != null)
+                {
+                    command.CommandText = @"update Avatar
+                                                set ImageUrl = @ImageUrl
+                                                where StaffID = @StaffID";
+                }
+                else
+                {
+                    command.CommandText = @"insert into Avatar values(@AvatarID, @StaffID, @ImageUrl)";
+                }
+                command.Parameters.Add("@AvatarID", SqlDbType.NVarChar).Value = staff.Avatar.AvatarID;
+                command.Parameters.Add("@StaffID", SqlDbType.NVarChar).Value = staff.StaffID;
+                command.Parameters.Add("@ImageUrl", SqlDbType.NVarChar).Value = staff.Avatar.ImageUrl;
+
+                command.ExecuteNonQuery();
+            }
         }
 
         /// <summary>
@@ -165,6 +193,86 @@ namespace CoffeeShop._Repositories
             }
 
             return staffList;
+        }
+
+        /// <summary>
+        /// Get Staff Information By ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public StaffModel GetStaffInformationByID(string id)
+        {
+            StaffModel staff = null;
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+               connection.Open();
+               command.Connection = connection;
+               command.CommandText = @"SELECT *
+                    FROM Staff
+                    WHERE StaffID = @id";
+               command.Parameters.Add("@id", SqlDbType.NVarChar).Value = id;
+
+                using (var reader = command.ExecuteReader())
+                {                   
+                   if(reader.Read())
+                   {
+                        staff = new StaffModel
+                        {
+                            StaffID = reader["StaffID"].ToString(),
+                            StaffName = reader["StaffName"].ToString(),
+                            PhoneNumber = reader["StaffPhoneNumber"]?.ToString() ?? "",
+                            DateOfBirth = reader["DateOfBirth"] != DBNull.Value ? (DateTime)reader["DateOfBirth"] : DateTime.MinValue,
+                            Email = reader["Email"].ToString(),
+                            Role = reader["tRole"].ToString(),
+                            Gender = reader["Gender"] != DBNull.Value && Convert.ToBoolean(reader["Gender"]) ? Model.Common.Gender.Male : Model.Common.Gender.Female
+                        };
+                    }                       
+                }
+            }
+            return staff;
+        }  
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="staffID"></param>
+        /// <returns></returns>
+        public Avatar GetStaffAvatar(string staffID, string avatarID)
+        {
+            var account = new Avatar();
+
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                if (staffID != null)
+                {
+                    command.CommandText = @"select AvatarID, ImageUrl 
+                                        from Avatar
+                                        where StaffID = @staffID";
+                    command.Parameters.Add("@staffID", SqlDbType.NVarChar).Value = staffID;
+                }
+                else if (avatarID != null)
+                {
+                    command.CommandText = @"select AvatarID, ImageUrl 
+                                        from Avatar
+                                        where AvatarID = @avatarID";
+                    command.Parameters.Add("@avatarID", SqlDbType.NVarChar).Value = avatarID;
+                }
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while(reader.Read())
+                    {
+                        account.AvatarID = reader[0].ToString();
+                        account.ImageUrl = reader[1].ToString();
+                    }
+                }
+            }
+
+            return account;
         }
         #endregion
     }

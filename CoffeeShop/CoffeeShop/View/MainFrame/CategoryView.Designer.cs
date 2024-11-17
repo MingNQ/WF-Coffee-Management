@@ -34,8 +34,8 @@
             this.panel1_1 = new System.Windows.Forms.Panel();
             this.lblCategory = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tabControl_Food = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabControlCategory = new System.Windows.Forms.TabControl();
+            this.tabCategory = new System.Windows.Forms.TabPage();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.lblFood = new System.Windows.Forms.Label();
@@ -47,7 +47,7 @@
             this.picDrink = new System.Windows.Forms.PictureBox();
             this.btnDrinkView = new Guna.UI2.WinForms.Guna2Button();
             this.lblDrinkItem = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabCategoryList = new System.Windows.Forms.TabPage();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
@@ -59,9 +59,10 @@
             this.pictureBoxSearch = new System.Windows.Forms.PictureBox();
             this.guna2Panel5_FoodList = new Guna.UI2.WinForms.Guna2Panel();
             this.btnBackCategory = new Guna.UI2.WinForms.Guna2Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabCategoryDetail = new System.Windows.Forms.TabPage();
             this.guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
-            this.cboCategoryID = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.txtCategory = new Guna.UI2.WinForms.Guna2TextBox();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
             this.lblCategoryID = new System.Windows.Forms.Label();
             this.txtItemID = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblItemID = new System.Windows.Forms.Label();
@@ -80,20 +81,20 @@
             this.btnBackToList = new Guna.UI2.WinForms.Guna2Button();
             this.panel1_1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabControl_Food.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabControlCategory.SuspendLayout();
+            this.tabCategory.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picFood)).BeginInit();
             this.guna2Panel2_Food.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDrink)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.tabCategoryList.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItem)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSearch)).BeginInit();
             this.guna2Panel5_FoodList.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.tabCategoryDetail.SuspendLayout();
             this.guna2Panel6.SuspendLayout();
             this.guna2Panel7_FoodDetail.SuspendLayout();
             this.SuspendLayout();
@@ -106,57 +107,57 @@
             this.panel1_1.Location = new System.Drawing.Point(0, 0);
             this.panel1_1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1_1.Name = "panel1_1";
-            this.panel1_1.Size = new System.Drawing.Size(1240, 61);
+            this.panel1_1.Size = new System.Drawing.Size(930, 50);
             this.panel1_1.TabIndex = 4;
             // 
             // lblCategory
             // 
             this.lblCategory.AutoSize = true;
             this.lblCategory.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategory.Location = new System.Drawing.Point(73, 13);
+            this.lblCategory.Location = new System.Drawing.Point(55, 11);
             this.lblCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(116, 29);
+            this.lblCategory.Size = new System.Drawing.Size(95, 22);
             this.lblCategory.TabIndex = 1;
             this.lblCategory.Text = "Category";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(27, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(20, 8);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(35, 35);
+            this.pictureBox1.Size = new System.Drawing.Size(26, 28);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // tabControl_Food
+            // tabControlCategory
             // 
-            this.tabControl_Food.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tabControlCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl_Food.Controls.Add(this.tabPage1);
-            this.tabControl_Food.Controls.Add(this.tabPage2);
-            this.tabControl_Food.Controls.Add(this.tabPage3);
-            this.tabControl_Food.Location = new System.Drawing.Point(0, 36);
-            this.tabControl_Food.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControl_Food.Name = "tabControl_Food";
-            this.tabControl_Food.SelectedIndex = 0;
-            this.tabControl_Food.Size = new System.Drawing.Size(1238, 751);
-            this.tabControl_Food.TabIndex = 5;
+            this.tabControlCategory.Controls.Add(this.tabCategory);
+            this.tabControlCategory.Controls.Add(this.tabCategoryList);
+            this.tabControlCategory.Controls.Add(this.tabCategoryDetail);
+            this.tabControlCategory.Location = new System.Drawing.Point(0, 29);
+            this.tabControlCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControlCategory.Name = "tabControlCategory";
+            this.tabControlCategory.SelectedIndex = 0;
+            this.tabControlCategory.Size = new System.Drawing.Size(928, 610);
+            this.tabControlCategory.TabIndex = 5;
             // 
-            // tabPage1
+            // tabCategory
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
-            this.tabPage1.Controls.Add(this.guna2Panel1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(1230, 722);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Category";
+            this.tabCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
+            this.tabCategory.Controls.Add(this.guna2Panel1);
+            this.tabCategory.Location = new System.Drawing.Point(4, 22);
+            this.tabCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.tabCategory.Name = "tabCategory";
+            this.tabCategory.Padding = new System.Windows.Forms.Padding(2);
+            this.tabCategory.Size = new System.Drawing.Size(920, 584);
+            this.tabCategory.TabIndex = 0;
+            this.tabCategory.Text = "Category";
             // 
             // guna2Panel1
             // 
@@ -169,7 +170,7 @@
             this.guna2Panel1.Location = new System.Drawing.Point(2, 2);
             this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1226, 718);
+            this.guna2Panel1.Size = new System.Drawing.Size(916, 580);
             this.guna2Panel1.TabIndex = 2;
             // 
             // guna2Panel3
@@ -182,10 +183,10 @@
             this.guna2Panel3.Controls.Add(this.btnViewFood);
             this.guna2Panel3.Controls.Add(this.lblFoodItem);
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel3.Location = new System.Drawing.Point(0, 378);
+            this.guna2Panel3.Location = new System.Drawing.Point(0, 307);
             this.guna2Panel3.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(1226, 340);
+            this.guna2Panel3.Size = new System.Drawing.Size(916, 273);
             this.guna2Panel3.TabIndex = 1;
             // 
             // lblFood
@@ -193,10 +194,10 @@
             this.lblFood.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFood.AutoSize = true;
             this.lblFood.Font = new System.Drawing.Font("Arial Black", 23F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFood.Location = new System.Drawing.Point(818, 73);
+            this.lblFood.Location = new System.Drawing.Point(610, 56);
             this.lblFood.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFood.Name = "lblFood";
-            this.lblFood.Size = new System.Drawing.Size(127, 55);
+            this.lblFood.Size = new System.Drawing.Size(102, 44);
             this.lblFood.TabIndex = 5;
             this.lblFood.Text = "Food";
             // 
@@ -204,10 +205,10 @@
             // 
             this.picFood.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.picFood.Image = ((System.Drawing.Image)(resources.GetObject("picFood.Image")));
-            this.picFood.Location = new System.Drawing.Point(182, 46);
+            this.picFood.Location = new System.Drawing.Point(136, 34);
             this.picFood.Margin = new System.Windows.Forms.Padding(2);
             this.picFood.Name = "picFood";
-            this.picFood.Size = new System.Drawing.Size(207, 237);
+            this.picFood.Size = new System.Drawing.Size(155, 193);
             this.picFood.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picFood.TabIndex = 4;
             this.picFood.TabStop = false;
@@ -224,10 +225,10 @@
             this.btnViewFood.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(202)))), ((int)(((byte)(165)))));
             this.btnViewFood.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnViewFood.ForeColor = System.Drawing.Color.Black;
-            this.btnViewFood.Location = new System.Drawing.Point(772, 227);
+            this.btnViewFood.Location = new System.Drawing.Point(575, 181);
             this.btnViewFood.Margin = new System.Windows.Forms.Padding(2);
             this.btnViewFood.Name = "btnViewFood";
-            this.btnViewFood.Size = new System.Drawing.Size(189, 34);
+            this.btnViewFood.Size = new System.Drawing.Size(142, 28);
             this.btnViewFood.TabIndex = 3;
             this.btnViewFood.Text = "View";
             // 
@@ -236,10 +237,10 @@
             this.lblFoodItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFoodItem.AutoSize = true;
             this.lblFoodItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFoodItem.Location = new System.Drawing.Point(806, 161);
+            this.lblFoodItem.Location = new System.Drawing.Point(600, 128);
             this.lblFoodItem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFoodItem.Name = "lblFoodItem";
-            this.lblFoodItem.Size = new System.Drawing.Size(151, 23);
+            this.lblFoodItem.Size = new System.Drawing.Size(117, 18);
             this.lblFoodItem.TabIndex = 2;
             this.lblFoodItem.Text = "Bread, Cake, ...";
             // 
@@ -257,17 +258,17 @@
             this.guna2Panel2_Food.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel2_Food.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel2_Food.Name = "guna2Panel2_Food";
-            this.guna2Panel2_Food.Size = new System.Drawing.Size(1226, 378);
+            this.guna2Panel2_Food.Size = new System.Drawing.Size(916, 307);
             this.guna2Panel2_Food.TabIndex = 0;
             // 
             // lblDrink
             // 
             this.lblDrink.AutoSize = true;
             this.lblDrink.Font = new System.Drawing.Font("Arial Black", 23F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDrink.Location = new System.Drawing.Point(165, 64);
+            this.lblDrink.Location = new System.Drawing.Point(124, 52);
             this.lblDrink.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDrink.Name = "lblDrink";
-            this.lblDrink.Size = new System.Drawing.Size(136, 55);
+            this.lblDrink.Size = new System.Drawing.Size(109, 44);
             this.lblDrink.TabIndex = 4;
             this.lblDrink.Text = "Drink";
             // 
@@ -275,10 +276,10 @@
             // 
             this.picDrink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.picDrink.Image = ((System.Drawing.Image)(resources.GetObject("picDrink.Image")));
-            this.picDrink.Location = new System.Drawing.Point(765, 88);
+            this.picDrink.Location = new System.Drawing.Point(570, 72);
             this.picDrink.Margin = new System.Windows.Forms.Padding(2);
             this.picDrink.Name = "picDrink";
-            this.picDrink.Size = new System.Drawing.Size(201, 209);
+            this.picDrink.Size = new System.Drawing.Size(151, 170);
             this.picDrink.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picDrink.TabIndex = 3;
             this.picDrink.TabStop = false;
@@ -294,10 +295,10 @@
             this.btnDrinkView.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(202)))), ((int)(((byte)(165)))));
             this.btnDrinkView.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnDrinkView.ForeColor = System.Drawing.Color.Black;
-            this.btnDrinkView.Location = new System.Drawing.Point(175, 215);
+            this.btnDrinkView.Location = new System.Drawing.Point(131, 175);
             this.btnDrinkView.Margin = new System.Windows.Forms.Padding(2);
             this.btnDrinkView.Name = "btnDrinkView";
-            this.btnDrinkView.Size = new System.Drawing.Size(189, 34);
+            this.btnDrinkView.Size = new System.Drawing.Size(142, 28);
             this.btnDrinkView.TabIndex = 2;
             this.btnDrinkView.Text = "View";
             // 
@@ -305,24 +306,24 @@
             // 
             this.lblDrinkItem.AutoSize = true;
             this.lblDrinkItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDrinkItem.Location = new System.Drawing.Point(171, 146);
+            this.lblDrinkItem.Location = new System.Drawing.Point(128, 119);
             this.lblDrinkItem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDrinkItem.Name = "lblDrinkItem";
-            this.lblDrinkItem.Size = new System.Drawing.Size(212, 23);
+            this.lblDrinkItem.Size = new System.Drawing.Size(159, 18);
             this.lblDrinkItem.TabIndex = 1;
             this.lblDrinkItem.Text = "Coffee, Tea, Yogurt, ...";
             // 
-            // tabPage2
+            // tabCategoryList
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
-            this.tabPage2.Controls.Add(this.guna2Panel4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(1230, 722);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Category List";
+            this.tabCategoryList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
+            this.tabCategoryList.Controls.Add(this.guna2Panel4);
+            this.tabCategoryList.Location = new System.Drawing.Point(4, 22);
+            this.tabCategoryList.Margin = new System.Windows.Forms.Padding(2);
+            this.tabCategoryList.Name = "tabCategoryList";
+            this.tabCategoryList.Padding = new System.Windows.Forms.Padding(2);
+            this.tabCategoryList.Size = new System.Drawing.Size(920, 584);
+            this.tabCategoryList.TabIndex = 1;
+            this.tabCategoryList.Text = "Category List";
             // 
             // guna2Panel4
             // 
@@ -339,7 +340,7 @@
             this.guna2Panel4.Location = new System.Drawing.Point(2, 2);
             this.guna2Panel4.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(1226, 718);
+            this.guna2Panel4.Size = new System.Drawing.Size(916, 580);
             this.guna2Panel4.TabIndex = 0;
             // 
             // btnDelete
@@ -354,11 +355,12 @@
             this.btnDelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(51)))), ((int)(((byte)(25)))));
             this.btnDelete.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(1008, 499);
+            this.btnDelete.Location = new System.Drawing.Point(752, 404);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.ShadowDecoration.BorderRadius = 10;
             this.btnDelete.ShadowDecoration.Color = System.Drawing.Color.Transparent;
-            this.btnDelete.Size = new System.Drawing.Size(123, 36);
+            this.btnDelete.Size = new System.Drawing.Size(92, 29);
             this.btnDelete.TabIndex = 10;
             this.btnDelete.Text = "Delete";
             // 
@@ -374,11 +376,12 @@
             this.btnEdit.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(125)))), ((int)(((byte)(232)))));
             this.btnEdit.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.Black;
-            this.btnEdit.Location = new System.Drawing.Point(1008, 380);
+            this.btnEdit.Location = new System.Drawing.Point(752, 308);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.ShadowDecoration.BorderRadius = 10;
             this.btnEdit.ShadowDecoration.Color = System.Drawing.Color.Transparent;
-            this.btnEdit.Size = new System.Drawing.Size(123, 36);
+            this.btnEdit.Size = new System.Drawing.Size(92, 29);
             this.btnEdit.TabIndex = 9;
             this.btnEdit.Text = "Edit";
             // 
@@ -394,11 +397,12 @@
             this.btnAdd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(230)))), ((int)(((byte)(118)))));
             this.btnAdd.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.Black;
-            this.btnAdd.Location = new System.Drawing.Point(1008, 261);
+            this.btnAdd.Location = new System.Drawing.Point(752, 211);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.ShadowDecoration.BorderRadius = 10;
             this.btnAdd.ShadowDecoration.Color = System.Drawing.Color.Transparent;
-            this.btnAdd.Size = new System.Drawing.Size(123, 36);
+            this.btnAdd.Size = new System.Drawing.Size(92, 29);
             this.btnAdd.TabIndex = 8;
             this.btnAdd.Text = "Add";
             // 
@@ -419,7 +423,7 @@
             this.dgvItem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItem.GridColor = System.Drawing.Color.Black;
-            this.dgvItem.Location = new System.Drawing.Point(18, 188);
+            this.dgvItem.Location = new System.Drawing.Point(14, 153);
             this.dgvItem.Margin = new System.Windows.Forms.Padding(2);
             this.dgvItem.Name = "dgvItem";
             this.dgvItem.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -434,7 +438,7 @@
             this.dgvItem.RowHeadersWidth = 150;
             this.dgvItem.RowTemplate.Height = 33;
             this.dgvItem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItem.Size = new System.Drawing.Size(892, 515);
+            this.dgvItem.Size = new System.Drawing.Size(665, 415);
             this.dgvItem.TabIndex = 3;
             this.dgvItem.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvItem_CellFormatting);
             // 
@@ -446,9 +450,10 @@
             this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.txtSearch);
             this.panel3.Controls.Add(this.pictureBoxSearch);
-            this.panel3.Location = new System.Drawing.Point(3, 76);
+            this.panel3.Location = new System.Drawing.Point(2, 62);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1220, 77);
+            this.panel3.Size = new System.Drawing.Size(911, 63);
             this.panel3.TabIndex = 2;
             // 
             // btnSearch
@@ -463,11 +468,12 @@
             this.btnSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(167)))), ((int)(((byte)(38)))));
             this.btnSearch.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(1005, 29);
+            this.btnSearch.Location = new System.Drawing.Point(750, 24);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.ShadowDecoration.BorderRadius = 10;
             this.btnSearch.ShadowDecoration.Color = System.Drawing.Color.Transparent;
-            this.btnSearch.Size = new System.Drawing.Size(123, 36);
+            this.btnSearch.Size = new System.Drawing.Size(92, 29);
             this.btnSearch.TabIndex = 7;
             this.btnSearch.Text = "Search";
             // 
@@ -476,17 +482,19 @@
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(194, 28);
+            this.txtSearch.Location = new System.Drawing.Point(146, 23);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(713, 29);
+            this.txtSearch.Size = new System.Drawing.Size(532, 25);
             this.txtSearch.TabIndex = 1;
             // 
             // pictureBoxSearch
             // 
             this.pictureBoxSearch.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxSearch.Image")));
-            this.pictureBoxSearch.Location = new System.Drawing.Point(79, 28);
+            this.pictureBoxSearch.Location = new System.Drawing.Point(59, 23);
+            this.pictureBoxSearch.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxSearch.Name = "pictureBoxSearch";
-            this.pictureBoxSearch.Size = new System.Drawing.Size(49, 33);
+            this.pictureBoxSearch.Size = new System.Drawing.Size(37, 27);
             this.pictureBoxSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxSearch.TabIndex = 0;
             this.pictureBoxSearch.TabStop = false;
@@ -502,7 +510,7 @@
             this.guna2Panel5_FoodList.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel5_FoodList.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel5_FoodList.Name = "guna2Panel5_FoodList";
-            this.guna2Panel5_FoodList.Size = new System.Drawing.Size(1226, 64);
+            this.guna2Panel5_FoodList.Size = new System.Drawing.Size(916, 52);
             this.guna2Panel5_FoodList.TabIndex = 0;
             // 
             // btnBackCategory
@@ -517,33 +525,33 @@
             this.btnBackCategory.Image = ((System.Drawing.Image)(resources.GetObject("btnBackCategory.Image")));
             this.btnBackCategory.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnBackCategory.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnBackCategory.Location = new System.Drawing.Point(18, 4);
-            this.btnBackCategory.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBackCategory.Location = new System.Drawing.Point(14, 3);
             this.btnBackCategory.Name = "btnBackCategory";
             this.btnBackCategory.PressedColor = System.Drawing.Color.Transparent;
-            this.btnBackCategory.Size = new System.Drawing.Size(119, 54);
+            this.btnBackCategory.Size = new System.Drawing.Size(89, 44);
             this.btnBackCategory.TabIndex = 1;
             this.btnBackCategory.Text = "Back";
             this.btnBackCategory.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // tabPage3
+            // tabCategoryDetail
             // 
-            this.tabPage3.Controls.Add(this.guna2Panel6);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage3.Size = new System.Drawing.Size(1230, 722);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Category Detail";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabCategoryDetail.Controls.Add(this.guna2Panel6);
+            this.tabCategoryDetail.Location = new System.Drawing.Point(4, 22);
+            this.tabCategoryDetail.Margin = new System.Windows.Forms.Padding(2);
+            this.tabCategoryDetail.Name = "tabCategoryDetail";
+            this.tabCategoryDetail.Padding = new System.Windows.Forms.Padding(2);
+            this.tabCategoryDetail.Size = new System.Drawing.Size(920, 584);
+            this.tabCategoryDetail.TabIndex = 2;
+            this.tabCategoryDetail.Text = "Category Detail";
+            this.tabCategoryDetail.UseVisualStyleBackColor = true;
             // 
             // guna2Panel6
             // 
             this.guna2Panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(246)))));
             this.guna2Panel6.BorderColor = System.Drawing.Color.Black;
             this.guna2Panel6.BorderThickness = 2;
-            this.guna2Panel6.Controls.Add(this.cboCategoryID);
+            this.guna2Panel6.Controls.Add(this.txtCategory);
+            this.guna2Panel6.Controls.Add(this.cbCategory);
             this.guna2Panel6.Controls.Add(this.lblCategoryID);
             this.guna2Panel6.Controls.Add(this.txtItemID);
             this.guna2Panel6.Controls.Add(this.lblItemID);
@@ -563,33 +571,50 @@
             this.guna2Panel6.Location = new System.Drawing.Point(2, 2);
             this.guna2Panel6.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel6.Name = "guna2Panel6";
-            this.guna2Panel6.Size = new System.Drawing.Size(1226, 718);
+            this.guna2Panel6.Size = new System.Drawing.Size(916, 580);
             this.guna2Panel6.TabIndex = 0;
             // 
-            // cboCategoryID
+            // txtCategory
             // 
-            this.cboCategoryID.BackColor = System.Drawing.Color.Transparent;
-            this.cboCategoryID.BorderColor = System.Drawing.Color.Black;
-            this.cboCategoryID.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboCategoryID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCategoryID.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboCategoryID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboCategoryID.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboCategoryID.ForeColor = System.Drawing.Color.Black;
-            this.cboCategoryID.ItemHeight = 30;
-            this.cboCategoryID.Location = new System.Drawing.Point(245, 218);
-            this.cboCategoryID.Name = "cboCategoryID";
-            this.cboCategoryID.Size = new System.Drawing.Size(437, 36);
-            this.cboCategoryID.TabIndex = 18;
+            this.txtCategory.BorderColor = System.Drawing.Color.Black;
+            this.txtCategory.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCategory.DefaultText = "";
+            this.txtCategory.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCategory.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCategory.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCategory.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCategory.ForeColor = System.Drawing.Color.Black;
+            this.txtCategory.HoverState.BorderColor = System.Drawing.Color.Black;
+            this.txtCategory.Location = new System.Drawing.Point(184, 181);
+            this.txtCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.PasswordChar = '\0';
+            this.txtCategory.PlaceholderText = "";
+            this.txtCategory.ReadOnly = true;
+            this.txtCategory.SelectedText = "";
+            this.txtCategory.Size = new System.Drawing.Size(328, 30);
+            this.txtCategory.TabIndex = 19;
+            // 
+            // cbCategory
+            // 
+            this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCategory.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(184, 181);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(328, 25);
+            this.cbCategory.TabIndex = 18;
             // 
             // lblCategoryID
             // 
             this.lblCategoryID.AutoSize = true;
             this.lblCategoryID.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoryID.Location = new System.Drawing.Point(41, 223);
+            this.lblCategoryID.Location = new System.Drawing.Point(31, 181);
             this.lblCategoryID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCategoryID.Name = "lblCategoryID";
-            this.lblCategoryID.Size = new System.Drawing.Size(139, 27);
+            this.lblCategoryID.Size = new System.Drawing.Size(112, 22);
             this.lblCategoryID.TabIndex = 17;
             this.lblCategoryID.Text = "Category ID";
             // 
@@ -606,23 +631,23 @@
             this.txtItemID.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtItemID.ForeColor = System.Drawing.Color.Black;
             this.txtItemID.HoverState.BorderColor = System.Drawing.Color.Black;
-            this.txtItemID.Location = new System.Drawing.Point(245, 132);
+            this.txtItemID.Location = new System.Drawing.Point(184, 107);
             this.txtItemID.Margin = new System.Windows.Forms.Padding(2);
             this.txtItemID.Name = "txtItemID";
             this.txtItemID.PasswordChar = '\0';
             this.txtItemID.PlaceholderText = "";
             this.txtItemID.SelectedText = "";
-            this.txtItemID.Size = new System.Drawing.Size(438, 37);
+            this.txtItemID.Size = new System.Drawing.Size(328, 30);
             this.txtItemID.TabIndex = 15;
             // 
             // lblItemID
             // 
             this.lblItemID.AutoSize = true;
             this.lblItemID.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItemID.Location = new System.Drawing.Point(41, 141);
+            this.lblItemID.Location = new System.Drawing.Point(31, 115);
             this.lblItemID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblItemID.Name = "lblItemID";
-            this.lblItemID.Size = new System.Drawing.Size(88, 27);
+            this.lblItemID.Size = new System.Drawing.Size(73, 22);
             this.lblItemID.TabIndex = 14;
             this.lblItemID.Text = "Item ID";
             // 
@@ -631,10 +656,11 @@
             this.lsbIngredient.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lsbIngredient.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsbIngredient.FormattingEnabled = true;
-            this.lsbIngredient.ItemHeight = 21;
-            this.lsbIngredient.Location = new System.Drawing.Point(773, 132);
+            this.lsbIngredient.ItemHeight = 16;
+            this.lsbIngredient.Location = new System.Drawing.Point(580, 107);
+            this.lsbIngredient.Margin = new System.Windows.Forms.Padding(2);
             this.lsbIngredient.Name = "lsbIngredient";
-            this.lsbIngredient.Size = new System.Drawing.Size(438, 380);
+            this.lsbIngredient.Size = new System.Drawing.Size(329, 306);
             this.lsbIngredient.TabIndex = 13;
             // 
             // btnCancel
@@ -649,11 +675,12 @@
             this.btnCancel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(51)))), ((int)(((byte)(25)))));
             this.btnCancel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.Location = new System.Drawing.Point(812, 643);
+            this.btnCancel.Location = new System.Drawing.Point(609, 519);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.ShadowDecoration.BorderRadius = 10;
             this.btnCancel.ShadowDecoration.Color = System.Drawing.Color.Transparent;
-            this.btnCancel.Size = new System.Drawing.Size(123, 36);
+            this.btnCancel.Size = new System.Drawing.Size(92, 29);
             this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Cancel";
             // 
@@ -669,11 +696,12 @@
             this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(125)))), ((int)(((byte)(232)))));
             this.btnSave.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(560, 643);
+            this.btnSave.Location = new System.Drawing.Point(420, 519);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShadowDecoration.BorderRadius = 10;
             this.btnSave.ShadowDecoration.Color = System.Drawing.Color.Transparent;
-            this.btnSave.Size = new System.Drawing.Size(123, 36);
+            this.btnSave.Size = new System.Drawing.Size(92, 29);
             this.btnSave.TabIndex = 11;
             this.btnSave.Text = "Save";
             // 
@@ -688,10 +716,10 @@
             this.btnAdd_Ingredient.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
             this.btnAdd_Ingredient.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnAdd_Ingredient.ForeColor = System.Drawing.Color.Black;
-            this.btnAdd_Ingredient.Location = new System.Drawing.Point(914, 539);
+            this.btnAdd_Ingredient.Location = new System.Drawing.Point(686, 438);
             this.btnAdd_Ingredient.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd_Ingredient.Name = "btnAdd_Ingredient";
-            this.btnAdd_Ingredient.Size = new System.Drawing.Size(190, 34);
+            this.btnAdd_Ingredient.Size = new System.Drawing.Size(142, 28);
             this.btnAdd_Ingredient.TabIndex = 10;
             this.btnAdd_Ingredient.Text = "Add Ingredient";
             // 
@@ -699,10 +727,10 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(404, 431);
+            this.label10.Location = new System.Drawing.Point(303, 350);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(95, 27);
+            this.label10.Size = new System.Drawing.Size(76, 22);
             this.label10.TabIndex = 9;
             this.label10.Text = "VND / $";
             // 
@@ -719,13 +747,13 @@
             this.txtPrice.Font = new System.Drawing.Font("Arial", 10.8F);
             this.txtPrice.ForeColor = System.Drawing.Color.Black;
             this.txtPrice.HoverState.BorderColor = System.Drawing.Color.Black;
-            this.txtPrice.Location = new System.Drawing.Point(245, 419);
+            this.txtPrice.Location = new System.Drawing.Point(184, 340);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.PasswordChar = '\0';
             this.txtPrice.PlaceholderText = "Price";
             this.txtPrice.SelectedText = "";
-            this.txtPrice.Size = new System.Drawing.Size(109, 39);
+            this.txtPrice.Size = new System.Drawing.Size(82, 32);
             this.txtPrice.TabIndex = 8;
             // 
             // txtItemName
@@ -742,24 +770,24 @@
             this.txtItemName.ForeColor = System.Drawing.Color.Black;
             this.txtItemName.HoverState.BorderColor = System.Drawing.Color.Black;
             this.txtItemName.HoverState.FillColor = System.Drawing.Color.Transparent;
-            this.txtItemName.Location = new System.Drawing.Point(245, 310);
+            this.txtItemName.Location = new System.Drawing.Point(184, 252);
             this.txtItemName.Margin = new System.Windows.Forms.Padding(2);
             this.txtItemName.Name = "txtItemName";
             this.txtItemName.PasswordChar = '\0';
             this.txtItemName.PlaceholderForeColor = System.Drawing.Color.LightGray;
             this.txtItemName.PlaceholderText = "ItemName";
             this.txtItemName.SelectedText = "";
-            this.txtItemName.Size = new System.Drawing.Size(438, 39);
+            this.txtItemName.Size = new System.Drawing.Size(328, 32);
             this.txtItemName.TabIndex = 6;
             // 
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
             this.lblPrice.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.Location = new System.Drawing.Point(41, 431);
+            this.lblPrice.Location = new System.Drawing.Point(31, 350);
             this.lblPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(66, 27);
+            this.lblPrice.Size = new System.Drawing.Size(54, 22);
             this.lblPrice.TabIndex = 5;
             this.lblPrice.Text = "Price";
             // 
@@ -767,10 +795,10 @@
             // 
             this.lblIngredient.AutoSize = true;
             this.lblIngredient.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIngredient.Location = new System.Drawing.Point(920, 85);
+            this.lblIngredient.Location = new System.Drawing.Point(690, 69);
             this.lblIngredient.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIngredient.Name = "lblIngredient";
-            this.lblIngredient.Size = new System.Drawing.Size(120, 27);
+            this.lblIngredient.Size = new System.Drawing.Size(95, 22);
             this.lblIngredient.TabIndex = 4;
             this.lblIngredient.Text = "Ingredient";
             // 
@@ -778,10 +806,10 @@
             // 
             this.lblItemName.AutoSize = true;
             this.lblItemName.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItemName.Location = new System.Drawing.Point(41, 321);
+            this.lblItemName.Location = new System.Drawing.Point(31, 261);
             this.lblItemName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblItemName.Name = "lblItemName";
-            this.lblItemName.Size = new System.Drawing.Size(128, 27);
+            this.lblItemName.Size = new System.Drawing.Size(103, 22);
             this.lblItemName.TabIndex = 3;
             this.lblItemName.Text = "Item Name";
             // 
@@ -789,10 +817,10 @@
             // 
             this.lblItemDeatil.AutoSize = true;
             this.lblItemDeatil.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItemDeatil.Location = new System.Drawing.Point(71, 83);
+            this.lblItemDeatil.Location = new System.Drawing.Point(53, 67);
             this.lblItemDeatil.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblItemDeatil.Name = "lblItemDeatil";
-            this.lblItemDeatil.Size = new System.Drawing.Size(134, 29);
+            this.lblItemDeatil.Size = new System.Drawing.Size(106, 22);
             this.lblItemDeatil.TabIndex = 2;
             this.lblItemDeatil.Text = "Item Detail";
             // 
@@ -807,7 +835,7 @@
             this.guna2Panel7_FoodDetail.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel7_FoodDetail.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel7_FoodDetail.Name = "guna2Panel7_FoodDetail";
-            this.guna2Panel7_FoodDetail.Size = new System.Drawing.Size(1226, 64);
+            this.guna2Panel7_FoodDetail.Size = new System.Drawing.Size(916, 52);
             this.guna2Panel7_FoodDetail.TabIndex = 1;
             // 
             // btnBackToList
@@ -822,31 +850,31 @@
             this.btnBackToList.Image = ((System.Drawing.Image)(resources.GetObject("btnBackToList.Image")));
             this.btnBackToList.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnBackToList.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnBackToList.Location = new System.Drawing.Point(18, 4);
-            this.btnBackToList.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBackToList.Location = new System.Drawing.Point(14, 3);
             this.btnBackToList.Name = "btnBackToList";
             this.btnBackToList.PressedColor = System.Drawing.Color.Transparent;
-            this.btnBackToList.Size = new System.Drawing.Size(119, 54);
+            this.btnBackToList.Size = new System.Drawing.Size(89, 44);
             this.btnBackToList.TabIndex = 1;
             this.btnBackToList.Text = "Back";
             this.btnBackToList.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // CategoryView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(233)))));
-            this.ClientSize = new System.Drawing.Size(1240, 790);
-            this.Controls.Add(this.tabControl_Food);
+            this.ClientSize = new System.Drawing.Size(930, 642);
+            this.Controls.Add(this.tabControlCategory);
             this.Controls.Add(this.panel1_1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CategoryView";
             this.Text = "Category";
             this.panel1_1.ResumeLayout(false);
             this.panel1_1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tabControl_Food.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.tabControlCategory.ResumeLayout(false);
+            this.tabCategory.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();
@@ -854,14 +882,14 @@
             this.guna2Panel2_Food.ResumeLayout(false);
             this.guna2Panel2_Food.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDrink)).EndInit();
-            this.tabPage2.ResumeLayout(false);
+            this.tabCategoryList.ResumeLayout(false);
             this.guna2Panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItem)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSearch)).EndInit();
             this.guna2Panel5_FoodList.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
+            this.tabCategoryDetail.ResumeLayout(false);
             this.guna2Panel6.ResumeLayout(false);
             this.guna2Panel6.PerformLayout();
             this.guna2Panel7_FoodDetail.ResumeLayout(false);
@@ -873,8 +901,8 @@
 		private System.Windows.Forms.Panel panel1_1;
 		private System.Windows.Forms.Label lblCategory;
 		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.TabControl tabControl_Food;
-		private System.Windows.Forms.TabPage tabPage1;
+		private System.Windows.Forms.TabControl tabControlCategory;
+		private System.Windows.Forms.TabPage tabCategory;
 		private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
 		private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
 		private System.Windows.Forms.Label lblFood;
@@ -886,7 +914,7 @@
 		private System.Windows.Forms.PictureBox picDrink;
 		private Guna.UI2.WinForms.Guna2Button btnDrinkView;
 		private System.Windows.Forms.Label lblDrinkItem;
-		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.TabPage tabCategoryList;
 		private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
 		private Guna.UI2.WinForms.Guna2Button btnDelete;
 		private Guna.UI2.WinForms.Guna2Button btnEdit;
@@ -898,7 +926,7 @@
 		private System.Windows.Forms.PictureBox pictureBoxSearch;
 		private Guna.UI2.WinForms.Guna2Panel guna2Panel5_FoodList;
 		private Guna.UI2.WinForms.Guna2Button btnBackCategory;
-		private System.Windows.Forms.TabPage tabPage3;
+		private System.Windows.Forms.TabPage tabCategoryDetail;
 		private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
 		private System.Windows.Forms.ListBox lsbIngredient;
 		private Guna.UI2.WinForms.Guna2Button btnCancel;
@@ -916,6 +944,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtItemID;
         private System.Windows.Forms.Label lblItemID;
         private System.Windows.Forms.Label lblCategoryID;
-        private Guna.UI2.WinForms.Guna2ComboBox cboCategoryID;
+        private System.Windows.Forms.ComboBox cbCategory;
+        private Guna.UI2.WinForms.Guna2TextBox txtCategory;
     }
 }

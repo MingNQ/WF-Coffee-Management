@@ -21,35 +21,33 @@ namespace CoffeeShop.View.MainFrame
 		bool IsSuccessful { get; set; }
 		string Message { get; set; }
         bool IsOpen { get; }
-        List<IngredientModel> ingredients { get; set; }
+        List<IngredientModel> Ingredients { get; set; }
         #endregion
-        /// <summary>
-        /// Show Form
-        /// </summary>
-        void Show();
-		void SetItemListBindingSource(BindingSource itemList);
-        void LoadCategories(List<CategoryModel> categories);
-        void UpdateIngredientList(List<IngredientModel> ingredients);
-        List<string> GetSelectedIngredientIDs();
 
         #region Events
         event EventHandler ShowIngredientCheckList;
-
 		//them skien cho nut View-Drink
 		event EventHandler ViewDrinkEvent;
         event EventHandler ViewFoodEvent;
-
         event EventHandler SearchEvent;
         event EventHandler AddNewEvent;
         event EventHandler EditEvent;
         event EventHandler DeleteEvent;
         event EventHandler SaveEvent;
         event EventHandler CancelEvent;
+        event EventHandler BackEvent;
 
+        #endregion
 
-        event EventHandler BackToListEvent;
-        event EventHandler BackToCategoryEvent;
-        
+        #region Methods
+        /// <summary>
+        /// Show Form
+        /// </summary>
+        void ShowPage();
+        void SetItemListBindingSource(BindingSource itemList);
+        void LoadCategories(List<CategoryModel> categories);
+        void UpdateIngredientList(List<IngredientModel> ingredients);
+        List<string> GetSelectedIngredientIDs();
         #endregion
     }
 }

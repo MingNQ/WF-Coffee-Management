@@ -44,6 +44,10 @@ namespace CoffeeShop._Repositories
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string GetItemID()
         {
             using (var connection = new SqlConnection(connectionString))
@@ -60,6 +64,11 @@ namespace CoffeeShop._Repositories
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="itemID"></param>
+        /// <param name="ingredientIDs"></param>
         public void AddItemIngredients(string itemID, List<string> ingredientIDs)
         {
             using (var connection = new SqlConnection(connectionString))
@@ -132,9 +141,15 @@ namespace CoffeeShop._Repositories
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="isDrink"></param>
+        /// <returns></returns>
         public List<CategoryModel> GetAllCategories(bool isDrink)
         {
-            string query = isDrink ? @"select * from Category where CategoryID in(1,4,5,6)" : @"select * from Category where CategoryID in (2,3)";
+            string query = isDrink ? @"select * from Category where CategoryID in(1,4,5,6)" : 
+                                        @"select * from Category where CategoryID in (2,3)";
             var categoryList = new List<CategoryModel>();
             using(var connection = new SqlConnection(connectionString))
             using(var command = new SqlCommand())
@@ -224,7 +239,8 @@ namespace CoffeeShop._Repositories
             var itemList = new List<ItemModel>();
             string itemName = value;
             float cost = float.TryParse(value, out _) ? float.Parse(value) : 0;
-            string query = isDrink ? @"Select * from Item where CategoryID in (1,4,5,6) and (ItemName like N'%" + itemName + "%' or Cost = '"+cost+"') ": @"Select * from Item where CategoryID in (2,3) and (ItemName like N'%" + itemName + "%' or Cost = '"+cost+"')" ;
+            string query = isDrink ? @"Select * from Item where CategoryID in (1,4,5,6) and (ItemName like N'%" + itemName + "%' or Cost = '"+cost+"') ": 
+                                    @"Select * from Item where CategoryID in (2,3) and (ItemName like N'%" + itemName + "%' or Cost = '"+cost+"')" ;
             using (var connection = new SqlConnection(connectionString))
             using(var command = new SqlCommand())
             {
@@ -247,6 +263,11 @@ namespace CoffeeShop._Repositories
             return itemList;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="itemID"></param>
+        /// <returns></returns>
         public List<IngredientModel> GetIngredientsByItemID(string itemID)
         {
             var ingredientList = new List<IngredientModel>();
@@ -272,6 +293,12 @@ namespace CoffeeShop._Repositories
             return ingredientList;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="itemID"></param>
+        /// <param name="itemIngredientIDs"></param>
+        /// <param name="newIngredientList"></param>
         public void EditItemIngredients(string itemID, List<string> itemIngredientIDs, List<IngredientModel> newIngredientList)
         {
             using (var connection = new SqlConnection(connectionString))
@@ -282,7 +309,7 @@ namespace CoffeeShop._Repositories
 
                 if (itemIngredientIDs.Count < newIngredientList.Count)
                 {
-                    // Update existing ingredients
+                    // Update existing Ingredients
                     for (int i = 0; i < itemIngredientIDs.Count; i++)
                     {
                         command.CommandText = "UPDATE ItemIngredient SET IngredientID = @ingredientID WHERE ItemIngredientID = @itemIngredientID";
@@ -292,7 +319,7 @@ namespace CoffeeShop._Repositories
                         command.ExecuteNonQuery();
                     }
 
-                    // Add new ingredients
+                    // Add new Ingredients
                     for (int i = itemIngredientIDs.Count; i < newIngredientList.Count; i++)
                     {
                         // Find the max ItemIngredientID
@@ -339,7 +366,7 @@ namespace CoffeeShop._Repositories
                 }
                 else
                 {
-                    // Update all ingredients as counts are equal
+                    // Update all Ingredients as counts are equal
                     for (int i = 0; i < newIngredientList.Count; i++)
                     {
                         command.CommandText = "UPDATE ItemIngredient SET IngredientID = @ingredientID WHERE ItemIngredientID = @itemIngredientID";
@@ -352,6 +379,10 @@ namespace CoffeeShop._Repositories
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="itemID"></param>
         public void DeleteItemIngredients(string itemID)
         {
             using (var connection = new SqlConnection(connectionString))
@@ -365,6 +396,11 @@ namespace CoffeeShop._Repositories
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="itemID"></param>
+        /// <returns></returns>
         public List<string> GetItemIngredients(string itemID)
         {
             var ItemIngredientIDs = new List<string>();
