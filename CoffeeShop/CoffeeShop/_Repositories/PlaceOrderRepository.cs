@@ -439,7 +439,75 @@ namespace CoffeeShop._Repositories
             }
             return staff;
         }
+        /// <summary>
+        ///  AutoGenerate InvoiceID
+        /// </summary>
+        /// <returns></returns>
+        public string GenerateInvoiceID()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
 
+                string query = "Select Max(InvoiceID) from Invoice";
+                SqlCommand command = new SqlCommand(query, connection);
+                object result = command.ExecuteScalar();
+                if (result == null)
+                {
+                    return "INV001";
+                }
+                string maxInvoiceID = result.ToString();
+                int currnetNumber = int.Parse(maxInvoiceID.Substring(4));
+                int nextNumber = currnetNumber + 1;
+                return "INV" + nextNumber.ToString("D3");
+            }
+        }
+        /// <summary>
+        /// Get Information for Invoice 
+        /// </summary>
+        /// <param name="orderID"></param>
+        /// <returns></returns>
+        public List<OrderItemViewModel> GetOrderDetailWithItems(string orderID)
+        {
+            
+            List<OrderItemViewModel> list = new List<OrderItemViewModel>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"
+                                    SELECT 
+                                        Item.ItemName,
+                                        OrderDetail.Quantity,
+                                        Item.Cost,
+                                        OrderDetail.Total
+                                    FROM 
+                                        OrderDetail
+                                    INNER JOIN 
+                                        Item 
+                                    ON 
+                                        OrderDetail.ItemID = Item.ItemID
+                                    WHERE 
+                                        OrderDetail.OrderID = @OrderID";
+                command.Parameters.Add("@OrderID",SqlDbType.NVarChar).Value = orderID;                
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new OrderItemViewModel
+                        {
+                            ItemName = reader["ItemName"].ToString(),
+                            Quantity = Convert.ToInt32(reader["Quantity"]),
+                            Cost = Convert.ToSingle(reader["Cost"]),
+                            Total = Convert.ToSingle(reader["Total"])
+                        });
+                    }
+                }
+            }
+            return list;
+        }
+        
         #endregion
 
         #region UnUse

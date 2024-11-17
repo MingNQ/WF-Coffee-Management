@@ -299,8 +299,36 @@ namespace CoffeeShop.Presenter
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void PrintEvent(object sender, EventArgs e)
-        {
-            // TO-DO: Coding Print 
+        {          
+            Invoice invoiceView = new Invoice();              
+            invoiceView.lbInvoiceID.Text = repository.GenerateInvoiceID();
+            invoiceView.lbPeople.Text = view.NumberPeople.ToString();
+            invoiceView.lbDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
+            invoiceView.lbIDTable.Text = view.TableNo.ToString();
+            invoiceView.lbStaff.Text = view.StaffName.ToString();  
+            invoiceView.lbTotal.Text = view.Total.ToString();
+            invoiceView.lbOrderID.Text = view.OrderID.ToString();
+            
+           
+            
+            invoiceView.btnCancel.Click += delegate
+            {
+                invoiceView.Close();
+            };
+            invoiceView.btnPrint.Click += delegate
+            {
+                DialogMessageView.ShowMessage("information", "Print Successful");
+                invoiceView.Close();
+            };
+            var List = repository.GetOrderDetailWithItems("O002");
+            float totalSum = 0;
+            foreach (var item in List)
+            {
+                totalSum += item.Total * item.Quantity;
+            }
+            invoiceView.lbTotal.Text = totalSum.ToString();
+            invoiceView.dgvInvoice.DataSource = List;
+            invoiceView.Show();
         }
 
         /// <summary>
@@ -399,7 +427,7 @@ namespace CoffeeShop.Presenter
             bindingSource.DataSource = orderDetails;
             view.CalculateGrandTotal(orderDetails);
         }
-
+        
         #endregion
 
         #region public fields
