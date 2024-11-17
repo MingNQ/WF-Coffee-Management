@@ -336,7 +336,16 @@ namespace CoffeeShop.View
             btnEdit.Click += delegate
 			{
                 EditEvent?.Invoke(this, EventArgs.Empty);
-				tabStaff.TabPages.Remove(tabPageStaffList);
+
+                // Can't edit yourself here
+                if (StaffID == Generate.StaffID)
+                {
+                    DialogMessageView.ShowMessage("information", "Can't Edit your information here! If you want edit, Please click \"View Profile\"");
+                    picAvatar.Image = null;
+
+                    return;
+                }
+                tabStaff.TabPages.Remove(tabPageStaffList);
 				tabStaff.TabPages.Add(tabPageStaffDetail);
 				tabPageStaffDetail.Text = "Edit Staff";
             };
@@ -396,6 +405,14 @@ namespace CoffeeShop.View
                 if (e.RowIndex >= 0 && Generate.StaffRole == AppConst.ADMIN_ROLE)
                 {
                     EditEvent?.Invoke(this, EventArgs.Empty);
+
+                    if (StaffID == Generate.StaffID)
+                    {
+                        DialogMessageView.ShowMessage("information", "Can't Edit your information here! If you want edit, Please click \"View Profile\"");
+                        picAvatar.Image = null;
+
+                        return;
+                    }
                     tabStaff.TabPages.Remove(tabPageStaffList);
                     tabStaff.TabPages.Add(tabPageStaffDetail);
                     tabPageStaffDetail.Text = "Edit Staff";

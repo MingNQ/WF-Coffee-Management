@@ -33,7 +33,9 @@ namespace CoffeeShop.View
         #region Event
         #endregion
 
+        #region Methods
         // Updating...
         void Show();
+        #endregion
     }
 }

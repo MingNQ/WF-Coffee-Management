@@ -60,8 +60,9 @@ namespace CoffeeShop.Presenter
                 this.staffDetailView.ChangePasswordEvent += ChangePasswordEvent;
                 this.staffDetailView.HideMessageEvent += HideMessageEvent;
                 this.staffDetailView.ShowPasswordEvent += ShowPasswordEvent;
+
+                LoadStaffDetails();  //Tải thông tin nhân viên lên giao diện
             }
-            LoadStaffDetails();  //Tải thông tin nhân viên lên giao diện
             this.staffDetailView.Show();  //hiển thị giao diện
         }
 
@@ -225,7 +226,7 @@ namespace CoffeeShop.Presenter
                         }                       
                         staffDetailView.InitializeControl();
                         LoadStaffDetails();                        
-                        DialogMessageView.ShowMessage("information", "Updated Successfully");
+                        DialogMessageView.ShowMessage("success", "Updated Successfully");
                     }
                 }
                 catch (ValidationException ex) // Lỗi validate
@@ -322,8 +323,6 @@ namespace CoffeeShop.Presenter
             }
         }
 
-        
-
         /// <summary>
         /// 
         /// </summary>
@@ -331,7 +330,7 @@ namespace CoffeeShop.Presenter
         /// <returns></returns>
         private string SaveAvatar(string avatarPath)
         {
-            if(!string.IsNullOrEmpty(avatarPath) && File.Exists(avatarPath))
+            if(!string.IsNullOrEmpty(avatarPath))
             {
                 string fileName = Path.GetFileName(avatarPath);
                 string destinationPath = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, fileName);

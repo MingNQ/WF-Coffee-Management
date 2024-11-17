@@ -15,7 +15,14 @@ namespace CoffeeShop.View.MainFrame
 {
     public partial class StaffInformationControl : UserControl
     {
-        private string avatarPath; //biến lưu đường dẫn đến file ảnh của nhân viên
+        #region Fields
+
+        /// <summary>
+        /// biến lưu đường dẫn đến file ảnh của nhân viên
+        /// </summary>
+        private string avatarPath;
+
+        #endregion
 
         #region Properties
 
@@ -84,6 +91,9 @@ namespace CoffeeShop.View.MainFrame
             set => txtRole.Text = value;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Avatar
         {
             get => avatarPath;  //trả về đường dẫn của ảnh đại diện
@@ -103,6 +113,9 @@ namespace CoffeeShop.View.MainFrame
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public PictureBox ProfilePicture
         {
             get { return picAvatar; }

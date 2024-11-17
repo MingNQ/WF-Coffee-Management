@@ -10,7 +10,7 @@ namespace CoffeeShop.View.LoginFrame
 {
     public interface ISignInView
     {
-        #region Properties
+        #region Fields - Properties
         Guna2TextBox TxtUsername { get; set; }
         Guna2TextBox TxtPassword { get; set; }
         string Message { get; set; }

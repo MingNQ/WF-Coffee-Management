@@ -38,14 +38,19 @@ namespace CoffeeShop.Presenter
         {
             this.mainView = view;
             this.sqlConnectionString = sqlConnectionString;
-            this.mainView.ShowDashboardView += ShowDashboardView;
-            this.mainView.ShowPlaceOrderView += ShowPlaceOrderView;
-            this.mainView.ShowStaffView += ShowStaffView;
-            this.mainView.ShowCustomerView += ShowCustomerView;
-            this.mainView.ShowCategoryView += ShowCategoryView;
-            this.mainView.ShowIngredientView += ShowIngredientView;
-            this.mainView.ShowAccountView += ShowAccountView;
-            this.mainView.ShowStaffDetailInformation += ShowStaffDetailView;
+
+            if (!mainView.IsOpen)
+            {
+                this.mainView.ShowDashboardView += ShowDashboardView;
+                this.mainView.ShowPlaceOrderView += ShowPlaceOrderView;
+                this.mainView.ShowStaffView += ShowStaffView;
+                this.mainView.ShowCustomerView += ShowCustomerView;
+                this.mainView.ShowCategoryView += ShowCategoryView;
+                this.mainView.ShowIngredientView += ShowIngredientView;
+                this.mainView.ShowAccountView += ShowAccountView;
+                this.mainView.ShowStaffDetailInformation += ShowStaffDetailView;
+            }
+
             this.mainView.Show();
             InitializeView();
         }

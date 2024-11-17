@@ -52,6 +52,11 @@ namespace CoffeeShop.View
             set { staffID = value; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsOpen { get => Application.OpenForms.OfType<MainView>().Any(); }
+
         #endregion
 
         #region Event

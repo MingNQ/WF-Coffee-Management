@@ -9,8 +9,19 @@ namespace CoffeeShop.Utilities
 {
     public class Generate
     {
+        /// <summary>
+        /// Store Global Staff ID
+        /// </summary>
         public static string StaffID = "";
+
+        /// <summary>
+        /// Store Global Staff Name
+        /// </summary>
         public static string StaffName = "";
+
+        /// <summary>
+        /// Store Global Staff Role
+        /// </summary>
         public static string StaffRole = "";
 
         /// <summary>

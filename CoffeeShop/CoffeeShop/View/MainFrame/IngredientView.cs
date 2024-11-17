@@ -29,11 +29,6 @@ namespace CoffeeShop.View.MainFrame
 		private bool isEdit;
 
         /// <summary>
-        /// Check if successful
-        /// </summary>
-        private bool isSuccessful;
-
-        /// <summary>
         /// 
         /// </summary>
         private string ingredientID;

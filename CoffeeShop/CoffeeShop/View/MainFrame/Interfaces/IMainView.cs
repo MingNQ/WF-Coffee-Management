@@ -10,9 +10,9 @@ namespace CoffeeShop.View
 	{
 		#region Properties
 		string Username { get; set; }
-		string Role {  get; set; }
-		
-		string StaffID {  get; set; }
+		string Role { get; set; }
+		string StaffID { get; set; }
+		bool IsOpen { get; }
         #endregion
 
         #region Event

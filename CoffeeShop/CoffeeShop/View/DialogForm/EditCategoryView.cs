@@ -53,7 +53,6 @@ namespace CoffeeShop.View.DialogCheckList
 
         #region Events
         public event EventHandler SaveEvent;
-        public event EventHandler CancleEvent;
         #endregion
 
         /// <summary>

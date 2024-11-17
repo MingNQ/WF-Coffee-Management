@@ -11,13 +11,19 @@ namespace CoffeeShop.View.DialogCheckList
 {
     public interface IEditCategoryView
     {
+        #region Fields - Properties
+        List<IngredientModel> SelectedIngredients { get; }
         string TittleHeader { get; set; }
+        #endregion
+
+        #region Methods
         void ShowDialog();
         void Hide();
-
         void SetItemListBindingSource(BindingSource itemList);
-        List<IngredientModel> SelectedIngredients { get; }
+        #endregion
+
+        #region Events
         event EventHandler SaveEvent;
-        event EventHandler CancleEvent;
+        #endregion
     }
 }

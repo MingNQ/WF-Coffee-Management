@@ -27,11 +27,6 @@ namespace CoffeeShop.View
         /// <summary>
         /// 
         /// </summary>
-        private string itemID;
-
-        /// <summary>
-        /// 
-        /// </summary>
         private bool isSuccessful;
 
         /// <summary>

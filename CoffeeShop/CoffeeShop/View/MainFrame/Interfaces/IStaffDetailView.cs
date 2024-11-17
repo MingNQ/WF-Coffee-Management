@@ -9,24 +9,25 @@ namespace CoffeeShop.View.MainFrame.Interfaces
 {
     public interface IStaffDetailView
     {
-        // Properties
+        #region Fields - Properties
         StaffInformationControl StaffInformationControl { get; }
         string StaffId { get; set; }
-        string StaffName {  get; set; }
-        string PhoneNumber {  get; set; }
-        string DateOfBirth {  get; set; }
-        string Email {  get; set; }
-        string StaffRole {  get; set; }
-        bool Male {  get; set; }
-        bool Female {  get; set; }
-        bool Other {  get; set; }
-        bool IsEdit {  get; set; }
-        bool IsSuccesful {  get; set; }
+        string StaffName { get; set; }
+        string PhoneNumber { get; set; }
+        string DateOfBirth { get; set; }
+        string Email { get; set; }
+        string StaffRole { get; set; }
+        bool Male { get; set; }
+        bool Female { get; set; }
+        bool Other { get; set; }
+        bool IsEdit { get; set; }
+        bool IsSuccesful { get; set; }
         bool IsOpen { get; }
         bool HasAvatar { get; set; }
         bool IsChangePass { get; set; }
-      
-        //Event 
+        #endregion
+
+        #region Events
         event EventHandler ImportEvent;
         event EventHandler EditEvent;
         event EventHandler SaveEvent;
@@ -34,9 +35,11 @@ namespace CoffeeShop.View.MainFrame.Interfaces
         event EventHandler ChangePasswordEvent;
         event EventHandler HideMessageEvent;
         event EventHandler ShowPasswordEvent;
+        #endregion
 
-        //Method 
+        #region Methods
         void Show();
         void InitializeControl();
+        #endregion
     }
 }
