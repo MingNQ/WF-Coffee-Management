@@ -9,6 +9,7 @@ namespace CoffeeShop.View.MainFrame
 {
 	public interface IIngredientView
 	{
+        #region Fields - Properties
         string IngredientID { get; set; }
         string IngredientName { get; set; }
         string SearchValue { get; set;}
@@ -22,12 +23,7 @@ namespace CoffeeShop.View.MainFrame
 		/// 
 		/// </summary>
 		bool IsOpen { get; }
-
-		/// <summary>
-		/// Show Form
-		/// </summary>
-		void Show();
-        void SetLIngredientListBindingSource(BindingSource ingredientList);
+        #endregion
 
         #region Events
         event EventHandler ShowEditDialog;
@@ -36,7 +32,16 @@ namespace CoffeeShop.View.MainFrame
         event EventHandler EditEvent;
         event EventHandler DeleteEvent;
 
- 
+
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// Show Form
+        /// </summary>
+        void Show();
+        void SetLIngredientListBindingSource(BindingSource ingredientList);
+        void RoleAccess();
         #endregion
     }
 }

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CoffeeShop.View
 {
-	public partial class DashboardView : Form, IDashboardView
+    public partial class DashboardView : Form, IDashboardView
 	{
 		#region Fields
 
@@ -19,27 +19,66 @@ namespace CoffeeShop.View
 		/// </summary>
 		private static DashboardView instance;
 
-		#endregion
+        #endregion
+
+        #region Properties
+		/// <summary>
+		/// Total Staff
+		/// </summary>
+        public int TotalStaff 
+		{ 
+			get { return Convert.ToInt32(lbTotalStaff.Text); }
+			set { lbTotalStaff.Text = value.ToString(); }
+		}
 
 		/// <summary>
-		/// Constructor
+		/// Total Customer
 		/// </summary>
-		public DashboardView()
+        public int TotalCustomer 
+		{
+            get { return Convert.ToInt32(lbTotalCustomer.Text); }
+            set { lbTotalCustomer.Text = value.ToString(); }
+        }
+
+		/// <summary>
+		/// Today's Income
+		/// </summary>
+        public float Income 
+		{
+            get { return float.Parse(lbIncome.Text); }
+            set { lbIncome.Text = value.ToString("N0") + "VNĐ"; }
+        }
+
+		/// <summary>
+		/// Total Income
+		/// </summary>
+        public float TotalIncome 
+		{
+            get { return float.Parse(lbTotalIncome.Text); }
+            set { lbTotalIncome.Text = value.ToString("N0") + "VNĐ"; }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public DashboardView()
 		{
 			InitializeComponent();
 		}
 
-		#region private fields
+        #region private fields
 
-		#endregion
+        #endregion
 
-		#region public fields
-		/// <summary>
-		/// Get Instance for Dashboard
-		/// </summary>
-		/// <param name="parentContainer">Parent Container</param>
-		/// <returns>Instance</returns>
-		public static DashboardView GetInstance(Form parentContainer)
+        #region public fields
+        /// <summary>
+        /// Get Instance for Dashboard
+        /// </summary>
+        /// <param name="parentContainer">Parent Container</param>
+        /// <returns>Instance</returns>
+        public static DashboardView GetInstance(Form parentContainer)
 		{
 			if (instance == null || instance.IsDisposed)
 			{
@@ -54,7 +93,7 @@ namespace CoffeeShop.View
 				instance.BringToFront();
 			}
 
-			return instance;
+            return instance;
 		}
 		#endregion
 	}

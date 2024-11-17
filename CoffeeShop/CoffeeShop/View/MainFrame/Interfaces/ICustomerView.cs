@@ -9,7 +9,7 @@ namespace CoffeeShop.View.MainFrame
 {
 	public interface ICustomerView
 	{
-        // Properties
+        #region Fields - Properties
         string CustomerID { get; set; }
         string CustomerName { get; set; }        
         string PhoneNumber { get; set; }
@@ -26,12 +26,9 @@ namespace CoffeeShop.View.MainFrame
         bool IsSuccessful { get; set; }
 
         bool IsOpen { get; }
+        #endregion
 
-        // Updating...
-        void Show();
-
-        void SetCustomerListBindingSource(BindingSource customerList);
-
+        #region Events
         event EventHandler SearchEvent;
 		event EventHandler AddNewEvent;
 		event EventHandler EditEvent;
@@ -39,5 +36,11 @@ namespace CoffeeShop.View.MainFrame
 		event EventHandler SaveEvent;
 		event EventHandler ClearEvent;
 		event EventHandler BackToListEvent;
-	}
+        #endregion
+
+        #region Methods
+        void ShowPage();
+        void SetCustomerListBindingSource(BindingSource customerList);
+        #endregion
+    }
 }

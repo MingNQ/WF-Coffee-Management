@@ -1,4 +1,5 @@
 ﻿using CoffeeShop.Model.Common;
+using CoffeeShop.Utilities;
 using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
@@ -243,7 +244,6 @@ namespace CoffeeShop.View
         /// </summary>
         private void AssociateAndRaiseViewEvents()
 		{
-
             // Search
             btnSearch.Click += delegate
             {
@@ -328,7 +328,7 @@ namespace CoffeeShop.View
 
             dgvCustomer.CellDoubleClick += (s, e) =>
             {
-                if (e.RowIndex >= 0)
+                if (e.RowIndex >= 0 && Generate.StaffRole == AppConst.ADMIN_ROLE)
                 {
                     EditEvent?.Invoke(this, EventArgs.Empty);
                     tabCustomer.TabPages.Remove(tabPageCustomerList);
@@ -349,6 +349,34 @@ namespace CoffeeShop.View
             cbCoupon.Items.Add("30");
             cbCoupon.Items.Add("40");
             cbCoupon.Items.Add("50");           
+        }
+
+        /// <summary>
+        /// Reset 
+        /// </summary>
+        private void ResetControls()
+        {
+            btnEdit.Enabled = false;
+            btnDelete.Enabled = false;
+        }
+
+        /// <summary>
+        /// Role Access
+        /// </summary>
+        private void RoleAccess()
+        {
+            if (Generate.StaffRole != AppConst.ADMIN_ROLE)
+            {
+                btnAdd.Visible = false;
+                btnEdit.Visible = false;
+                btnDelete.Visible = false;
+            }
+            else
+            {
+                btnAdd.Visible = true;
+                btnEdit.Visible = true;
+                btnDelete.Visible = true;
+            }
         }
 
         #endregion
@@ -385,8 +413,26 @@ namespace CoffeeShop.View
         {
             this.dgvCustomer.DataSource = customerList;
         }
+
+        /// <summary>
+        /// Show Form
+        /// </summary>
+        public void ShowPage()
+        {
+            if (!tabCustomer.TabPages.Contains(tabPageCustomerList))
+            {
+                tabCustomer.TabPages.Clear();
+                tabCustomer.TabPages.Add(tabPageCustomerList);
+                BackToListEvent?.Invoke(this, EventArgs.Empty);
+                ResetControls();
+            }
+
+            // Check Role
+            RoleAccess();
+
+            // Show
+            this.Show();
+        }
         #endregion
-
     }
-
 }

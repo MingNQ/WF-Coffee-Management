@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CoffeeShop.Utilities;
 
 namespace CoffeeShop.View.MainFrame
 {
@@ -187,7 +188,7 @@ namespace CoffeeShop.View.MainFrame
 
             dgvIngredient.CellDoubleClick += (s, e) =>
             {
-                if (e.RowIndex >= 0)
+                if (e.RowIndex >= 0 && Generate.StaffRole == AppConst.ADMIN_ROLE)
                 {
                     EditEvent?.Invoke(this, EventArgs.Empty);
                     ShowEditDialog?.Invoke(this, EventArgs.Empty);
@@ -231,6 +232,24 @@ namespace CoffeeShop.View.MainFrame
             this.dgvIngredient.DataSource = ingredientList;
         }
 
+        /// <summary>
+        /// Role Access
+        /// </summary>
+        public void RoleAccess()
+        {
+            if (Generate.StaffRole != AppConst.ADMIN_ROLE)
+            {
+                btnAdd.Visible = false;
+                btnEdit.Visible = false;
+                btnDelete.Visible = false;
+            }
+            else
+            {
+                btnAdd.Visible = true;
+                btnEdit.Visible = true;
+                btnDelete.Visible = true;
+            }
+        }
         #endregion
     }
 }

@@ -83,10 +83,13 @@ namespace CoffeeShop.Presenter
                 this.categoryView.SaveEvent += SaveItem;
                 this.categoryView.CancelEvent += CancelAction;
                 this.categoryView.ShowIngredientCheckList += ShowIngredientCheckList;
+
+                //Set items bindind source
+                this.categoryView.SetItemListBindingSource(itemsBindingSource);
             }
 
-            //Set items bindind source
-            this.categoryView.SetItemListBindingSource(itemsBindingSource);
+            // Check Role
+            this.categoryView.RoleAccess();
             // Show form
             this.categoryView.ShowPage();
         }
@@ -277,7 +280,6 @@ namespace CoffeeShop.Presenter
         {
             try
             {
-                //var ingredientIDs = categoryView.GetSelectedIngredientIDs();
                 var item = (ItemModel)itemsBindingSource.Current;
                 repository.DeleteItemIngredients(item.ItemID);
                 repository.Delete(item.ItemID);

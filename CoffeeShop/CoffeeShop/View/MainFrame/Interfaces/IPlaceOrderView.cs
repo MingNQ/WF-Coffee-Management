@@ -106,7 +106,7 @@ namespace CoffeeShop.View.MainFrame
         /// <summary>
         /// Show Form
         /// </summary>
-        void Show();
+        void ShowPage();
 
         /// <summary>
         /// Update Table View
@@ -141,6 +141,11 @@ namespace CoffeeShop.View.MainFrame
         /// 
         /// </summary>
         void CalculateGrandTotal(List<OrderDetailModel> orderDetails);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        void DisableControl();
         #endregion
     }
 }

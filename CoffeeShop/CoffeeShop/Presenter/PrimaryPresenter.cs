@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CoffeeShop.Presenter
@@ -53,7 +54,6 @@ namespace CoffeeShop.Presenter
             this.mainView.LogoutEvent += LogoutEvent;
         }
 
-
         #region private fields
 
         /// <summary>
@@ -71,11 +71,12 @@ namespace CoffeeShop.Presenter
                 // Get Username and Role
                 Generate.StaffID = signInView.Account.Staff.StaffID;
                 Generate.StaffName = signInView.Account.Staff.StaffName.Trim();
+                Generate.StaffRole = signInView.Account.Staff.Role;
 
+                // Display
                 mainView.Username = "Hello, " + Generate.StaffName.Split(' ').LastOrDefault() + "!";
-                mainView.Role = signInView.Account.Staff.Role;
+                mainView.Role = Generate.StaffRole;
                 mainView.StaffID = Generate.StaffID;
-
             }
         }
 

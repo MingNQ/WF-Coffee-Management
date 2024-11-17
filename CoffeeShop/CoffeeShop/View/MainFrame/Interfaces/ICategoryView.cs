@@ -48,6 +48,7 @@ namespace CoffeeShop.View.MainFrame
         void LoadCategories(List<CategoryModel> categories);
         void UpdateIngredientList(List<IngredientModel> ingredients);
         List<string> GetSelectedIngredientIDs();
+        void RoleAccess();
         #endregion
     }
 }

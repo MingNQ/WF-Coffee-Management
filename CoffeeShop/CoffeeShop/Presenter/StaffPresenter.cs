@@ -68,7 +68,7 @@ namespace CoffeeShop.Presenter
             }
 
             // Display Staff view
-            this.staffView.Show();
+            this.staffView.ShowPage();
         }
 
         #region private fields

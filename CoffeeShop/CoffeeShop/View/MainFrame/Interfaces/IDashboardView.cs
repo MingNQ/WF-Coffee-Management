@@ -8,10 +8,32 @@ namespace CoffeeShop.View
 {
 	public interface IDashboardView
 	{
-		// Updating...
-		void Show();
+        #region Fields - Properties
+        /// <summary>
+        /// Total Staff
+        /// </summary>
+        int TotalStaff {  get; set; }
 
-		#region Event
-		#endregion
-	}
+        /// <summary>
+        /// Total Customer
+        /// </summary>
+        int TotalCustomer { get; set; }
+
+        /// <summary>
+        /// Today's Income
+        /// </summary>
+        float Income { get; set; }
+
+        /// <summary>
+        /// Total Income
+        /// </summary>
+        float TotalIncome {  get; set; }
+        #endregion
+
+        #region Event
+        #endregion
+
+        // Updating...
+        void Show();
+    }
 }

@@ -69,6 +69,8 @@ namespace CoffeeShop.Presenter
                 LoadAllIngredient();
             }
 
+            // Check Role
+            this.ingredientView.RoleAccess();
             // Show form
             this.ingredientView.Show();
         }
