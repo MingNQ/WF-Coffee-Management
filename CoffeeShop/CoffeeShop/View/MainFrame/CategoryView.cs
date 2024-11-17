@@ -1,4 +1,5 @@
 ﻿using CoffeeShop.Model;
+using CoffeeShop.Utilities;
 using CoffeeShop.View.DialogCheckList;
 using System;
 using System.Collections.Generic;
@@ -132,7 +133,7 @@ namespace CoffeeShop.View.MainFrame
         /// <summary>
         /// 
         /// </summary>
-        public bool IsOpen { get => Application.OpenForms.OfType<StaffView>().Any(); }
+        public bool IsOpen { get => Application.OpenForms.OfType<CategoryView>().Any(); }
 
         #endregion
 
@@ -157,12 +158,13 @@ namespace CoffeeShop.View.MainFrame
             InitializeComponent();
             AssociateAndRaiseEvents();
             InitializeDataGridView();
+            RoleAccess();
         }
 
         #region private fields
 
         /// <summary>
-        /// 
+        /// Initialize Data Grid View Looks
         /// </summary>
         private void InitializeDataGridView()
         {
@@ -210,7 +212,7 @@ namespace CoffeeShop.View.MainFrame
         }
 
         /// <summary>
-        /// 
+        /// Associate And Raise Events
         /// </summary>
         private void AssociateAndRaiseEvents()
         {
@@ -349,10 +351,10 @@ namespace CoffeeShop.View.MainFrame
                  btnEdit.Enabled = true;
             };
 
-            // Delete Ingredient When DoubleClick
+            // Edit Category When DoubleClick
             dgvItem.CellDoubleClick += (s, e) =>
             {
-                if (e.RowIndex >= 0)
+                if (e.RowIndex >= 0 && Generate.StaffRole == AppConst.ADMIN_ROLE)
                 {
                     EditEvent?.Invoke(this, EventArgs.Empty);
                     tabControlCategory.TabPages.Remove(tabCategory);
@@ -389,7 +391,7 @@ namespace CoffeeShop.View.MainFrame
         }
 
         /// <summary>
-        /// 
+        /// Cell Format
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -409,13 +411,26 @@ namespace CoffeeShop.View.MainFrame
         }
 
         /// <summary>
-        /// 
+        /// Show Control
         /// </summary>
         /// <param name="isEdit"></param>
         private void ShowControl(bool isEdit)
         {
             txtCategory.Visible = isEdit;
             cbCategory.Visible = !isEdit;
+        }
+
+        /// <summary>
+        /// Role Access
+        /// </summary>
+        private void RoleAccess()
+        {
+            if (Generate.StaffRole != AppConst.ADMIN_ROLE)
+            {
+                btnAdd.Visible = false;
+                btnEdit.Visible = false;
+                btnDelete.Visible = false;
+            }
         }
 
         #endregion

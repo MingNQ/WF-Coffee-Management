@@ -1,4 +1,5 @@
-﻿using CoffeeShop.View.MainFrame.Interfaces;
+﻿using CoffeeShop.Utilities;
+using CoffeeShop.View.MainFrame.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -128,7 +129,7 @@ namespace CoffeeShop.View.MainFrame
         }
 
         /// <summary>
-        /// 
+        /// Associate And Raise New Events
         /// </summary>
         private void AssociateAndRaiseNewEvents()
         {
@@ -153,7 +154,6 @@ namespace CoffeeShop.View.MainFrame
 
             // Delete
             btnDelete.Click += delegate { DeleteEvent?.Invoke(this, EventArgs.Empty); };
-
         }
 
         #endregion

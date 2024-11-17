@@ -1,4 +1,5 @@
-﻿using CoffeeShop.View.DialogForm;
+﻿using CoffeeShop.Utilities;
+using CoffeeShop.View.DialogForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -65,23 +66,13 @@ namespace CoffeeShop.View
         public event EventHandler LogoutEvent;
         #endregion
 
-
         /// <summary>
         /// Constructor for Main View
         /// </summary>
         public MainView()
         {
             InitializeComponent();
-
-            // Add event to button
-            btnDashboard.Click += delegate { ShowDashboardView?.Invoke(this, EventArgs.Empty); };
-            btnPlaceOrder.Click += delegate { ShowPlaceOrderView?.Invoke(this, EventArgs.Empty); };
-            btnCategory.Click += delegate { ShowCategoryView?.Invoke(this, EventArgs.Empty); };
-            btnCustomer.Click += delegate { ShowCustomerView?.Invoke(this, EventArgs.Empty); };
-            btnStaff.Click += delegate { ShowStaffView?.Invoke(this, EventArgs.Empty); };
-            btnIngredient.Click += delegate { ShowIngredientView?.Invoke(this, EventArgs.Empty); };
-            lbViewProfile.Click += delegate { ShowStaffDetailInformation?.Invoke(this, EventArgs.Empty); };
-            btnAccount.Click += delegate { ShowAccountView?.Invoke(this, EventArgs.Empty); };
+            RaiseEvents();
             btnLogout.Click += delegate { LogoutEvent?.Invoke(this, EventArgs.Empty); };
             btnExit.Click += delegate { LogoutEvent?.Invoke(this, EventArgs.Empty); };
 
@@ -93,7 +84,24 @@ namespace CoffeeShop.View
         #region private fields
 
         /// <summary>
-        /// 
+        /// Raise Event
+        /// </summary>
+        private void RaiseEvents()
+        {
+            // Add event to button
+            btnDashboard.Click += delegate { ShowDashboardView?.Invoke(this, EventArgs.Empty); };
+            btnPlaceOrder.Click += delegate { ShowPlaceOrderView?.Invoke(this, EventArgs.Empty); };
+            btnCategory.Click += delegate { ShowCategoryView?.Invoke(this, EventArgs.Empty); };
+            btnCustomer.Click += delegate { ShowCustomerView?.Invoke(this, EventArgs.Empty); };
+            btnStaff.Click += delegate { ShowStaffView?.Invoke(this, EventArgs.Empty); };
+            btnIngredient.Click += delegate { ShowIngredientView?.Invoke(this, EventArgs.Empty); };
+            lbViewProfile.Click += delegate { ShowStaffDetailInformation?.Invoke(this, EventArgs.Empty); };
+            btnAccount.Click += delegate { ShowAccountView?.Invoke(this, EventArgs.Empty); };
+            btnAccount.Click += DropDownClick;
+        }
+
+        /// <summary>
+        /// Show Menu
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -123,16 +131,25 @@ namespace CoffeeShop.View
         }
 
         /// <summary>
-        /// 
+        /// Click to System Tab 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void DropDownClick(object sender, EventArgs e)
         {
+            // Role Access
+            if (Generate.StaffRole != AppConst.ADMIN_ROLE)
+            {
+                DialogMessageView.ShowMessage("warning", "You don't have permission to access this site!");
+                return;
+            }
             timeDropDown.Start();
             timeDropDown.Interval = 10;
         }
 
+        #endregion
+
+        #region public fields
         #endregion
     }
 }

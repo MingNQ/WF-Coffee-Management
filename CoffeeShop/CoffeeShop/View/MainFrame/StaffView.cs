@@ -207,6 +207,7 @@ namespace CoffeeShop.View
             InitializeComboBoxRole();
             AssociateAndRaiseEvents();
             tabStaff.TabPages.Remove(tabPageStaffDetail);
+            RoleAccess();
         }
 
         #region private fields
@@ -396,7 +397,7 @@ namespace CoffeeShop.View
 
             dgvStaff.CellDoubleClick += (s, e) =>
             {
-                if (e.RowIndex >= 0)
+                if (e.RowIndex >= 0 && Generate.StaffRole == AppConst.ADMIN_ROLE)
                 {
                     EditEvent?.Invoke(this, EventArgs.Empty);
                     tabStaff.TabPages.Remove(tabPageStaffList);
@@ -459,15 +460,28 @@ namespace CoffeeShop.View
             btnSave.Enabled = true;
         }
 
-		#endregion
+        /// <summary>
+        /// Role Access
+        /// </summary>
+        private void RoleAccess()
+        {
+            if (Generate.StaffRole != AppConst.ADMIN_ROLE)
+            {
+                btnAdd.Visible = false;
+                btnEdit.Visible = false;
+                btnDelete.Visible = false;
+            }
+        }
 
-		#region public fields
-		/// <summary>
-		/// Get Instance for Staff
-		/// </summary>
-		/// <param name="parentContainer">Parent Container</param>
-		/// <returns>Instance</returns>
-		public static StaffView GetInstance(Form parentContainer)
+        #endregion
+
+        #region public fields
+        /// <summary>
+        /// Get Instance for Staff
+        /// </summary>
+        /// <param name="parentContainer">Parent Container</param>
+        /// <returns>Instance</returns>
+        public static StaffView GetInstance(Form parentContainer)
         {
             if (instance == null || instance.IsDisposed)
             {

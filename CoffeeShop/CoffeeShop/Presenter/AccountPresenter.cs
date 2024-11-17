@@ -62,6 +62,7 @@ namespace CoffeeShop.Presenter
             this.view.Show();
         }
 
+        #region private fields
         /// <summary>
         /// Active Event
         /// </summary>
@@ -190,6 +191,7 @@ namespace CoffeeShop.Presenter
                 StaffName = a.Staff.StaffName
             });
         }
+        #endregion
     }
 
     /// <summary>

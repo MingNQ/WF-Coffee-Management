@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CoffeeShop._Repositories.InterfaceModel;
+using CoffeeShop.Utilities;
 
 namespace CoffeeShop.Presenter
 {
@@ -46,9 +47,11 @@ namespace CoffeeShop.Presenter
             this.mainView.ShowAccountView += ShowAccountView;
             this.mainView.ShowStaffDetailInformation += ShowStaffDetailView;
             this.mainView.Show();
+            InitializeView();
         }
 
         #region private fields
+
         /// <summary>
         /// Event Show Dashboard view
         /// </summary>
@@ -57,7 +60,8 @@ namespace CoffeeShop.Presenter
         private void ShowDashboardView(object sender, EventArgs e)
         {
             IDashboardView view = DashboardView.GetInstance((MainView)mainView);
-            new DashboardPresenter(view);
+            IDashboardRepository repository = new DashboardRepository(sqlConnectionString);
+            new DashboardPresenter(view, repository);
         }
 
         /// <summary>
@@ -86,7 +90,7 @@ namespace CoffeeShop.Presenter
             new CustomerPresenter(view, repository);
         }
 
-		    /// <summary>
+        /// <summary>
         /// Event Show Ingredient View
         /// </summary>
         /// <param name="sender"></param>
@@ -98,19 +102,19 @@ namespace CoffeeShop.Presenter
             new IngredientPresenter(view, repository);
         }
 
-		/// <summary>
-		/// Event Show Category View
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void ShowCategoryView(object sender, EventArgs e)
+        /// <summary>
+        /// Event Show Category View
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowCategoryView(object sender, EventArgs e)
 		{
 			ICategoryView view = CategoryView.GetInstance((MainView)mainView);
 			IEditCategoryView editCategoryView = new EditCategoryView();
 			ICategoryRepository repository = new CategoryRepository(sqlConnectionString);
 			IIngredientRepository ingredientRepository = new IngredientRepository(sqlConnectionString);
             new CategoryPresenter(view, repository, editCategoryView, ingredientRepository);
-		}
+        }
 
         /// <summary>
         /// Event Show Account View
@@ -121,7 +125,6 @@ namespace CoffeeShop.Presenter
         {
             IAccountView view = AccountView.GetInstance((MainView)mainView);
             IAccountRepository repository = new AccountRepository(sqlConnectionString);
-
             new AccountPresenter(view, repository);
         }
         /// <summary>
@@ -151,6 +154,19 @@ namespace CoffeeShop.Presenter
 
             new PlaceOrderPresenter(view, repository, category);
         }
+
+        /// <summary>
+        /// Initialize View
+        /// </summary>
+        private void InitializeView()
+        {
+            IDashboardView view = DashboardView.GetInstance((MainView)mainView);
+            IDashboardRepository repository = new DashboardRepository(sqlConnectionString);
+            new DashboardPresenter(view, repository);
+        }
+        #endregion
+
+        #region public fields
         #endregion
     }
 }

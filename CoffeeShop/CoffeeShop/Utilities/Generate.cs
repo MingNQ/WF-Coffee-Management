@@ -11,6 +11,7 @@ namespace CoffeeShop.Utilities
     {
         public static string StaffID = "";
         public static string StaffName = "";
+        public static string StaffRole = "";
 
         /// <summary>
         /// Generate ID

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.lbViewProfile = new System.Windows.Forms.Label();
             this.pnlSystemDrop = new System.Windows.Forms.Panel();
             this.btnSchedule = new System.Windows.Forms.Button();
             this.btnAccount = new System.Windows.Forms.Button();
@@ -50,7 +51,6 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnExit = new Guna.UI2.WinForms.Guna2ControlBox();
             this.timeDropDown = new System.Windows.Forms.Timer(this.components);
-            this.lbViewProfile = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel2.SuspendLayout();
             this.pnlSystemDrop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
@@ -85,6 +85,17 @@
             this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(195, 720);
             this.guna2CustomGradientPanel2.TabIndex = 9;
             // 
+            // lbViewProfile
+            // 
+            this.lbViewProfile.AutoSize = true;
+            this.lbViewProfile.BackColor = System.Drawing.Color.Transparent;
+            this.lbViewProfile.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbViewProfile.Location = new System.Drawing.Point(79, 81);
+            this.lbViewProfile.Name = "lbViewProfile";
+            this.lbViewProfile.Size = new System.Drawing.Size(75, 16);
+            this.lbViewProfile.TabIndex = 14;
+            this.lbViewProfile.Text = "View Profile";
+            // 
             // pnlSystemDrop
             // 
             this.pnlSystemDrop.BackColor = System.Drawing.Color.Transparent;
@@ -111,7 +122,7 @@
             this.btnSchedule.Name = "btnSchedule";
             this.btnSchedule.Size = new System.Drawing.Size(192, 37);
             this.btnSchedule.TabIndex = 15;
-            this.btnSchedule.Text = "button2";
+            this.btnSchedule.Text = "Updating...";
             this.btnSchedule.UseVisualStyleBackColor = false;
             // 
             // btnAccount
@@ -402,17 +413,6 @@
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(38, 25);
             this.btnExit.TabIndex = 0;
-            // 
-            // lbViewProfile
-            // 
-            this.lbViewProfile.AutoSize = true;
-            this.lbViewProfile.BackColor = System.Drawing.Color.Transparent;
-            this.lbViewProfile.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbViewProfile.Location = new System.Drawing.Point(79, 81);
-            this.lbViewProfile.Name = "lbViewProfile";
-            this.lbViewProfile.Size = new System.Drawing.Size(75, 16);
-            this.lbViewProfile.TabIndex = 14;
-            this.lbViewProfile.Text = "View Profile";
             // 
             // MainView
             // 
