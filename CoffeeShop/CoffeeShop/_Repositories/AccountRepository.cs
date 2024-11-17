@@ -158,6 +158,52 @@ namespace CoffeeShop._Repositories
 
             return accountList;
         }
+        /// <summary>
+        /// Get Password By ID 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public string GetPasswordByID(string id)
+        {
+            string password = null;
+            using(var connection = new SqlConnection(connectionString))
+            using(var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "select Password " +
+                                      "from Account " +
+                                      "where StaffID = @id";
+                command.Parameters.Add("@id",SqlDbType.NVarChar).Value = id;
+                using (var reader = command.ExecuteReader())
+                {
+                    if(reader.Read())
+                    {
+                        password = reader[0].ToString();
+                    }    
+                }
+            }    
+            return password;
+        }
+        /// <summary>
+        /// Change Password
+        /// </summary>
+        /// <param name="account"></param>
+        public void ChangePasswordByID(Account account)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"update Account " +
+                                       "set Password = @password " +
+                                       "where StaffID = @id";
+                command.Parameters.Add("@password",SqlDbType.NVarChar).Value = account.Password;
+                command.Parameters.Add("@id",SqlDbType.NVarChar).Value = account.StaffID;
+                command.ExecuteNonQuery();
+            }
+        }
         #endregion
     }
 }

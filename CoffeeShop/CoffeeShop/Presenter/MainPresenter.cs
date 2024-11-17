@@ -133,8 +133,9 @@ namespace CoffeeShop.Presenter
         {
             IStaffDetailView view = StaffDetailView.GetInstance((MainView)mainView);
             IStaffRepository repository = new StaffRepository(sqlConnectionString);
+            IAccountRepository accountRepository = new AccountRepository(sqlConnectionString);
             view.StaffId = mainView.StaffID;
-            new StaffDetailPresenter(view, repository);
+            new StaffDetailPresenter(view, repository,accountRepository);
         }
 
         /// <summary>

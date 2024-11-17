@@ -31,10 +31,18 @@ namespace CoffeeShop.View.MainFrame
         /// </summary>
         private bool isSuccessful;
 
+       
         /// <summary>
         /// StaffID
         /// </summary>
         private string staffID;
+
+        /// <summary>
+        /// Check if ChangePassword
+        /// </summary>
+        private bool isChangePass;
+
+        
 
         #endregion
 
@@ -136,6 +144,16 @@ namespace CoffeeShop.View.MainFrame
             get { return staffInformationControl; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsChangePass 
+        {
+            get { return isChangePass; }
+            set { isChangePass = value; }
+        }
+        
+               
         #endregion
         /// <summary>
         /// Constructor
@@ -157,7 +175,7 @@ namespace CoffeeShop.View.MainFrame
         /// <summary>
         /// Initialize unit in Control
         /// </summary>
-        private void InitializeControl()
+        public void InitializeControl()
         {
             staffInformationControl.btnEdit.Enabled = true;
             staffInformationControl.btnSave.Enabled = false;
@@ -169,6 +187,11 @@ namespace CoffeeShop.View.MainFrame
             staffInformationControl.rdoMale.Enabled = false;
             staffInformationControl.rdoOther.Enabled = false;
             staffInformationControl.dtpDob.Enabled = false;
+            staffInformationControl.lbChangePassword.Enabled = false;
+            staffInformationControl.txtConfirmPassword.Text = "";
+            staffInformationControl.txtOldPassword.Text = "";
+            staffInformationControl.txtNewPassword.Text = "";
+            staffInformationControl.panelChangePassword.Visible = false;
         }
         /// <summary>
         /// Initialize unit when click Edit
@@ -186,6 +209,7 @@ namespace CoffeeShop.View.MainFrame
             staffInformationControl.rdoMale.Enabled = true;
             staffInformationControl.rdoOther.Enabled = true;            
             staffInformationControl.dtpDob.Enabled = true;
+            staffInformationControl.lbChangePassword.Enabled = true;
         }
 
         /// <summary>
@@ -200,13 +224,12 @@ namespace CoffeeShop.View.MainFrame
             };
             staffInformationControl.btnSave.Click += delegate
             {
-                SaveEvent?.Invoke(this, EventArgs.Empty);
-                InitializeControl();
+                SaveEvent?.Invoke(this, EventArgs.Empty);              
             };
             staffInformationControl.btnCancel.Click += delegate
             {
                 CancelEvent?.Invoke(this, EventArgs.Empty);
-                InitializeControl();
+                InitializeControl();                
             };
             staffInformationControl.btnImport.Click += delegate
             {
@@ -215,11 +238,18 @@ namespace CoffeeShop.View.MainFrame
             staffInformationControl.lbChangePassword.Click += delegate
             {
                 ChangePasswordEvent?.Invoke(this, EventArgs.Empty);
+                staffInformationControl.panelChangePassword.Visible = true;
+            };
+            staffInformationControl.txtOldPassword.GotFocus += delegate 
+            {
+                HideMessageEvent?.Invoke(this, EventArgs.Empty);
+            };
+            staffInformationControl.checkBoxShowPassword.CheckedChanged += delegate
+            {
+                ShowPasswordEvent?.Invoke(this, EventArgs.Empty);
             };
         }
-        /// <summary>
-        /// Initialize Combobox Role
-        /// </summary>
+        
         
         #endregion
 
@@ -256,6 +286,8 @@ namespace CoffeeShop.View.MainFrame
         public event EventHandler SaveEvent;
         public event EventHandler CancelEvent;
         public event EventHandler ChangePasswordEvent;
+        public event EventHandler HideMessageEvent;
+        public event EventHandler ShowPasswordEvent;
         #endregion
     }
 }
