@@ -3,9 +3,11 @@ using CoffeeShop.Model;
 using CoffeeShop.Model.Common;
 using CoffeeShop.Model.InterfaceModel;
 using CoffeeShop.Presenter.Common;
+using CoffeeShop.View.DialogForm;
 using CoffeeShop.View.MainFrame.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -17,7 +19,7 @@ namespace CoffeeShop.Presenter
 {
     internal class StaffDetailPresenter
     {
-        #region Fields
+        #region Fields       
         /// <summary>
         /// Interface StaffDetailView
         /// </summary>
@@ -107,28 +109,43 @@ namespace CoffeeShop.Presenter
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SaveEvent(object sender, EventArgs e)
-        {
+        {            
             if(staffDetailView.IsChangePass == false)
             {
-                StaffModel updatedStaff = new StaffModel
+                try
                 {
-                    StaffID = staffDetailView.StaffId,
-                    StaffName = staffDetailView.StaffInformationControl.txtStaffName.Text,
-                    DateOfBirth = staffDetailView.StaffInformationControl.dtpDob.Value,
-                    PhoneNumber = staffDetailView.StaffInformationControl.txtPhone.Text,
-                    Email = staffDetailView.StaffInformationControl.txtEmail.Text,
-                    Role = staffDetailView.StaffInformationControl.txtRole.Text,
-                    Gender = staffDetailView.StaffInformationControl.rdoFemale.Checked ? Model.Common.Gender.Female :
-                         staffDetailView.StaffInformationControl.rdoMale.Checked ? Model.Common.Gender.Male :
-                         Model.Common.Gender.Other
-                };
-                new Common.ModelValidation().Validate(updatedStaff);
-                if (staffDetailView.IsEdit)
-                {
-                    repository.Edit(updatedStaff);
+                    if (staffDetailView.IsChangePass == false)
+                    {
+                        StaffModel updatedStaff = new StaffModel
+                        {
+                            StaffID = staffDetailView.StaffId,
+                            StaffName = staffDetailView.StaffInformationControl.txtStaffName.Text,
+                            DateOfBirth = staffDetailView.StaffInformationControl.dtpDob.Value,
+                            PhoneNumber = staffDetailView.StaffInformationControl.txtPhone.Text,
+                            Email = staffDetailView.StaffInformationControl.txtEmail.Text,
+                            Role = staffDetailView.StaffInformationControl.txtRole.Text,
+                            Gender = staffDetailView.StaffInformationControl.rdoFemale.Checked ? Model.Common.Gender.Female :
+                                      staffDetailView.StaffInformationControl.rdoMale.Checked ? Model.Common.Gender.Male :
+                                      Model.Common.Gender.Other
+                        };                        
+                        new Common.ModelValidation().Validate(updatedStaff);
+                        if (staffDetailView.IsEdit)
+                        {                            
+                            repository.Edit(updatedStaff);
+                        }                       
+                        staffDetailView.InitializeControl();
+                        LoadStaffDetails();                        
+                        DialogMessageView.ShowMessage("information", "Updated Successfully");
+                    }
                 }
-                staffDetailView.InitializeControl();
-                LoadStaffDetails();
+                catch (ValidationException ex) // Lỗi validate
+                {
+                    DialogMessageView.ShowMessage("error", $"Validation Error: {ex.Message}");
+                }
+                catch (Exception ex) // Lỗi hệ thống chung
+                {
+                    DialogMessageView.ShowMessage("error", $"An error occurred: {ex.Message}");
+                }
             }
             else
             {               
@@ -152,7 +169,7 @@ namespace CoffeeShop.Presenter
                         {
                             if (accountRepository.GetPasswordByID(staffDetailView.StaffId) != EncryptPassword.HashPassword(staffDetailView.StaffInformationControl.txtOldPassword.Text))
                             {
-                                ErrorMessage("Input Wrong Password");
+                                ErrorMessage("Input Wrong Old Password");
                             }
                             else
                             {
@@ -162,32 +179,44 @@ namespace CoffeeShop.Presenter
                                 }
                                 else
                                 {
-                                    StaffModel updatedStaff = new StaffModel
+                                    try
                                     {
-                                        StaffID = staffDetailView.StaffId,
-                                        StaffName = staffDetailView.StaffInformationControl.txtStaffName.Text,
-                                        DateOfBirth = staffDetailView.StaffInformationControl.dtpDob.Value,
-                                        PhoneNumber = staffDetailView.StaffInformationControl.txtPhone.Text,
-                                        Email = staffDetailView.StaffInformationControl.txtEmail.Text,
-                                        Role = staffDetailView.StaffInformationControl.txtRole.Text,
-                                        Gender = staffDetailView.StaffInformationControl.rdoFemale.Checked ? Model.Common.Gender.Female :
-                                                 staffDetailView.StaffInformationControl.rdoMale.Checked ? Model.Common.Gender.Male :
-                                                 Model.Common.Gender.Other
-                                    };
-                                    new Common.ModelValidation().Validate(updatedStaff);
-                                    Account updatedPassword = new Account
-                                    {
-                                       // Password = staffDetailView.StaffInformationControl.txtNewPassword.Text,
-                                        Password = EncryptPassword.HashPassword(staffDetailView.StaffInformationControl.txtNewPassword.Text),
-                                        StaffID = staffDetailView.StaffId
-                                    };
-                                    if (staffDetailView.IsEdit)
-                                    {
-                                        repository.Edit(updatedStaff);
-                                        accountRepository.ChangePasswordByID(updatedPassword);
-                                        staffDetailView.InitializeControl();
-                                        LoadStaffDetails();
+                                        StaffModel updatedStaff = new StaffModel
+                                        {
+                                            StaffID = staffDetailView.StaffId,
+                                            StaffName = staffDetailView.StaffInformationControl.txtStaffName.Text,
+                                            DateOfBirth = staffDetailView.StaffInformationControl.dtpDob.Value,
+                                            PhoneNumber = staffDetailView.StaffInformationControl.txtPhone.Text,
+                                            Email = staffDetailView.StaffInformationControl.txtEmail.Text,
+                                            Role = staffDetailView.StaffInformationControl.txtRole.Text,
+                                            Gender = staffDetailView.StaffInformationControl.rdoFemale.Checked ? Model.Common.Gender.Female :
+                                                     staffDetailView.StaffInformationControl.rdoMale.Checked ? Model.Common.Gender.Male :
+                                                     Model.Common.Gender.Other
+                                        };                                       
+                                        new Common.ModelValidation().Validate(updatedStaff);                                        
+                                        Account updatedPassword = new Account
+                                        {
+                                            Password = EncryptPassword.HashPassword(staffDetailView.StaffInformationControl.txtNewPassword.Text),
+                                            StaffID = staffDetailView.StaffId
+                                        };
+                                        if (staffDetailView.IsEdit)
+                                        {                                            
+                                            repository.Edit(updatedStaff);                                            
+                                            accountRepository.ChangePasswordByID(updatedPassword);                                            
+                                            staffDetailView.InitializeControl();
+                                            LoadStaffDetails();
+                                        }                                        
+                                        DialogMessageView.ShowMessage("information", "Updated Successfully");
                                     }
+                                    catch (ValidationException ex) // Xử lý lỗi validate
+                                    {
+                                        DialogMessageView.ShowMessage("error", $"Validation Error: {ex.Message}");
+                                    }                                    
+                                    catch (Exception ex) // Lỗi hệ thống chung
+                                    {
+                                        DialogMessageView.ShowMessage("error", $"An unexpected error occurred: {ex.Message}");
+                                    }
+
                                 }
                             }
                         }
@@ -195,6 +224,8 @@ namespace CoffeeShop.Presenter
                 }
             }
         }
+
+        
 
         /// <summary>
         /// Cancel Event
@@ -205,6 +236,8 @@ namespace CoffeeShop.Presenter
         {
             staffDetailView.IsEdit = false;
             staffDetailView.IsChangePass = false;
+            InitializeHideMessage();
+            staffDetailView.StaffInformationControl.checkBoxShowPassword.Checked = false;
             LoadStaffDetails();
         }
 
@@ -235,13 +268,7 @@ namespace CoffeeShop.Presenter
         /// <exception cref="NotImplementedException"></exception>
         private void HideMessageEvent(object sender, EventArgs e)
         {
-            this.staffDetailView.StaffInformationControl.lbErrorMessage.Text = "";
-            this.staffDetailView.StaffInformationControl.txtOldPassword.BorderColor = Color.FromArgb(213, 218, 223);
-            this.staffDetailView.StaffInformationControl.txtNewPassword.BorderColor = Color.FromArgb(213, 218, 223);
-            this.staffDetailView.StaffInformationControl.txtConfirmPassword.BorderColor = Color.FromArgb(213, 218, 223);
-            this.staffDetailView.StaffInformationControl.txtNewPassword.Text = "";
-            this.staffDetailView.StaffInformationControl.txtOldPassword.Text = "";
-            this.staffDetailView.StaffInformationControl.txtConfirmPassword.Text = "";
+            InitializeHideMessage();
         }
         /// <summary>
         /// Error Message when change password
@@ -254,6 +281,7 @@ namespace CoffeeShop.Presenter
             this.staffDetailView.StaffInformationControl.txtOldPassword.BorderColor= Color.Red;
             this.staffDetailView.StaffInformationControl.txtConfirmPassword.BorderColor= Color.Red;
         }
+       
         /// <summary>
         /// Show password when checkbox change 
         /// </summary>
@@ -270,10 +298,23 @@ namespace CoffeeShop.Presenter
             }
             else
             {
-                staffDetailView.StaffInformationControl.txtOldPassword.PasswordChar = '*';
-                staffDetailView.StaffInformationControl.txtNewPassword.PasswordChar = '*';
-                staffDetailView.StaffInformationControl.txtConfirmPassword.PasswordChar = '*';
+                staffDetailView.StaffInformationControl.txtOldPassword.PasswordChar = '●';
+                staffDetailView.StaffInformationControl.txtNewPassword.PasswordChar = '●';
+                staffDetailView.StaffInformationControl.txtConfirmPassword.PasswordChar = '●';
             }
+        }
+        /// <summary>
+        /// Initialize Hide Message 
+        /// </summary>
+        private void InitializeHideMessage()
+        {
+            this.staffDetailView.StaffInformationControl.lbErrorMessage.Text = "";
+            this.staffDetailView.StaffInformationControl.txtOldPassword.BorderColor = Color.FromArgb(213, 218, 223);
+            this.staffDetailView.StaffInformationControl.txtNewPassword.BorderColor = Color.FromArgb(213, 218, 223);
+            this.staffDetailView.StaffInformationControl.txtConfirmPassword.BorderColor = Color.FromArgb(213, 218, 223);
+            this.staffDetailView.StaffInformationControl.txtNewPassword.Text = "";
+            this.staffDetailView.StaffInformationControl.txtOldPassword.Text = "";
+            this.staffDetailView.StaffInformationControl.txtConfirmPassword.Text = "";
         }
         #endregion
 
