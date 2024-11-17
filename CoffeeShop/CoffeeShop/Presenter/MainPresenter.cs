@@ -1,13 +1,16 @@
 ﻿using CoffeeShop._Repositories;
 using CoffeeShop.Model.InterfaceModel;
 using CoffeeShop.View;
+using CoffeeShop.View.DialogCheckList;
 using CoffeeShop.View.MainFrame;
 using CoffeeShop.View.MainFrame.Interfaces;
+using CoffeeShop.View.DialogForm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CoffeeShop._Repositories.InterfaceModel;
 
 namespace CoffeeShop.Presenter
 {
@@ -35,6 +38,7 @@ namespace CoffeeShop.Presenter
             this.mainView = view;
             this.sqlConnectionString = sqlConnectionString;
             this.mainView.ShowDashboardView += ShowDashboardView;
+            this.mainView.ShowPlaceOrderView += ShowPlaceOrderView;
             this.mainView.ShowStaffView += ShowStaffView;
             this.mainView.ShowCustomerView += ShowCustomerView;
             this.mainView.ShowCategoryView += ShowCategoryView;
@@ -82,7 +86,7 @@ namespace CoffeeShop.Presenter
             new CustomerPresenter(view, repository);
         }
 
-        /// <summary>
+		    /// <summary>
         /// Event Show Ingredient View
         /// </summary>
         /// <param name="sender"></param>
@@ -90,19 +94,23 @@ namespace CoffeeShop.Presenter
         private void ShowIngredientView(object sender, EventArgs e)
         {
             IIngredientView view = IngredientView.GetInstance((MainView)mainView);
-            new IngredientPresenter(view);
+            IIngredientRepository repository = new IngredientRepository(sqlConnectionString);
+            new IngredientPresenter(view, repository);
         }
 
-        /// <summary>
-        /// Event Show Category View
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ShowCategoryView(object sender, EventArgs e)
-        {
-            ICategoryView view = CategoryView.GetInstance((MainView)mainView);
-            new CategoryPresenter(view);
-        }
+		/// <summary>
+		/// Event Show Category View
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void ShowCategoryView(object sender, EventArgs e)
+		{
+			ICategoryView view = CategoryView.GetInstance((MainView)mainView);
+			IEditCategoryView editCategoryView = new EditCategoryView();
+			ICategoryRepository repository = new CategoryRepository(sqlConnectionString);
+			IIngredientRepository ingredientRepository = new IngredientRepository(sqlConnectionString);
+            new CategoryPresenter(view, repository, editCategoryView, ingredientRepository);
+		}
 
         /// <summary>
         /// Event Show Account View
@@ -117,7 +125,7 @@ namespace CoffeeShop.Presenter
             new AccountPresenter(view, repository);
         }
         /// <summary>
-        ///  Evnet Show Staff Detail View
+        /// Event Show Staff Detail View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -125,8 +133,23 @@ namespace CoffeeShop.Presenter
         {
             IStaffDetailView view = StaffDetailView.GetInstance((MainView)mainView);
             IStaffRepository repository = new StaffRepository(sqlConnectionString);
+            IAccountRepository accountRepository = new AccountRepository(sqlConnectionString);
             view.StaffId = mainView.StaffID;
-            new StaffDetailPresenter(view, repository);
+            new StaffDetailPresenter(view, repository,accountRepository);
+        }
+
+        /// <summary>
+        /// Event Show Place Order View
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowPlaceOrderView(object sender, EventArgs e)
+        {
+            IPlaceOrderView view = PlaceOrderView.GetInstance((MainView)mainView);
+            IPlaceOrderRepository repository = new PlaceOrderRepository(sqlConnectionString);
+            ICategoryRepository category = new CategoryRepository(sqlConnectionString);
+
+            new PlaceOrderPresenter(view, repository, category);
         }
         #endregion
     }

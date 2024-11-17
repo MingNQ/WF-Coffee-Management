@@ -19,25 +19,24 @@ namespace CoffeeShop.View.MainFrame.Interfaces
         string StaffRole {  get; set; }
         bool Male {  get; set; }
         bool Female {  get; set; }
-
         bool Other {  get; set; }
-        
         bool IsEdit {  get; set; }
-
         bool IsSuccesful {  get; set; }
-
         bool IsOpen { get; }
-
         bool HasAvatar { get; set; }
-
+        bool IsChangePass { get; set; }
+      
         //Event 
         event EventHandler ImportEvent;
         event EventHandler EditEvent;
         event EventHandler SaveEvent;
         event EventHandler CancelEvent;
         event EventHandler ChangePasswordEvent;
+        event EventHandler HideMessageEvent;
+        event EventHandler ShowPasswordEvent;
 
         //Method 
         void Show();
+        void InitializeControl();
     }
 }

@@ -49,7 +49,17 @@
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.txtRole = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbChangePassword = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtNewPassword = new Guna.UI2.WinForms.Guna2TextBox();
+            this.panelChangePassword = new Guna.UI2.WinForms.Guna2Panel();
+            this.checkBoxShowPassword = new System.Windows.Forms.CheckBox();
+            this.lbErrorMessage = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.txtOldPassword = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtConfirmPassword = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
+            this.panelChangePassword.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnImport
@@ -360,10 +370,141 @@
             this.lbChangePassword.TabIndex = 29;
             this.lbChangePassword.Text = "Change Password";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(16, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(142, 24);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Old Password";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(19, 101);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 24);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "New Password";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(19, 151);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(85, 24);
+            this.label10.TabIndex = 29;
+            this.label10.Text = "Confirm";
+            // 
+            // txtNewPassword
+            // 
+            this.txtNewPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNewPassword.DefaultText = "";
+            this.txtNewPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtNewPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtNewPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNewPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNewPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNewPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNewPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNewPassword.Location = new System.Drawing.Point(200, 95);
+            this.txtNewPassword.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtNewPassword.Name = "txtNewPassword";
+            this.txtNewPassword.PasswordChar = '●';
+            this.txtNewPassword.PlaceholderText = "New Password";
+            this.txtNewPassword.SelectedText = "";
+            this.txtNewPassword.Size = new System.Drawing.Size(257, 30);
+            this.txtNewPassword.TabIndex = 58;
+            // 
+            // panelChangePassword
+            // 
+            this.panelChangePassword.Controls.Add(this.checkBoxShowPassword);
+            this.panelChangePassword.Controls.Add(this.lbErrorMessage);
+            this.panelChangePassword.Controls.Add(this.label1);
+            this.panelChangePassword.Controls.Add(this.txtOldPassword);
+            this.panelChangePassword.Controls.Add(this.txtConfirmPassword);
+            this.panelChangePassword.Controls.Add(this.txtNewPassword);
+            this.panelChangePassword.Controls.Add(this.label2);
+            this.panelChangePassword.Controls.Add(this.label10);
+            this.panelChangePassword.Location = new System.Drawing.Point(257, 535);
+            this.panelChangePassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelChangePassword.Name = "panelChangePassword";
+            this.panelChangePassword.Size = new System.Drawing.Size(1112, 231);
+            this.panelChangePassword.TabIndex = 61;
+            this.panelChangePassword.Visible = false;
+            // 
+            // checkBoxShowPassword
+            // 
+            this.checkBoxShowPassword.AutoSize = true;
+            this.checkBoxShowPassword.Location = new System.Drawing.Point(200, 190);
+            this.checkBoxShowPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxShowPassword.Name = "checkBoxShowPassword";
+            this.checkBoxShowPassword.Size = new System.Drawing.Size(125, 20);
+            this.checkBoxShowPassword.TabIndex = 60;
+            this.checkBoxShowPassword.Text = "Show Password";
+            this.checkBoxShowPassword.UseVisualStyleBackColor = true;
+            // 
+            // lbErrorMessage
+            // 
+            this.lbErrorMessage.BackColor = System.Drawing.Color.Transparent;
+            this.lbErrorMessage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrorMessage.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorMessage.Location = new System.Drawing.Point(195, 4);
+            this.lbErrorMessage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbErrorMessage.Name = "lbErrorMessage";
+            this.lbErrorMessage.Size = new System.Drawing.Size(3, 2);
+            this.lbErrorMessage.TabIndex = 46;
+            this.lbErrorMessage.Text = null;
+            // 
+            // txtOldPassword
+            // 
+            this.txtOldPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtOldPassword.DefaultText = "";
+            this.txtOldPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtOldPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtOldPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtOldPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtOldPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtOldPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOldPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtOldPassword.Location = new System.Drawing.Point(200, 38);
+            this.txtOldPassword.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtOldPassword.Name = "txtOldPassword";
+            this.txtOldPassword.PasswordChar = '●';
+            this.txtOldPassword.PlaceholderText = "Old Password";
+            this.txtOldPassword.SelectedText = "";
+            this.txtOldPassword.Size = new System.Drawing.Size(257, 30);
+            this.txtOldPassword.TabIndex = 57;
+            // 
+            // txtConfirmPassword
+            // 
+            this.txtConfirmPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtConfirmPassword.DefaultText = "";
+            this.txtConfirmPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtConfirmPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtConfirmPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtConfirmPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtConfirmPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtConfirmPassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConfirmPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtConfirmPassword.Location = new System.Drawing.Point(200, 151);
+            this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.PasswordChar = '●';
+            this.txtConfirmPassword.PlaceholderText = "Confirm New Password";
+            this.txtConfirmPassword.SelectedText = "";
+            this.txtConfirmPassword.Size = new System.Drawing.Size(257, 30);
+            this.txtConfirmPassword.TabIndex = 59;
+            // 
             // StaffInformationControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panelChangePassword);
             this.Controls.Add(this.txtRole);
             this.Controls.Add(this.btnImport);
             this.Controls.Add(this.btnCancel);
@@ -388,6 +529,8 @@
             this.Name = "StaffInformationControl";
             this.Size = new System.Drawing.Size(1353, 843);
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
+            this.panelChangePassword.ResumeLayout(false);
+            this.panelChangePassword.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -415,5 +558,14 @@
         public Guna.UI2.WinForms.Guna2Button btnSave;
         public Guna.UI2.WinForms.Guna2TextBox txtRole;
         public System.Windows.Forms.Label lbChangePassword;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label10;
+        public Guna.UI2.WinForms.Guna2TextBox txtNewPassword;
+        public Guna.UI2.WinForms.Guna2TextBox txtOldPassword;
+        public Guna.UI2.WinForms.Guna2TextBox txtConfirmPassword;
+        public Guna.UI2.WinForms.Guna2Panel panelChangePassword;
+        public Guna.UI2.WinForms.Guna2HtmlLabel lbErrorMessage;
+        public System.Windows.Forms.CheckBox checkBoxShowPassword;
     }
 }

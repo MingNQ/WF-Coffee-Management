@@ -1,25 +1,23 @@
-﻿using System;
+﻿using CoffeeShop.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CoffeeShop.View.DialogCheckList
 {
     public interface IEditCategoryView
     {
         string TittleHeader { get; set; }
-
-        /// <summary>
-        /// Show Diaglog
-        /// </summary>
         void ShowDialog();
-
-        /// <summary>
-        /// Hide Dialog
-        /// </summary>
         void Hide();
 
+        void SetItemListBindingSource(BindingSource itemList);
+        List<IngredientModel> SelectedIngredients { get; }
+        event EventHandler SaveEvent;
+        event EventHandler CancleEvent;
     }
 }

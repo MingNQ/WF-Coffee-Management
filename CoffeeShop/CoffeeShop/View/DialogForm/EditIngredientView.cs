@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeShop.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,6 @@ namespace CoffeeShop.View.DialogForm
 {
 	public partial class EditIngredientView : Form, IEditIngredientView
 	{
-
 		#region Properties
 		/// <summary>
 		/// Setting Tittle 
@@ -23,27 +23,56 @@ namespace CoffeeShop.View.DialogForm
 			set { this.lblHeader.Text = value; }
 		}
 
-		#endregion
+        /// <summary>
+        /// 
+        /// </summary>
+        public string IngredientName
+        {
+            get => txtIngredientName.Text;
+            set => txtIngredientName.Text = value;
+        }
 
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		public EditIngredientView()
+        #endregion
+
+        #region Events
+        public event EventHandler SaveEvent;
+        public event EventHandler ClearEvent;
+        public event EventHandler CloseEvent;
+        #endregion
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public EditIngredientView()
 		{
 			InitializeComponent();
-		}
+            btnSave.Click += delegate
+            {
+                SaveEvent?.Invoke(this, EventArgs.Empty);
+                CloseEvent?.Invoke(this, EventArgs.Empty);
+            };
 
-		/// <summary>
-		/// Instance
-		/// </summary>
-		private static EditIngredientView instance;
+            btnClear.Click += delegate 
+            {
+                ClearEvent?.Invoke(this, EventArgs.Empty);
+            };
+        }
 
+        #region private fields
+        /// <summary>
+        /// Instance
+        /// </summary>
+        private static EditIngredientView instance;
 
-		/// <summary>
-		/// Get instance
-		/// </summary>
-		/// <returns>instance</returns>
-		public static EditIngredientView GetInstance()
+        #endregion
+
+        #region public fields
+
+        /// <summary>
+        /// Get instance
+        /// </summary>
+        /// <returns>instance</returns>
+        public static EditIngredientView GetInstance()
 		{
 			if (instance == null || instance.IsDisposed)
 			{
@@ -66,8 +95,6 @@ namespace CoffeeShop.View.DialogForm
 		{
 			ShowDialog();
 		}
-
-		#region Events
-		#endregion
-	}
+        #endregion
+    }
 }
