@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeShop.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,19 +8,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CoffeeShop.Utilities;
+using System.IO;
 
 namespace CoffeeShop.View.MainFrame
 {
     public partial class StaffInformationControl : UserControl
     {
+        private string avatarPath; //biến lưu đường dẫn đến file ảnh của nhân viên
+
         #region Properties
+
         /// <summary>
         /// 
         /// </summary>
         public string TxtStaffName
         {
-            get { return txtStaffName.Text; }
-            set { txtStaffName.Text = value; }
+            get { return txtStaffName.Text; } //lấy giá trị từ textbox
+            set { txtStaffName.Text = value; } //gán giá trị vào textbox
         }
         /// <summary>
         /// 
@@ -77,6 +83,31 @@ namespace CoffeeShop.View.MainFrame
             get => txtRole.Text;
             set => txtRole.Text = value;
         }
+
+        public string Avatar
+        {
+            get => avatarPath;  //trả về đường dẫn của ảnh đại diện
+            set
+            {
+                avatarPath = value; //gán đường dẫn ảnh
+                if(!string.IsNullOrEmpty(avatarPath))
+                {
+                    //nếu khác rỗng thì tải ảnh lên PictureBox từ đường dẫn được tạo bằng cách nối Application.StartupPath với đường dẫn của file ảnh
+                    picAvatar.ImageLocation = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, avatarPath);
+                    picAvatar.SizeMode = PictureBoxSizeMode.StretchImage; //tuy chinh anh
+                }
+                else
+                {
+                    picAvatar.Image = null; //anh mac dinh neu co
+                }
+            }
+        }
+
+        public PictureBox ProfilePicture
+        {
+            get { return picAvatar; }
+        }
+
         #endregion
 
         /// <summary>
@@ -89,18 +120,18 @@ namespace CoffeeShop.View.MainFrame
 
         #region Method
         // Method to add event
+
+        //gán sự kiện click cho nút edit
         public void EditButtonClickHandler(EventHandler handler)
         {
             btnEdit.Click += handler;
         }
+        //gán sk click cho nút Save
         public void SaveButtonClickHandler(EventHandler handler)
         {
             btnSave.Click += handler;
         }
-        public void ImportButtonClickHandler(EventHandler handler) 
-        { 
-            btnImport.Click += handler; 
-        }
+        //gán sự kiện click cho nút cancel
         public void CancelButtonClickHandler(EventHandler handler)
         {
             btnCancel.Click += handler;
@@ -109,6 +140,6 @@ namespace CoffeeShop.View.MainFrame
         {
              lbChangePassword.Click += handler;
         }
-        #endregion
+        #endregion      
     }
 }

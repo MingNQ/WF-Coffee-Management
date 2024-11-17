@@ -31,18 +31,20 @@ namespace CoffeeShop.View.MainFrame
         /// </summary>
         private bool isSuccessful;
 
-       
         /// <summary>
         /// StaffID
         /// </summary>
         private string staffID;
 
         /// <summary>
+        /// Has Avatar
+        /// </summary>
+        private bool hasAvatar;
+
+        /// <summary>
         /// Check if ChangePassword
         /// </summary>
         private bool isChangePass;
-
-        
 
         #endregion
 
@@ -147,13 +149,29 @@ namespace CoffeeShop.View.MainFrame
         /// <summary>
         /// 
         /// </summary>
+        public bool IsOpen 
+        { 
+            get => Application.OpenForms.OfType<StaffDetailView>().Any();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool HasAvatar 
+        { 
+            get { return hasAvatar; } 
+            set { hasAvatar = value; } 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsChangePass 
         {
             get { return isChangePass; }
             set { isChangePass = value; }
         }
         
-               
         #endregion
         /// <summary>
         /// Constructor
@@ -187,6 +205,7 @@ namespace CoffeeShop.View.MainFrame
             staffInformationControl.rdoMale.Enabled = false;
             staffInformationControl.rdoOther.Enabled = false;
             staffInformationControl.dtpDob.Enabled = false;
+            staffInformationControl.btnImport.Enabled = false;
             staffInformationControl.lbChangePassword.Enabled = false;
             staffInformationControl.txtConfirmPassword.Text = "";
             staffInformationControl.txtOldPassword.Text = "";
@@ -249,7 +268,6 @@ namespace CoffeeShop.View.MainFrame
                 ShowPasswordEvent?.Invoke(this, EventArgs.Empty);
             };
         }
-        
         
         #endregion
 
