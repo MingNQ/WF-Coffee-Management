@@ -305,25 +305,6 @@ namespace CoffeeShop._Repositories
                 }
             }
         }
-        public void UpdateOrderDetail(OrderDetailModel orderDetail)
-        {
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = @"UPDATE OrderDetail
-                                SET Quantity = @quantity, Total = @total
-                                WHERE OrderDetailID = @orderDetailID";
-
-                command.Parameters.Add("quantity", SqlDbType.Int).Value = orderDetail.Quantity;
-                command.Parameters.Add("total", SqlDbType.Float).Value = orderDetail.Total;
-                command.Parameters.Add("orderDetailID", SqlDbType.NVarChar).Value = orderDetail.OrderDetailID;
-
-                command.ExecuteNonQuery();
-            }
-        }
-
         /// <summary>
         /// Delete Order Details
         /// </summary>

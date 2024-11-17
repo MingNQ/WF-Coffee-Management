@@ -286,15 +286,12 @@ namespace CoffeeShop.Presenter
                 if (reduceQuantity >= orderDetail.Quantity)
                 {
                     orderDetails.Remove(orderDetail);
-                    repository.DeleteOrderDetail(new List<OrderDetailModel> { orderDetail });
                     DialogMessageView.ShowMessage("information", $"Removed {orderDetail.Item.ItemName} as quantity reached zero.");
                 }
                 else
                 {
                     orderDetail.Quantity -= reduceQuantity;
                     orderDetail.Total = orderDetail.Quantity * orderDetail.Item.Cost;
-                    repository.UpdateOrderDetail(orderDetail);
-                    DialogMessageView.ShowMessage("success", $"Reduced {reduceQuantity} of {orderDetail.Item.ItemName}");
                 }
             }
             else
@@ -304,13 +301,7 @@ namespace CoffeeShop.Presenter
                 if (orderDetail.Quantity <= 0)
                 {
                     orderDetails.Remove(orderDetail);
-                    repository.DeleteOrderDetail(new List<OrderDetailModel> { orderDetail });
                     DialogMessageView.ShowMessage("information", $"Removed {orderDetail.Item.ItemName} as quantity reached zero.");
-                }
-                else
-                {
-                    repository.UpdateOrderDetail(orderDetail);
-                    DialogMessageView.ShowMessage("success", $"Reduced 1 of {orderDetail.Item.ItemName}");
                 }
             }
             UpdateData();

@@ -16,7 +16,6 @@ namespace CoffeeShop._Repositories.InterfaceModel
         void UpdateTableStatus(string tableID, string status);
         void EditOrderDetail(List<OrderDetailModel> orderDetails);
         void DeleteOrderDetail(List<OrderDetailModel> orderDetails);
-        void UpdateOrderDetail(OrderDetailModel orderDetail);
         IEnumerable<TableOrder> GetTablesByFloor(string id);
         List<OrderDetailModel> GetOrderDetails(string orderID);
         OrderModel GetOrder(string tableID);

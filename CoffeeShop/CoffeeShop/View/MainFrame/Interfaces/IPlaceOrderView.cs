@@ -141,7 +141,6 @@ namespace CoffeeShop.View.MainFrame
         /// 
         /// </summary>
         void CalculateGrandTotal(List<OrderDetailModel> orderDetails);
-
         #endregion
     }
 }
