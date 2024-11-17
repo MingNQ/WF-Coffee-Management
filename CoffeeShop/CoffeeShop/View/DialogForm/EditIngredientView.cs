@@ -56,6 +56,8 @@ namespace CoffeeShop.View.DialogForm
             {
                 ClearEvent?.Invoke(this, EventArgs.Empty);
             };
+
+            btnClose.Click += delegate { CloseEvent?.Invoke(this, EventArgs.Empty); };
         }
 
         #region private fields

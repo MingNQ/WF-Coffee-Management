@@ -290,8 +290,8 @@ namespace CoffeeShop.View.MainFrame
                     tabControlCategory.TabPages.Remove(tabCategoryDetail);
                     tabControlCategory.TabPages.Add(tabCategoryList);
                     lsbIngredient.Items.Clear();
+                    DialogMessageView.ShowMessage("success", Message);
                 }
-                DialogMessageView.ShowMessage("success", Message);
             };
 
             //Cancel

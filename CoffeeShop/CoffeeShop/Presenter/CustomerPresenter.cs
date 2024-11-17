@@ -206,7 +206,7 @@ namespace CoffeeShop.Presenter
         /// <param name="e"></param>
         private void ClearEvent(object sender, EventArgs e)
         {
-            if (DialogMessageView.ShowMessage("warning", "Are you sure to clear all information? Information once cleared can't be recovered!")== DialogResult.OK)
+            if (customerView.IsEdit && DialogMessageView.ShowMessage("warning", "Are you sure to clear all information? Information once cleared can't be recovered!")== DialogResult.OK)
             {
                 ClearFieldInformation();
             }

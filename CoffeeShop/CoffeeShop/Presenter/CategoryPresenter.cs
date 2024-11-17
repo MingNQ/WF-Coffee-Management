@@ -222,15 +222,15 @@ namespace CoffeeShop.Presenter
         /// <param name="e"></param>
         private void SaveItem(object sender, EventArgs e)
         {
-            var ingredientIDs = categoryView.GetSelectedIngredientIDs();
-            var model = new ItemModel();
-            model.CategoryID = categoryView.CategoryID;
-            model.ItemName = categoryView.ItemName;
-            model.Cost = categoryView.Cost;
-
             try
             {
+                var ingredientIDs = categoryView.GetSelectedIngredientIDs();
+                var model = new ItemModel();
+                model.CategoryID = categoryView.CategoryID;
+                model.ItemName = categoryView.ItemName;
+                model.Cost = categoryView.Cost;
                 new Common.ModelValidation().Validate(model);
+
                 if (categoryView.IsEdit)
                 {
                     model.ItemID = categoryView.ItemID;

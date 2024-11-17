@@ -66,8 +66,8 @@ namespace CoffeeShop.View.DialogCheckList
             btnSave.Click += delegate
             {
                 SaveEvent?.Invoke(this, EventArgs.Empty);
-                DialogMessageView.ShowMessage("success", "Successful Add Ingredient");
                 this.Close();
+                DialogMessageView.ShowMessage("success", "Successful Add Ingredient");
             };
             btnCancle.Click += delegate { this.Close(); };
             InitializeDataGridView();
