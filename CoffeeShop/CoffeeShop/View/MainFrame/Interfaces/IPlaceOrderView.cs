@@ -81,6 +81,7 @@ namespace CoffeeShop.View.MainFrame
         /// 
         /// </summary>
         int NumberPeople { get; set; }
+        string ReduceQuantity { get; }
 
         #endregion
 
