@@ -64,9 +64,8 @@ namespace CoffeeShop.Presenter
                 // Load Staff List
                 LoadAllCustomer();
             }
-
             // Show the view
-            this.customerView.Show();
+            this.customerView.ShowPage();
 		}
 
         #region private fields

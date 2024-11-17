@@ -93,7 +93,7 @@ namespace CoffeeShop.Presenter
             }
 
             // Show Form;
-            view.Show();
+            view.ShowPage();
         }
 
         #region private fields
@@ -168,6 +168,11 @@ namespace CoffeeShop.Presenter
                 }
 
                 UpdateData();
+
+                if (order.StaffID != Generate.StaffID)
+                {
+                    view.DisableControl();
+                }
             }
 
             view.SelectedCategoryChangeEvent += SelectedCategoryChangeEvent;

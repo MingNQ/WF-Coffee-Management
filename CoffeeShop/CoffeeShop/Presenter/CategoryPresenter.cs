@@ -88,6 +88,8 @@ namespace CoffeeShop.Presenter
                 this.categoryView.SetItemListBindingSource(itemsBindingSource);
             }
 
+            // Check Role
+            this.categoryView.RoleAccess();
             // Show form
             this.categoryView.ShowPage();
         }
