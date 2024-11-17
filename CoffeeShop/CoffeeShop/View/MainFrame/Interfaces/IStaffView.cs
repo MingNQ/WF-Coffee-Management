@@ -11,8 +11,8 @@ namespace CoffeeShop.View.MainFrame
 {
 	public interface IStaffView
 	{
-		// Properties
-		string StaffID { get; set; }
+        #region Fields - Properties
+        string StaffID { get; set; }
 		string StaffName { get; set; }
 		string PhoneNumber { get; set; }
 		string  DateOfBirth { get; set; }
@@ -29,20 +29,21 @@ namespace CoffeeShop.View.MainFrame
 		bool IsSuccessful { get; set; }
 
 		bool IsOpen { get; }
+        #endregion
 
-		// Updating...
-		void Show();
-
-		// Methods
-		void SetLStaffListBindingSource(BindingSource staffList);
-
-		// Events
-		event EventHandler SearchEvent;
+        #region Events
+        event EventHandler SearchEvent;
 		event EventHandler AddNewEvent;
 		event EventHandler EditEvent;
 		event EventHandler DeleteEvent;
 		event EventHandler SaveEvent;
 		event EventHandler ClearEvent;
 		event EventHandler BackToListEvent;
-	}
+        #endregion
+
+        #region Methods
+        void ShowPage();
+        void SetLStaffListBindingSource(BindingSource staffList);
+        #endregion
+    }
 }

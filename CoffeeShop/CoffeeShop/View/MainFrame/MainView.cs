@@ -92,7 +92,16 @@ namespace CoffeeShop.View
             btnDashboard.Click += delegate { ShowDashboardView?.Invoke(this, EventArgs.Empty); };
             btnPlaceOrder.Click += delegate { ShowPlaceOrderView?.Invoke(this, EventArgs.Empty); };
             btnCategory.Click += delegate { ShowCategoryView?.Invoke(this, EventArgs.Empty); };
-            btnCustomer.Click += delegate { ShowCustomerView?.Invoke(this, EventArgs.Empty); };
+            btnCustomer.Click += delegate 
+            {
+                // Role Access
+                if (Generate.StaffRole != AppConst.ADMIN_ROLE)
+                {
+                    DialogMessageView.ShowMessage("warning", "You don't have permission to access this site!");
+                    return;
+                }
+                ShowCustomerView?.Invoke(this, EventArgs.Empty); 
+            };
             btnStaff.Click += delegate { ShowStaffView?.Invoke(this, EventArgs.Empty); };
             btnIngredient.Click += delegate { ShowIngredientView?.Invoke(this, EventArgs.Empty); };
             lbViewProfile.Click += delegate { ShowStaffDetailInformation?.Invoke(this, EventArgs.Empty); };

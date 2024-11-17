@@ -153,7 +153,6 @@ namespace CoffeeShop.View
             InitializeComboBoxCoupon();
             AssociateAndRaiseViewEvents();
             tabCustomer.TabPages.Remove(tabPageCustomerDetail);
-            RoleAccess();
         }
 
         #region private fields
@@ -245,7 +244,6 @@ namespace CoffeeShop.View
         /// </summary>
         private void AssociateAndRaiseViewEvents()
 		{
-
             // Search
             btnSearch.Click += delegate
             {
@@ -354,6 +352,15 @@ namespace CoffeeShop.View
         }
 
         /// <summary>
+        /// Reset 
+        /// </summary>
+        private void ResetControls()
+        {
+            btnEdit.Enabled = false;
+            btnDelete.Enabled = false;
+        }
+
+        /// <summary>
         /// Role Access
         /// </summary>
         private void RoleAccess()
@@ -363,6 +370,12 @@ namespace CoffeeShop.View
                 btnAdd.Visible = false;
                 btnEdit.Visible = false;
                 btnDelete.Visible = false;
+            }
+            else
+            {
+                btnAdd.Visible = true;
+                btnEdit.Visible = true;
+                btnDelete.Visible = true;
             }
         }
 
@@ -400,7 +413,26 @@ namespace CoffeeShop.View
         {
             this.dgvCustomer.DataSource = customerList;
         }
-        #endregion
 
+        /// <summary>
+        /// Show Form
+        /// </summary>
+        public void ShowPage()
+        {
+            if (!tabCustomer.TabPages.Contains(tabPageCustomerList))
+            {
+                tabCustomer.TabPages.Clear();
+                tabCustomer.TabPages.Add(tabPageCustomerList);
+                BackToListEvent?.Invoke(this, EventArgs.Empty);
+                ResetControls();
+            }
+
+            // Check Role
+            RoleAccess();
+
+            // Show
+            this.Show();
+        }
+        #endregion
     }
 }

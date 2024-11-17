@@ -207,7 +207,6 @@ namespace CoffeeShop.View
             InitializeComboBoxRole();
             AssociateAndRaiseEvents();
             tabStaff.TabPages.Remove(tabPageStaffDetail);
-            RoleAccess();
         }
 
         #region private fields
@@ -305,8 +304,7 @@ namespace CoffeeShop.View
         /// </summary>
         private void AssociateAndRaiseEvents()
         {
-            // Disable Button
-            btnSave.Enabled = false;
+            ResetControls();
 
             // Search
             btnSearch.Click += delegate 
@@ -335,7 +333,6 @@ namespace CoffeeShop.View
             };
 
             // Edit
-            btnEdit.Enabled = false;
             btnEdit.Click += delegate
 			{
                 EditEvent?.Invoke(this, EventArgs.Empty);
@@ -345,7 +342,6 @@ namespace CoffeeShop.View
             };
 
             // Delete
-            btnDelete.Enabled = false;
             btnDelete.Click += delegate
             {
                 if (DialogMessageView.ShowMessage("warning", "Are you sure to delte the selected staff?") == DialogResult.OK)
@@ -461,6 +457,15 @@ namespace CoffeeShop.View
         }
 
         /// <summary>
+        /// Reset Controls
+        /// </summary>
+        private void ResetControls()
+        {
+            btnDelete.Enabled = false;
+            btnEdit.Enabled = false;
+        }
+
+        /// <summary>
         /// Role Access
         /// </summary>
         private void RoleAccess()
@@ -470,6 +475,12 @@ namespace CoffeeShop.View
                 btnAdd.Visible = false;
                 btnEdit.Visible = false;
                 btnDelete.Visible = false;
+            }
+            else
+            {
+                btnAdd.Visible = true;
+                btnEdit.Visible = true;
+                btnDelete.Visible = true;
             }
         }
 
@@ -507,6 +518,24 @@ namespace CoffeeShop.View
         {
             this.dgvStaff.DataSource = staffList;
         }
-        #endregion       
+
+        /// <summary>
+        /// Show Page
+        /// </summary>
+        public void ShowPage()
+        {
+            if (!tabStaff.TabPages.Contains(tabPageStaffList))
+            {
+                tabStaff.TabPages.Clear();
+                tabStaff.TabPages.Add(tabPageStaffList);
+                BackToListEvent?.Invoke(this, EventArgs.Empty);
+                ResetControls();
+            }
+            // Check Role
+            RoleAccess();
+            // Show
+            this.Show();
+        }
+        #endregion
     }
 }

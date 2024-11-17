@@ -436,7 +436,7 @@ namespace CoffeeShop.View
         public void UpdateTableView(IEnumerable<TableOrder> floor)
         {
             flowPnlTableOrder.Controls.Clear();
-            var emptyTables = floor.Count(t => t.Status == "Trống");
+            var emptyTables = floor.Count(t => t.Status == AppConst.TABLE_AVAILABLE);
             lblEmpty.Text = $"Empty: {emptyTables}/{floor.Count()}";
 
             foreach (var table in floor)
@@ -526,6 +526,34 @@ namespace CoffeeShop.View
             });
 
             lbGrandTotal.Text = sum.ToString("N0") + " VNĐ";
+        }
+
+        /// <summary>
+        /// Disable Control
+        /// </summary>
+        public void DisableControl()
+        {
+            btnAddToCart.Enabled = false;
+            btnReduce.Enabled = false;
+            btnRemove.Enabled = false;
+            btnRemoveAll.Enabled = false;
+            btnCompleteOrder.Enabled = false;
+        }
+
+        /// <summary>
+        /// Show Page
+        /// </summary>
+        public void ShowPage()
+        {
+            if (!tabPlaceOrder.TabPages.Contains(tabPageTableOrder))
+            {
+                tabPlaceOrder.TabPages.Clear();
+                tabPlaceOrder.TabPages.Add(tabPageTableOrder);
+                BackEvent?.Invoke(this, EventArgs.Empty);
+            }
+
+            // Show 
+            this.Show();
         }
         #endregion
     }

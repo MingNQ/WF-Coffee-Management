@@ -158,7 +158,6 @@ namespace CoffeeShop.View.MainFrame
             InitializeComponent();
             AssociateAndRaiseEvents();
             InitializeDataGridView();
-            RoleAccess();
         }
 
         #region private fields
@@ -420,18 +419,6 @@ namespace CoffeeShop.View.MainFrame
             cbCategory.Visible = !isEdit;
         }
 
-        /// <summary>
-        /// Role Access
-        /// </summary>
-        private void RoleAccess()
-        {
-            if (Generate.StaffRole != AppConst.ADMIN_ROLE)
-            {
-                btnAdd.Visible = false;
-                btnEdit.Visible = false;
-                btnDelete.Visible = false;
-            }
-        }
 
         #endregion
 
@@ -532,6 +519,24 @@ namespace CoffeeShop.View.MainFrame
             this.Show();
         }
 
+        /// <summary>
+        /// Role Access
+        /// </summary>
+        public void RoleAccess()
+        {
+            if (Generate.StaffRole != AppConst.ADMIN_ROLE)
+            {
+                btnAdd.Visible = false;
+                btnEdit.Visible = false;
+                btnDelete.Visible = false;
+            }
+            else
+            {
+                btnAdd.Visible = true;
+                btnEdit.Visible = true;
+                btnDelete.Visible = true;
+            }
+        }
         #endregion
     }
 }

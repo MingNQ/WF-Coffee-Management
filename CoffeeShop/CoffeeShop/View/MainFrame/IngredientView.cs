@@ -75,7 +75,6 @@ namespace CoffeeShop.View.MainFrame
 			InitializeComponent();
             InitializeDataGridView();
             AssociateAndRaiseEvents();
-            RoleAccess();
         }
 
         #region private fiedls
@@ -197,19 +196,6 @@ namespace CoffeeShop.View.MainFrame
             };
         }
 
-        /// <summary>
-        /// Role Access
-        /// </summary>
-        private void RoleAccess()
-        {
-            if (Generate.StaffRole != AppConst.ADMIN_ROLE)
-            {
-                btnAdd.Visible = false;
-                btnEdit.Visible = false;
-                btnDelete.Visible = false;
-            }
-        }
-
         #endregion
 
         #region public fields
@@ -246,6 +232,24 @@ namespace CoffeeShop.View.MainFrame
             this.dgvIngredient.DataSource = ingredientList;
         }
 
+        /// <summary>
+        /// Role Access
+        /// </summary>
+        public void RoleAccess()
+        {
+            if (Generate.StaffRole != AppConst.ADMIN_ROLE)
+            {
+                btnAdd.Visible = false;
+                btnEdit.Visible = false;
+                btnDelete.Visible = false;
+            }
+            else
+            {
+                btnAdd.Visible = true;
+                btnEdit.Visible = true;
+                btnDelete.Visible = true;
+            }
+        }
         #endregion
     }
 }
