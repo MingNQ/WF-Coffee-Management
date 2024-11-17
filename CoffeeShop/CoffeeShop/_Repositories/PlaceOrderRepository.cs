@@ -296,6 +296,7 @@ namespace CoffeeShop._Repositories
                     command.CommandText = @"update OrderDetail 
                                             set ItemID = @itemID, Quantity = @quantity, Total = @total, Description = @description
                                             where OrderDetailID = @orderDetailID";
+                    command.Parameters.Clear();
                     command.Parameters.Add("itemID", SqlDbType.NVarChar).Value = orderDetail.ItemID;
                     command.Parameters.Add("quantity", SqlDbType.Int).Value = orderDetail.Quantity;
                     command.Parameters.Add("total", SqlDbType.Float).Value = orderDetail.Total;
