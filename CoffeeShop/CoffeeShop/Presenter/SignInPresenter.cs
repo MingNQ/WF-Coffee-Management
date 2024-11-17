@@ -76,8 +76,8 @@ namespace CoffeeShop.Presenter
         private void LoginAccount(object sender, EventArgs e)
         {
             // Connect database to check account
-            var account = accounts.Where(a => a.Username == signInView.TxtUsername.Text).FirstOrDefault();
-                                          // && a.Password == EncryptPassword.HashPassword(signInView.TxtPassword.Text)).FirstOrDefault();
+            var account = accounts.Where(a => a.Username == signInView.TxtUsername.Text
+                                           && a.Password == EncryptPassword.HashPassword(signInView.TxtPassword.Text)).FirstOrDefault();
 
             // Check value is not null
             if (string.IsNullOrEmpty(signInView.TxtUsername.Text) ||
@@ -87,7 +87,7 @@ namespace CoffeeShop.Presenter
                 SignInError("*Your username or password must not null!");
                 return;
             }
-
+            var tmp = EncryptPassword.HashPassword("123");
             if (account != null)
             {
                 if (!account.Active)

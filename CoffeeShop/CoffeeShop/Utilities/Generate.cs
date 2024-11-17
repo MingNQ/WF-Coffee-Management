@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop.Utilities
 {
-    public static class Generate
+    public class Generate
     {
+        public static string StaffID = "";
+        public static string StaffName = "";
+
         /// <summary>
         /// Generate ID
         /// </summary>
@@ -20,6 +23,10 @@ namespace CoffeeShop.Utilities
 
             switch (_base)
             {
+                case "OD":
+                    id = _base + new Random().Next(100000).ToString("D5");
+                    break;
+                case "O":
                 case "AVT":
                 case "KH":
                 case "NV":
