@@ -13,11 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Xceed.Words.NET;
-using iText.Layout.Borders;
 using Xceed.Document.NET;
-
-
-
 
 
 namespace CoffeeShop.Presenter
@@ -317,7 +313,7 @@ namespace CoffeeShop.Presenter
 
             var List = repository.GetOrderDetailWithItems(view.OrderID);
             float totalSum = 0;
-            foreach (var item in List)
+            foreach (var item in orderDetails)
             {
                 totalSum += item.Total * item.Quantity;
             }
@@ -331,7 +327,7 @@ namespace CoffeeShop.Presenter
             };
             invoiceView.btnPrint.Click += delegate
             {
-                string filePath = @"CoffeeShop\CoffeeShop\Assets\Invoice.docx";
+                string filePath = @"C:\Study\Lập Trình Trực Quan\BTL\WF-Coffee-Management\CoffeeShop\CoffeeShop\Assets\Invoice.docx";
                 DocX doc;
                 if(System.IO.File.Exists(filePath))
                 {
@@ -382,19 +378,19 @@ namespace CoffeeShop.Presenter
                 paragraphStaff.Append("\n");
                     
                     //Thêm bảng để lưu Order Detail
-                var table = doc.AddTable(List.Count + 1,4);
+                var table = doc.AddTable(orderDetails.Count + 1,4);
                 table.SetWidths(new float[] { 200, 200, 200, 200 });
 
                 table.Rows[0].Cells[0].Paragraphs[0].Append("ItemName").Bold().Alignment = Alignment.center;
                 table.Rows[0].Cells[1].Paragraphs[0].Append("Cost").Bold().Alignment = Alignment.center;
                 table.Rows[0].Cells[2].Paragraphs[0].Append("Quantity").Bold().Alignment = Alignment.center;
                 table.Rows[0].Cells[3].Paragraphs[0].Append("Total").Bold().Alignment = Alignment.center;
-                for (int i = 0; i < List.Count;i++)
+                for (int i = 0; i < orderDetails.Count; i++)
                 {
-                    table.Rows[i + 1].Cells[0].Paragraphs[0].Append(List[i].ItemName).Alignment = Alignment.left;
-                    table.Rows[i + 1].Cells[1].Paragraphs[0].Append(List[i].Quantity.ToString()).Alignment = Alignment.center;
-                    table.Rows[i + 1].Cells[2].Paragraphs[0].Append(List[i].UnitPrice.ToString()).Alignment = Alignment.center;
-                    table.Rows[i + 1].Cells[3].Paragraphs[0].Append(List[i].Total.ToString()).Alignment = Alignment.center;
+                    table.Rows[i + 1].Cells[0].Paragraphs[0].Append(orderDetails[i].ItemName).Alignment = Alignment.left;
+                    table.Rows[i + 1].Cells[1].Paragraphs[0].Append(orderDetails[i].Quantity.ToString()).Alignment = Alignment.center;
+                    table.Rows[i + 1].Cells[2].Paragraphs[0].Append(orderDetails[i].UnitPrice.ToString()).Alignment = Alignment.center;
+                    table.Rows[i + 1].Cells[3].Paragraphs[0].Append(orderDetails[i].Total.ToString()).Alignment = Alignment.center;
                 }
                 doc.InsertTable(table);
                 var paragraphTotal = doc.InsertParagraph();
