@@ -107,6 +107,7 @@
     <Compile Include="Model\Avatar.cs" />
     <Compile Include="Model\CategoryModel.cs" />
     <Compile Include="Model\Common\Gender.cs" />
+    <Compile Include="Model\Common\PaymentMethods.cs" />
     <Compile Include="Model\CustomerModel.cs" />
     <Compile Include="Model\Floor.cs" />
     <Compile Include="Model\IngredientModel.cs" />
@@ -114,12 +115,21 @@
     <Compile Include="Model\OrderItemViewModel.cs" />
     <Compile Include="Model\OrderModel.cs" />
     <Compile Include="Model\OrderDetailModel.cs" />
-    <Compile Include="View\MainFrame\Interfaces\IInvoice.cs" />
-    <Compile Include="View\MainFrame\Invoice.cs">
+    <Compile Include="Model\PaymentModel.cs" />
+    <Compile Include="Presenter\PaymentPresenter.cs" />
+    <Compile Include="View\DialogForm\PaymentView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MainFrame\Invoice.Designer.cs">
-      <DependentUpon>Invoice.cs</DependentUpon>
+    <Compile Include="View\DialogForm\PaymentView.Designer.cs">
+      <DependentUpon>PaymentView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogForm\IPaymentView.cs" />
+    <Compile Include="View\MainFrame\Interfaces\IInvoiceView.cs" />
+    <Compile Include="View\MainFrame\InvoiceView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainFrame\InvoiceView.Designer.cs">
+      <DependentUpon>InvoiceView.cs</DependentUpon>
     </Compile>
     <Compile Include="_Repositories\DashboardRepository.cs" />
     <Compile Include="_Repositories\InterfaceModel\IAccountRepository.cs" />
@@ -287,6 +297,9 @@
     <EmbeddedResource Include="View\DialogForm\DialogMessageView.resx">
       <DependentUpon>DialogMessageView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogForm\PaymentView.resx">
+      <DependentUpon>PaymentView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\DialogForm\EditCategoryView.resx">
       <DependentUpon>EditCategoryView.cs</DependentUpon>
     </EmbeddedResource>
@@ -309,8 +322,8 @@
     <EmbeddedResource Include="View\MainFrame\IngredientView.resx">
       <DependentUpon>IngredientView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MainFrame\Invoice.resx">
-      <DependentUpon>Invoice.cs</DependentUpon>
+    <EmbeddedResource Include="View\MainFrame\InvoiceView.resx">
+      <DependentUpon>InvoiceView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainFrame\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>

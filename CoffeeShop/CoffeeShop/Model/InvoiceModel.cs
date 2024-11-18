@@ -30,6 +30,7 @@ namespace CoffeeShop.Model
         /// </summary>
         private string orderID;
         #endregion
+
         #region Properties
         /// <summary>
         /// 
@@ -52,7 +53,7 @@ namespace CoffeeShop.Model
         /// </summary>
         public string PaymentID 
         { 
-            get {return paymentID; } 
+            get { return paymentID; } 
             set { paymentID = value; } 
         }
         /// <summary>
@@ -72,6 +73,22 @@ namespace CoffeeShop.Model
             get { return orderID; }
             set { orderID = value; }
         }
+        #endregion
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public InvoiceModel()
+        {
+            Payment = new PaymentModel();
+        }
+
+        #region Navigation
+
+        /// <summary>
+        /// Navigation
+        /// </summary>
+        public virtual PaymentModel Payment { get; set; }
         #endregion
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop.View.MainFrame.Interfaces
 {
-    public interface IInvoice
+    public interface IInvoiceView
     {
        
         #region Event

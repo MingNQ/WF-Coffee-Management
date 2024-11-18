@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop.Model
 {
-
 	public class StaffModel
 	{
         #region Fields

@@ -11,17 +11,23 @@ using System.Windows.Forms;
 
 namespace CoffeeShop.View.MainFrame
 {
-    public partial class Invoice : Form,IInvoice
+    public partial class InvoiceView : Form, IInvoiceView
     {
+        #region Events
+        public event EventHandler PrintEvent;
+        public event EventHandler CancelEvent;
+        #endregion
+
         /// <summary>
         /// Constructor
         /// </summary>
-        public Invoice()
+        public InvoiceView()
         {
             InitializeComponent();
             InitializeAndRaiseEvent();
             InitializeDatagridview();
         }
+
         #region Private field
         /// <summary>
         /// Initialize Data Grid View
@@ -31,6 +37,7 @@ namespace CoffeeShop.View.MainFrame
             // Cấu hình DataGridView
             dgvInvoice.AllowUserToAddRows = false;
             dgvInvoice.AllowUserToResizeRows = false;
+            dgvInvoice.AllowUserToResizeColumns = false;
             dgvInvoice.RowHeadersVisible = false;
             dgvInvoice.AutoGenerateColumns = false;
             dgvInvoice.MultiSelect = false;
@@ -40,8 +47,8 @@ namespace CoffeeShop.View.MainFrame
             dgvInvoice.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             // Thay đổi màu cho tiêu đề
-            dgvInvoice.DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
-            dgvInvoice.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold); // Kiểu chữ
+            dgvInvoice.DefaultCellStyle.Font = new Font("Arial", 8, FontStyle.Regular);
+            dgvInvoice.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Bold); // Kiểu chữ
             dgvInvoice.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(168, 140, 118);
             dgvInvoice.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(168, 140, 118);
 
@@ -68,7 +75,14 @@ namespace CoffeeShop.View.MainFrame
             colTotal.HeaderText = "Total";
             colTotal.DataPropertyName = "Total";
             dgvInvoice.Columns.Add(colTotal);
+
+            // Cột: Description
+            DataGridViewTextBoxColumn colDescription = new DataGridViewTextBoxColumn();
+            colDescription.HeaderText = "Des";
+            colDescription.DataPropertyName = "Description";
+            dgvInvoice.Columns.Add(colDescription);
         }
+
         /// <summary>
         /// Initialize and raise event
         /// </summary>
@@ -85,10 +99,6 @@ namespace CoffeeShop.View.MainFrame
         }
         #endregion
 
-        #region Events
-        public event EventHandler PrintEvent;
-        public event EventHandler CancelEvent;
-        #endregion
         #region Public      
         #endregion
     }
