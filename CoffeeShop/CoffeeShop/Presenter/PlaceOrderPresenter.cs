@@ -310,8 +310,7 @@ namespace CoffeeShop.Presenter
             invoiceView.lbIDTable.Text = view.TableNo.ToString();
             invoiceView.lbStaff.Text = view.StaffName.ToString();             
             invoiceView.lbOrderID.Text = view.OrderID.ToString();
-
-            var List = repository.GetOrderDetailWithItems(view.OrderID);
+            
             float totalSum = 0;
             foreach (var item in orderDetails)
             {
