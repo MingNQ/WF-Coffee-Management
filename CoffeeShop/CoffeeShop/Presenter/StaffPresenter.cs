@@ -1,5 +1,6 @@
 ﻿using CoffeeShop.Model;
 using CoffeeShop.Model.InterfaceModel;
+using CoffeeShop.Presenter.Common;
 using CoffeeShop.Utilities;
 using CoffeeShop.View.DialogForm;
 using CoffeeShop.View.MainFrame;
@@ -184,6 +185,10 @@ namespace CoffeeShop.Presenter
                     ImageUrl = staffView.Avatar.ImageUrl
                 };
 
+                // Create Email
+                var email = Generate.GenerateEmail(staff.StaffName);
+                staff.Email = email;
+
                 if (staff.Avatar.AvatarID == null)
                 {
                     // Generate Avatar ID
@@ -219,7 +224,22 @@ namespace CoffeeShop.Presenter
                         }
                     }
 
+                    // Create account if add new staff
+                    var password = Generate.GeneratePassword(6);
+                    var account = new Account()
+                    {
+                        AccountID = Generate.GenerateID("A"),
+                        StaffID = staff.StaffID,
+                        Username = Generate.GenerateUsername(staff.StaffName),
+                        Password = EncryptPassword.HashPassword(password),
+                        Active = true
+                    };
+
                     repository.Add(staff);
+                    repository.AddAccount(account);
+
+                    DialogMessageView.ShowMessage("information", 
+                        $"Information of {staff.StaffName}\nEmail: {email}\nUsername: {account.Username}\nPassword: {password}");
                 }
 
                 if (staffView.Avatar.ImageUrl != null) 

@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace CoffeeShop.Utilities
 {
     internal class AppConst
-    {
+    { 
+        public const string EMAIL_ADDRESS = "@cfmail.com";
         public const string ADMIN_ROLE = "Quản lý";
         public const string IMAGE_SOURCE_PATH = @"..\..\Utilities\Images";
         public const string INVOICE_SOURCE_PATH = @"..\..\Assets\Invoice.docx";
