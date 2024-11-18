@@ -10,6 +10,7 @@ namespace CoffeeShop.Utilities
     {
         public const string ADMIN_ROLE = "Quản lý";
         public const string IMAGE_SOURE_PATH = @"..\..\Utilities\Images";
+        public const string INVOICE_SOURCE_PATH = @"..\..\Assets\Invoice.docx";
         public const string TABLE_AVAILABLE = "Trống";
         public const string TABLE_IN_USED = "Đang sử dụng";
         public const string ORDER_STATUS_DONE = "Done";
