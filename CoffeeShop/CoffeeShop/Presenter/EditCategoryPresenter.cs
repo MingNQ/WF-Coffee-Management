@@ -1,6 +1,7 @@
 ﻿using CoffeeShop.Model.InterfaceModel;
 using CoffeeShop.Model;
 using CoffeeShop.View.DialogCheckList;
+using CoffeeShop.View.DialogForm;
 using System;
 using System.Collections.Generic;
 using System.Linq;

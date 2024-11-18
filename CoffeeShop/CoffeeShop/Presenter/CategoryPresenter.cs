@@ -3,6 +3,7 @@ using CoffeeShop.Model;
 using CoffeeShop.Model.InterfaceModel;
 using CoffeeShop.View;
 using CoffeeShop.View.DialogCheckList;
+using CoffeeShop.View.DialogForm;
 using CoffeeShop.View.MainFrame;
 using System;
 using System.Collections.Generic;
@@ -224,15 +225,15 @@ namespace CoffeeShop.Presenter
         /// <param name="e"></param>
         private void SaveItem(object sender, EventArgs e)
         {
-            var ingredientIDs = categoryView.GetSelectedIngredientIDs();
-            var model = new ItemModel();
-            model.CategoryID = categoryView.CategoryID;
-            model.ItemName = categoryView.ItemName;
-            model.Cost = categoryView.Cost;
-
             try
             {
+                var ingredientIDs = categoryView.GetSelectedIngredientIDs();
+                var model = new ItemModel();
+                model.CategoryID = categoryView.CategoryID;
+                model.ItemName = categoryView.ItemName;
+                model.Cost = categoryView.Cost;
                 new Common.ModelValidation().Validate(model);
+
                 if (categoryView.IsEdit)
                 {
                     model.ItemID = categoryView.ItemID;
@@ -267,7 +268,7 @@ namespace CoffeeShop.Presenter
             catch (Exception ex)
             {
                 categoryView.IsSuccessful = false;
-                categoryView.Message = ex.Message;
+                DialogMessageView.ShowMessage("information", ex.Message);
             }
         }
 
@@ -284,7 +285,7 @@ namespace CoffeeShop.Presenter
                 repository.DeleteItemIngredients(item.ItemID);
                 repository.Delete(item.ItemID);
                 categoryView.IsSuccessful = true;
-                categoryView.Message = "Item deleted successfully";
+                DialogMessageView.ShowMessage("success", "Successul delete item");
                 if (currentItemType == ItemType.Food)
                 {
                     LoadAllFoodList();
@@ -297,7 +298,7 @@ namespace CoffeeShop.Presenter
             catch
             {
                 categoryView.IsSuccessful = false;
-                categoryView.Message = "An error ocurred, could not delete item";
+                DialogMessageView.ShowMessage("error", "An error occured, could not delete this item!");
             }
         }
 

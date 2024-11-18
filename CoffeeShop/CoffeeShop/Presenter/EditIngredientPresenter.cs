@@ -69,7 +69,12 @@ namespace CoffeeShop.Presenter
         /// <param name="e"></param>
         private void ClearEvent(object sender, EventArgs e)
         {
-            editIngredientView.IngredientName = "";
+            if (DialogMessageView.ShowMessage("warning", "Are you sure to clear all information? Information once cleared can't be recovered!")
+               == DialogResult.OK)
+            {
+                editIngredientView.IngredientName = "";
+            }
+          
         }
 
         /// <summary>
@@ -101,11 +106,14 @@ namespace CoffeeShop.Presenter
                 }
 
                 ingredientView.IsSuccessful = true;
+                DialogMessageView.ShowMessage("success", ingredientView.IsEdit
+            ? $"Successful Edit Ingredient: {ingredient.IngredientName}"
+            : $"Successful Add New Ingredient: {ingredient.IngredientName}");
             }
             catch (Exception ex)
             {
                 ingredientView.IsSuccessful = false;
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogMessageView.ShowMessage("information", ex.Message);
             }
         }
 
