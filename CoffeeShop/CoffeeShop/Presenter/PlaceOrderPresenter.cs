@@ -314,7 +314,7 @@ namespace CoffeeShop.Presenter
             float totalSum = 0;
             foreach (var item in orderDetails)
             {
-                totalSum += item.Total * item.Quantity;
+                totalSum = item.UnitPrice * item.Quantity;
             }
             invoiceView.lbTotal.Text = totalSum.ToString();
             invoiceView.dgvInvoice.DataSource = orderDetails;
@@ -326,7 +326,7 @@ namespace CoffeeShop.Presenter
             };
             invoiceView.btnPrint.Click += delegate
             {
-                string filePath = @"C:\Study\Lập Trình Trực Quan\BTL\WF-Coffee-Management\CoffeeShop\CoffeeShop\Assets\Invoice.docx";
+                string filePath = AppConst.INVOICE_SOURCE_PATH;
                 DocX doc;
                 if(System.IO.File.Exists(filePath))
                 {
