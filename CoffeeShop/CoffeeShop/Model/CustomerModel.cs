@@ -21,7 +21,6 @@ namespace CoffeeShop.Model
         private Gender gender;
         #endregion
 
-
         #region Properties
         [DisplayName("ID")]
         public string CustomerID { get { return customerID; } set { customerID = value; } }

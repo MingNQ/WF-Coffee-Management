@@ -103,7 +103,7 @@ namespace CoffeeShop.View.MainFrame
                 if(!string.IsNullOrEmpty(avatarPath))
                 {
                     //nếu khác rỗng thì tải ảnh lên PictureBox từ đường dẫn được tạo bằng cách nối Application.StartupPath với đường dẫn của file ảnh
-                    picAvatar.ImageLocation = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, avatarPath);
+                    picAvatar.ImageLocation = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURCE_PATH, avatarPath);
                     picAvatar.SizeMode = PictureBoxSizeMode.StretchImage; //tuy chinh anh
                 }
                 else
