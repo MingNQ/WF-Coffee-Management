@@ -480,7 +480,15 @@ namespace CoffeeShop.View.MainFrame
 
             this.ingredients = this.ingredients.OrderBy(i => i.IngredientID).ToList();
         }
-
+        public void ShowIngredientList(List<IngredientModel> ingredients)
+        {
+            this.ingredients.Clear();
+            foreach (var item in ingredients)
+            {
+                lsbIngredient.Items.Add($"{item.IngredientID} - {item.IngredientName}");
+                this.ingredients.Add(item);
+            }
+        }
         /// <summary>
         /// 
         /// </summary>
