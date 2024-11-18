@@ -58,7 +58,6 @@ namespace CoffeeShop.Presenter
 
             // Add event
             this.signInView.LoginEvent += LoginAccount;
-            this.signInView.BackSignUpEvent += SignUpAccount;
             this.signInView.ShowPasswordEvent += ShowPassword;
             this.signInView.HideMessage += HideMessage;
 
@@ -106,16 +105,6 @@ namespace CoffeeShop.Presenter
             // If Not Ok
             signInView.Successful = false;
             SignInError("*Your username or password may be incorrect!");
-        }
-
-        /// <summary>
-        /// Show Sign Up account Form
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void SignUpAccount(object sender, EventArgs e)
-        {
-            // TO-DO: SignUp event to open SignUp Form
         }
 
         /// <summary>

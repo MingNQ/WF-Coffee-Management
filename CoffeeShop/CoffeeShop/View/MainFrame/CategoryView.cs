@@ -376,11 +376,11 @@ namespace CoffeeShop.View.MainFrame
                 var selectedItem = lsbIngredient.SelectedItem;
                 var itemName = selectedItem.ToString().Split('-').Last().Trim();
 
-                if (MessageBox.Show($"Are you sure to DELETE item \"{selectedItem}\"", "Warning", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                if (DialogMessageView.ShowMessage("warning", $"Are you sure to DELETE item \"{selectedItem}\"") == DialogResult.OK)
                 {
                     lsbIngredient.Items.Remove(selectedItem);
                     ingredients.Remove(ingredients.Where(i => i.IngredientName == itemName).FirstOrDefault());
-                    MessageBox.Show($"Deleted {selectedItem}");
+                    DialogMessageView.ShowMessage("success", $"Deleted {selectedItem}");
                 }
             }
         }
@@ -414,7 +414,6 @@ namespace CoffeeShop.View.MainFrame
             txtCategory.Visible = isEdit;
             cbCategory.Visible = !isEdit;
         }
-
 
         #endregion
 

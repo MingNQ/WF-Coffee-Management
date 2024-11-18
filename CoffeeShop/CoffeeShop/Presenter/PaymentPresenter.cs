@@ -42,6 +42,7 @@ namespace CoffeeShop.Presenter
             view.ShowDialog();
         }
 
+        #region private fields
         /// <summary>
         /// 
         /// </summary>
@@ -61,5 +62,6 @@ namespace CoffeeShop.Presenter
                 view.CustomerPhone = "";
             }
         }
+        #endregion
     }
 }

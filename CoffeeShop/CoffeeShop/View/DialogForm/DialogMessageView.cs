@@ -13,7 +13,6 @@ namespace CoffeeShop.View.DialogForm
 {
     public partial class DialogMessageView : Form
     {
-
         /// <summary>
         /// Constructor
         /// </summary>
@@ -29,6 +28,7 @@ namespace CoffeeShop.View.DialogForm
             btnSecondary.Click += CancelEvent; 
         }
 
+        #region private fields
         /// <summary>
         /// Cancel Event
         /// </summary>
@@ -101,6 +101,9 @@ namespace CoffeeShop.View.DialogForm
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
+        #endregion
+
+        #region public fields
         /// <summary>
         /// Show Dialog
         /// </summary>
@@ -113,5 +116,6 @@ namespace CoffeeShop.View.DialogForm
                 return dialog.ShowDialog();
             }
         }
+        #endregion
     }
 }
