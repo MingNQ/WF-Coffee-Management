@@ -87,6 +87,7 @@
     <Compile Include="Model\InvoiceModel.cs" />
     <Compile Include="Model\OrderModel.cs" />
     <Compile Include="Model\OrderDetailModel.cs" />
+    <Compile Include="Model\PaymentModel.cs" />
     <Compile Include="Presenter\PaymentPresenter.cs" />
     <Compile Include="View\DialogForm\PaymentView.cs">
       <SubType>Form</SubType>
