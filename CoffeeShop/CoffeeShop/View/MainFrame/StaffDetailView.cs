@@ -171,8 +171,19 @@ namespace CoffeeShop.View.MainFrame
             get { return isChangePass; }
             set { isChangePass = value; }
         }
-        
+
         #endregion
+
+        #region Event
+        public event EventHandler ImportEvent;
+        public event EventHandler EditEvent;
+        public event EventHandler SaveEvent;
+        public event EventHandler CancelEvent;
+        public event EventHandler ChangePasswordEvent;
+        public event EventHandler HideMessageEvent;
+        public event EventHandler ShowPasswordEvent;
+        #endregion
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -187,8 +198,8 @@ namespace CoffeeShop.View.MainFrame
             InitializeControl();
             // Đăng kí các sự kiện 
             AssociateAndRaiseEvents();
-           
         }
+
         #region Private Fields
         /// <summary>
         /// Initialize unit in Control
@@ -296,16 +307,6 @@ namespace CoffeeShop.View.MainFrame
             }
             return instance;
         }
-        #endregion
-
-        #region Event
-        public event EventHandler ImportEvent;
-        public event EventHandler EditEvent;
-        public event EventHandler SaveEvent;
-        public event EventHandler CancelEvent;
-        public event EventHandler ChangePasswordEvent;
-        public event EventHandler HideMessageEvent;
-        public event EventHandler ShowPasswordEvent;
         #endregion
     }
 }

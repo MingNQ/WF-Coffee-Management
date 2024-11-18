@@ -44,14 +44,14 @@ namespace CoffeeShop.Presenter
         /// </summary>
         /// <param name="view"></param>
         /// <param name="repository"></param>
-        public StaffDetailPresenter(IStaffDetailView view, IStaffRepository repository,IAccountRepository AccoungRepository)
+        public StaffDetailPresenter(IStaffDetailView view, IStaffRepository repository, IAccountRepository accountRepository)
         {
             this.staffDetailView = view;
+            this.repository = repository;
+            this.accountRepository = accountRepository;
+
             if (!staffDetailView.IsOpen)
             {
-              
-                this.repository = repository;
-                this.accountRepository = AccoungRepository;
                 //gán các sự kiện từ view với các phương thức tương ứng
                 this.staffDetailView.EditEvent += EditEvent;
                 this.staffDetailView.CancelEvent += CancelEvent;
@@ -61,8 +61,9 @@ namespace CoffeeShop.Presenter
                 this.staffDetailView.HideMessageEvent += HideMessageEvent;
                 this.staffDetailView.ShowPasswordEvent += ShowPasswordEvent;
 
-                LoadStaffDetails();  //Tải thông tin nhân viên lên giao diện
             }
+
+            LoadStaffDetails();  //Tải thông tin nhân viên lên giao diện
             this.staffDetailView.Show();  //hiển thị giao diện
         }
 
@@ -162,7 +163,7 @@ namespace CoffeeShop.Presenter
                         // Update "Your Profile" UI immediately
                         UpdateProfileView(destinationPath);
 
-                        MessageBox.Show("Avatar has been updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DialogMessageView.ShowMessage("success", "Avatar has been updated successfully!");
                     }
                 }
             }
@@ -182,7 +183,7 @@ namespace CoffeeShop.Presenter
             }
             else
             {
-                MessageBox.Show("Image file not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogMessageView.ShowMessage("error", "Image file not found!");
             }
         }
 
@@ -193,10 +194,10 @@ namespace CoffeeShop.Presenter
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SaveEvent(object sender, EventArgs e)
-        {            
-            if(staffDetailView.IsChangePass == false)
+        {
+            if (staffDetailView.IsChangePass == false)
             {
-              try
+                try
                 {
                     if (staffDetailView.IsChangePass == false)
                     {
@@ -217,15 +218,18 @@ namespace CoffeeShop.Presenter
                                 StaffID = staffDetailView.StaffId,
                                 ImageUrl = SaveAvatar(staffDetailView.StaffInformationControl.Avatar) // Lưu ảnh
                             }
-                        };                        
+                        };
                         new Common.ModelValidation().Validate(updatedStaff);
                         if (staffDetailView.IsEdit)
-                        {                            
+                        {
                             repository.Edit(updatedStaff);
+                        }
+                        if (!string.IsNullOrEmpty(updatedStaff.Avatar.ImageUrl))
+                        {
                             repository.SaveAvatar(staffDetailView.HasAvatar, updatedStaff);
-                        }                       
+                        }
                         staffDetailView.InitializeControl();
-                        LoadStaffDetails();                        
+                        LoadStaffDetails();
                         DialogMessageView.ShowMessage("success", "Updated Successfully");
                     }
                 }
@@ -239,20 +243,20 @@ namespace CoffeeShop.Presenter
                 }
             }
             else
-            {               
-                if(staffDetailView.StaffInformationControl.txtOldPassword.Text == "")
+            {
+                if (staffDetailView.StaffInformationControl.txtOldPassword.Text == "")
                 {
                     ErrorMessage("Old Password is required");
                 }
                 else
                 {
-                    if(staffDetailView.StaffInformationControl.txtNewPassword.Text == "")
+                    if (staffDetailView.StaffInformationControl.txtNewPassword.Text == "")
                     {
                         ErrorMessage("New Password is required");
                     }
                     else
                     {
-                        if(staffDetailView.StaffInformationControl.txtConfirmPassword.Text == "")
+                        if (staffDetailView.StaffInformationControl.txtConfirmPassword.Text == "")
                         {
                             ErrorMessage("Confirm new password is required");
                         }
@@ -289,27 +293,30 @@ namespace CoffeeShop.Presenter
                                                 StaffID = staffDetailView.StaffId,
                                                 ImageUrl = SaveAvatar(staffDetailView.StaffInformationControl.Avatar) // Lưu ảnh
                                             }
-                                        };                                       
-                                        new Common.ModelValidation().Validate(updatedStaff);                                        
+                                        };
+                                        new Common.ModelValidation().Validate(updatedStaff);
                                         Account updatedPassword = new Account
                                         {
                                             Password = EncryptPassword.HashPassword(staffDetailView.StaffInformationControl.txtNewPassword.Text),
                                             StaffID = staffDetailView.StaffId
                                         };
                                         if (staffDetailView.IsEdit)
-                                        {                                            
+                                        {
                                             repository.Edit(updatedStaff);
-                                            repository.SaveAvatar(staffDetailView.HasAvatar, updatedStaff);
-                                            accountRepository.ChangePasswordByID(updatedPassword);                                            
+                                            accountRepository.ChangePasswordByID(updatedPassword);
                                             staffDetailView.InitializeControl();
                                             LoadStaffDetails();
-                                        }                                        
+                                        }
+                                        if (!string.IsNullOrEmpty(updatedStaff.Avatar.ImageUrl))
+                                        {
+                                            repository.SaveAvatar(staffDetailView.HasAvatar, updatedStaff);
+                                        }
                                         DialogMessageView.ShowMessage("success", "Updated Successfully");
                                     }
                                     catch (ValidationException ex) // Xử lý lỗi validate
                                     {
                                         DialogMessageView.ShowMessage("error", $"Validation Error: {ex.Message}");
-                                    }                                    
+                                    }
                                     catch (Exception ex) // Lỗi hệ thống chung
                                     {
                                         DialogMessageView.ShowMessage("error", $"An unexpected error occurred: {ex.Message}");
@@ -330,11 +337,11 @@ namespace CoffeeShop.Presenter
         /// <returns></returns>
         private string SaveAvatar(string avatarPath)
         {
-            if(!string.IsNullOrEmpty(avatarPath))
+            if (!string.IsNullOrEmpty(avatarPath))
             {
                 string fileName = Path.GetFileName(avatarPath);
                 string destinationPath = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURCE_PATH, fileName);
-                
+
                 // Sao chép ảnh vào thư mục ứng dụng nếu chưa tồn tại
                 if (!File.Exists(destinationPath))
                 {
@@ -343,7 +350,7 @@ namespace CoffeeShop.Presenter
                 return fileName; // Trả về tên file để lưu vào cơ sở dữ liệu
             }
             return null;// Nếu không có ảnh thì trả về null
-        } 
+        }
 
         /// <summary>
         /// Cancel Event
@@ -369,6 +376,7 @@ namespace CoffeeShop.Presenter
             staffDetailView.IsEdit = true;
             staffDetailView.IsChangePass = false;
         }
+
         /// <summary>
         /// Change Password Event
         /// </summary>
@@ -378,6 +386,7 @@ namespace CoffeeShop.Presenter
         {
             staffDetailView.IsChangePass = true;
         }
+
         /// <summary>
         /// Hide Message Event 
         /// </summary>
@@ -388,6 +397,7 @@ namespace CoffeeShop.Presenter
         {
             InitializeHideMessage();
         }
+
         /// <summary>
         /// Error Message when change password
         /// </summary>
@@ -396,10 +406,10 @@ namespace CoffeeShop.Presenter
         {
             this.staffDetailView.StaffInformationControl.lbErrorMessage.Text = message;
             this.staffDetailView.StaffInformationControl.txtNewPassword.BorderColor = Color.Red;
-            this.staffDetailView.StaffInformationControl.txtOldPassword.BorderColor= Color.Red;
-            this.staffDetailView.StaffInformationControl.txtConfirmPassword.BorderColor= Color.Red;
+            this.staffDetailView.StaffInformationControl.txtOldPassword.BorderColor = Color.Red;
+            this.staffDetailView.StaffInformationControl.txtConfirmPassword.BorderColor = Color.Red;
         }
-       
+
         /// <summary>
         /// Show password when checkbox change 
         /// </summary>
@@ -421,6 +431,7 @@ namespace CoffeeShop.Presenter
                 staffDetailView.StaffInformationControl.txtConfirmPassword.PasswordChar = '●';
             }
         }
+
         /// <summary>
         /// Initialize Hide Message 
         /// </summary>

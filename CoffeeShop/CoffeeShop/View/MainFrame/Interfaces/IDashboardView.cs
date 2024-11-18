@@ -35,7 +35,7 @@ namespace CoffeeShop.View
 
         #region Methods
         // Updating...
-        void Show();
+        void ShowPage();
         #endregion
     }
 }

@@ -24,7 +24,6 @@ namespace CoffeeShop.View.LoginFrame
         #region Events
 
         event EventHandler LoginEvent;
-        event EventHandler BackSignUpEvent;
         event EventHandler ShowPasswordEvent;
         event EventHandler HideMessage;
 

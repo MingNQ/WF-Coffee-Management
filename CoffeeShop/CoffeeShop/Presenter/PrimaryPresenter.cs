@@ -66,12 +66,13 @@ namespace CoffeeShop.Presenter
             if (signInView.Successful)
             {
                 signInView.Hide();
-                new MainPresenter(mainView, connectionString);
 
                 // Get Username and Role
                 Generate.StaffID = signInView.Account.Staff.StaffID;
                 Generate.StaffName = signInView.Account.Staff.StaffName.Trim();
                 Generate.StaffRole = signInView.Account.Staff.Role;
+
+                new MainPresenter(mainView, connectionString);
 
                 // Display
                 mainView.Username = "Hello, " + Generate.StaffName.Split(' ').LastOrDefault() + "!";

@@ -93,6 +93,7 @@
             this.label4.Size = new System.Drawing.Size(120, 18);
             this.label4.TabIndex = 5;
             this.label4.Text = "New Customer?";
+            this.label4.Visible = false;
             // 
             // btnNext
             // 

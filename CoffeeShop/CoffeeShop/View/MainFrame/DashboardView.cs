@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeShop.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -95,6 +96,20 @@ namespace CoffeeShop.View
 
             return instance;
 		}
-		#endregion
-	}
+
+		/// <summary>
+		/// Show Page
+		/// </summary>
+        public void ShowPage()
+        {
+			if (Generate.StaffRole != AppConst.ADMIN_ROLE)
+			{
+				pnlDashboard.Visible = false;
+			}
+
+			// Show
+			this.Show();
+        }
+        #endregion
+    }
 }

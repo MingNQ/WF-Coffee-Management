@@ -610,6 +610,11 @@ namespace CoffeeShop._Repositories
             throw new NotImplementedException();
         }
 
+        public void AddAccount(Account account)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

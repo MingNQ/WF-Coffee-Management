@@ -31,7 +31,7 @@ namespace CoffeeShop.Presenter
 			this.view = view;
 			this.repository = repository;
 			DisplayInformation();
-            this.view.Show();
+            this.view.ShowPage();
 		}
 
         #region private fields

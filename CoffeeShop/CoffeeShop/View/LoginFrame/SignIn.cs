@@ -81,7 +81,6 @@ namespace CoffeeShop.View
         #region Event
 
         public event EventHandler LoginEvent;
-        public event EventHandler BackSignUpEvent;
         public event EventHandler ShowPasswordEvent;
         public event EventHandler HideMessage;
 
@@ -118,9 +117,6 @@ namespace CoffeeShop.View
             // If User type username or password is hide warning message
             txtPassword.GotFocus += delegate { HideMessage?.Invoke(this, EventArgs.Empty); };
             txtUsername.KeyDown += delegate { HideMessage?.Invoke(this, EventArgs.Empty); };
-
-            // SignUp Event
-            btnSignUp.Click += delegate { BackSignUpEvent?.Invoke(this, EventArgs.Empty); };
 
             // Show password Event
             chkShowPassword.CheckedChanged += delegate { ShowPasswordEvent?.Invoke(this, EventArgs.Empty); };

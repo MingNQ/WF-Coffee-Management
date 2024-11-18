@@ -58,7 +58,6 @@ namespace CoffeeShop.Presenter
 
             // Add event
             this.signInView.LoginEvent += LoginAccount;
-            this.signInView.BackSignUpEvent += SignUpAccount;
             this.signInView.ShowPasswordEvent += ShowPassword;
             this.signInView.HideMessage += HideMessage;
 
@@ -75,6 +74,7 @@ namespace CoffeeShop.Presenter
         /// <param name="e"></param>
         private void LoginAccount(object sender, EventArgs e)
         {
+            accounts = repository.GetAll();
             // Connect database to check account
             var account = accounts.Where(a => a.Username == signInView.TxtUsername.Text
                                            && a.Password == EncryptPassword.HashPassword(signInView.TxtPassword.Text)).FirstOrDefault();
@@ -87,7 +87,7 @@ namespace CoffeeShop.Presenter
                 SignInError("*Your username or password must not null!");
                 return;
             }
-            var tmp = EncryptPassword.HashPassword("123");
+            var tmp1 = EncryptPassword.HashPassword(signInView.TxtPassword.Text);
             if (account != null)
             {
                 if (!account.Active)
@@ -106,16 +106,6 @@ namespace CoffeeShop.Presenter
             // If Not Ok
             signInView.Successful = false;
             SignInError("*Your username or password may be incorrect!");
-        }
-
-        /// <summary>
-        /// Show Sign Up account Form
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void SignUpAccount(object sender, EventArgs e)
-        {
-            // TO-DO: SignUp event to open SignUp Form
         }
 
         /// <summary>

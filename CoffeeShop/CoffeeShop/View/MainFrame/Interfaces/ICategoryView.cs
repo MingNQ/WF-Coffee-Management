@@ -47,6 +47,7 @@ namespace CoffeeShop.View.MainFrame
         void SetItemListBindingSource(BindingSource itemList);
         void LoadCategories(List<CategoryModel> categories);
         void UpdateIngredientList(List<IngredientModel> ingredients);
+        void ShowIngredientList(List<IngredientModel> ingredients);
         List<string> GetSelectedIngredientIDs();
         void RoleAccess();
         #endregion

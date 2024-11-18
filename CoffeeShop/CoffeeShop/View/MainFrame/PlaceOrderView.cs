@@ -280,10 +280,13 @@ namespace CoffeeShop.View
             // Back
             btnBack.Click += delegate
             {
-                BackEvent?.Invoke(this, EventArgs.Empty);
-                tabPlaceOrder.TabPages.Remove(tabPageOrder);
-                tabPlaceOrder.TabPages.Add(tabPageTableOrder);
-                ResetControl();
+                if (DialogMessageView.ShowMessage("notify", "Something is unsave? Are you sure to Back?") == DialogResult.OK)
+                {
+                    BackEvent?.Invoke(this, EventArgs.Empty);
+                    tabPlaceOrder.TabPages.Remove(tabPageOrder);
+                    tabPlaceOrder.TabPages.Add(tabPageTableOrder);
+                    ResetControl();
+                }
             };
 
             // List Category Event

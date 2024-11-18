@@ -237,12 +237,9 @@ namespace CoffeeShop.Presenter
                 if (categoryView.IsEdit)
                 {
                     model.ItemID = categoryView.ItemID;
-                    var ItemIngredientIDs = repository.GetItemIngredients(model.ItemID);
-                    var currentIngredientList = repository.GetIngredientsByItemID(model.ItemID);
+                    var currentItemIngredientIDs = repository.GetItemIngredients(model.ItemID);
                     var newIngredientList = categoryView.Ingredients;
-                    int currentNumber = currentIngredientList.Count();
-                    int newNumber = newIngredientList.Count();
-                    repository.EditItemIngredients(model.ItemID, ItemIngredientIDs, newIngredientList);
+                    repository.EditItemIngredients(model.ItemID, currentItemIngredientIDs, newIngredientList);
                     repository.Edit(model);
                     categoryView.Message = "Item edited successfully";
                 }
@@ -314,7 +311,7 @@ namespace CoffeeShop.Presenter
             categoryView.CategoryID = item.CategoryID;
             categoryView.ItemName = item.ItemName;
             categoryView.Cost = item.Cost;
-            categoryView.UpdateIngredientList(repository.GetIngredientsByItemID(item.ItemID.ToString()));
+            categoryView.ShowIngredientList(repository.GetIngredientsByItemID(item.ItemID.ToString()));
             categoryView.IsEdit = true;
         }
 

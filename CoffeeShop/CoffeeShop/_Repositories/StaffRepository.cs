@@ -56,7 +56,8 @@ namespace CoffeeShop._Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = @"delete from Staff where StaffID = @id 
+                command.CommandText = @"delete from Account where StaffID = @id
+                                        delete from Staff where StaffID = @id 
                                         delete from Avatar where StaffID = @id";
                 command.Parameters.Add("@id", SqlDbType.NVarChar).Value = staffID;
                 command.ExecuteNonQuery();
@@ -273,6 +274,27 @@ namespace CoffeeShop._Repositories
             }
 
             return account;
+        }
+
+        /// <summary>
+        /// Add Account
+        /// </summary>
+        /// <param name="account"></param>
+        public void AddAccount(Account account)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand()) 
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "insert into Account values(@AccountID, @Username, @Password, @StaffID, @Active)";
+                command.Parameters.Add("AccountID", SqlDbType.NVarChar).Value = account.AccountID;
+                command.Parameters.Add("Username", SqlDbType.NVarChar).Value = account.Username;
+                command.Parameters.Add("Password", SqlDbType.NVarChar).Value = account.Password;
+                command.Parameters.Add("StaffID", SqlDbType.NVarChar).Value = account.StaffID;
+                command.Parameters.Add("Active", SqlDbType.Bit).Value = account.Active;
+                command.ExecuteNonQuery();
+            }
         }
         #endregion
     }
