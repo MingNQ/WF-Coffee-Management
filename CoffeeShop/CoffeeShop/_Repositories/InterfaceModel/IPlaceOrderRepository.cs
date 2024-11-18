@@ -19,5 +19,8 @@ namespace CoffeeShop._Repositories.InterfaceModel
         IEnumerable<TableOrder> GetTablesByFloor(string id);
         List<OrderDetailModel> GetOrderDetails(string orderID);
         OrderModel GetOrder(string tableID);
+        string GenerateInvoiceID();
+
+        List<OrderDetailModel> GetOrderDetailWithItems(string orderID);
     }
 }
