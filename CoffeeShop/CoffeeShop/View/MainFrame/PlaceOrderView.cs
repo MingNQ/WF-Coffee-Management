@@ -314,17 +314,25 @@ namespace CoffeeShop.View
 
                 AddToCartEvent?.Invoke(this, EventArgs.Empty);
                 btnPrint.Enabled = true;
-                btnPay.Enabled = true;
             };
 
             // Data Grid View
-            dgvOrder.CellClick +=  delegate { btnRemove.Enabled = true; btnReduce.Enabled = true; txtReduceQuantity.Enabled = true; };
+            dgvOrder.CellClick += delegate 
+            {
+                btnRemove.Enabled = true; 
+                btnReduce.Enabled = true; 
+                txtReduceQuantity.Enabled = true; 
+            };
+
             dgvOrder.CellDoubleClick += (s, e) =>
             {
-                if (e.RowIndex >= 0)
+                if (e.RowIndex >= 0 && DialogMessageView.ShowMessage("notify", "Remove Item?") == DialogResult.OK)
                 {
                     RemoveEvent?.Invoke(this, EventArgs.Empty);
                 }
+                btnRemove.Enabled = false;
+                btnReduce.Enabled = false;
+                txtReduceQuantity.Enabled = false;
             };
 
             // Remove 
@@ -338,7 +346,6 @@ namespace CoffeeShop.View
             {
                 ReduceEvent?.Invoke(this, EventArgs.Empty);
                 txtReduceQuantity.Text = "";
-
             };
 
             // Remove All
@@ -368,7 +375,10 @@ namespace CoffeeShop.View
             btnPrint.Click += delegate { PrintEvent?.Invoke(this, EventArgs.Empty); };
 
             // Pay
-            btnPay.Click += delegate { PayEvent?.Invoke(this, EventArgs.Empty); };
+            btnPay.Click += delegate 
+            { 
+                PayEvent?.Invoke(this, EventArgs.Empty);
+            };
 
             this.txtReduceQuantity.KeyPress += new KeyPressEventHandler(this.txtReduceQuantity_KeyPress);
         }
@@ -561,7 +571,8 @@ namespace CoffeeShop.View
             }
 
             // Show 
-            this.Show();
+            if (!IsOpen)
+                this.Show();
         }
         #endregion
     }

@@ -12,6 +12,8 @@ using System.Drawing;
 using CoffeeShop.View;
 using static TheArtOfDevHtmlRenderer.Adapters.RGraphicsPath;
 using CoffeeShop.Model.InterfaceModel;
+using CoffeeShop.Model.Common;
+using Xceed.Document.NET;
 
 namespace CoffeeShop._Repositories
 {
@@ -250,11 +252,32 @@ namespace CoffeeShop._Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = @"insert into tOrder values(@OrderID, @StaffID, @TableID, @NumberPeople)";
+                command.CommandText = @"insert into tOrder(OrderID, StaffID, TableID, NumberPeople) values(@OrderID, @StaffID, @TableID, @NumberPeople)";
                 command.Parameters.Add("OrderID", SqlDbType.NVarChar).Value = order.OrderID;
                 command.Parameters.Add("StaffID", SqlDbType.NVarChar).Value = order.StaffID;
                 command.Parameters.Add("TableID", SqlDbType.NVarChar).Value = order.TableID;
                 command.Parameters.Add("NumberPeople", SqlDbType.Int).Value = order.NumberPeople;
+                command.ExecuteNonQuery();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="orderID"></param>
+        /// <param name="status"></param>
+        public void UpdateOrderStatus(string orderID, string status)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"update tOrder 
+                                        set Status = @status
+                                        where OrderID = @orderID";
+                command.Parameters.Add("status", SqlDbType.NVarChar).Value = status;
+                command.Parameters.Add("orderID", SqlDbType.NVarChar).Value = orderID;
                 command.ExecuteNonQuery();
             }
         }
@@ -440,6 +463,115 @@ namespace CoffeeShop._Repositories
             return staff;
         }
 
+        /// <summary>
+        /// Get Information for Invoice 
+        /// </summary>
+        /// <param name="orderID"></param>
+        /// <returns></returns>
+        public List<OrderDetailModel> GetOrderDetailWithItems(string orderID)
+        {         
+            List<OrderDetailModel> list = new List<OrderDetailModel>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"
+                                    SELECT 
+                                        Item.ItemName,
+                                        OrderDetail.Quantity,
+                                        Item.Cost,
+                                        OrderDetail.Total
+                                    FROM 
+                                        OrderDetail
+                                    INNER JOIN 
+                                        Item 
+                                    ON 
+                                        OrderDetail.ItemID = Item.ItemID
+                                    WHERE 
+                                        OrderDetail.OrderID = @OrderID";
+                command.Parameters.Add("@OrderID",SqlDbType.NVarChar).Value = orderID;                
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {                        
+                        list.Add(new OrderDetailModel
+                        {
+                            ItemName = reader["ItemName"].ToString(),
+                            Quantity = Convert.ToInt32(reader["Quantity"]),
+                            UnitPrice = Convert.ToSingle(reader["Cost"]),
+                            Total = Convert.ToSingle(reader["Cost"])
+                        });
+                    }
+                }
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<CustomerModel> GetCustomers()
+        {
+            var customerList = new List<CustomerModel>();
+
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "select * from Customer";
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var customerModel = new CustomerModel();
+                        customerModel.CustomerID = reader[0].ToString();
+                        customerModel.CustomerName = string.IsNullOrEmpty(reader[1].ToString()) ? "" : reader[1].ToString();
+                        customerModel.CustomerPhone = string.IsNullOrEmpty(reader[2].ToString()) ? "" : reader[2].ToString();
+                        customerModel.CustomerEmail = string.IsNullOrEmpty(reader[3].ToString()) ? "" : reader[3].ToString();
+                        customerModel.Coupon = reader.IsDBNull(4) ? 0 : reader.GetDecimal(4);
+                        customerModel.Gender = reader[5].ToString() == "" ? Gender.Other : (Gender)Int32.Parse(reader[5].ToString());
+                        customerList.Add(customerModel);
+                    }
+                }
+            }
+
+            return customerList;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="invoice"></param>
+        public void AddInvoice(InvoiceModel invoice)
+        {
+            using (var connection = new SqlConnection(connectionString)) 
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                
+                if (string.IsNullOrEmpty(invoice.CustomerID))
+                {
+                    command.CommandText = @"insert into Invoice(InvoiceID, PaymentID, SaleDate, OrderID) 
+                                            values(@InvoiceID, @PaymentID, @SaleDate, @OrderID)";
+                }
+                else
+                {
+                    command.CommandText = @"insert into Invoice values(@InvoiceID, @CustomerID, @PaymentID, @SaleDate, @OrderID)";
+                    command.Parameters.Add("CustomerID", SqlDbType.NVarChar).Value = invoice.CustomerID;
+                }
+
+                command.Parameters.Add("InvoiceID", SqlDbType.NVarChar).Value = invoice.InvoiceID;
+                command.Parameters.Add("PaymentID", SqlDbType.NVarChar).Value = invoice.PaymentID;
+                command.Parameters.Add("SaleDate", SqlDbType.Date).Value = invoice.SaleDate;
+                command.Parameters.Add("OrderID", SqlDbType.NVarChar).Value = invoice.OrderID;
+                command.ExecuteNonQuery();
+            }
+        }
+
         #endregion
 
         #region UnUse
@@ -477,6 +609,7 @@ namespace CoffeeShop._Repositories
         {
             throw new NotImplementedException();
         }
+
         #endregion
     }
 }

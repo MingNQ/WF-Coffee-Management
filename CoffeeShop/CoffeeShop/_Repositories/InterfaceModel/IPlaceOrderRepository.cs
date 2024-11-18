@@ -14,10 +14,14 @@ namespace CoffeeShop._Repositories.InterfaceModel
         void AddOrderDetail(List<OrderDetailModel> orderDetails);
         void AddOrder(OrderModel order);
         void UpdateTableStatus(string tableID, string status);
+        void UpdateOrderStatus(string orderID, string status);
         void EditOrderDetail(List<OrderDetailModel> orderDetails);
         void DeleteOrderDetail(List<OrderDetailModel> orderDetails);
+        void AddInvoice(InvoiceModel invoice);
         IEnumerable<TableOrder> GetTablesByFloor(string id);
         List<OrderDetailModel> GetOrderDetails(string orderID);
         OrderModel GetOrder(string tableID);
+        List<OrderDetailModel> GetOrderDetailWithItems(string orderID);
+        IEnumerable<CustomerModel> GetCustomers();
     }
 }

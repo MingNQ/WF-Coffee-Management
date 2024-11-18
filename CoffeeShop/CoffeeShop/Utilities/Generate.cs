@@ -36,6 +36,7 @@ namespace CoffeeShop.Utilities
             switch (_base)
             {
                 case "OD":
+                case "INV":
                     id = _base + new Random().Next(100000).ToString("D5");
                     break;
                 case "O":

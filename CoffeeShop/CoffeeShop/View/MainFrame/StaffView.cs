@@ -179,7 +179,7 @@ namespace CoffeeShop.View
                 avatar = value;
 
                 if (avatar.ImageUrl != null)
-                    picAvatar.ImageLocation = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, avatar.ImageUrl);
+                    picAvatar.ImageLocation = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURCE_PATH, avatar.ImageUrl);
             }
         }
 
@@ -452,7 +452,7 @@ namespace CoffeeShop.View
                     // Combine Path to Save File
                     string sourceFilePath = openFileDialog.FileName;
                     string fileName = Path.GetFileName(sourceFilePath);
-                    string destinationPath = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, fileName);
+                    string destinationPath = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURCE_PATH, fileName);
                     
                     if (Path.GetFullPath(sourceFilePath) != Path.GetFullPath(destinationPath))
                     {

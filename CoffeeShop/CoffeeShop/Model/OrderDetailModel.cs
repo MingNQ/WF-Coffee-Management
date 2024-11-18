@@ -49,6 +49,10 @@ namespace CoffeeShop.View
             {
                 return Item != null ? Item.Cost : 0;
             }
+            set
+            {
+                Item.Cost = value;
+            }
         }
 
         /// <summary>
@@ -59,6 +63,10 @@ namespace CoffeeShop.View
             get
             {
                 return Item != null ? Item.ItemName : "";
+            }
+            set
+            {
+                Item.ItemName = value;
             }
         }
 

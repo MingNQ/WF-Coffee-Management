@@ -125,7 +125,7 @@ namespace CoffeeShop.Presenter
                     string sourceFilePath = openFileDialog.FileName; //đường dẫn đầy đủ của tệp mà ng dùng đã chọn
                     string fileName = Path.GetFileName(sourceFilePath); //lấy tên file từ đường dẫn đầy đủ (vd: avatar.png)
                     //tạo đường dẫn lưu trữ file mới trong thư mục của ứng dụng 
-                    string destinationPath = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, fileName);
+                    string destinationPath = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURCE_PATH, fileName);
 
                     if (Path.GetFullPath(sourceFilePath) != Path.GetFullPath(destinationPath))
                     {
@@ -333,7 +333,7 @@ namespace CoffeeShop.Presenter
             if(!string.IsNullOrEmpty(avatarPath))
             {
                 string fileName = Path.GetFileName(avatarPath);
-                string destinationPath = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURE_PATH, fileName);
+                string destinationPath = Path.Combine(Application.StartupPath, AppConst.IMAGE_SOURCE_PATH, fileName);
                 
                 // Sao chép ảnh vào thư mục ứng dụng nếu chưa tồn tại
                 if (!File.Exists(destinationPath))
