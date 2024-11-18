@@ -21,6 +21,6 @@ namespace CoffeeShop._Repositories.InterfaceModel
         OrderModel GetOrder(string tableID);
         string GenerateInvoiceID();
 
-        List<OrderItemViewModel> GetOrderDetailWithItems(string orderID);
+        List<OrderDetailModel> GetOrderDetailWithItems(string orderID);
     }
 }

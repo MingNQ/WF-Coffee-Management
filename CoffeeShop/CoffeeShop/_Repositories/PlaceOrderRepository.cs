@@ -467,10 +467,9 @@ namespace CoffeeShop._Repositories
         /// </summary>
         /// <param name="orderID"></param>
         /// <returns></returns>
-        public List<OrderItemViewModel> GetOrderDetailWithItems(string orderID)
-        {
-            
-            List<OrderItemViewModel> list = new List<OrderItemViewModel>();
+        public List<OrderDetailModel> GetOrderDetailWithItems(string orderID)
+        {         
+            List<OrderDetailModel> list = new List<OrderDetailModel>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand())
             {
@@ -494,13 +493,13 @@ namespace CoffeeShop._Repositories
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
-                    {
-                        list.Add(new OrderItemViewModel
+                    {                        
+                        list.Add(new OrderDetailModel
                         {
                             ItemName = reader["ItemName"].ToString(),
                             Quantity = Convert.ToInt32(reader["Quantity"]),
-                            Cost = Convert.ToSingle(reader["Cost"]),
-                            Total = Convert.ToSingle(reader["Total"])
+                            UnitPrice = Convert.ToSingle(reader["Cost"]),
+                            Total = Convert.ToSingle(reader["Cost"])
                         });
                     }
                 }

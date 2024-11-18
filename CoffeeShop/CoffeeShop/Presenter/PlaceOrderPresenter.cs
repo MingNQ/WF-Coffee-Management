@@ -12,6 +12,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Xceed.Words.NET;
+using iText.Layout.Borders;
+using Xceed.Document.NET;
+
+
+
+
 
 namespace CoffeeShop.Presenter
 {
@@ -305,30 +312,106 @@ namespace CoffeeShop.Presenter
             invoiceView.lbPeople.Text = view.NumberPeople.ToString();
             invoiceView.lbDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
             invoiceView.lbIDTable.Text = view.TableNo.ToString();
-            invoiceView.lbStaff.Text = view.StaffName.ToString();  
-            invoiceView.lbTotal.Text = view.Total.ToString();
+            invoiceView.lbStaff.Text = view.StaffName.ToString();             
             invoiceView.lbOrderID.Text = view.OrderID.ToString();
-            
-           
-            
-            invoiceView.btnCancel.Click += delegate
-            {
-                invoiceView.Close();
-            };
-            invoiceView.btnPrint.Click += delegate
-            {
-                DialogMessageView.ShowMessage("information", "Print Successful");
-                invoiceView.Close();
-            };
-            var List = repository.GetOrderDetailWithItems("O002");
+
+            var List = repository.GetOrderDetailWithItems(view.OrderID);
             float totalSum = 0;
             foreach (var item in List)
             {
                 totalSum += item.Total * item.Quantity;
             }
             invoiceView.lbTotal.Text = totalSum.ToString();
-            invoiceView.dgvInvoice.DataSource = List;
+            invoiceView.dgvInvoice.DataSource = orderDetails;
             invoiceView.Show();
+
+            invoiceView.btnCancel.Click += delegate
+            {
+                invoiceView.Close();
+            };
+            invoiceView.btnPrint.Click += delegate
+            {
+                string filePath = @"CoffeeShop\CoffeeShop\Assets\Invoice.docx";
+                DocX doc;
+                if(System.IO.File.Exists(filePath))
+                {
+                    doc = DocX.Load(filePath);
+                }
+                else
+                {
+                    doc = DocX.Create(filePath);
+                }                
+                doc.InsertParagraph("Coffee Shop").FontSize(16).Bold().Alignment = Alignment.center;
+                doc.InsertParagraph("Invoice").FontSize(14).Bold().Alignment = Alignment.center;
+                doc.InsertParagraph("\n");
+
+                    // Thêm thông tin hóa đơn
+                    
+                    // Line 1
+                var paragraphTableID = doc.InsertParagraph();
+                paragraphTableID.Append("                                                                               ");
+                paragraphTableID.Append("Table ID: ").FontSize(12).Bold();                   
+                paragraphTableID.Append(invoiceView.lbIDTable.Text);
+
+                   
+                    // Line 2
+                var paragraphDateInvoiceID = doc.InsertParagraph();
+                paragraphDateInvoiceID.Append("                                  ");
+                paragraphDateInvoiceID.Append($"Date: ").Bold();
+                paragraphDateInvoiceID.Append($"{invoiceView.lbDate.Text}");
+                paragraphDateInvoiceID.Append("                                           ");
+                paragraphDateInvoiceID.Append($"Invoice ID: ").Bold();
+                paragraphDateInvoiceID.Append($"InvoiceID");
+                paragraphDateInvoiceID.Append("\n");
+
+                    // Line 3 
+                var paragraphOrderPeople = doc.InsertParagraph();
+                paragraphOrderPeople.Append("                                 ");
+                paragraphOrderPeople.Append("Order ID: ").Bold();
+                paragraphOrderPeople.Append($"{invoiceView.lbOrderID.Text}");
+                paragraphOrderPeople.Append("                                                 ");
+                paragraphOrderPeople.Append($"People: ").Bold();
+                paragraphOrderPeople.Append($"{invoiceView.lbPeople.Text}");
+                paragraphOrderPeople.Append("\n");
+
+                    //Line 4
+                var paragraphStaff = doc.InsertParagraph();
+                paragraphStaff.Append("\t\t\t\t         ");
+                paragraphStaff.Append("Staff:").Bold();
+                paragraphStaff.Append($" {invoiceView.lbStaff.Text}");
+                paragraphStaff.Append("\n");
+                    
+                    //Thêm bảng để lưu Order Detail
+                var table = doc.AddTable(List.Count + 1,4);
+                table.SetWidths(new float[] { 200, 200, 200, 200 });
+
+                table.Rows[0].Cells[0].Paragraphs[0].Append("ItemName").Bold().Alignment = Alignment.center;
+                table.Rows[0].Cells[1].Paragraphs[0].Append("Cost").Bold().Alignment = Alignment.center;
+                table.Rows[0].Cells[2].Paragraphs[0].Append("Quantity").Bold().Alignment = Alignment.center;
+                table.Rows[0].Cells[3].Paragraphs[0].Append("Total").Bold().Alignment = Alignment.center;
+                for (int i = 0; i < List.Count;i++)
+                {
+                    table.Rows[i + 1].Cells[0].Paragraphs[0].Append(List[i].ItemName).Alignment = Alignment.left;
+                    table.Rows[i + 1].Cells[1].Paragraphs[0].Append(List[i].Quantity.ToString()).Alignment = Alignment.center;
+                    table.Rows[i + 1].Cells[2].Paragraphs[0].Append(List[i].UnitPrice.ToString()).Alignment = Alignment.center;
+                    table.Rows[i + 1].Cells[3].Paragraphs[0].Append(List[i].Total.ToString()).Alignment = Alignment.center;
+                }
+                doc.InsertTable(table);
+                var paragraphTotal = doc.InsertParagraph();
+                paragraphTotal.Append("\t\t\t\t          \t\t\t\t");
+                paragraphTotal.Append("Total:").Bold();
+                paragraphTotal.Append($"{invoiceView.lbTotal.Text}");
+
+                doc.InsertParagraph("\n\n\n\n");
+                doc.InsertParagraph("Thank For Choosing Us").FontSize(16).Bold().Alignment = Alignment.center;
+                doc.InsertParagraph("\n\n");
+
+                doc.Save();
+                DialogMessageView.ShowMessage("information", "Print Successful");
+                                
+                invoiceView.Close();
+            };
+            
         }
 
         /// <summary>
