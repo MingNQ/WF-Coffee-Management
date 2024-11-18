@@ -58,8 +58,17 @@
     <Compile Include="Model\CustomerModel.cs" />
     <Compile Include="Model\Floor.cs" />
     <Compile Include="Model\IngredientModel.cs" />
+    <Compile Include="Model\InvoiceModel.cs" />
+    <Compile Include="Model\OrderItemViewModel.cs" />
     <Compile Include="Model\OrderModel.cs" />
     <Compile Include="Model\OrderDetailModel.cs" />
+    <Compile Include="View\MainFrame\Interfaces\IInvoice.cs" />
+    <Compile Include="View\MainFrame\Invoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainFrame\Invoice.Designer.cs">
+      <DependentUpon>Invoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="_Repositories\InterfaceModel\IAccountRepository.cs" />
     <Compile Include="_Repositories\InterfaceModel\ICategoryRepository.cs" />
     <Compile Include="_Repositories\InterfaceModel\ICustomerRepository.cs" />
@@ -245,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainFrame\IngredientView.resx">
       <DependentUpon>IngredientView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainFrame\Invoice.resx">
+      <DependentUpon>Invoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainFrame\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
