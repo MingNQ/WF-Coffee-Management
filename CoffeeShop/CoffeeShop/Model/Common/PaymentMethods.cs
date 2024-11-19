@@ -11,4 +11,5 @@ namespace CoffeeShop.Model.Common
         Cash,
         QR
     }
+    
 }

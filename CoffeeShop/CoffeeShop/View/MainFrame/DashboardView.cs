@@ -102,9 +102,13 @@ namespace CoffeeShop.View
 		/// </summary>
         public void ShowPage()
         {
-			if (Generate.StaffRole != AppConst.ADMIN_ROLE)
+            if (Generate.StaffRole != AppConst.ADMIN_ROLE)
 			{
 				pnlDashboard.Visible = false;
+			}
+			else
+			{
+				pnlDashboard.Visible = true;
 			}
 
 			// Show
